@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "优惠券模板管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+    @System.Web.Optimization.Styles.Render("~/VGebo/multi-select.css")
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>优惠券模板管理</h3>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span3">
+        <div class="edit-tree">
+            <div class="pull-left">
+                <button class="btn" id="btnAddType"><i class="splashy-add_small"></i>同步模板</button>
+            </div>
+            <p class="formSep clearfix iconNav_right">
+                <button class="btn" id="btnClear">新建</button>
+                @*<button class="btn">刷新</button>*@
+                <button class="btn btn-danger" id="btnDelete">删除</button>
+            </p>
+
+            @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "tmpCouponSearch", @class = "input-append" }))
+            {
+                <input autocomplete="off" name="query" id="key" class="search_query input-medium" size="16" type="text" placeholder="搜索..." />
+                <button type="submit" class="btn"><i class="icon-search"></i></button>
+            }
+
+            <div class="sidebar_tree">
+                <div class="dynatree" id="tree_a">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="span9">
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmSaveCoupon" }))
+        {
+            <div class="sepH_c">
+                <div class="formSep">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <label>模板编号</label>
+                            <input type="text" name="txtTmpCode" class="span12" id="txtTmpCode" disabled="disabled" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3">
+                            <label>模板名称</label>
+                            <input type="text" name="txtTmpName" class="span12" id="txtTmpName" />
+                            <span class="error-block"></span>
+                        </div>
+                        @*<div class="span2">
+                            <label><span class="error_placement">是否是公共券</span></label>
+                            <label class="checkbox span8">
+                                <input type="checkbox" name="ispublic" value="yes" id="ispublic" class="span6" />
+                            </label>
+                        </div>*@
+                        @*<div class="span2">
+                            <label><span class="error_placement">是否是异业券</span></label>
+                            <label class="checkbox span8">
+                                <input type="checkbox" name="isOthers" value="yes" id="isOthers" class="span6" />
+                            </label>
+                        </div>*@
+                        <div class="span2">
+                            <label><span class="error_placement">是否启用</span></label>
+                            <label class="checkbox span8">
+                                <input type="checkbox" id="enable" checked="checked" class="span6">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <label>模板类型<span class="f_req">*</span></label>
+                            <select class="span12" id="drpTmpCatg">
+                            </select>
+                            <span class="error-block"></span>
+
+                        </div>
+                        <div class="span3">
+                            <label>优惠券类型 <span class="f_req">*</span></label>
+                            <select class="span12" id="drpSubType" name="drpSubType" onchange="changeCouponTempletCategory(this)">
+                            </select>
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3" id="div1">
+                            <label>面额 <span class="f_req">*</span></label>
+                            <input type="text" name="txtAmount" class="span12" id="txtAmount" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="5" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3 hide" id="div2">
+                            <label>折扣率 <span class="f_req">*</span></label>
+                            <input type="text" name="txtDiscount" class="span12" id="txtDiscount" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3 hide" id="div3">
+                            <label>满足金额 </label>
+                            <input type="text" name="txtMeetAmount" class="span12" id="txtMeetAmount" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3 hide" id="div4">
+                            <label>扣减金额</label>
+                            <input type="text" name="txtDeductAmount" class="span12" id="txtDeductAmount" />
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <label>有效期偏移量</label>
+                            <input type="text" name="txtOffNumber" class="span12" id="txtOffNumber" onkeyup="value=value.replace(/[^\d.]/g,'')" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3">
+                            <label>有效期偏移单位</label>
+                            <select class="span12" id="drpUnit" name="drpUnit"></select>
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3">
+                            <label>开始时间</label>
+                            <input type="text" class="span12" id="txtCouponStartDate" readonly="readonly" />
+                            <div class="btn-date-clear"></div>
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span3">
+                            <label>结束时间</label>
+                            <input type="text" class="span12" id="txtCouponEndDate" readonly="readonly" />
+                            <div class="btn-date-clear"></div>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <label>使用限制</label>
+                            <select class="span12" id="drpCouponLimit" name="drpCouponLimit">
+                            </select>
+                        </div>
+                        <div class="span3" style="margin-top: 25px; float: left">
+                            <button class="btn" id="btnShowDataLimitDialog" disabled="disabled">选择限制范围数据</button>
+                        </div>
+                        @*<div class="span3">
+                            <label>使用次数</label>
+                            <input type="text" name="txtMaxAvliableAmount" class="span12" id="txtMaxAvliableAmount" onkeyup="value=value.replace(/[^\d.]/g,'')" />
+                        </div>
+                        <div class="span3">
+                            <label>获取渠道</label>
+                            <select id="drpChannel" class="span12">
+                            </select>
+                        </div>*@
+                    </div>
+                    @*<div class="row-fluid">
+                        <div class="span3">
+                            <label>引用编号</label>
+                            <input type="text" name="txtReferenceNo" class="span12" id="txtReferenceNo" />
+                        </div>
+                    </div>*@
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <label>已填写限制范围数据</label>
+                            <textarea class="span12" rows="5" id="txtSelectedDataLimit" disabled="disabled"></textarea>
+                            <input type="hidden" id="hidSelectedDataLimit" />
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <label>备注</label>
+                            <textarea name="txtRemark" class="span12" rows="5" id="txtRemark"></textarea>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fuid pull-right">
+                    <button type="submit" class="btn btn-info sepV_c" id="btnSave">保存</button>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+<div class ="hide">
+    <div id="couponTypeDialog" class="cbox_content w350">
+        <div class="modal-header">
+            <h3>新增优惠券类型</h3>
+        </div>
+        <div class="modal-body mbox">
+            <div class="row-fluid">
+                <div class="span4">
+                    <label>优惠券类型</label>
+                    <input type="text" placeholder="优惠券类型名称" id="txtAddCouponType" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes" id="btnSaveCouponType">保存</a>
+        </div>
+    </div>
+</div>
+<div class="hide">
+    <div id="divDataLimitDialog" class="cbox_content" style="min-width: 400px;">
+        <div class="modal-header">
+            <h3>选择限制范围数据</h3>
+        </div>
+        <div class="modal-body mbox" style="min-height: 300px;">
+            <div class="row-fluid">
+                <div class="span12" id="divSelectDataLimit">
+                    <label>限制范围数据</label>
+                    <select id="drpDataLimit" multiple data-placeholder="限制范围数据">
+                    </select>
+                </div>
+                <div class="span12" id="divInputDataLimit">
+                    <label>限制范围数据</label>
+                    <input type="text" placeholder="限制范围数据" id="txtDataLimit" />
+                </div>
+                <div class="span12" id="divInputDateDataLimit">
+                    <label>选择日期</label>
+                    <input type="text" placeholder="选择日期" id="txtDataLimitDate" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes" id="btnSaveDataLimit">保存</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Gebo/lib/chosen/chosen.jquery.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/TmpCommunication/TmpCoupon.js")
+}
+
+

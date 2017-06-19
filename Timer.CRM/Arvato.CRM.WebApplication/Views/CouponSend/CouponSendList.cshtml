@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Customize";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+<div class="row-fluid heading">
+
+    <div class="pull-left">
+        <h3>购物券派送</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+
+    <div class="well firstShow ">
+        <div class="row-fluid" id="queryCondition">
+            <div class="span3">
+                <label class="title-left sepV_a ml10">单号</label>
+                <input type="text" id="SearchOddNumber" name="SearchOddNumber" class="span12"/>
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">券信息</label>
+                <input type="text" id="searchCouponInfo" name="searchCouponInfo" class="span12"/>
+            </div>
+             <div class="span3">
+                <label class="title-left sepV_a ml10">状态</label>
+                <select   class="span12 sepV_a input-medium" id="Status">
+                      <option value="">请选择</option>
+                      <option value="0">未审核</option>
+                      <option value="1">已审核</option>
+                  </select>      
+            </div>
+        </div>
+        <div class="q_btn">
+            <button class="btn btn-info" id="btnSerach">查询</button>
+            
+            <button class="btn" id="btnRemove">清除</button>
+            <button  class="btn" id="btnAdd">新建</button>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_Table">
+    </table>
+
+    @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "form1", @class = "hide", @Action = "/CouponSend/Add" }))
+{
+        <input type="hidden" id="hideID" name="hideID"/>
+         <input type="hidden" id="hideInfo" name="hideInfo"/>
+}
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/CouponSend/CouponSendList.js")
+}

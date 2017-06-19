@@ -1,0 +1,351 @@
+﻿@{
+    ViewBag.Title = "账户调整";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+    @System.Web.Optimization.Styles.Render("~/Scripts/Framework/webuploader-0.1.5/webuploader.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>账户调整</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span2">
+            <label>会员编号</label>
+            <input type="text" class="span12" id="txtCardNo" value="" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span2">
+            <label>会员卡号</label>
+            <input type="text" class="span12" id="txtNo" value="" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span2">
+            <label>姓名</label>
+            <input type="text" class="span12" id="txtName" value="" />
+            <span class="error-block"></span>
+        </div>
+        <div class="span2">
+            <label>手机号</label>
+            <input type="text" class="span12" id="txtMobile" value="" onkeyup="value=value.replace(/[^\d.]/g,'')"/> 
+        </div>
+        
+    </div>
+
+    <div class="q_btn">
+        <button class="btn btn-success" id="btnSearch">查询</button>
+        <button id="btnImport" class="btn" type="button">批量导入</button>
+        <button id="btnDownLoad" class="btn" type="button">模板下载</button>
+    </div>
+    
+
+    
+</div>
+
+<div class="hide">
+    <div id="table_Member" class="cbox_content" style="width: 560px; height: 380px">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>会员信息</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="tableMemberInfo">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid memInfoBlock hide">
+    <h2 class="pull-left memName" id="spnName"></h2>
+
+    <div class="pull-left memBasic">
+        <span id="spnGender">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="spnLevel"></b>
+    </div>
+    <div class="span8 memInfoList">
+        <div class="clearfix">
+            @*<p class="sepH_a"><span class="muted sepV_b">会员编号</span><strong id="spnCardNo"></strong></p>*@
+            @*<p class="sepH_a"><span class="muted sepV_b">所属门店</span><strong id="spnCardStat"></strong></p>*@
+            <p class="sepH_a"><span class="muted sepV_b">手机号码</span><strong id="spnMobile"></strong></p>
+            @foreach (var item in ViewBag.ActTypeList)
+            {
+                <p class="sepH_a"><span class="muted sepV_b">可用<span>@item.OptionText.Substring(0, 2)</span></span><strong class="stgValidValue" id="stgValidValue_@item.OptionValue"></strong></p>
+            }
+        </div>
+        @*<div class="clearfix">
+            <p class="sepH_a"><span class="muted sepV_b">冻结积分</span><strong id="stgValidValue33">0</strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">总积分</span><strong id="stgValidValue88">0</strong></p>
+        </div>*@
+    </div>
+</div>
+
+<input type="hidden" id="hdnMemberId" />
+<input type="hidden" id="hdnGroupId" value="@ViewBag.DataGroupId"/>
+<div class="mt10">
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active" hidden="hidden"><a href="#tab1" data-toggle="tab">账户调整</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active mbox" id="tab1">
+                <div class="form_validation_reg">
+                    <div class="row-fluid mt20 sepH_b">
+                        <div class="span10">
+                            <input type="hidden" id="txtActId" />
+                            @foreach (var item in ViewBag.ActTypeList)
+                            {
+                                <div class="span2">
+                                    <label class="radio inline">
+                                        
+                                        <input type="radio" name="reg_det" value="@item.OptionValue" id="radioCash" checked="checked">
+                                        @item.OptionText.Substring(0, 2)<span>调整</span>
+                                    </label>
+                                </div>
+                            }
+                            @*<div class="span2" style="width: 90px">
+                                <label class="radio inline">
+
+                                    <input type="hidden" id="txtActId" />
+                                    <input type="radio" name="reg_det" value="1" id="radioCash" checked="checked" onclick="loadAccountList('1');">
+                                    现金调整
+                                </label>
+                            </div>
+                            <div class="span2" style="width: 90px">
+                                <label class="radio inline">
+                                    <input type="radio" name="reg_det" value="2" id="radioPoint1" onclick="loadAccountList('2');">
+                                    积点调整
+                                </label>
+                            </div>
+                            <div class="span2" style="width: 90px">
+                                <label class="radio inline">
+                                    <input type="radio" name="reg_det" value="3" id="radioPoint2" onclick="loadAccountList('3');">
+                                    积分调整
+                                </label>
+                            </div>*@
+                            @*<div class="span2" style="width:110px">
+                                <label class="radio inline">
+                                    <input type="radio" name="reg_det" value="3" id="radioPoint3" onclick="loadAccountList('4');">
+                                    预付CW账户
+                                </label>
+                            </div>
+                            <div class="span2" style="width:110px">
+                                <label class="radio inline">
+                                    <input type="radio" name="reg_det" value="3" id="radioPoint4" onclick="loadAccountList('5');">
+                                    预付BX账户
+                                </label>
+                            </div>
+                            <div class="span2" style="width:110px">
+                                <label class="radio inline">
+                                    <input type="radio" name="reg_det" value="3" id="radioPoint5" onclick="loadAccountList('6');">
+                                    销售赠送账户
+                                </label>
+                            </div>
+                            <div class="span2" style="width:110px">
+                                <label class="radio inline">
+                                    <input type="radio" name="reg_det" value="3" id="radioPoint6" onclick="loadAccountList('7');">
+                                    售后赠送账户
+                                </label>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div id="accountDet1">
+                            <table class="table" id="dtAccountDetail">
+                                <thead>
+                                    <tr role="row">
+                                        @*<th>账户限定</th>*@
+                                        <th>积分明细类型</th>
+                                        <th>值</th>
+                                        <th>解冻时间</th>
+                                        <th>到期日期</th>
+                                        @*<th>调整积分类型</th>
+                                        <th>调整理由</th>*@
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="row-fluid">
+                        <div class="pull-right  sepH_a">
+                            <button class="btn" id="btnEditAct" onclick="improveAccountDetail()">总调整</button>
+                            <button class="btn" id="btnAddAct">新建</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增账户弹窗-->
+<div class="hide">
+    <div id="table_AddAccount" class="cbox_content popComMedium" style ="height:200px" >
+        <div class="modal-header">
+            <h3>调整账户信息</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="span2">
+                    <label>可用积分</label>
+                    <input type="text" id="txtActPoint" class="span11" disabled="disabled"/>
+                </div>
+                <div class="span2 hide">
+                    <label>账户类型</label>
+                    <select class="span11" id="drpActType">
+                        <option value="value1">可用</option>
+                        <option value="value2">冻结</option>
+                    </select>
+                </div>
+                <div class="span2">
+                    <label>操作</label>
+                    <select class="span11" id="drpActOpt" disabled="disabled">
+                        @*<option value="add">增加</option>*@
+                        <option value="sub">减少</option>
+                    </select>
+                </div>
+                <div class="span2">
+                    <label>数值</label>
+                    <input type="text" id="txtActNumber" class="span11" onkeyup="value=value.replace(/[^\d.]/g,'')"  />
+                </div>
+                
+            </div>
+            <div class="span2 pull-right">
+                    <button type="button" id="btnSaveImproveAct" class="btn btn-info">保存</button>
+                </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<!--编辑账户弹窗-->
+<div class="hide">
+    <div id="table_EditAccount" class="cbox_content popComMedium">
+        <div class="modal-header">
+            <h3>编辑账户信息</h3>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmEditAccount" }))
+        {
+            <div class="modal-body" style="height: 170px">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <label id="actlblname">账户余额</label>
+                        <input type="text" id="txtEditAct" name="txtEditAct" class="span11" onkeyup="value=value.replace(/[^\d.]/g,'')" />
+                        <input type="hidden" id="txtActDetailId" />
+                        <input type="hidden" id="txtActType" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label>账户类型</label>
+                        <select class="span11" id="drpEditActType" disabled="disabled">
+                            <option value="value1">可用</option>
+                            <option value="value2">冻结</option>
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3" id="divSDate">
+                        <label id="labDate">解冻日期</label>
+                        <input type="text" id="txtEditStartDate" class="span11" maxlength="10" name="txtEditStartDate" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3" id="divEDate">
+                        <label>到期日期</label>
+                        <input type="text" id="txtEditEndDate" class="span11" maxlength="10" name="txtEditEndDate" />
+                        <span class="error-block"></span>
+                    </div>
+
+                </div>
+                <div class="row-fluid hide" id="divRemark">
+                    <div class="span3">
+                        <label>操作</label>
+                        <select class="span11" id="drpEditActOpt">
+                            <option value="add">增加</option>
+                            <option value="sub">减少</option>
+                        </select>
+                    </div>
+                    <div class="span3">
+                        <label>数值</label>
+                        <input type="text" id="txtEditActNumber" name="txtEditActNumber" class="span11" value="" />
+                    </div>
+                    <div class="span6">
+                        <label>调整原因</label>
+                        <textarea rows="1" class="span12" id="txtChangeReason" name="txtChangeReason"></textarea>
+                        <span class="error-block"></span>
+                    </div>
+                    @*<div class="span5">
+                        <label>使用限制</label>
+                        <select class="chzn_b span11" multiple data-placeholder="请选择..." id="drpActLimit" name="drpActLimit">
+                        </select>
+                        <span class="error-block"></span>
+                    </div>*@
+                </div>
+                <div class="row-fluid">
+                    <div class="pull-right">
+                        <button type="submit" id="btnSaveEditAct" class="btn btn-info">保存</button>
+                    </div>
+                </div>
+            </div>
+        
+            
+        }
+    </div>
+</div>
+
+
+<div class="hide">
+   
+
+    <div id="import_data" class="cbox_content popConfig">
+        <div class="modal-header">
+            <h3>文件导入</h3>
+        </div>
+
+        <div class="modal-body">
+            <div>
+                <form class="form_validation_import">
+                    @*                        <div class="row-fluid">
+                            <div class="span9">
+                                <label>名称 <span class="f_req">*</span></label>
+                                <input type="text" id="tbImportName" name="tbImportName" class="span12" />
+                            </div>
+                        </div>*@
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <label>文件路径 <span class="f_req">*</span></label>
+                            <input type="text" id="tbFilePath" readonly="true" name="tbFilePath" class="span12" />
+                        </div>
+                        <div class="span2" id="container">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-info" id="pickfiles">选择文件</button>
+                        </div>
+                    </div>
+                    <div>
+                        <span id="importError" class="error"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-gebo confirm_yes" id="btnSaveImport">保存</button>
+            <button class="btn confirm_no" id="btnCancelImport" type="button" onclick="$.colorbox.close()">取消</button>
+        </div>
+    </div>
+
+    
+</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Gebo/lib/chosen/chosen.jquery.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Framework/webuploader-0.1.5/webuploader.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Member360/AccountAdjust.js", "~/Scripts/Framework/linq.min.js")
+}
+
+

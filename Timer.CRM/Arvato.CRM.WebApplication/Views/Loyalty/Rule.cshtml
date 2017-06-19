@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "等级积分计算规则设置";
+    var listEnable = new SelectListItem[]{
+        new SelectListItem{Text="全部",Value=""},
+        new SelectListItem{Text="是",Value="1"},
+        new SelectListItem{Text="否",Value="0"}
+    };
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员等级积分计算规则管理</h3>
+    </div>
+
+</div>
+
+<div class="row-fluid">
+    <div class="form-inline well">
+        <div class="span3">
+            <label class="title-left sepV_a">规则名称</label>
+            <input type="text" id="txtRuleName" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="ml10 title-left sepV_a">规则类型</label>
+            <select id="drpRuleType" class="span12"></select>
+        </div>
+        <div class="span3">
+            <label class="ml10 title-left sepV_a">是否启用</label>
+            @Html.DropDownList("drpIsEnable", listEnable, new { id = "drpIsEnable", @class = "span12 sepV_b" })
+        </div>
+        <div class="q_btn">
+            <button id="btnSearch" class="btn">查询</button>
+            <button id="btnAdd" class="btn">新建</button>
+        </div>
+        
+    </div>
+</div>
+<div class="row-fluid ">
+    <table class="table" data-provides="rowlink" id="dt_Rule">
+    </table>
+</div>
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "form1", @class = "hide", @Action = "/Loyalty/RuleSetting" }))
+{
+    <input id="hideRuleID" name="hideRuleID" type="text" />
+    <input id="hideRuleName" value="@Session["hideRuleName"].ToString()" name="hideRuleName" type="text" />
+    <input id="hideRuleType" value="@Session["hideRuleType"].ToString()" name="hideRuleType" type="text" />
+    <input id="hideEnable" value="@Session["hideEnable"].ToString()" name="hideEnable" type="text" />
+}
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Loyalty/Rule.js")
+}

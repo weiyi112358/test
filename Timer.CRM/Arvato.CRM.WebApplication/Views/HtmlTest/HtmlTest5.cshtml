@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "HtmlTest5";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>搜索:商品积分兑奖规则</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" type="button" onclick="">新建</button>
+    </div>
+</div>
+
+<div class="form-inline well">
+    <div class="oneLine">
+        <select class="span2 sepV_b" id=""></select>
+        <select class="span2 sepV_b" id=""></select>
+        <input type="text" class="input-medium input_l200" id="">
+        <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+        <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+    </div>
+    <div class="oneLine">
+        <select class="span2 sepV_b" id=""></select>
+        <select class="span2 sepV_b" id=""></select>
+        <input type="text" class="input-medium input_l200" id="">
+        <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+        <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+    </div>
+
+    <div class="q_btn">
+        <button class="btn" id="">查询</button>
+        <button class="btn" id="">清空</button>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="mt10 mbox">
+        <div id="dt_dataGroup_wrapper" class="dataTables_wrapper form-inline no-footer">
+            <div class="dt-top-row"></div>
+            <div id="dt_dataGroup_processing" class="dataTables_processing" style="display: none;">数据加载中……</div>
+            <div class="dt-wrapper">
+                <table class="table dataTable no-footer" id="dt_dataGroup" role="grid" aria-describedby="dt_dataGroup_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 5%;"><input class="input_c" type="checkbox" value="" /></th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 10%;" aria-label="代码">代码</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 13%;" aria-label="名称">名称</th>
+                            <th class="sorting_disabled" tabindex="0" rowspan="1" colspan="1" style="width: 13%;" aria-label="状态">状态</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 15%;" aria-label="起始日期">起始日期</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 15%;" aria-label="截止日期">截止日期</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 14%;" aria-label="最后修改人">最后修改人</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 15%;" aria-label="最后修改时间">最后修改时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"><input class="input_c" type="checkbox" value="" /></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr role="row" class="even">
+                            <td class="sorting_1"><input class="input_c" type="checkbox" value="" /></td>
+                            <td>234</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="dt-row dt-bottom-row mt10">
+                <div class="pull-left">
+                    <div class="dataTables_info" id="dt_dataGroup_info" role="status" aria-live="polite">从 1 到 2 条，共 2 条记录</div>
+                </div>
+                <div class="pull-right">
+                    <div class="dataTables_paginate paging_bootstrap_alt pagination" id="dt_dataGroup_paginate">
+                        <ul>
+                            <li class="first disabled"><a href="#">&lt;&lt; 首页</a></li>
+                            <li class="prev disabled"><a href="#">&lt;  上一页 </a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li class="next disabled"><a href="#">下一页  &gt;</a></li>
+                            <li class="last disabled"><a href="#">末页  &gt;&gt;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

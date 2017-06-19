@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "会员消费明细";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string month = "00" + DateTime.Now.Month.ToString();
+    string StartTime = DateTime.Now.Year.ToString() + "-" + month.Substring(month.Length-2,2) + "-01";
+    string EndTime = DateTime.Now.ToString("yyyy-MM-dd");
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员消费明细</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span3">
+            <label>渠道</label>
+            <select id="drpChannel" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannel">
+                <option value="">全部</option>
+                @foreach (var chan in ViewBag.Channels)
+                {
+                    <option value="@chan.OptionValue">@chan.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>大区</label>
+            <select id="drpArea" class="chzn_a span12" name="drpArea">
+                <option value="">全部</option>
+                @foreach (var area in ViewBag.Areas)
+                { 
+                    <option value="@area.OptionValue">@area.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>城市</label>
+            <select id="drpCity" class="chzn_a span12" name="drpCity">
+                <option value="">全部</option>
+                @foreach (var city in ViewBag.City)
+                { 
+                    <option value="@city.RegionID">@city.NameZH</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>店铺</label>
+            <select id="drpStores" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpStores">
+                <option value="">全部</option>
+                @foreach (var store in ViewBag.Stores)
+                {
+                    <option value="@store.StoreCode">@store.StoreName</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span3">
+            <label>查询消费起期</label>
+            <input type="text" class="span12" placeholder="消费起期" id="txtConsumerStartDate" readonly="readonly" style="cursor:pointer" value="@StartTime" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span3">
+            <label>查询消费止期</label>
+            <input type="text" class="span12" placeholder="消费止期" id="txtConsumerEndDate" readonly="readonly" style="cursor:pointer" value="@EndTime" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span4">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search">
+        <thead>
+            <tr>
+                <th scope="col">消费日期</th>
+                <th scope="col">消费店铺</th>
+                <th scope="col">消费渠道</th>
+                <th scope="col">手机号</th>
+                <th scope="col">姓名</th>
+                <th scope="col">单据号</th>
+                <th scope="col">数量</th>
+                <th scope="col">标准金额</th>
+                <th scope="col">订单金额</th>
+                <th scope="col">应付金额</th>
+                <th scope="col">折扣金额</th>
+                <th scope="col">结算金额</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="exprDtReg" name="exprDtReg" />
+    <input type="hidden" id="exprDtRegMon" name="exprDtRegMon" />
+    <input type="hidden" id="exprChannel" name="exprChannel" />
+    <input type="hidden" id="exprArea" name="exprArea" />
+    <input type="hidden" id="exprCity" name="exprCity" />
+    <input type="hidden" id="exprStore" name="exprStore" />
+</form>
+
+
+@section Scripts{
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptMemConsumerDetails.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+
+}

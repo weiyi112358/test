@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "市场活动跟踪";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string yearTime = DateTime.Now.Year.ToString() + "-01";
+    string time = DateTime.Now.ToString("yyyy-MM");
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>市场活动跟踪</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span3">
+            <label>开始时间</label>
+            <input type="text" class="span12" placeholder="开始时间" id="txtStartDate"  readonly="readonly" style="cursor:pointer" value="@yearTime" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>结束时间</label>
+            <input type="text" class="span12" placeholder="结束时间" id="txtEndDate" readonly="readonly" style="cursor:pointer" value="@time" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search" style="width:100%;overflow-x:scroll">
+        <thead>
+            <tr>
+                <th scope="col">活动时间</th>
+                <th scope="col">活动名称</th>
+                <th scope="col">细分会员群数量</th>
+                <th scope="col">短信推送数量</th>
+                <th scope="col">回归销售额累计</th>
+                <th scope="col">占总体销售额比（会员和非会员）</th>
+                <th scope="col">占总体买单数比</th>
+                @*<th scope="col">总体买单数环比</th>*@
+                <th scope="col">男性会员数</th>
+                <th scope="col">女性会员数</th>
+                <th scope="col">保密会员数</th>
+                <th scope="col">18-22周岁会员数</th>
+                <th scope="col">23-29周岁会员数</th>
+                <th scope="col">30-35周岁会员数</th>
+                <th scope="col">35-39周岁会员数</th>
+                <th scope="col">40+周岁会员数</th>
+                <th scope="col">未知年龄会员数</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+
+@*<div style="margin-top: 15px">
+    ★ 会员转化率 , 注册会员/泛会员数量<br />
+    ★ 活跃会员量 , 三个月内有效购买行为(首次购买除外)<br />
+    ★ 潜在流失会员量 , 一年内没有购买行为<br />
+    ★ 流失会员量 , 一年以上没有购买行为
+</div>*@
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="expStartDate" name="expStartDate" />
+    <input type="hidden" id="expEndedDate" name="expEndedDate" />
+</form>
+
+
+@section Scripts{
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptMarketActivityTracking.js")
+
+}

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "产品数据分析";
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>产品数据分析</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span4">
+            <label>产品名称</label>
+         <input type="text" class="span12"id="txt_ProductName" />
+        </div>
+        <div class="span4">
+            <label>产品代码</label>
+            <input type="text" class="span12" id="txt_ProductCode" />
+        </div>
+        <div class="span4">
+            <label>产品线1名称</label>
+            <input type="text" class="span12" id="txt_ProductLine1Name" />
+        </div>
+        
+    </div>
+    <div class="row-fluid">
+        <div class="span4">
+            <label>产品线2名称</label>
+            <input type="text" class="span12" id="txt_ProductLine2Name" />
+        </div>
+        <div class="span4">
+            <label>品牌名称</label>
+            <input type="text" class="span12" id="txt_ProductBrand" />
+        </div>
+        <div class="span4">
+            <label>&nbsp;</label>
+            <div class="pull-right">
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search"></table>
+
+</div>
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="ProductName" name="ProductName" />
+    <input type="hidden" id="ProductCode" name="ProductCode" />
+    <input type="hidden" id="BrandName" name="BrandName" />
+    <input type="hidden" id="LineName1" name="LineName1" />
+    <input type="hidden" id="LineName2" name="LineName2" />
+</form>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptProductDataAnalyze.js")
+    @System.Web.Optimization.Scripts.Render("~/IXJS/libs/jquery.ba-resize.js")
+}
+

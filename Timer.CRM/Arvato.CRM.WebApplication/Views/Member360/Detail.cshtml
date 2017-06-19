@@ -1,0 +1,1012 @@
+﻿@{
+    ViewBag.Title = "会员基本信息";
+    string levelText = "";
+    foreach (var d in ViewBag.CustomerLevels)
+    {
+        if (d.OptionValue == ViewBag.BriefInfo.CustomerLevel)
+        {
+            levelText = d.OptionText;
+        }
+    }
+    bool isService = true;
+    if (string.IsNullOrEmpty(ViewBag.BriefInfo.ProvinceNameService.ToString()) && string.IsNullOrEmpty(ViewBag.BriefInfo.CityNameService.ToString()) && string.IsNullOrEmpty(ViewBag.BriefInfo.DistrictNameService.ToString()))
+    {
+        isService = false;
+    }
+    decimal validCash = 0,validPoint1=0, validPoint = 0;
+    foreach (var a in ViewBag.AccountList)
+    {
+        if (("1").Equals(a.AccountType.ToString()))
+        {
+            validCash = a.ValidValue;
+        }
+        else if (("2").Equals(a.AccountType.ToString()))
+        {
+            validPoint1 = a.ValidValue;
+        }
+        else if (("3").Equals(a.AccountType.ToString()))
+        {
+            validPoint = a.ValidValue;
+        }
+    }
+    int aNum = 1;
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员基本信息</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" onclick="window.location = '/Member360/Index'">返回</button>
+    </div>
+</div>
+
+<div class="row-fluid memInfoBlock">
+    <h2 class="pull-left memName">@ViewBag.BriefInfo.CustomerName
+        <input type="hidden" id="hdnMemberId" value="@ViewBag.MemberId"/>
+    </h2>
+    <input type="hidden" id="hdnPiid"/>
+    <div class="pull-left memBasic">
+        <span>&nbsp;&nbsp;@ViewBag.BriefInfo.Gender</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>@levelText</b>
+    </div>
+    <div class="span8 memInfoList">
+        <div class="clearfix">
+            <p class="sepH_a"><span class="muted sepV_b">会员卡号</span><strong>@(ViewBag.BriefInfo.MemberCardNo ?? "")</strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">会员卡状态</span><strong>@(ViewBag.BriefInfo.MemberCardStatus ?? "未开卡")</strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">手机号码</span><strong>@ViewBag.BriefInfo.CustomerMobile</strong></p>
+        </div>
+        <div class="clearfix">
+            <p class="sepH_a"><span class="muted sepV_b">可用现金</span><strong id="stgValidValue1">@validCash</strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">可用积点</span><strong id="stgValidValue2">@validPoint1</strong></p>
+            @*<p class="sepH_a"><span class="muted sepV_b">可用积分</span><strong id="stgValidValue3">@validPoint</strong></p>*@
+        </div>
+    </div>
+</div>
+
+<div class="mt10">
+    <div class="tabbable">
+        <ul class="nav nav-tabs" id="navMain">
+            <li class="active"><a href="#tabBasicInfo" data-toggle="tab">基本信息</a></li>
+            <li><a href="#tabContactsInfo" data-toggle="tab">联系人信息</a></li>
+            <li><a href="#tabCarInfo" data-toggle="tab">车辆信息</a></li>
+            <li><a href="#tabPackageInfo" data-toggle="tab">套餐信息</a></li>
+            <li><a href="#tabAccountDetail" data-toggle="tab">账户明细</a></li>
+            <li><a href="#tabTradeHistory" data-toggle="tab">交易历史</a></li>
+            <li><a href="#tabCommunicateHistory" data-toggle="tab">沟通历史</a></li>
+            <li><a href="#tabCardChangeHistory" data-toggle="tab">卡变更历史</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabBasicInfo">
+                <div class="form_validation_reg">
+                    <div class="formSep">
+                        <div class="row-fluid">
+                            <div class="span2">
+                                <label>会员状态</label>
+                                <select class="span12" disabled="disabled">
+                                    @foreach (var d in ViewBag.CustomerStatus)
+                                    { 
+                                        <option value="@d.OptionValue" selected="@(d.OptionValue == ViewBag.BriefInfo.CustomerStatus)">@d.OptionText</option>
+                                    }
+                                </select>
+                                @*<input type="text" class="span12" value="@ViewBag.BriefInfo.CustomerStatus" readonly="readonly" />*@
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>会员类型</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CustomerType" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+
+                            <div class="span2">
+                                <label>姓名 <span class="f_req">*</span></label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CustomerName" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>性别 <span class="f_req">*</span></label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.Gender" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>生日 <span class="f_req">*</span></label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.Birthday" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>手机号 <span class="f_req">*</span></label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CustomerMobile" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="formSep">
+                        <div class="row-fluid">
+                            <div class="span2">
+                                <label>会员卡号 <span class="f_req">*</span></label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.MemberCardNo" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>证件类型</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CertificateType" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>证件号码</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CertificateNo" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>省</label>
+                                <input type="text" class="span12" value="@(!isService ? ViewBag.BriefInfo.ProvinceNameSales : ViewBag.BriefInfo.ProvinceNameService ?? "")" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>市</label>
+                                <input type="text" class="span12" value="@(!isService ? ViewBag.BriefInfo.CityNameSales : ViewBag.BriefInfo.CityNameService ?? "")" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>区</label>
+                                <input type="text" class="span12" value="@(!isService ? ViewBag.BriefInfo.DistrictNameSales.ToString() : ViewBag.BriefInfo.DistrictNameService ?? "") " readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formSep">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <label>邮寄地址</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.Address1" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>邮箱 </label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CustomerEmail" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>邮编</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.Zip" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>联系电话</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.Tel" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>会员活跃度</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.MembershipActivity" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="formSep">
+                        <div class="row-fluid">
+                            <div class="span2">
+                                <label>会员卡状态</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.MemberCardStatus" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                @if (ViewBag.BriefInfo.Corp == null || ViewBag.BriefInfo.Corp == "")
+                                {
+                                    <label>所属企业</label>
+                                }
+                                else
+                                {
+                                    <label>所属企业 <a id="lnkCorpInfo" href="javascript:getCorpInfo('@ViewBag.BriefInfo.Corp')">企业信息</a></label>
+                                }
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.CorpName" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>会员忠诚度</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.MemberLoyalty" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>会员等级 <a href="javascript:getLevelHistory()" id="lnkLevelHistory">变更历史</a></label>
+                                <select class="span12" disabled="disabled">
+                                    <option value=""></option>
+                                    @foreach (var d in ViewBag.CustomerLevels)
+                                    { 
+                                        <option value="@d.OptionValue" selected="@(d.OptionValue == ViewBag.BriefInfo.CustomerLevel)">@d.OptionText</option>
+                                    }
+                                </select>
+                                @*<input type="text" class="span12" value="@ViewBag.BriefInfo.CustomerLevel" readonly="readonly" />*@
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>注册4S店</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.StoreName" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>注册时间</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.RegisterDate" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="formSep">
+                        <div class="row-fluid">
+                            <div class="span2">
+                                <label>会籍有效截止日期</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.MemberEndDate" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>资料最后修改人 </label>@*<a href="javascript:showChangeHistory_BHP()" id="lnkChgHistory">修改历史</a>*@
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.ModifiedUser" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>资料最后修改时间</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.ModifiedDate" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            @*<div class="span2">
+                                <label>最近一次提醒时间</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.NearlyRemindTime" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>最近一次消费时间</label>
+                                <input type="text" class="span12" value="@ViewBag.BriefInfo.NearlyShopTime" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>*@
+                            <div class="span2">
+                                <label>是否接收短信</label>
+                                <input type="text" class="span12" value="@(ViewBag.BriefInfo.IsMessage == true ? "是" : "否")" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                            <div class="span2">
+                                <label>是否接收邮件</label>
+                                <input type="text" class="span12" value="@(ViewBag.BriefInfo.IsEmail == true ? "是" : "否")" readonly="readonly" />
+                                <span class="error-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane row-fluid" id="tabCarInfo">
+                <div class="mt10">
+                    <table class="table" data-provides="rowlink" id="dtCarInfo">
+                    </table>
+                    <div class="clearfix sepV_b">
+                        <div class="pull-left">
+                            <p class="mt10 text-left"><b class="error-inline">注：</b>点击记录查看车辆详细信息。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane row-fluid" id="tabPackageInfo">
+                <div class="well moreHid firstShow">
+                    <div class="row-fluid">
+                        <div class="pull-left title-left">
+                            套餐名称
+                        </div>
+                        <div class="span2 pull-left">
+                            <input type="text" class="span10" id="txtName_Package" />
+                        </div>
+                        <div class="pull-left title-left">
+                            开始时间
+                        </div>
+                        <div class="span2">
+                            <input type="text" class="datepicker span10" id="txtStart_Package" />
+                        </div>
+                        <div class="pull-left title-left">
+                            结束时间
+                        </div>
+                        <div class="span2">
+                            <input type="text" class="datepicker span10" id="txtEnd_Package" />
+                        </div>
+                        <div class="pull-left sepV_c">
+                            <label class="checkbox inline">
+                                <input type="checkbox" name="cbValid_Package" value="option1" checked="checked" id="cbValid_Package">
+                                是否有效
+                            </label>
+                        </div>
+                        @*<div class="pull-left sepV_c">
+                            <label class="checkbox inline">
+                                <input type="checkbox" name="reg_days" value="cbEnable_Package">
+                                是否可用
+                            </label>
+                        </div>*@
+                        <div class="pull-left inline">
+                            <button class="btn" id="btnSearchPackage">查询</button>
+                            @*<button class="btn">导出</button>*@
+                        </div>
+                    </div>
+                    <!--<p class="mt10 text-left"><b class="error-inline">注：</b>默认显示会员有效期内的，且剩余次数不为0的套餐列表。</p>-->
+                </div>
+
+                <div class="sepH_c row-fluid">
+                    <p class="f_legend">套餐汇总表</p>
+                    <table class="table" data-provides="rowlink" id="dtPackage">
+                    </table>
+                </div>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="navPackage">
+                        <li class="active"><a href="#tabPackageDetail_P" data-toggle="tab">套餐明细表</a></li>
+                        @*<li><a href="#tabPackageLimit_P" data-toggle="tab">套餐限制表</a></li>*@
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabPackageDetail_P">
+                            <table class="table" data-provides="rowlink" id="dtPackageDetail_P">
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="tabPackageLimit_P">
+                            <table class="table" data-provides="rowlink" id="dtPackageLimit_P">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tabAccountDetail">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="span3">
+                            <div class="sepH_b"><b>优惠券账户</b></div>
+                            <div class="sepH_b">有效数量：<span id="spnValidCoupon">0</span></div>
+                            <div class="sepH_b">已用数量：<span id="spnUsedCoupon">0</span></div>
+                            <div class="sepH_b">过期数量：<span id="spnExpiredCoupon">0</span></div>
+                            <div class="sepH_b">&nbsp;&nbsp;</div>
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountCouponList();">
+                                查看明细
+                            </label>
+                        </div>
+                        @foreach (var a in ViewBag.AccountList)
+                        {
+                            string typeText = ("2").Equals(a.AccountType.ToString()) ? "积点" : ("3").Equals(a.AccountType.ToString()) ? "积分" : "金额";
+                            <div class="span3">
+                                <div class="sepH_b"><b>@a.AccountTypeText</b></div>
+                                <div class="sepH_b">总@(typeText)：<span>@a.TotalValue</span></div>
+                                <div class="sepH_b">可用@(typeText)：<span>@a.ValidValue</span></div>
+                                <div class="sepH_b">冻结@(typeText)：<span>@a.FrozenValue</span></div>
+                                <div class="sepH_b"><a href="javascript:showAccountHistory('@a.AccountType')">查看历史</a></div>
+                                <input type="hidden" id="hidAccType" />
+                                <label class="radio inline">
+                                    @*<input type="radio" name="reg_det" value="option1" onclick="showAccountDetail(@a)"/>*@
+                                    <input type="radio" name="reg_det" value="option1" onclick="@("showAccountDetail('" + a.AccountType + "')")"/>
+                                    查看明细
+                                </label>
+                            </div>
+                            aNum++;
+                            if (aNum == 4)
+                            {
+                                aNum = 0;
+                                break;
+                            }
+                        }
+                        @*<div class="span3">
+                            <div class="sepH_b"><b>储值账户</b></div>
+                            <div class="sepH_b">总金额：<span id="spnTotalValue1">0</span></div>
+                            <div class="sepH_b">可用金额：<span id="spnValidValue1">0</span></div>
+                            <div class="sepH_b">冻结金额：<span id="spnFrozenValue1">0</span></div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('1')">查看历史</a></div>
+                        </div>
+                        <div class="span3">
+                            <div class="sepH_b"><b>积点账户</b></div>
+                            <div class="sepH_b">总积点：<span id="spnTotalValue2">0</span> </div>
+                            <div class="sepH_b">可用积点：<span id="spnValidValue2">0</span></div>
+                            <div class="sepH_b">冻结积点：<span id="spnFrozenValue2">0</span></div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('2')">查看历史</a></div>
+                        </div>
+                        <div class="span3">
+                            <div class="sepH_b"><b>积分账户</b></div>
+                            <div class="sepH_b">总积分：<span id="spnTotalValue3">0</span></div>
+                            <div class="sepH_b">可用积分：<span id="spnValidValue3">0</span> </div>
+                            <div class="sepH_b">冻结积分：<span id="spnFro zenValue3">0</span>  </div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('3')">查看历史</a></div>
+                        </div>
+                        <div class="span3">
+                            <div class="sepH_b"><b>优惠券账户</b></div>
+                            <div class="sepH_b">有效数量：<span id="spnValidCoupon">0</span></div>
+                            <div class="sepH_b">已用数量：<span id="spnUsedCoupon">0</span></div>
+                            <div class="sepH_b">过期数量：<span id="spnExpiredCoupon">0</span></div>
+                        </div>*@
+                    </div>
+                    <div class="span6">
+                        @foreach (var a in ViewBag.AccountList)
+                        {
+                            if (aNum <= 3)
+                            {
+                                continue;
+                            }
+                            string typeText = ("2").Equals(a.AccountType) ? "积点" : ("3").Equals(a.AccountType) ? "积分" : "金额";
+                            <div class="span3">
+                                <div class="sepH_b"><b>@a.AccountTypeText</b></div>
+                                <div class="sepH_b">总@(typeText)：<span>@a.TotalValue</span></div>
+                                <div class="sepH_b">可用@(typeText)：<span>@a.ValidValue</span></div>
+                                <div class="sepH_b">冻结@(typeText)：<span>@a.FrozenValue</span></div>
+                                <div class="sepH_b"><a href="javascript:showAccountHistory('@a.AccountType')">查看历史</a></div>
+                                <label class="radio inline">
+                                    @*<input type="radio" name="reg_det" value="option1" onclick="showAccountDetail(@a)"/>*@
+                                    <input type="radio" name="reg_det" value="option1" onclick="@("showAccountDetail('" + a.AccountType + "')")"/>
+                                    查看明细
+                                </label>
+                            </div>
+                            aNum++;
+                            if (aNum == 8)
+                            {
+                                break;
+                            }
+                        }
+                        @*@if (aNum % 4 != 0)
+                        {
+                            <div class="span3">
+                                <div class="sepH_b"><b>优惠券账户</b></div>
+                                <div class="sepH_b">有效数量：<span id="spnValidCoupon">0</span></div>
+                                <div class="sepH_b">已用数量：<span id="spnUsedCoupon">0</span></div>
+                                <div class="sepH_b">过期数量：<span id="spnExpiredCoupon">0</span></div>
+                            </div>
+                        }
+                        <div class="span3">
+                            <div class="sepH_b"><b>预付CW账户</b></div>
+                            <div class="sepH_b">总金额：<span id="spnTotalValue4">0</span></div>
+                            <div class="sepH_b">可用金额：<span id="spnValidValue4">0</span></div>
+                            <div class="sepH_b">冻结金额：<span id="spnFrozenValue4">0</span></div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('4')">查看历史</a></div>
+                        </div>
+                        <div class="span3">
+                            <div class="sepH_b"><b>预付BX账户</b></div>
+                            <div class="sepH_b">总金额：<span id="spnTotalValue5">0</span></div>
+                            <div class="sepH_b">可用金额：<span id="spnValidValue5">0</span></div>
+                            <div class="sepH_b">冻结金额：<span id="spnFrozenValue5">0</span></div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('5')">查看历史</a></div>
+                        </div>
+                        <div class="span3">
+                            <div class="sepH_b"><b>销售赠送账户</b></div>
+                            <div class="sepH_b">总金额：<span id="spnTotalValue6">0</span></div>
+                            <div class="sepH_b">可用金额：<span id="spnValidValue6">0</span></div>
+                            <div class="sepH_b">冻结金额：<span id="spnFrozenValue6">0</span></div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('6')">查看历史</a></div>
+                        </div>
+                        <div class="span3">
+                            <div class="sepH_b"><b>售后赠送账户</b></div>
+                            <div class="sepH_b">总金额：<span id="spnTotalValue7">0</span></div>
+                            <div class="sepH_b">可用金额：<span id="spnValidValue7">0</span></div>
+                            <div class="sepH_b">冻结金额：<span id="spnFrozenValue7">0</span></div>
+                            <div class="sepH_b"><a href="javascript:showAccountHistory('7')">查看历史</a></div>
+                        </div>*@
+                    </div>
+                </div>
+
+                @*<div class="row-fluid sepH_b">
+                    <div class="span6">
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('1');" id="btnAccountDetail1" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('2');" id="btnAccountDetail2" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('3');" id="btnAccountDetail3" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountCouponList();">
+                                查看明细
+                            </label>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('4');" id="btnAccountDetail4" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('5');" id="btnAccountDetail5" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('6');" id="btnAccountDetail6" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                        <div class="span3">
+                            <label class="radio inline">
+                                <input type="radio" name="reg_det" value="option1" onclick="showAccountDetail('7');" id="btnAccountDetail7" disabled="disabled">
+                                查看明细
+                            </label>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="row-fluid">
+                    <div class="hide" id="accountDet1">
+                        <table class="table" id="dtAccountDetail">
+                            <thead>
+                                <tr role="row">
+                                    <th>账户限定</th>
+                                    <th>类型</th>
+                                    @*<th>合计值</th>*@
+                                    <th>值</th>
+                                    <th>解冻时间</th>
+                                    <th>到期时间</th>
+                                    @*<th>操作</th>*@
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="accountDet2">
+                        <table class="table" data-provides="rowlink" id="dtAccountCouponList">
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            @Html.Partial("DetailTradeHistory")
+
+            <div class="tab-pane row-fluid" id="tabCommunicateHistory">
+                <div class="sepH_c formSep">
+                    <p class="f_legend">短信</p>
+                    <table class="table " data-provides="rowlink" id="dtSMS_CH">
+                    </table>
+                </div>
+                <div class="sepH_c formSep">
+                    <p class="f_legend">邮件沟通历史</p>
+                    <table class="table" data-provides="rowlink" id="dtEmail_CH">
+                    </table>
+                </div>
+
+                <div class="sepH_c formSep">
+                    <p class="f_legend">预约历史</p>
+                    <table class="table" data-provides="rowlink" id="dtReserve_CH">
+                    </table>
+                </div>
+
+                @*<p class="f_legend">微信沟通历史</p>
+                <table class="table" data-provides="rowlink" id="dtWeChat_CH">
+                </table>*@
+            </div>
+
+            <div class="tab-pane" id="tabCardChangeHistory">
+                @foreach (var card in ViewBag.CardList)
+                {
+                    <div id="accordion@(card.CardNo)" class="accordion row-fluid">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a href="#collapse@(card.CardNo)" data-parent="#accordion@(card.CardNo)" onclick="getMemberCardHistory('@(card.CardNo)')" data-toggle="collapse" class="accordion-toggle">卡号：@card.CardNo　　　状态：@(card.Active == true ? "激活" : "失效")　　　是否锁定：@(card.Lock == true ? "是" : "否")
+                                </a>
+                            </div>
+                            <div class="accordion-body collapse" id="collapse@(card.CardNo)">
+                                <div class="accordion-inner">
+                                    <table class="table" data-provides="rowlink" id="dtCard@(card.CardNo)">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="tab-pane row-fluid" id="tabContactsInfo">
+                <div class="mt10">
+                    <table class="table" data-provides="rowlink" id="dtContactsInfo">
+                    </table>
+                    @*<div class="clearfix sepV_b">
+                        <div class="pull-left">
+                            <p class="mt10 text-left"><b class="error-inline">注：</b>点击明细查看会员详细。</p>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+
+            <div class="hide">
+                <div class="tab-pane row-fluid" id="tab8">
+                    <div>
+                        <table class="table" data-provides="rowlink" id="dt_table_del">
+                            <thead>
+                                <tr>
+                                    <th>原等级</th>
+                                    <th>新等级</th>
+                                    <th>变更时间</th>
+                                    <th>变更者</th>
+                                    <th>调整原因</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>普通会员</td>
+                                    <td>VIP会员</td>
+                                    <td>2013-02-14  </td>
+                                    <td>管理员</td>
+                                    <td>人工调整</td>
+                                </tr>
+                                <tr>
+                                    <td>VIP会员</td>
+                                    <td>普通会员</td>
+                                    <td>2013-02-14  </td>
+                                    <td>管理员</td>
+                                    <td>人工调整</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="cbox_content popComLg" id="dlgChange_BHP" style="width: 600px; height: 480px">
+                    <div class="modal-header">
+                        <h3>修改历史</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row-fluid">
+                            <div class="pull-left sepV_b">
+                                <input type="text" id="dateChgStart_BHP" class="datepicker span12" placeholder="起始时间">
+                            </div>
+                            <div class="pull-left sepV_b">
+                                <input type="text" id="dateChgEnd_BHP" class="datepicker span12" placeholder="结束时间">
+                            </div>
+                            <div class="pull-left">
+                                <button class="btn" onclick="getChangeHistory_BHP()">查询</button>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <table class="table" data-provides="rowlink" id="dtChange_BHP">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <div id="dlgMemContactDetail" class="cbox_content popComLg">
+        <div class="modal-header">
+            <h3>联系人明细</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="span2">
+                    <label>联系人姓名</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtName_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人性别</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtGender_Contact">
+                </div>
+                <div class="span2">
+                    <label>证件类型</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtCertificateType_Contact">
+                </div>
+                <div class="span2">
+                    <label>证件号码</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtCertificateNo_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人电话</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtTel_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人手机</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtMobile_Contact">
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    <label>联系人Email</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtEmail_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人省份</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtProvince_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人城市</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtCity_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人区县</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtDistrict_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人邮编</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtZip_Contact">
+                </div>
+                <div class="span2">
+                    <label>邮寄地址</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtAddress_Contact">
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    <label>联系人类型</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtType_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人职业</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtJob_Contact">
+                </div>
+                <div class="span2">
+                    <label>联系人职务</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtPosition_Contact">
+                </div>
+                <div class="span2">
+                    <label>喜欢的联络方式</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtFavoriteType_Contact">
+                </div>
+                <div class="span2">
+                    <label>最佳联系时间开始</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtFavoriteStart_Contact">
+                </div>
+                <div class="span2">
+                    <label>最佳联系时间结束</label>
+                    <input type="text" class="span12" readonly="readonly" id="txtFavoriteEnd_Contact">
+                </div>
+            </div>
+            <div class="clearfix sepV_c">
+                <div class="pull-right">
+                    <button class="btn" onclick="$.colorbox.close()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="packageUsedHistory" class="cbox_content popComLg">
+        <div class="modal-header">
+            <h3>套餐使用历史</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="dtPackageHistory">
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="dlgLevelHistory" class="cbox_content popComLg" style="height:500px">
+        <div class="modal-header">
+            <h3>等级变更历史</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="dtLevelHistory">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="dlgCorpInfo" class="cbox_content popComLg">
+        <div class="modal-header">
+            <h3>企业信息</h3>
+        </div>
+        <div class="modal-body">
+            <div class="sepH_c">
+                <div class="row-fluid title-left">
+                    <div class="span3">
+                        <label>企业名称</label>
+                        <input type="text" class="span12" disabled="disabled" id="txtCorpName_Corp" />
+                    </div>
+                    <div class="span3">
+                        <label>企业联系人</label>
+                        <input type="text" class="span12" disabled="disabled" id="txtCorpContract_Corp" />
+                    </div>
+                    <div class="span3">
+                        <label>联系电话</label>
+                        <input type="text" class="span12" disabled="disabled" id="txtCorpPhoneNo_Corp" />
+                    </div>
+                    <div class="span3">
+                        <label>企业地址</label>
+                        <input type="text" class="span12" disabled="disabled" id="txtAddress_Corp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dlgMemInfoChangeHistory" class="cbox_content popComLg">
+        <div class="modal-header">
+            <h3>修改历史</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="pull-left title-left sepV_b">修改时间</div>
+                <div class="pull-left sepV_b">
+                    <input type="text" id="dateChgStart_InfoHty" class="span12" placeholder="起始时间">
+                </div>
+                <div class="pull-left sepV_b">
+                    <input type="text" id="dateChgEnd_infoHty" class="span12" placeholder="结束时间">
+                </div>
+                <div class="pull-left">
+                    <button class="btn">查询</button>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="Table11">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="dlgEditCarInfo" class="cbox_content" style="width: 900px; height: 400px;">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3 id="hCarInfo">车辆信息明细</h3>
+                <input type="hidden" id="hdnCarInfoId" />
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                <label>车牌号</label>
+                <input type="text" class="span12" id="txtCarNo" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车辆性质</label>
+                <input type="text" class="span12" id="txtVehicleProperties" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>品牌</label>
+                <input type="text" class="span12" id="txtBrand" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车系名称</label>
+                <input type="text" class="span12" id="txtVehicleSeriesName" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车系代码</label>
+                <input type="text" class="span12" id="txtVehicleSeriesCode" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车型名称</label>
+                <input type="text" class="span12" id="txtVehicleLevelName" readonly="readonly">
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                <label>车型代码</label>
+                <input type="text" class="span12" id="txtVehicleLevelCode" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车型年</label>
+                <input type="text" class="span12" id="txtVehicleYear" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车辆颜色</label>
+                <input type="text" class="span12" id="txtVehicleColorName" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车辆颜色代码</label>
+                <input type="text" class="span12" id="txtVehicleColorCode" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>内饰名称</label>
+                <input type="text" class="span12" id="txtInteriorName" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>内饰代码</label>
+                <input type="text" class="span12" id="txtInteriorCode" readonly="readonly">
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                <label>车架号</label>
+                <input type="text" class="span12" id="txtVIN" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>发动机号</label>
+                <input type="text" class="span12" id="txtEngineNo" readonly="readonly">
+            </div>
+            @*<div class="span2">
+                <label>特殊车辆</label>
+                <input type="text" class="span12" id="txtVehicleSpecial" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>车源编号</label>
+                <input type="text" class="span12" id="txtSourceNo" readonly="readonly">
+            </div>*@
+            <div class="span2">
+                <label>使用年限</label>
+                <input type="text" class="span12" id="txtUseAge" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>购车时间</label>
+                <input type="text" class="span12" id="txtPurchasingDate" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>表显里程</label>
+                <input type="text" class="span12" id="txtDriveDistinct1" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>换表里程</label>
+                <input type="text" class="span12" id="txtDriveDistinct2" readonly="readonly">
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                <label>总里程</label>
+                <input type="text" class="span12" id="txtDriveDistinct3" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>保险到期日期</label>
+                <input type="text" class="span12" id="txtInsuranceDate" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>验车到期日期</label>
+                <input type="text" class="span12" id="txtValidateDate" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>保养开始日期</label>
+                <input type="text" class="span12" id="txtMaintenanceStartTime" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>上次进厂日期</label>
+                <input type="text" class="span12" id="txtLastInFactoryDate" readonly="readonly">
+            </div>
+            <div class="span2">
+                <label>下次保养日期</label>
+                <input type="text" class="span12" id="txtNextMaintenanceDate" readonly="readonly">
+            </div>
+        </div>
+        <div class="row-fluid formSep">
+            <div class="span2">
+                <label>下次保养里程</label>
+                <input type="text" class="span12" id="txtDriveDistinct4" readonly="readonly">
+            </div>
+        </div>
+        <div class="clearfix sepV_c">
+            <div class="pull-right">
+                <button class="btn" onclick="$.colorbox.close();">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="dlgAccountHistory" class="cbox_content popComLg" style="height: 400px">
+        <div class="modal-header">
+            <h3>账户变更历史</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="dtAccountHistory">
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="dlgAccountDetailHistory" class="cbox_content popComLg" style="height: 400px">
+        <div class="modal-header">
+            <h3>账户明细变更历史</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="dtAccountDetailHistory">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/js/gebo_common.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Member360/Detail.js")
+}

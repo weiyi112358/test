@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "卡片类型维护";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>卡片类型维护</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid">
+            <div class="form-inline">
+                <label class="title-left sepV_a">卡片类型名称</label>
+                <input type="text" class="span2 sepV_a" id="txt_cartype" />
+
+                <label class="title-left sepV_a">卡片类型代码</label>
+                <input type="text" class="span2 sepV_a" id="txt_carcode" />
+                @*<select id="status">
+                     <option value="">--请选择--</option>
+                     <option value="1">可用</option>
+                     <option value="2">不可用</option>
+                </select>*@
+                <button id="btnSerach" class="btn sepV_a">查询</button>
+                <button class="btn" id="btnAdd" onclick="goEdit()">新建</button>
+            </div>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_StoreTable">
+    </table>
+</div>
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addStore_dialog" class="cbox_content" style="width: 500px; overflow-y: auto;">
+        <div class="modal-header">
+            <h3>新建/编辑</h3>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmAddStore" }))
+        {
+            <div class="modal-body">
+                <div class="formSep">
+                    <div class="row-fluid sepH_b">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <div class="span4">
+                                    卡片类型名称<span style="color: red"> * </span>
+                                </div>
+                                <input type="text" id="txtCarName" maxlength="100" name="txtCarName" class="span7" />
+                                <span class="error-block"></span>
+                            </div>
+
+                            <div class="span6">
+                                <div class="span4">
+                                    卡片类型代码<span style="color: red"> * </span>
+                                </div>
+                                <input type="text" id="txtCarCode" maxlength="100" name="txtStoreCode" class="span7" onkeyup="value=value.replace(/[^0-9a-zA-Z]*$/g,'')" />
+                                <span class="error-block"></span>
+                            </div>
+                            @*  <div class="span6">
+                            <div class="span4">
+                               <label class="title-left sepV_a">是否可用</label>
+                                </div>
+                                <select id="status1">
+                                        <option value="1">可用</option>
+                                        <option value="2">不可用</option>
+                                </select>
+                        </div>*@
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" id="btnAddCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+                <button type="submit" id="btnAddSave" class="btn btn-info sepV_a">保存</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/CarTypeManage.js")
+}
+

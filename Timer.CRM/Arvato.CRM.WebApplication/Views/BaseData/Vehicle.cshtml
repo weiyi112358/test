@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "车款维护";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>车款维护</h3>
+    </div>
+</div>
+
+<div class="sepH_c">
+    <div class="well moreHid firstShow">
+        <div class="row-fluid">
+            <div class="span2">
+                <label>品牌</label>
+                <select class="span12" id="drpVehicleBrand">
+                </select>
+            </div>
+            <div class="span2">
+                <label>车系</label>
+                @*<input type="text" class="span12" id="txtVehicleType" />*@
+                <select class="span12" id="drpVehicleType">
+                <option value=''>-车系-</option>
+                </select>
+            </div>
+            <div class="span2">
+                <label>车型</label>
+                @*<input type="text" class="span12" id="txtVehicleSeries" />*@
+                <select class="span12" id="drpVehicleSeries">
+                <option value=''>-车型-</option>
+                </select>
+            </div>
+            <div class="span2">
+                <div class="pull-left sepV_a">
+                    <label></label>
+                    <br />
+                    <button class="btn" id="btnSearch">查询</button>&nbsp;
+                    <button class="btn" onclick="add()">新建</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_VehicleTypeTable">
+    </table>
+
+</div>
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addItem_dialog" class="cbox_content" style="width: 480px">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>新建/编辑</h3>
+            </div>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmAddVehicle" }))
+        {
+            <div class="formSep">
+                <div class="row-fluid sepH_b">
+                    <div class="span6 title-left">
+                        品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌<span style="color: red"> * </span>
+                        <select id="addBrand" name="addBrand" class="span8">
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span6 title-left">
+                        数据编号&nbsp;&nbsp;
+                    <input type="text" id="ItemCode" name="ItemCode" class="span8" disabled="disabled" />
+                        <input type="hidden" id="txtDataType"/>
+                        <input type="hidden" id="txtDataGroupId" />
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span6 title-left">
+                        车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系<span style="color: red"> * </span>
+                        <select id="addLevel" name="addLevel" class="span8" >
+                            <option value=''>-车系-</option>
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span6 title-left">
+                        车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型<span style="color: red"> * </span>
+                        <select id="addSeries" name="addSeries" class="span8" >
+                            <option value=''>-车型-</option>
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+                @*<div class="row-fluid">
+                    <div class="span6 title-left">
+                        车型<span style="color: red"> * </span>
+                        <input type="text" id="addLevel" name="addLevel" class="span8" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span6 title-left">
+                        车型编号<span style="color: red"> * </span>
+                        <input type="text" id="addLevelCode" name="addLevelCode" class="span8" />
+                        <span class="error-block"></span>
+                    </div>
+                </div>*@
+                <div class="row-fluid sepH_b">
+                    <div class="span6 title-left">
+                        颜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色<span style="color: red"> * </span>
+                        <input type="text" name="addColor" class="span8" id="addColor" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span6 title-left">
+                        颜色代码<span style="color: red"> * </span>
+                        <input type="text" name="addColorCode" class="span8" id="addColorCode" />
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span6 title-left">
+                        内饰颜色<span style="color: red"> * </span>
+                        <input type="text" name="addTrimName" class="span8" id="addTrimName" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span6 title-left">
+                        内饰代码<span style="color: red"> * </span>
+                        <input type="text" name="addTrimNameCode" class="span8" id="addTrimNameCode" />
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <button type="button" id="btnAddCancel" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                            <button type="submit" id="btnAddSave" class="btn btn-info sepV_a">保存</button>&nbsp;
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/Vehicle.js")
+}

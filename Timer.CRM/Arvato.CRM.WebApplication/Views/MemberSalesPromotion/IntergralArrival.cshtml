@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "IntergralArrival";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>积分抵现规则</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid">
+            <div class="form-inline">
+                <label class="title-left ml10">规则名称</label>
+                <input type="text" class="span2 sepV_a" id="txtCouponId" name="txtCouponId" />
+                <label class="title-left ml10">状态</label>
+                @* <input type="text" class="span12 sepV_a input-medium" id="Status" />*@
+                <select class="span12 sepV_a input-medium" id="Status">
+                    <option value="-1">请选择</option>
+                    <option value="0">未审核</option>
+                    <option value="1">已审核</option>
+                </select>
+                <input type="text" class="span2 sepV_a" id="txtCouponName" name="txtCouponName" />
+                <button id="btnSerach" class="btn btn-success">查询</button>
+                <button class="btn" id="btnAdd">新建</button>
+            </div>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_Table"></table>
+</div>
+
+
+
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "form1", @class = "hide", @Action = "/CouponUseRule/Edit" }))
+{
+    <input id="hideID" name="hideID" type="text" /> 
+}
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/CouponUseRule/Index.js")
+}

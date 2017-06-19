@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "欢迎";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/index.css")
+}
+
+
+<div class="mt10">
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">CRM仪表盘</a></li>
+            @*<li><a href="#tab2" data-toggle="tab">Tab 2</a></li>*@
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active mbox" id="tab1">
+                <div style="width: 978px;">
+                    <div style="width: 640px; float: left">
+                        <div>
+                            <h5 id="kpiorder"></h5>
+                            <div id="countrysale" style="height: 210px;"></div>
+                            <div class="box-info">
+                                <div class="box-info-left">
+                                    <i style="background-image: url(../IXImage/percent.png);"></i>
+                                    <b id="kpiordertotaltitle"></b>
+                                </div>
+                                <div class="box-info-right">
+                                    <b id="kpiordertotal"></b>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 id="kpipotentialcustomername"></h5>
+                            <div id="menberincrease" style="height: 210px;"></div>
+                            <div class="box-info">
+                                <div class="box-info-left">
+                                    <i style="background-image: url(../IXImage/member.png);"></i>
+                                    <b id="kpimemtotal"></b>
+                                </div>
+                                <div class="box-info-right">
+                                    <b id="kpimemtotalnum"></b>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 id="kpimemberprice"></h5>
+                            <div id="menberprice" style="height: 213px;"></div>
+                            <div class="box-info">
+                                <div class="box-info-left">
+                                    <i style="background-image: url(../IXImage/price.png);"></i>
+                                    <b id="mem_price_title"></b>
+                                </div>
+                                <div class="box-info-right">
+                                    <b id="mem_price_num"></b>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div style="width: 334px; float: left; background-color: #f1f1f1;">
+                    
+                        <div style="width: 334px; float: left; background-color: #f1f1f1;">
+                            <div class="mt37">
+                                <div class="report-tab-board">
+                                    <b id="newcustomer_title"></b>
+                                    <i style="background: url(../IXImage/recruit.png);"></i>
+                                    <p>
+                                        <span id="newcustomer_sway">销售额</span>
+                                        <span><strong id="newcustomer_num"></strong></span><span>元</span>
+                                    </p>
+                                </div>
+                                <ul class="crm-nav navtabs">
+                                    <li class="active" id="newcustomer_month">
+                                        <a onclick="shiftnewcustomeramount(this,'month')">本月</a>
+                                    </li>
+                                    <li id="newcustomer_all">
+                                        <a onclick="shiftnewcustomeramount(this,'total')">累计</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div style="width: 334px; float: left; background-color: #f1f1f1;" class="btmline">
+                                <div class="mt40">
+                                    <div class="report-tab-board">
+                                        <b id="memberactivetitle"></b>
+                                        <i style="background: url(../IXImage/active.png);"></i>
+                                        <p>
+                                            <span>销售额</span>
+                                            <span><strong id="memberactivenum"></strong></span><span>万元</span>
+                                        </p>
+                                    </div>
+                                    <ul class="crm-nav navtabs">
+                                        <li class="active"></li>
+                                        <li></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div style="width: 334px; float: left; background-color: #f1f1f1;" class="btmline">
+                                <div class="mt40">
+                                    <div class="report-tab-board">
+                                        <b id="memberlosttitle"></b>
+                                        <i style="background: url(../IXImage/loss.png);"></i>
+                                        <p>
+                                            <span>销售额</span>
+                                            <span><strong id="memberlostnum"></strong></span><span>元</span>
+                                        </p>
+                                    </div>
+                                    <ul class="crm-nav navtabs">
+                                        <li class="active"></li>
+                                        <li></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                          <div class="freq"  style="width: 978px;height: 440px; text-align:center">
+                              <div id="menberprice1" style="width: 978px;height: 440px;"></div>
+                              @* <div id="menberprice2" style="width: 800px;height: 440px;"></div>*@
+                               </div>
+                                     @* <h5 id=""></h5>*@
+                                   </div>
+                              @*<div class="verline" style="width:5px"></div>
+                               <div class="freq" id="sale" style="height: 350px;float:right">
+                                   
+                                     @* 5 id=""></h5>
+                                </div>*@
+                           
+                           
+                           @* <div id="menberprice" style="height: 210px;"></div>*@
+                          @*  <div class="box-info">
+                                <div class="box-info-left">
+                                    <i style="background-image: url(../IXImage/price.png);"></i>
+                                    <b id="mem_price_title"></b>
+                                </div>
+                                <div class="box-info-right">
+                                    <b id="mem_price_num"></b>
+                                </div>
+                            </div>*@
+               
+
+            </div>
+            @*<div class="tab-pane" id="tab2">
+                <p>
+                    Section 2
+                </p>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+     @System.Web.Optimization.Scripts.Render("~/IXJS/libs/globalize.min.js", "~/IXJS/libs/dx.chartjs.min.js")
+     @System.Web.Optimization.Scripts.Render("~/echarts/echarts.js")
+     @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Home/Index.js")
+}

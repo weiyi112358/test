@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "卡变更";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员卡挂失/解挂/换卡</h3>
+    </div>
+    <div class="pull-right">
+        <a href="/Member360/CardLock">
+            <input type="button" class="btn" value="卡挂失" /></a>
+        <a href="/Member360/CardUnLock">
+            <input type="button" class="btn" value="卡解挂" /></a>
+        <a href="/Member360/OldToNew">
+            <input type="button" class="btn" value="换卡" /></a>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="form-inline well">
+        <div class="span3">
+            <label class="title-left sepV_a ml10">单号</label>
+            <input type="text" class="input-medium span12" id="txtOrderNo" name="txtOrderNo" value="" />
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">卡号</label>
+            <input type="text" class="input-medium span12" id="txtCardNo" name="txtCardNo" value="" />
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">手机号</label>
+            <input type="text" class="input-medium span12" id="txtPhone" name="txtPhone" value="" />
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">状态</label>
+            <select id="selStatus" class="span12">
+                <option value="true">已审核</option>
+                <option value="false">未审核</option>
+            </select>
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">类型</label>
+            <select id="selType" class="span12">
+                @foreach (var d in ViewBag.CardType)
+                { 
+                    <option value="@d.OptionValue" >@d.OptionText</option>
+                }
+            </select>
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">最后修改时间从</label>
+            <input type="text" id="dp_single" class="input-medium length_b" placeholder="开始时间" />
+            <em class="to">-</em>
+            <input type="text" id="dp_single2" class="input-medium length_b" placeholder="结束时间" />
+        </div>
+        <div class="q_btn">
+            <button class="btn" id="btnSearch">查询</button>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <table class="table" data-provides="rowlink" id="dt_CardChange">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Member360/CardChange.js")
+}

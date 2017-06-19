@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="902832adf86d440a8a1bfe0a7ed80f6b" Name="关系图1" ZoomLevel="52">
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_Page" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.TM_AUTH_Role" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.TM_SYS_DataGroup" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.TR_AUTH_RolePage" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.TR_AUTH_UserRole" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_Menu" Width="1.5" PointX="6.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CRMModel.V_Sys_DataGroupRelation" Width="1.75" PointX="0.625" PointY="12.75" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_BizOption" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_PageElement" Width="1.5" PointX="8.5" PointY="4.75" />
+        <EntityTypeShape EntityType="CRMModel.TM_AUTH_RolePageElementSettings" Width="1.5" PointX="6.625" PointY="4.75" />
+        <EntityTypeShape EntityType="CRMModel.TM_AUTH_DataLimit" Width="1.5" PointX="8.5" PointY="0.75" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_SubdivisionInstance" Width="1.5" PointX="4.5294754116467555" PointY="19.150040695047956" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_FilterMapping" Width="1.5" PointX="8.6288733485289271" PointY="11.607967784445718" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_PackageLimit" Width="1.5" PointX="11.375" PointY="5.625" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Package" Width="1.5" PointX="0.47812038123520106" PointY="15.786672599514329" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_PackageDetail" Width="1.5" PointX="4.625" PointY="34.875" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_PackageLimit" Width="1.5" PointX="5.9041854897067818" PointY="30.338362812222151" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_CouponPool" Width="1.5" PointX="1.4852344065370198" PointY="2.2842631648687011" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Account" Width="1.5" PointX="3.875" PointY="21.25" />
+        <EntityTypeShape EntityType="CRMModel.TL_Mem_LevelChange" Width="1.5" PointX="5.921799696014169" PointY="15.631930775769023" />
+        <EntityTypeShape EntityType="CRMModel.TL_Act_Communication" Width="1.5" PointX="4.25" PointY="12.5" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Card" Width="1.5" PointX="1.0878564850836323" PointY="25.42227652362654" />
+        <EntityTypeShape EntityType="CRMModel.TM_Act_Master" Width="1.5" PointX="5.8903673076491652" PointY="26.631664601448769" />
+        <EntityTypeShape EntityType="CRMModel.TL_Mem_CardChange" Width="1.5" PointX="10.625" PointY="25.625" />
+        <EntityTypeShape EntityType="CRMModel.TM_Act_InstanceSubdivision" Width="1.5" PointX="5.2453186368780758" PointY="16.517673783245346" />
+        <EntityTypeShape EntityType="CRMModel.TM_Act_Subdivision" Width="1.5" PointX="8.4818436971315379" PointY="29.944550766583788" />
+        <EntityTypeShape EntityType="CRMModel.TM_Act_Instance" Width="1.5" PointX="3.9075162522064133" PointY="15.801896996703881" />
+        <EntityTypeShape EntityType="CRMModel.TL_Sys_SMSReceivedList" Width="1.5" PointX="10.75" PointY="15.875" />
+        <EntityTypeShape EntityType="CRMModel.TM_Sys_EmailSendingQueue" Width="1.5" PointX="10.372992747636975" PointY="1.4519823051299818" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_Package" Width="1.5" PointX="19.625" PointY="0.625" />
+        <EntityTypeShape EntityType="CRMModel.TL_Sys_Log" Width="1.5" PointX="9.8754907352270038" PointY="8.148298297146475" />
+        <EntityTypeShape EntityType="CRMModel.TL_Mem_StatusChange" Width="1.5" PointX="3.6123851945681427" PointY="15.902477346315271" />
+        <EntityTypeShape EntityType="CRMModel.TM_Act_CommunicationTemplet" Width="1.5" PointX="5.1544231498401718" PointY="11.293903981937982" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_TradeDetail" Width="1.5" PointX="14.25" PointY="27.625" />
+        <EntityTypeShape EntityType="CRMModel.TM_Act_InstanceStep" Width="1.5" PointX="17.5" PointY="21" />
+        <EntityTypeShape EntityType="CRMModel.TM_Sys_SMSSendingQueue" Width="1.5" PointX="3" PointY="29.375" />
+        <EntityTypeShape EntityType="CRMModel.TM_AUTH_User" Width="1.5" PointX="17.5" PointY="17.375" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_PackageDetail" Width="1.5" PointX="6.6631760032210394" PointY="7.2874645624717065" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_SubExt_contact" Width="1.5" PointX="24.375" PointY="11.875" />
+        <EntityTypeShape EntityType="CRMModel.TM_CRM_KPIResult" Width="1.5" PointX="3.6620243842071041" PointY="15.141502789753258" />
+        <EntityTypeShape EntityType="CRMModel.TR_SYS_Common" Width="1.5" PointX="8.89644579258582" PointY="22.953529100377825" />
+        <EntityTypeShape EntityType="CRMModel.TM_CRM_BusinessPlan" Width="1.5" PointX="0.52758919472228238" PointY="15.81773831686831" />
+        <EntityTypeShape EntityType="CRMModel.TM_CRM_KPITarget" Width="1.5" PointX="1.282524051741941" PointY="25.166429158843322" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_customerlevel" Width="1.5" PointX="3.8132372255498717" PointY="26.579742309907331" />
+        <EntityTypeShape EntityType="CRMModel.TR_Mem_MarketActivity" Width="1.5" PointX="7.5830143166626875" PointY="23.0713845151809" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Subdivision" Width="1.5" PointX="7.3162623379920895" PointY="29.306153638896603" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_channel" Width="1.5" PointX="7.6722111327909914" PointY="14.130514702820459" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_Region" Width="1.5" PointX="4.5128517283652219" PointY="28.023223487671103" />
+        <EntityTypeShape EntityType="CRMModel.TM_POS_TradeDetailPromotion" Width="1.5" PointX="23.5" PointY="30.25" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_area" Width="1.5" PointX="11.907585745634318" PointY="19.808263281270985" />
+        <EntityTypeShape EntityType="CRMModel.TM_Sys_WechatSendingQueue" Width="1.5" PointX="5.1902101883619141" PointY="6.8771813394861212" />
+        <EntityTypeShape EntityType="CRMModel.TM_Loy_Rule" Width="1.5" PointX="2.8723344574087926" PointY="16.680267997402822" />
+        <EntityTypeShape EntityType="CRMModel.TL_CRM_AliasAfterRule" Width="1.5" PointX="5.6621694404921348" PointY="27.431067092079235" />
+        <EntityTypeShape EntityType="CRMModel.TM_SYS_BaseData" Width="1.5" PointX="8.62554468243641" PointY="1.302898988734418" />
+        <EntityTypeShape EntityType="CRMModel.TM_SYS_Class" Width="1.5" PointX="0.18038417221064873" PointY="0.76473066246357313" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_FieldAliasParameter" Width="1.5" PointX="1.1499119275947622" PointY="27.921686543115268" />
+        <EntityTypeShape EntityType="CRMModel.TM_CRM_CouponLimit" Width="1.5" PointX="5.3540344132827755" PointY="27.889870760911084" />
+        <EntityTypeShape EntityType="CRMModel.TM_CRM_KPI" Width="1.5" PointX="5.4927657179035094" PointY="0.63622017234387818" />
+        <EntityTypeShape EntityType="CRMModel.TM_Sys_SMSCheckLog" Width="1.5" PointX="11.135163321688381" PointY="17.591189854587981" />
+        <EntityTypeShape EntityType="CRMModel.TL_WX_MemberSign" Width="1.5" PointX="8.2043868043480384" PointY="19.390087881772821" />
+        <EntityTypeShape EntityType="CRMModel.TE_Mem_DynamicDimension" Width="1.5" PointX="6.824533026118079" PointY="12.708752623157926" />
+        <EntityTypeShape EntityType="CRMModel.TL_Mem_CousumptionAmountAdjust" Width="1.5" PointX="8.8195643670948058" PointY="15.384862340700282" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Master" Width="1.5" PointX="10.564786316158616" PointY="4.48810902446886" />
+        <EntityTypeShape EntityType="CRMModel.TR_SYS_InterfaceRule" Width="1.5" PointX="1.5649869970814263" PointY="23.118903066552665" />
+        <EntityTypeShape EntityType="CRMModel.TM_SYS_BlockSetting" Width="1.5" PointX="6.3193731449168986" PointY="10.674168442689892" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_TableMapping" Width="1.5" PointX="1.2360946169291132" PointY="16.935235105890424" />
+        <EntityTypeShape EntityType="CRMModel.TM_SYS_BlockTypeDetail" Width="1.5" PointX="6.1840190878994843" PointY="28.931547223092778" />
+        <EntityTypeShape EntityType="CRMModel.TD_Sys_VehicleBasicInfo" Width="1.5" PointX="8.4835202062891426" PointY="6.0234129158889" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Ext" Width="1.5" PointX="21.625" PointY="12.125" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_SubExt" Width="1.5" PointX="2.8809623359148215" PointY="7.5687835251767108" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_SubExt_vehicle" Width="1.5" PointX="6.3201449561492282" PointY="28.494773773706878" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_model" Width="1.5" PointX="7.2097354900137223" PointY="7.1872870806545421" />
+        <EntityTypeShape EntityType="CRMModel.V_S_TM_Mem_Master" Width="1.5" PointX="6.9152395403549249" PointY="0.65154373676122335" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_FieldAlias" Width="1.5" PointX="10.759228694606213" PointY="10.455279414754026" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_Trade_invoice" Width="1.5" PointX="7.0265298127320266" PointY="4.5331942460188612" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_CouponCreateHistory" Width="1.5" PointX="11.683017426954125" PointY="27.516929132638932" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_CouponCreateQueue" Width="1.5" PointX="2.853137440445431" PointY="17.595310666409933" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_brand" Width="1.5" PointX="0.32356069065796245" PointY="5.38038672757353" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_VehicleBrand" Width="1.5" PointX="1.5331339209960468" PointY="23.784572999824107" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_VehicleLevel" Width="1.5" PointX="8.5505652169466781" PointY="28.850661514723051" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_VehicleSeries" Width="1.5" PointX="3.5994899606329809" PointY="30.870893135141067" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_FieldAliasDegree" Width="1.5" PointX="8.6745440255266359" PointY="13.118201470523236" />
+        <EntityTypeShape EntityType="CRMModel.TR_Mem_MemberLimit" Width="1.5" PointX="5.2305846704312531" PointY="14.780141017763009" />
+        <EntityTypeShape EntityType="CRMModel.TM_SYS_BlockType" Width="1.5" PointX="0.535475788887346" PointY="12.586316174169218" />
+        <EntityTypeShape EntityType="CRMModel.TE_SYS_SMSAccountChangeStatus" Width="1.5" PointX="7.2344758227628088" PointY="6.190710651777084" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_Trade" Width="1.5" PointX="4.75" PointY="6.375" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_Trade_change" Width="1.5" PointX="10.101130389655536" PointY="30.839721619542559" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_BusinessDepartment" Width="1.5" PointX="2.543818502940153" PointY="20.20216968106207" />
+        <EntityTypeShape EntityType="CRMModel.TL_SYS_TradeSaleChange" Width="1.5" PointX="4.6138334724185208" PointY="18.638743319846103" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_DegreeModel" Width="1.5" PointX="4.9367256336550813" PointY="22.441720004399176" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_campaign" Width="1.5" PointX="2.2421386922905868" PointY="3.1615127339779923" />
+        <EntityTypeShape EntityType="CRMModel.TR_AUTH_UserBusinessDepartment" Width="1.5" PointX="2.9765573884251331" PointY="22.552600036632548" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_CouponCreate" Width="1.5" PointX="3.6654369475624695" PointY="6.0353346197099125" />
+        <EntityTypeShape EntityType="CRMModel.TL_Mem_AccountChange" Width="1.5" PointX="3.6732028982011613" PointY="1.4689672745154088" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_AccountDetail" Width="1.5" PointX="5.30002869353631" PointY="6.0705779968158238" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_AccountLimit" Width="1.5" PointX="10.879207228719819" PointY="1.6707446433933193" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CardPrepare" Width="1.5" PointX="11.802273385134654" PointY="16.838856734726047" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_PasswordPrepare" Width="1.5" PointX="5.7272200890477842" PointY="18.968278714906553" />
+        <EntityTypeShape EntityType="CRMModel.TE_MEM_ScoreSave" Width="1.5" PointX="18.5" PointY="11.25" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_company" Width="1.5" PointX="2.6287937400065333" PointY="12.939084521000778" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_gdinput" Width="1.5" PointX="4.0865570176795849" PointY="15.87894345069255" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_sortname" Width="1.5" PointX="0.80462065562821017" PointY="3.0151520236465856" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_SubExt_openid" Width="1.5" PointX="4.836301185580111" PointY="16.071053586933321" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_PromotionBillPlan" Width="1.5" PointX="9.7646336172542689" PointY="25.272113603200815" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_PromotionBill" Width="1.5" PointX="8.5402809737903453" PointY="26.804311779702228" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CardCost" Width="1.5" PointX="0.512348089605732" PointY="7.83613615102886" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_cardType" Width="1.5" PointX="1.5660625964245118" PointY="21.246894369482479" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_supplier" Width="1.5" PointX="5.5523534387128208" PointY="24.186280232009608" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_PromotionItem" Width="1.5" PointX="4.8886676844622325" PointY="14.52417608281792" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_Apply" Width="1.5" PointX="9.2884126199821075" PointY="30.928231238819766" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_ApplyDetail" Width="1.5" PointX="2.3047020948979546" PointY="22.065024386190355" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_Box_Mapping" Width="1.5" PointX="10.962713073456062" PointY="23.612522434262804" />
+        <EntityTypeShape EntityType="CRMModel.Tm_Card_CardBox" Width="1.5" PointX="1.4376826628286776" PointY="10.056612898621994" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardNo" Width="1.5" PointX="8.2737144922249559" PointY="31.960733264666391" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardOutTitle" Width="1.5" PointX="4.5634150340051463" PointY="22.596974934729271" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardOutTitleDetail" Width="1.5" PointX="1.2082059910559124" PointY="6.7452935458837509" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_ProduceDetail" Width="1.5" PointX="2.0627764752427007" PointY="30.644510328138484" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_ProduceType" Width="1.5" PointX="2.23867573693333" PointY="27.071531427591822" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_Retrieve" Width="1.5" PointX="3.5761822907143195" PointY="12.55059408235857" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_RetrieveDetail" Width="1.5" PointX="9.9406796628333058" PointY="4.1383550931412518" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_Type" Width="1.5" PointX="20.5" PointY="25.125" />
+        <EntityTypeShape EntityType="CRMModel.TD_Sys_Product" Width="1.5" PointX="10.677543823922772" PointY="5.8503808108393009" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CardReissue" Width="1.5" PointX="7.8156392089164068" PointY="0.89083518129346673" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardOutBranch" Width="1.5" PointX="3.18831269405238" PointY="20.502480710159279" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardOutBranchDetail" Width="1.5" PointX="5.2959823130145587" PointY="1.4267131245819447" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_IntergralRule" Width="1.5" PointX="0.48202629223560273" PointY="9.3846277489255314" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardRepeal" Width="1.5" PointX="6.1557739070410715" PointY="16.08844722066468" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardRepealDetail" Width="1.5" PointX="8.1794609577299386" PointY="29.938655613893015" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CouponSendRule" Width="1.5" PointX="7.0747194192720206" PointY="4.0807210225987811" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CouponUseRule" Width="1.5" PointX="2.2707450325930236" PointY="4.5455847254700892" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_SubdivisionExport" Width="1.5" PointX="1.4499062716261979" PointY="14.392719513919539" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_Produce" Width="1.5" PointX="4.4351757878601443" PointY="31.631468087263158" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_Made" Width="1.5" PointX="3.4824331009213036" PointY="3.3478366152140482" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CouponList" Width="1.5" PointX="3.8788420576038032" PointY="25.439155143424475" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CouponPool" Width="1.5" PointX="10.112072919547593" PointY="23.169321294487137" />
+        <EntityTypeShape EntityType="CRMModel.TE_JPOS_CouponSend" Width="1.5" PointX="0.316043257860487" PointY="31.472754671924168" />
+        <EntityTypeShape EntityType="CRMModel.TE_JPOS_CouponUsed" Width="1.5" PointX="11.761424783506163" PointY="4.6004876813853564" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_BatchOperation" Width="1.5" PointX="2.9873812417440959" PointY="26.367801380515004" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_OperationCard" Width="1.5" PointX="4.1779909190619318" PointY="3.1088300957851254" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_OperationCondition" Width="1.5" PointX="11.351246762718654" PointY="19.52938912228187" />
+        <EntityTypeShape EntityType="CRMModel.Tm_Card_CardBoxNew" Width="1.5" PointX="4.693583101357139" PointY="25.560398411732354" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_CardNoNew" Width="1.5" PointX="0.24579154897750893" PointY="24.495771404586627" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_CardSalesPrepare" Width="1.5" PointX="9.7611283109342359" PointY="1.4363230473531052" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_store" Width="1.5" PointX="10.812988779886155" PointY="25.612173703318543" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_RetrieveNew" Width="1.5" PointX="10.659664011867561" PointY="17.248857804224293" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_RetrieveDetailNew" Width="1.5" PointX="8.0020427778372749" PointY="7.8612076378712468" />
+        <EntityTypeShape EntityType="CRMModel.TM_Card_ProduceNew" Width="1.5" PointX="2.516107467243498" PointY="31.163908466307404" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_TradeDetail_sales_discount" Width="1.5" PointX="1.6512769188970684" PointY="15.875407896877922" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_TradeDetail_sales_payment" Width="1.5" PointX="7.4757121873440742" PointY="8.0950399376894531" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_SYS_BaseData_goods" Width="1.5" PointX="11.387604882655481" PointY="21.918324704243954" />
+        <EntityTypeShape EntityType="CRMModel.TM_Mem_AbnormalTrade" Width="1.5" PointX="5.9286741586069924" PointY="7.9508430994818191" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_ExchangeGoods" Width="1.5" PointX="2.1414250126767089" PointY="11.041485553161001" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_ExchangeGoodsLimit" Width="1.5" PointX="4.9209667727914486" PointY="12.307748323449747" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_ExchangeGoodsDetail" Width="1.5" PointX="8.1137191430263762" PointY="30.90003567882815" />
+        <EntityTypeShape EntityType="CRMModel.TM_JPOS_ExchangeGoodsDetailTemp" Width="1.5" PointX="9.12673385493771" PointY="2.0173180410719094" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_Trade_exchange" Width="1.5" PointX="0.13765123492928744" PointY="16.803149424867307" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_Trade_sales" Width="1.5" PointX="9.4131840213263338" PointY="15.363081164361482" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_TradeDetail_exchange_exchangeDetail" Width="1.5" PointX="1.0019946550028374" PointY="22.305103073969995" />
+        <EntityTypeShape EntityType="CRMModel.TM_Loy_MemExt" Width="1.5" PointX="6.2811407699627528" PointY="20.847937399916322" />
+        <EntityTypeShape EntityType="CRMModel.V_S_TM_Mem_Ext" Width="1.5" PointX="5.8080538165793074" PointY="8.67365818129557" />
+        <EntityTypeShape EntityType="CRMModel.V_S_TM_Loy_MemExt" Width="1.5" PointX="13" PointY="22.625" />
+        <EntityTypeShape EntityType="CRMModel.V_U_TM_Mem_Info" Width="1.5" PointX="8.7924328841233788" PointY="18.734209486625254" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_Employee" Width="1.5" PointX="11.700428981194472" PointY="25.093451615932143" />
+        <EntityTypeShape EntityType="CRMModel.TD_SYS_WeChatConsultant" Width="1.5" PointX="0.0190084297298493" PointY="23.089988853358658" />
+        <EntityTypeShape EntityType="CRMModel.TM_POS_MemberPromotion" Width="1.5" PointX="7.3812497367063772" PointY="26.361053493973358" />
+        <EntityTypeShape EntityType="CRMModel.V_M_TM_Mem_TradeDetail_sales_product" Width="1.5" PointX="7.0227265409299768" PointY="27.510448826248968" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

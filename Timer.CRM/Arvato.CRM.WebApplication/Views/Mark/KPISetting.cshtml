@@ -1,0 +1,25 @@
+﻿@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "formKPISettings" }))
+{
+    <div class="row-fluid formSep">
+        <button class="btn btn-info pull-right" id="btnShowKPI">新建KPI</button>
+    </div>
+    <div id="maskkpi" style="position:absolute;z-index:100;background-color:#ccc;opacity:0.4;top:160px;display:none;"></div>
+    <div class="row-fluid formSep" id="divKPIList">
+    </div>
+    <div class="row-fluid">
+        <div class="pull-right">
+            <input type="submit" class="btn btn-info sepV_a btnSave" value="保存" />
+            @*<input type="button" class="btn sepV_c btnBack" value="返回" />*@
+        </div>
+    </div>
+}
+
+<!--新建KPI弹窗页-->
+<div class="hide">
+    <div id="addKPI_dialog" class="cbox_content form-inline" style="width: 600px; height: 450px;">
+        <table class="table" id="dt_KPIList"></table>
+        <div class="pull-right">
+            <button class="btn" onclick="showKPI()">确定</button>&nbsp;
+        </div>
+    </div>
+</div>

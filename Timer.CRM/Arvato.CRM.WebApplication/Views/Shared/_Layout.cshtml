@@ -1,0 +1,225 @@
+﻿@{
+    Layout = null;
+    string path = Request.Path.ToLower();
+    var auth = Arvato.CRM.Utility.JsonHelper.Deserialize<Arvato.CRM.Model.AuthModel>((Session[Arvato.CRM.Utility.AppConst.SESSION_AUTH] ?? "").ToString());
+    //if (auth == null) { throw new Exception(Arvato.CRM.Utility.AppConst.MSG_SESSION_LOST); }
+    if (auth == null) { Response.Redirect(Arvato.CRM.Utility.AppConst.URL_ENTRY); }
+    var pageElementSettingList = from r in auth.PageElements
+                                 join p in auth.Pages
+                                 on r.PageID equals p.PageID
+                                 where path.Contains(p.Path.ToLower())
+                                 select r;
+                                 
+                                 //where p.Path.ToLower().StartsWith(path, StringComparison.CurrentCultureIgnoreCase)
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@System.Configuration.ConfigurationManager.AppSettings[Arvato.CRM.Utility.AppConst.APP_SETTING_SITE_TITLE] - @ViewBag.Title</title>
+
+    <!-- Bootstrap framework -->
+    <link rel="stylesheet" href="~/VGebo/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/VGebo/bootstrap-responsive.min.css" />
+    <!-- breadcrumbs-->
+    <link rel="stylesheet" href="~/VGebo/BreadCrumb.css" />
+    <!-- tooltips-->
+    <link rel="stylesheet" href="~/VGebo/jquery.qtip.min.css" />
+
+    <!-- gebo color theme-->
+    <link rel="stylesheet" href="~/VGebo/blue.css" id="link_theme" />
+    <!-- main styles -->
+    <link rel="stylesheet" href="~/VGebo/style.css" />
+
+    <link rel="stylesheet" href="~/Gebo/lib/datepicker/datepicker.css" />
+    <link rel="stylesheet" href="~/VGebo/colorbox.css" />
+    <link rel="stylesheet" href="~/VGebo/ui.dynatree.css" />
+    <!-- splashy icons -->
+    <link rel="stylesheet" href="~/VGebo/splashy.css" />
+    <!-- enhanced select -->
+    <link rel="stylesheet" href="~/VGebo/chosen.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    @RenderSection("CSS", false)
+
+
+    <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/ie.css" />
+            <script src="js/ie/html5.js"></script>
+            <script src="js/ie/respond.min.js"></script>
+        <![endif]-->
+    <script>
+        //* hide all elements & show preloader
+        document.documentElement.className += 'js';
+    </script>
+
+    
+
+    @*<script src="~/Scripts/Framework/jquery-1.11.1.js"></script>*@
+    <script src="~/Gebo/js/jquery.min.js"></script>
+
+    @*<script src="~/Gebo/js/jquery-1.9.1.js"></script>*@
+
+
+    @RenderSection("FrontScripts", false)
+
+    <script src="~/Gebo/js/jquery-migrate.min.js"></script>
+    <script src="~/Gebo/lib/jquery-ui/jquery-ui-1.10.0.custom.min.js"></script>
+
+    <!-- smart resize event -->
+    <script src="~/Gebo/js/jquery.debouncedresize.min.js"></script>
+    <!-- hidden elements width/height -->
+    <script src="~/Gebo/js/jquery.actual.min.js"></script>
+    <!-- js cookie plugin -->
+    <script src="~/Gebo/js/jquery_cookie.min.js"></script>
+    <!-- main bootstrap js -->
+    <script src="~/Gebo/bootstrap/js/bootstrap.min.js"></script>
+    <!-- bootstrap plugins -->
+    <script src="~/Gebo/js/bootstrap.plugins.min.js"></script>
+    <!-- tooltips -->
+    <script src="~/Gebo/lib/qtip2/jquery.qtip.min.js"></script>
+    <!-- jBreadcrumbs -->
+        <script src="~/Gebo/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
+    <!-- fix for ios orientation change -->
+    <script src="~/Gebo/js/ios-orientationchange-fix.js"></script>
+    <!-- scrollbar -->
+    <script src="~/Gebo/lib/antiscroll/antiscroll.js"></script>
+    <script src="~/Gebo/lib/antiscroll/jquery-mousewheel.js"></script>
+    <!-- mobile nav -->
+    <script src="~/Gebo/js/selectNav.js"></script>
+
+    <script src="~/Gebo/lib/datatables/jquery.dataTables.js"></script>
+    <script src="~/Gebo/lib/datatables/jquery.dataTables.bootstrap.min.js"></script>
+
+    <script src="~/Gebo/lib/dynatree/dist/jquery.dynatree.min.js"></script>
+    <script src="~/Gebo/lib/colorbox/jquery.colorbox.min.js"></script>
+    <script src="~/Gebo/lib/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Gebo/lib/datepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/Framework/JSON-js-master/json2.js"></script>
+    <script src="~/Scripts/jquery.jmpopups.js"></script>
+    
+
+</head>
+<body>
+
+    <div id="maincontainer" class="clearfix">
+        <!-- header -->
+        <header>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="brand" href="~/home/index"><i class="icon-home icon-white"></i>arvato CRM</a>
+                        <ul class="nav user_menu pull-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@(auth == null ? "" : auth.UserDisplayName) <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Auth/MyProfile">修改我的信息</a></li>
+                                    <li><a href="/Auth/ChangePassword">修改密码</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/Home/Login">退出</a></li>
+                                    @*<li class="divider"></li>
+                                    <li><a href="#">Another Action</a></li>*@
+                                </ul>
+                            </li>
+                        </ul>
+
+                        @if (auth != null && auth.Pages != null)
+                        {
+                            bool isFirst = true;
+                            foreach (var menu in auth.Pages.Where(o => o.Type == "h").Select(o => new { o.MenuID, o.MenuName }).Distinct())
+                            {
+                                if (isFirst)
+                                {
+                            @Html.Raw("<ul class=\"nav\" id=\"mobile-nav\">")
+                                    isFirst = false;
+                                }
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">@(menu.MenuName)<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    @foreach (var page in auth.Pages.Where(o => o.MenuID == menu.MenuID).Select(o => new { o.DispName, o.Path, o.PageID }))
+                                    {
+                                        <li><a href="@(page.Path)">@(page.DispName)</a></li>
+                                    }
+                                </ul>
+                            </li>
+                            }
+                            if (!isFirst)
+                            {
+                            @Html.Raw("</ul>")
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- main content -->
+        <div id="contentwrapper">
+            <div class="main_content">
+                <div id="loading_layer" style="display: none">
+                    <img src="~/img/ajax_loader.gif" alt="" />
+                </div>
+                <div class="main_loaded">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+        <!-- sidebar -->
+        <a href="javascript:void(0)" class="sidebar_switch on_switch ttip_r" title="隐藏菜单">Sidebar switch</a>
+        <div class="sidebar">
+            <div class="antiScroll">
+                <div class="antiscroll-inner">
+                    <div class="antiscroll-content">
+                        <div class="sidebar_inner">
+
+                            <div id="side_accordion" class="accordion">
+                                <div class="clearfix">&nbsp;</div>
+                                @if (auth != null && auth.Pages != null)
+                                {
+                                    foreach (var menu in auth.Pages.Where(o => o.Type == "v").Select(o => new { o.MenuID, o.MenuName }).Distinct())
+                                    {           
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a href="#collapse@(menu.MenuID)" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">@(menu.MenuName)
+                                            </a>
+                                        </div>
+                                        <div class="accordion-body collapse" id="collapse@(menu.MenuID)" >
+                                            <div class="accordion-inner">
+                                                <ul class="nav nav-list">
+                                                    @foreach (var page in auth.Pages.Where(o => o.MenuID == menu.MenuID).Select(o => new { o.DispName, o.Path, o.PageID }))
+                                                    {
+                                                        <li><a href="@(page.Path)">@(page.DispName)</a></li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="pageElementSettingList" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(pageElementSettingList)" />
+</body>
+</html>
+
+<!-- common functions -->
+<script src="~/Scripts/Common.js"></script>
+<script src="~/Scripts/Utility.js"></script>
+<script src="~/Scripts/Layout.js"></script>
+@*<script src="~/Gebo/lib/datatables/jquery.dataTables.sorting.js"></script>*@
+@*<script src="~/Gebo/js/gebo_datatables.js"></script>*@
+@RenderSection("Scripts", false)
+<script>
+    $(document).ready(function () {
+        //* show all elements & remove preloader
+        setTimeout('$("html").removeClass("js")', 1000);
+    });
+</script>

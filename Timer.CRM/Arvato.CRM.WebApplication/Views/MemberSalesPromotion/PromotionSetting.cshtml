@@ -1,0 +1,460 @@
+﻿@model Arvato.CRM.Model.PromotionRule
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+}
+@{
+    ViewBag.Title = "会员促销规则设置";
+    var listRuleType = (List<SelectListItem>)ViewData["listRuleType"];
+}
+<style>
+    li {
+        list-style-type: none;
+    }
+
+    .modal-footer:before,
+    .modal-footer:after {
+        height: 35px;
+    }
+</style>
+
+<div class="mt10">
+    @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "ActionForm" }))
+    {
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>会员促销规则设置</h3>
+            </div>
+        </div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li id="li1" class="active"><a href="#tab1" data-toggle="tab">基本信息</a></li>
+                <li id="li2"><a href="#tab2" data-toggle="tab">促销条件</a></li>
+                <li id="li3"><a href="#tab3" data-toggle="tab">执行功能</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active mbox" id="tab1">
+                    <div class="form_validation_reg">
+                        <div class="formSep">
+                            <div style="display: none">
+                                @Html.TextBoxFor(p => p.BillID, new { id = "txtBillID", hidden = "hidden" });
+                            </div>
+                            <div class="row-fluid">
+
+                                <div class="span3">
+                                    <label>促销单号 <span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.BillCode, new { id = "txtBillCode", @class = "span12", placeholder = "自动生成", disabled = "disabled" })
+                                    <span class="error-block"></span>
+                                </div>
+
+                                <div class="span3">
+                                    <label>模板名称<span class="f_req">*</span></label>
+                                    @if (Model.BillID == "" || Model.BillID == null)
+                                    {
+                                        @Html.DropDownListFor(p => p.PromotionType, listRuleType, new { id = "selPromotionType", @class = "span12" })
+                                    }
+                                    else
+                                    {
+
+                                        <input type="hidden" id="selPromotionType" value="@Model.PromotionType"
+                                               data-condition="@Model.Condition" data-action="@Model.Action" />
+                                            @Html.TextBoxFor(p => p.PromotionTypeDesc, new { id = "selPromotionTypeDesc", @class = "span12", disabled = "disabled" })
+                                    }
+
+                                    <span class="error-block"></span>
+                                </div>
+
+                                <div class="span3">
+                                    <label>开始日期 <span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.StartDate, "{0:yyyy-MM-dd}", new { id = "txtStartDate", @class = "span12 canNotEdit" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>结束日期 <span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.EndDate, "{0:yyyy-MM-dd}", new { id = "txtEndDate", @class = "span12 canNotEdit" })
+                                    <span class="error-block"></span>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label>执行状态</label>
+                                    @*@Html.CheckBoxFor(p => p.Enable, new { id = "cbEnable", disabled = "disabled" })*@
+                                    @Html.TextBoxFor(p => p.ExecuteStatus, new { id = "cbExecuteStatus", disabled = "disabled", @class = "span12" })
+                                </div>
+                                <div class="span3">
+                                    <label>审核状态</label>
+                                    @Html.TextBoxFor(p => p.ApproveStatus, new { id = "cbApproveStatus", disabled = "disabled", @class = "span12" })
+                                </div>
+
+                                <div class="span3">
+                                    <label>优先级<span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.RunIndex, new { id = "txtRunIndex", @class = "span12 zeroNumber", type = "number" })
+                                    <span class="error-block"></span>
+                                </div>
+
+                                <div class="span3">
+                                    <label><a href="#" id="allstore" value="@Model.AllowStores">参加门店</a></label>
+                                    <input type="text" class="span12 zeroNumber" id="txtAllowStore" value="全部门店" readonly />
+                                </div>
+                            </div>
+                            <div class="row-fluid LimitQuantity" style="display:none">
+                                <div class="span3">
+                                    <label>交易数量限量(每会员)</label>
+                                    @Html.TextBoxFor(p => p.LimitQuantity, new { id = "txtLimitQuantity", @class = "span12 zeroNumber", type = "number" })
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="width96">
+                                    <label>备注</label>
+                                    @Html.TextAreaFor(p => p.Remark, new { id = "txtRemark", @class = "span12", maxlength = 200 })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sepH_b" style="display: none">
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label></label>
+                                    <label class="radio inline">
+                                        @Html.RadioButton("rdCycle", "cycle", Model.IsSetSchedule, new { @class = "canNotEdit" })
+                                        启用执行周期
+                                    </label>
+                                    <label class="radio inline">
+                                        @Html.RadioButton("rdRealTime", "realtime", !Model.IsSetSchedule, new { @class = "canNotEdit" })
+                                        不限制
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="formSep">
+                            <div id="divCycle" class="row-fluid">
+                            </div>
+                            @Html.TextBoxFor(p => p.Condition, new { id = "hideCondition", @style = "display:none" })
+                            @Html.TextBoxFor(p => p.ConditionResult, new { id = "hideConditionResult", @style = "display:none" })
+                            @*@Html.TextBoxFor(p => p.Actions, new { id = "hideActions", @style = "display:none" })*@
+                            @Html.TextBoxFor(p => p.Schedule, new { id = "hideSchedule", @style = "display:none" })
+
+                            <input id="hideIsReturn" name="hideIsReturn" type="text" style="display: none" />
+                            <input id="hideRuleName" name="hideRuleName" value="@ViewData["hideRuleName"]" type="text" style="display:none" />
+                            <input id="hideRuleType" name="hideRuleType" value="@ViewData["hideRuleType"]" type="text" style="display:none" />
+                            <input id="hideEnable" name="hideEnable" value="@ViewData["hideEnable"]" type="text" style="display:none" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab2">
+                    <div class="form_validation_reg">
+                        <div class="row-fluid" style="display: none">
+                            <div class="span2 cx_select">
+                                <select class="choseCondition span12">
+                                    <option value="notSelect" selected></option>
+                                    <option value="MemberBirthday">会员生日</option>
+                                    <option value="MemberLevel">会员等级</option>
+                                    <option value="MemberLevelUpDay">会员等级升级日</option>
+                                    <option value="MemberCardDay">会员开卡日</option>
+                                </select>
+                            </div>
+                            <div class="span2 cx_body ">
+                                <input disabled class="span12" />
+                            </div>
+                            <div class="span2 cx_condition">
+                                <a class="addCondition" style="float: left;"></a>
+                                <a class="removeCondition" style="float: left"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane" id="tab3">
+                    <div class="form_validation_reg row-fluid">
+                        <div class="action" name="会员开卡" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">卡类型<span class="f_req">*</span></label>
+                                <select class="cardType isrequire canNotEdit span12" name="CardType">
+                                    <option>娇兰佳人会员卡</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分类型<span class="f_req">*</span></label>
+                                <select class="pointType isrequire canNotEdit span12" name="PointType">
+                                    <option>系统默认</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">交易计算累计倍数</label>
+                                <input type="number" name="PointMulti" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分数</label>
+                                <input type="number" name="PointNumber" class="canNotEdit span12" value="0" />
+                            </div>
+
+                            <div class="span3 margin_top20">
+                                <label class="ml10" style="float: left;">交易享受会员价</label>
+                                <input type="checkbox" name="HasMemberPrice" class="canNotEdit" style="float: left;" />
+                            </div>
+                            <div class="span3 margin_top20">
+                                <label class="ml10" style="float: left;">交易计算积分</label>
+                                <input type="checkbox" name="HasPoint" class="canNotEdit" style="float: left;" />
+                            </div>
+
+                        </div>
+                        <div class="action row-fluid" name="现金开卡" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">卡类型<span class="f_req">*</span></label>
+                                <select class="cardType isrequire canNotEdit span12" name="CardType">
+                                    <option>娇兰佳人会员卡</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">开卡费用<span class="f_req">*</span></label>
+                                <input type="number" class="isrequire canNotEdit span12" name="CardCost" value="0" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分类型<span class="f_req">*</span></label>
+                                <select class="pointType isrequire canNotEdit span12" name="PointType">
+                                    <option>系统默认</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分数</label>
+                                <input type="number" name="PointNumber" class="canNotEdit span12" value="0" />
+                            </div>
+                        </div>
+
+                        <div class="action row-fluid" name="补发卡" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">卡类型<span class="f_req">*</span></label>
+                                <select class="cardType canNotEdit span12" name="CardType">
+                                    <option>娇兰佳人会员卡</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">补发费用<span class="f_req">*</span></label>
+                                <input type="number" class="isrequire canNotEdit span12" name="CardCost" value="0" />
+                            </div>
+                        </div>
+
+                        <div class="action row-fluid" name="赠送积分" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分类型<span class="f_req">*</span></label>
+                                <select class="pointType isrequire canNotEdit span12" name="PointType">
+                                    <option>系统默认</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分值<span class="f_req">*</span></label>
+                                <input type="number" class="isrequire canNotEdit span12" name="PointNumber" />
+                            </div>
+                        </div>
+
+                        <div class="action row-fluid" name="积分倍数" style="display: none">
+                            @*<label class="ml10">积分类型<span class="f_req">*</span></label>
+                                <select class="pointType isrequire" name="PointType">
+                                    <option>系统默认</option>
+                                </select>*@
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分倍数<span class="f_req">*</span></label>
+                                <input type="number" value="1" class="isrequire canNotEdit span12 zeroNumber" name="PointTimes" />
+                            </div>
+                        </div>
+
+                        <div class="action row-fluid" name="会员促销" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">请选择折扣类型<span class="f_req">*</span></label>
+                                <select class="discountType isrequire canNotEdit span12" name="DiscountType">
+                                    <option value="amount">折扣额</option>
+                                    <option value="discount">折扣率</option>
+                                </select>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10 discountTitle">折扣额<span class="f_req">*</span></label>
+                                <input type="number" id="txtAmountValue" class="isrequire canNotEdit" name="DiscountValue" />
+                                <input type="text" id="txtDiscountValue" class="isrequire canNotEdit" name="DiscountValue" onchange="testNumber(this)" onkeypress="return onlyNumbers(event);" style="display: none; text-align: right;" />
+                            </div>
+                        </div>
+
+                        <div class="action row-fluid" name="礼品促销" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">请选择赠品<span class="f_req">*</span></label>
+                                <input class="gift isrequire canNotEdit span12" type="text" name="GiftCode" style="float: left;" readonly />
+                                <a class="showExtend selGift" style="float: left;"></a>
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">礼品数量<span class="f_req">*</span></label>
+                                <input type="number" value="1" class="isrequire canNotEdit span12 zeroNumber" name="GiftCount" />
+                            </div>
+                        </div>
+                        <div class="action" name="积分抵现" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分数</label>
+                                <input type="number" name="PointNumber" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">抵扣金额</label>
+                                <input type="number" name="DeductAmount" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">每交易抵现次数</label>
+                                <input type="number" name="EvtTradeCounts" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">每会员抵现次数</label>
+                                <input type="number" name="EvtMemberCounts" class="canNotEdit span12" value="0" />
+                            </div>
+                        </div>
+                        <div class="action" name="积分加速抵现" style="display: none">
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">积分数</label>
+                                <input type="number" name="PointNumber" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">抵扣金额</label>
+                                <input type="number" name="DeductAmount" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">每交易抵现次数</label>
+                                <input type="number" name="EvtTradeCounts" value="1" class="span12 zeroNumber" />
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">每会员抵现次数</label>
+                                <input type="number" name="EvtMemberCounts" class="canNotEdit span12" value="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="pull-right sepV_c">
+                <button class="btn btn-info" id="btnSave" type="submit">保存</button>
+                <button class="btn btn-info" id="btnSaveAndApprove" type="button">保存并审核</button>
+                <button class="btn" id="btnReturn" onclick="javascript:history.go(-1); " type="button">返回</button>
+                <button class="btn btn-info" type="button" id="btnActive">休眠</button>
+
+                <button class="btn btn-info" type="button" id="btnApprove">审核</button>
+                <button class="btn btn-info" type="button" id="btnCopy">复制</button>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="hide">
+    <div id="select_dialog" class="cbox_content popConfig w250" style="width: 430px">
+        <div class="modal-header">
+            <h3><span id="selectDialogTitle">请选择商品</span></h3>
+        </div>
+        <div class="modal-body" style="height: 700px">
+            <div class="row-fluid">
+                <div class="sepH_c row-fluid">
+                    <div class="form-inline">
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">商品名称</label>
+                            <input type="text" id="txtProductName" class="input-medium span12">
+                        </div>
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">商品编码</label>
+                            <input type="text" id="txtProductCode" class="input-medium span12">
+                        </div>
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">商品类别</label>
+                            <input type="text" id="txtGoodsSort" class="input-medium span12">
+                        </div>
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">商品品牌</label>
+                            <input type="text" id="txtGoodsBrand" class="input-medium span12">
+                        </div>
+                        <div class="q_btn">
+                            <button id="btnSearchProduct" class="btn">查询</button>
+                        </div>
+                    </div>
+                    <table class="table" data-provides="rowlink" id="dtProduct"></table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes" id="btnSelectOK">确定</a>
+            <a href="#" class="btn confirm_no" id="btnSelectCancel">取消</a>
+        </div>
+    </div>
+
+
+    <div id="select_dialog2" class="cbox_content popConfig w250" style="width: 430px">
+        <div class="modal-header">
+            <h3><span id="selectDialogTitle">请选择参与的门店</span></h3>
+        </div>
+        <div class="modal-body" style="height: 700px">
+            <div class="row-fluid">
+                <div class="sepH_c row-fluid">
+                    <div class="form-inline">
+
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">门店代码</label>
+                            <input type="text" id="txtStoreCode" class="input-medium span12">
+                        </div>
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">门店名称</label>
+                            <input type="text" id="txtStoreName" class="input-medium span12">
+                        </div>
+                        @*<div class="span3">
+                                <label class="title-left sepV_a ml10">所在省</label>
+                                <input type="text" id="txtStoreProvince" class="input-medium span12">
+                            </div>
+                            <div class="span3">
+                                <label class="title-left sepV_a ml10">所在市</label>
+                                <input type="text" id="txtStoreCity" class="input-medium span12">
+                            </div>*@
+                        <div class="q_btn">
+                            <button id="btnSearchStore" class="btn">查询</button>
+                        </div>
+                    </div>
+                    <table class="table" data-provides="rowlink" id="dtStore"></table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes">确定</a>
+            <a href="#" class="btn confirm_no">取消</a>
+        </div>
+    </div>
+
+
+    <div id="select_dialog3" class="cbox_content popConfig w250" style="width: 430px;top:200px">
+        <div class="modal-header">
+            <h3><span id="selectDialogTitle">复制会员促销单</span></h3>
+        </div>
+        <div class="modal-body" style="height: 100px">
+            <div class="row-fluid">
+                <div class="sepH_c row-fluid">
+                    <div class="form-inline">
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">开始日期</label>
+                            <input class="span12" data-val="true" id="selStartDate" name="StartDate" type="text" value="2017-04-17">
+                        </div>
+                        <div class="span3">
+                            <label class="title-left sepV_a ml10">结束日期</label>
+                            <input class="span12" data-val="true" id="selEndDate" name="EndDate" type="text" value="2017-05-17">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" style="position:relative">
+            <a href="#" class="btn btn-gebo confirm_yes">确定</a>
+            <a href="#" class="btn confirm_no">取消</a>
+        </div>
+    </div>
+</div>
+
+
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "form1", @class = "hide", @Action = "/MemberSalesPromotion/PromotionSetting" }))
+{
+    <input id="hideRuleID" name="hideRuleID" type="text" />
+}
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Gebo/lib/chosen/chosen.jquery.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/MemberSalesPromotion/PromotionSetting.js", "~/Scripts/Framework/linq.min.js")
+}

@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "VerifyCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+      
+    <div class="pull-left">
+        <h3>卡批准</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" id="btnVerify">批量批准</button>
+        <button class="btn" id="btnNoVerify">批量不批准</button>
+          @using (Html.BeginForm("CardCenterDetailPage", "Distribution", FormMethod.Post, new {@id="formDetail",@class = "span4" }))
+        {
+              @Html.Hidden("pageKey")  
+              @Html.Hidden("id")  
+        }
+    </div>
+     
+</div>
+
+<div class="sepH_c row-fluid">
+     
+    <div class="well firstShow ">       
+        <div class="row-fluid" id="queryCondition">                                     
+            <div class="span3">
+                <label class="title-left sepV_a ml10">单号</label>        
+                <input type="text" class="span12 sepV_a input-medium"  id="OddNumbers"  />            
+            </div>
+              <div class="span3" style="display:none">
+                <label class="title-left sepV_a ml10">执行状态</label>   
+                 @*<input type="text" class="span12 sepV_a input-medium" id="ExecuteStatus"/>              *@
+                  <select class="span12 sepV_a input-medium" id="ExecuteStatus">
+                      <option value="">请选择</option>
+                      <option value="0">未交货</option>
+                      <option value="1"> 待交货</option>        
+                      <option value="2">部分交货</option>
+                      <option value="3">全部交货</option>              
+                      <option value="4">拒绝交货</option>             
+                  </select>
+            </div>
+              <div class="span3">
+                <label class="title-left sepV_a ml10">状态</label>
+                @*<input type="text" class="span12 sepV_a input-medium" id="Status"/>          *@     
+                  <select   class="span12 sepV_a input-medium" id="Status">                  
+                          <option value="">请选择</option>
+                      <option value="0">未审核</option>
+                      <option value="1">已审核</option>
+                      <option value="2">已撤销</option>              
+                  </select>      
+            </div>
+              <div class="span3">
+                <label class="title-left sepV_a ml10">申请数量</label>
+                <input type="text" class="span12 sepV_a input-medium" id="ApplyNumber1"  />            
+            </div>
+              <div class="span3">
+                <label class="title-left sepV_a ml10">批准数量</label>
+                <input type="text" class="span12 sepV_a input-medium" id="ApproveNumber" />                       
+            </div>
+              <div class="span3">
+                <label class="title-left sepV_a ml10">交货数量</label>
+                <input type="text" class="span12 sepV_a input-medium" id="DeliverNumber" />                      
+            </div>
+             <div class="span3">
+                <label class="title-left sepV_a ml10">收货单位</label>
+              @*  <input type="text" class="span12 sepV_a input-medium" id="AcceptingUnit1" />*@
+                 <select class="chzn_a span12 sepV_a input-medium" id="AcceptingUnit1" >                  
+                 </select>
+            </div>        
+              <div class="span3">
+                <label class="title-left sepV_a ml10">最后修改时间</label>
+                <input type="text" class="span12 sepV_a input-medium" id="ModifyTime"/>                      
+            </div>    
+        </div>
+        <div class="q_btn">
+            <button class="btn" id="search">查询</button>
+            <button class="btn" id="btnRemove">清除</button>
+        </div>
+    </div>
+       
+    <table class="table" data-provides="rowlink" id="CardTable">
+     
+    </table>
+</div>
+
+
+@section Scripts{
+      @System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Distribution/VerifyCard.js")
+}
+
+

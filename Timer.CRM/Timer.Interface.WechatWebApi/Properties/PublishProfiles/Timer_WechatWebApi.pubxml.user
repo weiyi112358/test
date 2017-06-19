@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Arvato.CRM.EF.dll">
+      <publishTime>06/08/2017 18:05:37</publishTime>
+    </File>
+    <File Include="bin/Arvato.CRM.EF.pdb">
+      <publishTime>06/08/2017 18:05:37</publishTime>
+    </File>
+    <File Include="bin/Arvato.CRM.Model.dll">
+      <publishTime>06/08/2017 18:05:38</publishTime>
+    </File>
+    <File Include="bin/Arvato.CRM.Model.pdb">
+      <publishTime>06/08/2017 18:05:38</publishTime>
+    </File>
+    <File Include="bin/Arvato.CRM.Utility.dll">
+      <publishTime>06/08/2017 18:05:39</publishTime>
+    </File>
+    <File Include="bin/Arvato.CRM.Utility.pdb">
+      <publishTime>06/08/2017 18:05:39</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/26/2017 11:58:16</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.Extended.dll">
+      <publishTime>04/26/2017 12:03:49</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>04/26/2017 12:02:38</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>04/26/2017 12:03:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Exchange.WebServices.dll">
+      <publishTime>04/26/2017 12:04:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/26/2017 12:03:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>04/26/2017 12:03:54</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/26/2017 11:57:24</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>04/26/2017 12:02:38</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/10/2012 21:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.dll">
+      <publishTime>07/09/2012 00:40:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/26/2017 11:58:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/26/2017 11:59:35</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/26/2017 12:03:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/26/2017 11:58:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/10/2012 21:53:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/26/2017 11:58:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/26/2017 11:58:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/26/2017 11:58:56</publishTime>
+    </File>
+    <File Include="bin/Timer.CRM.WechatInterfaceLogic.dll">
+      <publishTime>06/08/2017 18:05:40</publishTime>
+    </File>
+    <File Include="bin/Timer.CRM.WechatInterfaceLogic.pdb">
+      <publishTime>06/08/2017 18:05:40</publishTime>
+    </File>
+    <File Include="bin/Timer.Interface.WechatWebApi.dll">
+      <publishTime>06/08/2017 18:05:40</publishTime>
+    </File>
+    <File Include="bin/Timer.Interface.WechatWebApi.pdb">
+      <publishTime>06/08/2017 18:05:40</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>04/26/2017 11:58:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>07/10/2012 23:30:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>04/26/2017 11:58:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>04/26/2017 11:59:35</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>04/26/2017 12:03:52</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>04/26/2017 11:57:59</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>07/10/2012 23:31:36</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>04/26/2017 11:58:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>04/26/2017 11:58:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>04/26/2017 11:58:57</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/26/2017 11:53:12</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/26/2017 11:53:12</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/26/2017 11:53:12</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/08/2017 18:05:50</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,249 @@
+﻿a, button, input {
+    outline: none !important;
+    font-family: Helvetica,Arial,"Microsoft YaHei", "微软雅黑",sans-serif;
+}
+
+    input[type="radio"] {
+        margin: 0;
+        margin-top: 0;
+        line-height: normal;
+    }
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+h5 {
+    height: 38px;
+    line-height: 18px;
+    display: block;
+    font-size: 18px;
+    font-weight: 100;
+    padding: 10px 0 0 30px;
+}
+
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue","Microsoft YaHei",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+div {
+    display: block;
+}
+
+
+table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    border-color: grey;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+
+.control-label-long, .control-label-short, .control-lable-biglong {
+    float: left;
+    padding-top: 5px;
+    text-align: right;
+}
+
+.control-label-long {
+    width: 90px;
+}
+
+.control-label-short {
+    width: 10px;
+}
+
+.control-lable-biglong {
+    width: 120px;
+}
+
+.controls-text {
+    float: left;
+    margin-left: 10px;
+}
+
+.controls-text-area {
+    float: left;
+    margin-left: 10px;
+}
+
+.width-block th {
+    width: 155px;
+}
+
+.querry {
+    float: right;
+}
+
+.pencil {
+    cursor: pointer;
+    float: right;
+    margin-right: 5px;
+}
+
+.table-cloak {
+    cursor: pointer;
+}
+
+    .table-cloak tr:hover {
+        background-color: #F9F9F9;
+    }
+
+.table-row-select {
+    background-color: #F9F9F9;
+}
+
+.datetime-dialog {
+    height: 50px;
+    width: 364px;
+    border: 5px solid #676767;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+    bottom: 40px;
+    right: 40px;
+    background-color: #fff;
+    display: none;
+}
+
+.approved-dialog {
+    height: 240px;
+    border: 5px solid #676767;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+    bottom: 40px;
+    right: 40px;
+    background-color: #fff;
+    display: none;
+    overflow-y: auto;
+}
+
+input[readonly],
+select[readonly],
+textarea[readonly] {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.btn-date-clear {
+    top: -32px;
+    left: 91%;
+    position: relative;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    line-height: 16px;
+    vertical-align: text-top;
+    background-image: url("../img/icon_close.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.controls-text .btn-date-clear {
+    top: -22px;
+    left: 88%;
+    display: block;
+}
+
+.center .btn-date-clear {
+    top: -24px;
+    left: 80%;
+    display: block;
+}
+
+.table a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.vcard > ul {
+    margin-left: 0;
+}
+
+.dimension-para {
+    height: 120px;
+    margin: 15px 0 30px;
+}
+
+.dimension-para-content {
+    float: left;
+    width: 660px;
+    height: 100%;
+    border: 1px #ccc dashed;
+    float: left;
+    padding: 10px;
+}
+
+.dimension-para-btns {
+    float: left;
+    width: 10px;
+    height: 140px;
+    line-height: 140px;
+    padding-left: 5px;
+}
+
+    .dimension-para-btns i {
+        cursor: pointer;
+    }
+
+.dimension-btnscount1 {
+    line-height: 140px;
+}
+
+.dimension-btnscount2 {
+    line-height: 70px;
+}
+
+.dimension-btnscount3 {
+    line-height: 47px;
+}
+
+.dimension-btnscount4 {
+    line-height: 33px;
+}

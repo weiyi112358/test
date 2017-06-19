@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservice.qxt.ipi.com/" targetNamespace="http://webservice.qxt.ipi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="queryStatusReport" type="tns:queryStatusReport" />
+  <xs:element name="queryStatusReportResponse" type="tns:queryStatusReportResponse" />
+  <xs:element name="receiveSm" type="tns:receiveSm" />
+  <xs:element name="receiveSmResponse" type="tns:receiveSmResponse" />
+  <xs:element name="sendSms" type="tns:sendSms" />
+  <xs:element name="sendSmsResponse" type="tns:sendSmsResponse" />
+  <xs:element name="sendTemplateMsg" type="tns:sendTemplateMsg" />
+  <xs:element name="sendTemplateMsgResponse" type="tns:sendTemplateMsgResponse" />
+  <xs:element name="userLogin" type="tns:userLogin" />
+  <xs:element name="userLoginResponse" type="tns:userLoginResponse" />
+  <xs:complexType name="receiveSm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="receiveSmResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:receiveSmRet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="receiveSmRet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:retStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="deliverL" nillable="true" type="tns:deliverPO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="retStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="desc" type="xs:string" />
+      <xs:element name="status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deliverPO">
+    <xs:sequence>
+      <xs:element name="clientType" type="xs:int" />
+      <xs:element minOccurs="0" name="content" type="xs:string" />
+      <xs:element name="deliverID" type="xs:long" />
+      <xs:element minOccurs="0" name="destAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="srcAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="timeStamp" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="queryStatusReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element name="arg1" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="queryStatusReportResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:statusReportRet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="statusReportRet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:retStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="statusL" nillable="true" type="tns:msgStatus" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="msgStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+      <xs:element minOccurs="0" name="statusDesc" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element name="arg4" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loginRet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loginRet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:retStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sendSms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:sendSmsRet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsRet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:retStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="errorList" nillable="true" type="tns:msgError" />
+          <xs:element name="onlyID" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="msgError">
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="errorDesc" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendTemplateMsg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element name="arg1" type="xs:int" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendTemplateMsgResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:sendSmsRet" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

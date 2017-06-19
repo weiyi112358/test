@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "SendEdit";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3 id="hTitleName">新建批量操作</h3>
+    </div>
+</div>
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "ActionForm" }))
+{
+    <div class="formSep">
+        <input type="hidden" id="txtID" name="txtID" value="@ViewBag.ID"/>
+        <input type="hidden" id="txtInfo" name="txtInfo" value="@ViewBag.Info"/>
+        <div class="row-fluid sepH_b">
+           <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                     单号
+                </div>
+                <input type="text" class="span3 " id="txtOddNumber" readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    单据类型<span style="color: red"> * </span>
+                </div>
+                <select   class="span3 sepV_a input-medium" id="OperationType" name="OperationType" >
+                      <option value="">请选择</option>
+                      <option value="0">开卡</option>
+                      <option value="1">所属组织修改</option>
+                     <option value="2">冻结</option>
+                     <option value="3">解冻</option>
+                     <option value="4">作废</option>
+                  </select>      
+                <input type="text" class="span3 " id="OperationType2" style="display:none" readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+            <div id="transformInfo" style="display:none">
+             <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                     转移分公司<span style="color: red"> * </span>
+                </div>
+                <select class="chzn_a sepV_a input-medium" id="toCompany"></select>
+                 <input type="text" class="span3 " id="toCompany2" style="display:none" readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+             <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                     转移门店<span style="color: red"> * </span>
+                </div>
+                <select   class="chzn_a sepV_a input-medium" id="toStore"></select>
+                  <input type="text" class="span3 " id="toStore2" style="display:none" readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+                </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    说明
+                </div>
+                <input type="text" id="Remark" name="Remark" class="span3" />
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    状态
+                </div>
+                <input type="text" id="txtStatu" name="txtStatu" class="span3" readonly="readonly" value="未审核"/>
+                <span class="error-block"></span>
+            </div>
+             <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    创建信息
+                </div>
+                <input type="text" id="txtCreatInfo" name="txtCreatInfo" class="span3" readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+             <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    修改信息
+                </div>
+                <input type="text" id="txtUpdateInfo" name="txtUpdateInfo" class="span3" readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    卡筛选条件
+                </div>
+                <div class="span5">
+                    <div class="row-fluid">
+                        <button id="btnAdd" class="btn btn-info" type="button">添加</button>
+                        <button id="btnSearchCard" class="btn btn-info" type="button">查看符合筛选条件的卡</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    &nbsp;
+                </div>
+                <table class="table" data-provides="rowlink" id="dt_Table"></table>
+            </div>
+            <div class="row-fluid sepH_b" id="CardView" style="display:none">
+                <div class="span2 title-left">
+                   卡列表
+                </div>
+                <table class="table" data-provides="rowlink" id="dt_CardList"></table>
+            </div>
+        </div>
+    </div>    
+    <div class="row-fluid">
+        <div class="pull-right sepV_c">
+            <button class="btn btn-info" id="btnSave" type="submit">保存</button>
+              @if (ViewBag.ID!=null&&ViewBag.ID!="")
+              {
+                   <button id="btnPass" class="btn btn-success" type="button">审核通过</button>@*
+                    <button id="btnCancelPass" class="btn btn-danger" type="button">撤销审核</button>*@
+              }
+                   
+            <button class="btn" id="btnReturn" onclick="javascript:history.go(-1); " type="button">返回</button>
+        </div>
+    </div>
+}
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="add_dialog" class="cbox_content">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>添加筛选条件</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_c">
+                <div class="row-fluid sepH_c">
+                    <div class="form-inline">
+                        <div class="row-fluid sepH_b">
+                            <div class="span2 title-left">
+                                 卡类型<span style="color: red"> * </span>
+                            </div>
+                            <select   class="span2 sepV_a input-medium" id="CardType" name="CardType">
+                            </select>      
+                            <span class="error-block"></span>
+                        </div>
+                         <div class="row-fluid sepH_b">
+                            <div class="span2 title-left">
+                                 起始卡号
+                            </div>
+                            <input type="text" class="span2 sepV_a" id="txtBeginCard" name="txtBeginCard" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="row-fluid sepH_b">
+                            <div class="span2 title-left">
+                                 截止卡号
+                            </div>
+                            <input type="text" class="span2 sepV_a" id="txtEndCard" name="txtEndCard" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="row-fluid sepH_b">
+                            <div class="span2 title-left">
+                                 卡状态
+                            </div>
+                            <select   class="span2 sepV_a input-medium" id="CardStatus" name="CardStatus">
+                      <option value="">请选择</option>
+                      <option value="2">使用中</option>
+                      <option value="1">已核对</option>
+                      <option value="0">已发卡</option>
+                     <option value="-1">已挂失</option>
+                     <option value="-2">已冻结</option>
+                  </select>      
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="row-fluid sepH_b">
+                            <div class="span2 title-left">
+                                 所属经销商
+                            </div>
+                             <select   class="chzn_a span2 sepV_a input-medium" id="wCompany" name="wCompany"></select>
+                            <span class="error-block"></span>
+                        </div>
+                       <div class="row-fluid sepH_b">
+                            <div class="span2 title-left">
+                                 所属门店<span style="color: red"> * </span>
+                            </div>
+                            <select   class="chzn_a span2 sepV_a input-medium" id="wStore" name="wStore" >
+                                <option value="">==请选择==</option>
+                            </select>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                </div>
+                    <button id="btnWhereSave" class="btn btn-info">保存</button>
+                    <button id="btnCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div id="processingdiv" style="display: none;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="loading" style="text-align: center; vertical-align: middle">
+                <br />
+                <img src="~/new_img/loading.gif" /><br />
+                <span id="txtspan"></span>
+            </div>
+                  <button class="btn" onclick="$.colorbox.close();">关闭</button>
+        </div>
+    </div>
+</div>
+<!--查看符合筛选条件的卡弹窗页-->
+<div class="hide">
+    <div id="selectCard_dialog" class="cbox_content" style="height: 800px;">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>查看符合筛选条件的卡</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_b">
+                <table class="table" data-provides="rowlink" id="dtCard"></table>          
+            </div>       
+             <div class ="pull-right">
+            <button type="button" class="btn" onclick="$.colorbox.close();">关闭</button>&nbsp;
+        </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BatchOperation/BatchOperationAdd.js")
+
+}
+

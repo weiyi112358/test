@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "CardOutTitleAddNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row-fluid heading">
+
+    <div class="pull-left">
+        <h3>新增总部卡领出</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow">
+            <div class="row-fluid sepH_b" id="modalAdd" >
+                <input id="user" type="hidden" value="@ViewBag.User" />
+           
+
+                <div class="span3">
+                    <label>发货单位<span style="color: red"> * </span></label>
+                    <input type="text" readonly="readonly" id="sendingUnit"  />
+                    <span class="error-block"></span>
+                </div>
+
+                      <div class="span3">
+                    <label>创建信息<span style="color: red"> * </span></label>
+                    <input type="text" id="createBy" readonly="readonly"  />
+                    <span class="error-block"></span>
+                </div>
+
+                 <div class="span3">
+                    <label>最后修改信息<span style="color: red"> * </span></label>
+                    <input type="text" id="modifyBy" readonly="readonly"  />
+                    <span class="error-block"></span>
+                </div>
+
+                 <div class="span3">
+                    <label>选择领出地点<span style="color: red"> * </span></label>
+                    <select id="selOutAddress" name="selOutAddress">
+                        <option value="">==请选择==</option>
+                     @* 旧版*@
+                     @*<option value="1">经销商</option>*@
+                         <option value="2">门店</option>
+                    </select>
+                    <span class="error-block"></span>
+                </div>
+            
+                <div class="span3">
+                    <label>是否关联申请单<span style="color: red"> * </span></label>
+                    <select id="mappingApply" name="mappingApply" >
+                    </select>
+                    <span class="error-block"></span>
+                </div>
+
+                <div class="span3" id="acceptingUnitDiv" style="display:none">
+                    <label>收货经销商<span style="color: red"> * </span></label>
+                    <select id="acceptingUnit" name="acceptingUnit" class="chzn_a"></select>
+                    <span class="error-block"></span>
+                </div>
+
+                <div class="span3" id="storeDiv" style="display:none">
+                    <label>收货门店<span style="color: red"> * </span></label>
+                    <select id="store" name="store" class="chzn_a"></select>
+                    <span class="error-block"></span>
+                </div>
+
+                <div class="span3" id="applyOddIdDiv" style="display: none">
+                    <label>请选择单号<span style="color: red"> * </span></label>
+                    <select id="applyOddId"></select>
+                    <button id="searchOddId" class="btn">查询单号</button>
+                </div>
+
+          
+
+               
+
+                <div class="span3">
+                    <label>备注</label>
+                    <input type="text" id="remark"  />
+                    <span class="error-block"></span>
+                </div>
+                <div class="span3">
+                    <label>盒号<span style="color: red"> * </span></label>
+                    <select id="box" class="chzn_a"></select>
+                    <button id="choose" class="btn btn-info">筛选</button>
+                    <span class="error-block"></span>
+                </div>
+            </div>
+            
+            <div class="q_btn" style="margin-top:30px;">
+                <button id="btnInsert" class="btn btn-info">添加</button>
+                <button id="btnReset" class="btn">重置</button>&nbsp;
+                <button id="btnSave" class="btn btn-info sepV_a" style="display:none">保存</button>&nbsp;
+                <button id="btnSaveStatus" class="btn btn-info sepV_a">保存并审核</button>&nbsp;
+                    @using (Html.BeginForm("CardOutTitleNew", "Distribution", FormMethod.Post, new { @Id = "form", @class = "span4" }))
+                    {
+                        <button id="returnPrev" class="btn">返回</button>
+                    }
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="showBox">
+            <div class="form-control">
+                <table class="table">
+                    <thead class="table">
+                    </thead>
+                    <tbody id="showinfo"></tbody>
+                </table>
+            </div>
+        </div>
+        <button id="BoxDetail" class="btn btn-info">折叠明细</button>
+        <div class="table" id="showCardDetail">
+            <div class="form-control">
+                <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <td>卡类型</td>
+                            <td>用途</td>
+                            <td>卡数量</td>
+                            <td>盒号</td>
+                            <td>起始卡号</td>
+                            <td>截止卡号</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody id="showinfo2"></tbody>
+                </table>
+            </div>  
+    </div>
+</div>
+
+<!-- 遮罩层-->
+<div id="processingdiv" style="display: none;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="loading" style="text-align: center; vertical-align: middle">
+                <br />
+                <img src="~/new_img/loading.gif" /><br />
+                <span id="txtspan"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Distribution/CardOutTitleAddNew.js")
+}

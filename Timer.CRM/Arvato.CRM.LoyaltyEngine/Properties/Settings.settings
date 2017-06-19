@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Arvato.CRM.LoyaltyEngine.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FREEZE_TO_AVAI" Type="System.String" Scope="User">
+      <Value Profile="(Default)">23:25:00</Value>
+    </Setting>
+    <Setting Name="LAST_CHANGE_FREEZE_TIME" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">1988-12-26</Value>
+    </Setting>
+    <Setting Name="AVAI_TO_ZERO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">23:40:00</Value>
+    </Setting>
+    <Setting Name="LAST_CHANGE_AVAI_TIME" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">1990-01-01</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

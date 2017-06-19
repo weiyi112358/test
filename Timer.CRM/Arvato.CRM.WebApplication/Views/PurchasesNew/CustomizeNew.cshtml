@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "CustomizeNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+
+    <div class="pull-left">
+        <h3>定卡</h3>
+    </div>
+    <div class="pull-right">
+          @using (Html.BeginForm("CustomizeListToExcel", "PurchasesNew", FormMethod.Post, new { @class = "span4"}))
+        {
+           @Html.Hidden("txtExcelOddIdNo")
+           @Html.Hidden("txtExcelAgent")
+           @Html.Hidden("txtExcelStatus")
+           @Html.Hidden("txtExcelBoxNumIn")
+           @Html.Hidden("txtExcelCardNumIn")
+           @Html.Hidden("txtExcelCreateTime")   
+           @Html.Hidden("txtExcelIsRetrieve")   
+            <input type="submit" class="btn btn-info" value="导出"/>
+          }
+        @using (Html.BeginForm("CustomizeAddNew", "PurchasesNew", FormMethod.Post, new { @class = "span4" }))
+        {
+           <input type="submit" class="btn" value="新建"/>
+        }
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid" id="queryCondition">
+            <div class="span3">
+                <label class="title-left sepV_a ml10">单号</label>
+                <input type="text" class="span3 sepV_a input-medium" id="queryOddIdNo" />
+            </div>
+            <div class="span3" style="display:none">
+                <label class="title-left sepV_a ml10">状态</label>       
+                 <select   class="chzn_a span3 sepV_a input-medium" id="queryStatus">               
+                  </select>      
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">供应商</label> 
+                <select class="chzn_a span3 sepV_a input-medium" id="queryAgent">                
+                </select>
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">总盒数</label>
+                <input type="text" class="span3 sepV_a input-medium" id="queryBoxNumIn" />
+            </div>
+              <div class="span3">
+                <label class="title-left sepV_a ml10">总卡数</label>
+                <input type="text" class="span3 sepV_a input-medium" id="queryCardNumIn" />
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">最后修改时间</label>
+                <input type="text" class="span3 sepV_a input-medium" id="queryCreateTime" />
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">是否已收卡</label>
+                <select class="chzn_a span3 sepV_a input-medium" id="queryIsRetrieve">     
+                    <option value="">==请选择==</option>
+                    <option value="0">否</option>
+                     <option value="1">是</option>
+                </select>       
+            </div>
+        </div>
+        <div class="q_btn">
+            <button class="btn btn-info" id="search">查询</button>
+            <button class="btn" id="btnRemove">清除</button>
+        </div>
+    </div>
+
+    <table class="table" data-provides="rowlink" id="CardTable">
+    </table>
+</div>
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addBrand_dialog" class="cbox_content" style="width:800px;height:1500px">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>定卡列表</h3>
+            </div>
+        </div>
+       
+            <div id="modalAdd">                  
+                    <button id="btnStatusPass" class="btn btn-info sepV_a">审核通过</button>&nbsp;
+                    <button id="btnStatusReturn" class="btn btn-info sepV_a">审核驳回</button>&nbsp;   
+                @using (Html.BeginForm("CustomizeToExcel", "PurchasesNew", FormMethod.Post, new { @style = "dispaly:inline" }))
+                {
+                      <button id="btnExcelOut" class="btn btn-info sepV_a">导出</button>        
+                      <input hidden id="customizeOddId" name="customizeOddId" />
+                }                                    
+                     <table class="table" data-provides="rowlink" id="showParams" style="width:600px"></table>    
+                      <button id="btnAddCancel" class="btn btn-success" onclick="$.colorbox.close();">返回</button>               
+            </div>
+        </div>
+</div>
+
+
+
+<!-- 遮罩层-->
+<div id="processingdiv" style="display: none;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="loading" style="text-align: center; vertical-align: middle">
+                <br />
+                <img src="~/new_img/loading.gif" /><br />
+                <span id="txtspan"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+ @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+ @System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js") 
+@System.Web.Optimization.Scripts.Render("~/Scripts/Pages/PurchasesNew/CustomizeNew.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+}

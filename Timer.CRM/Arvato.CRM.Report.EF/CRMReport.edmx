@@ -1,0 +1,2150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CRMReportModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CRMReportModelStoreContainer">
+          <EntitySet Name="TL_WX_MemberSign" EntityType="CRMReportModel.Store.TL_WX_MemberSign" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TM_Act_CommunicationTemplet" EntityType="CRMReportModel.Store.TM_Act_CommunicationTemplet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_area" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_area" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_area">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_area].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_area].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_area].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_area].[AreaNameBase] AS [AreaNameBase], 
+      [V_M_TM_SYS_BaseData_area].[AreaCodeBase] AS [AreaCodeBase]
+      FROM [dbo].[V_M_TM_SYS_BaseData_area] AS [V_M_TM_SYS_BaseData_area]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_brand" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_brand" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_brand">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_brand].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_brand].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_brand].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_brand].[BrandName] AS [BrandName], 
+      [V_M_TM_SYS_BaseData_brand].[BrandCode] AS [BrandCode]
+      FROM [dbo].[V_M_TM_SYS_BaseData_brand] AS [V_M_TM_SYS_BaseData_brand]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_channel" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_channel" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_channel">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_channel].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_channel].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_channel].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_channel].[ChannelNameBase] AS [ChannelNameBase], 
+      [V_M_TM_SYS_BaseData_channel].[ChannelCodeBase] AS [ChannelCodeBase], 
+      [V_M_TM_SYS_BaseData_channel].[ChannelIsEnableBase] AS [ChannelIsEnableBase]
+      FROM [dbo].[V_M_TM_SYS_BaseData_channel] AS [V_M_TM_SYS_BaseData_channel]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_colors" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_colors" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_colors">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_colors].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_colors].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_colors].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_colors].[ColorCode] AS [ColorCode], 
+      [V_M_TM_SYS_BaseData_colors].[ColorName] AS [ColorName]
+      FROM [dbo].[V_M_TM_SYS_BaseData_colors] AS [V_M_TM_SYS_BaseData_colors]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_customerlevel" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_customerlevel" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_customerlevel">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_customerlevel].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_customerlevel].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_customerlevel].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_customerlevel].[CustomerLevelBase] AS [CustomerLevelBase], 
+      [V_M_TM_SYS_BaseData_customerlevel].[CustomerLevelNameBase] AS [CustomerLevelNameBase], 
+      [V_M_TM_SYS_BaseData_customerlevel].[RateCustomerLevel] AS [RateCustomerLevel], 
+      [V_M_TM_SYS_BaseData_customerlevel].[BrandCodeCustomerLevel] AS [BrandCodeCustomerLevel], 
+      [V_M_TM_SYS_BaseData_customerlevel].[MaxIntergral] AS [MaxIntergral], 
+      [V_M_TM_SYS_BaseData_customerlevel].[BrandNameCustomerLevel] AS [BrandNameCustomerLevel], 
+      [V_M_TM_SYS_BaseData_customerlevel].[LevelUpInt] AS [LevelUpInt]
+      FROM [dbo].[V_M_TM_SYS_BaseData_customerlevel] AS [V_M_TM_SYS_BaseData_customerlevel]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_product" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_product" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_product">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_product].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_product].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_product].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_product].[ProductCode] AS [ProductCode], 
+      [V_M_TM_SYS_BaseData_product].[ProductName] AS [ProductName], 
+      [V_M_TM_SYS_BaseData_product].[ProductCode_IPOS] AS [ProductCode_IPOS], 
+      [V_M_TM_SYS_BaseData_product].[ProductLineCode1] AS [ProductLineCode1], 
+      [V_M_TM_SYS_BaseData_product].[ProductLineName1Base] AS [ProductLineName1Base], 
+      [V_M_TM_SYS_BaseData_product].[ProductLineCode2] AS [ProductLineCode2], 
+      [V_M_TM_SYS_BaseData_product].[ProductLineName2Base] AS [ProductLineName2Base], 
+      [V_M_TM_SYS_BaseData_product].[ProductLineCode3] AS [ProductLineCode3], 
+      [V_M_TM_SYS_BaseData_product].[ProductLineName3] AS [ProductLineName3], 
+      [V_M_TM_SYS_BaseData_product].[CategoryCode] AS [CategoryCode], 
+      [V_M_TM_SYS_BaseData_product].[CategoryName] AS [CategoryName], 
+      [V_M_TM_SYS_BaseData_product].[SubCategoryCode] AS [SubCategoryCode], 
+      [V_M_TM_SYS_BaseData_product].[SubCategoryName] AS [SubCategoryName], 
+      [V_M_TM_SYS_BaseData_product].[OrginalSellPrice] AS [OrginalSellPrice], 
+      [V_M_TM_SYS_BaseData_product].[StopUsageFlag] AS [StopUsageFlag], 
+      [V_M_TM_SYS_BaseData_product].[ProductBrandCode] AS [ProductBrandCode], 
+      [V_M_TM_SYS_BaseData_product].[ProductBrandNameBase] AS [ProductBrandNameBase], 
+      [V_M_TM_SYS_BaseData_product].[ProductStatusCode] AS [ProductStatusCode], 
+      [V_M_TM_SYS_BaseData_product].[ProductStatusNameBase] AS [ProductStatusNameBase], 
+      [V_M_TM_SYS_BaseData_product].[ProductSyncFlag] AS [ProductSyncFlag]
+      FROM [dbo].[V_M_TM_SYS_BaseData_product] AS [V_M_TM_SYS_BaseData_product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_productBrand" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_productBrand" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_productBrand">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_productBrand].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_productBrand].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_productBrand].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_productBrand].[ProductBrandNameBase2] AS [ProductBrandNameBase2], 
+      [V_M_TM_SYS_BaseData_productBrand].[ProductBrandCodeBase2] AS [ProductBrandCodeBase2]
+      FROM [dbo].[V_M_TM_SYS_BaseData_productBrand] AS [V_M_TM_SYS_BaseData_productBrand]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_productCategory" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_productCategory" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_productCategory">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_productCategory].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_productCategory].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_productCategory].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_productCategory].[ProductCategoryNameBase2] AS [ProductCategoryNameBase2], 
+      [V_M_TM_SYS_BaseData_productCategory].[ProductCategoryCodeBase2] AS [ProductCategoryCodeBase2]
+      FROM [dbo].[V_M_TM_SYS_BaseData_productCategory] AS [V_M_TM_SYS_BaseData_productCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_productline1" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_productline1" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_productline1">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_productline1].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_productline1].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_productline1].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_productline1].[ProductLine1Name] AS [ProductLine1Name], 
+      [V_M_TM_SYS_BaseData_productline1].[ProductLine1Code] AS [ProductLine1Code]
+      FROM [dbo].[V_M_TM_SYS_BaseData_productline1] AS [V_M_TM_SYS_BaseData_productline1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_productline2" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_productline2" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_productline2">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_productline2].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_productline2].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_productline2].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_productline2].[ProductLine2Name] AS [ProductLine2Name], 
+      [V_M_TM_SYS_BaseData_productline2].[ProductLine2Code] AS [ProductLine2Code]
+      FROM [dbo].[V_M_TM_SYS_BaseData_productline2] AS [V_M_TM_SYS_BaseData_productline2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_promotion" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_promotion" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_promotion">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_promotion].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_promotion].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_promotion].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionID] AS [PromotionID], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionCode] AS [PromotionCode], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionName] AS [PromotionName], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionBillType] AS [PromotionBillType], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionType] AS [PromotionType], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionRemark] AS [PromotionRemark], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionIsEnd] AS [PromotionIsEnd], 
+      [V_M_TM_SYS_BaseData_promotion].[StartDatePromotion] AS [StartDatePromotion], 
+      [V_M_TM_SYS_BaseData_promotion].[EndDatePromotion] AS [EndDatePromotion], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionStartDate] AS [PromotionStartDate], 
+      [V_M_TM_SYS_BaseData_promotion].[PromotionEndDate] AS [PromotionEndDate]
+      FROM [dbo].[V_M_TM_SYS_BaseData_promotion] AS [V_M_TM_SYS_BaseData_promotion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_M_TM_SYS_BaseData_store" EntityType="CRMReportModel.Store.V_M_TM_SYS_BaseData_store" store:Type="Views" store:Schema="dbo" store:Name="V_M_TM_SYS_BaseData_store">
+            <DefiningQuery>SELECT 
+      [V_M_TM_SYS_BaseData_store].[BaseDataID] AS [BaseDataID], 
+      [V_M_TM_SYS_BaseData_store].[DataGroupID] AS [DataGroupID], 
+      [V_M_TM_SYS_BaseData_store].[BaseDataType] AS [BaseDataType], 
+      [V_M_TM_SYS_BaseData_store].[StoreName] AS [StoreName], 
+      [V_M_TM_SYS_BaseData_store].[StoreAddress] AS [StoreAddress], 
+      [V_M_TM_SYS_BaseData_store].[StoreCode] AS [StoreCode], 
+      [V_M_TM_SYS_BaseData_store].[StoreFullName] AS [StoreFullName], 
+      [V_M_TM_SYS_BaseData_store].[StoreCode_IPOS] AS [StoreCode_IPOS], 
+      [V_M_TM_SYS_BaseData_store].[AreaCodeStore] AS [AreaCodeStore], 
+      [V_M_TM_SYS_BaseData_store].[AreaNameStore] AS [AreaNameStore], 
+      [V_M_TM_SYS_BaseData_store].[ProvinceCodeStore] AS [ProvinceCodeStore], 
+      [V_M_TM_SYS_BaseData_store].[ProvinceStore] AS [ProvinceStore], 
+      [V_M_TM_SYS_BaseData_store].[CityCodeStore] AS [CityCodeStore], 
+      [V_M_TM_SYS_BaseData_store].[CityStore] AS [CityStore], 
+      [V_M_TM_SYS_BaseData_store].[AddressStore] AS [AddressStore], 
+      [V_M_TM_SYS_BaseData_store].[ChannelCodeStore] AS [ChannelCodeStore], 
+      [V_M_TM_SYS_BaseData_store].[ChannelNameStore] AS [ChannelNameStore], 
+      [V_M_TM_SYS_BaseData_store].[ChannelTypeCodeStore] AS [ChannelTypeCodeStore], 
+      [V_M_TM_SYS_BaseData_store].[ChannerTypeNameStore] AS [ChannerTypeNameStore], 
+      [V_M_TM_SYS_BaseData_store].[StoreType] AS [StoreType], 
+      [V_M_TM_SYS_BaseData_store].[StoreTel] AS [StoreTel], 
+      [V_M_TM_SYS_BaseData_store].[BrandStore] AS [BrandStore], 
+      [V_M_TM_SYS_BaseData_store].[OneLineFlag] AS [OneLineFlag]
+      FROM [dbo].[V_M_TM_SYS_BaseData_store] AS [V_M_TM_SYS_BaseData_store]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="TL_WX_MemberSign">
+          <Key>
+            <PropertyRef Name="ActionCode" />
+            <PropertyRef Name="SignDate2" />
+            <PropertyRef Name="OpenID" />
+          </Key>
+          <Property Name="MemberID" Type="char" MaxLength="32" />
+          <Property Name="ActionName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ActionCode" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="SignDate" Type="datetime" Nullable="false" />
+          <Property Name="SignDate2" Type="int" Nullable="false" />
+          <Property Name="OpenID" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TM_Act_CommunicationTemplet">
+          <Key>
+            <PropertyRef Name="TempletID" />
+          </Key>
+          <Property Name="TempletID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="SchemaId" Type="nvarchar" MaxLength="20" />
+          <Property Name="BusinessType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="SubType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Category" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Topic" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BasicContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDOSPackageMapping" Type="nvarchar(max)" />
+          <Property Name="InternalSetPrice" Type="decimal" Scale="2" />
+          <Property Name="Proportion" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaxSetPrice" Type="decimal" Scale="2" />
+          <Property Name="SalePrice" Type="decimal" Scale="2" />
+          <Property Name="LimitType" Type="nvarchar" MaxLength="20" />
+          <Property Name="ForeignTempletID" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+          <Property Name="AddedUser" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="AddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedUser" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSysInit" Type="bit" />
+          <Property Name="IsSync" Type="nvarchar" MaxLength="20" />
+          <Property Name="RunTimes" Type="smallint" />
+          <Property Name="LimitTypeKey" Type="nvarchar" MaxLength="400" />
+          <Property Name="ReferenceNo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_area”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_area">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="AreaNameBase" Type="nvarchar" MaxLength="100" />
+          <Property Name="AreaCodeBase" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_brand”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_brand">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BrandCode" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_channel”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_channel">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ChannelNameBase" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChannelCodeBase" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChannelIsEnableBase" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_colors”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_colors">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ColorName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_customerlevel”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_customerlevel">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="CustomerLevelBase" Type="nvarchar" MaxLength="20" />
+          <Property Name="CustomerLevelNameBase" Type="nvarchar" MaxLength="20" />
+          <Property Name="RateCustomerLevel" Type="decimal" Scale="2" />
+          <Property Name="BrandCodeCustomerLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaxIntergral" Type="int" />
+          <Property Name="BrandNameCustomerLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="LevelUpInt" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_product”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_product">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductCode_IPOS" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLineCode1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLineName1Base" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLineCode2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLineName2Base" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLineCode3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLineName3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubCategoryCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubCategoryName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OrginalSellPrice" Type="nvarchar" MaxLength="100" />
+          <Property Name="StopUsageFlag" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductBrandCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductBrandNameBase" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductStatusCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductStatusNameBase" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductSyncFlag" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_productBrand”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_productBrand">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProductBrandNameBase2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductBrandCodeBase2" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_productCategory”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_productCategory">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProductCategoryNameBase2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductCategoryCodeBase2" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_productline1”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_productline1">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProductLine1Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLine1Code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_productline2”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_productline2">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProductLine2Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductLine2Code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_promotion”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_promotion">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="PromotionID" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromotionCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromotionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromotionBillType" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromotionType" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromotionRemark" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromotionIsEnd" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartDatePromotion" Type="datetime" />
+          <Property Name="EndDatePromotion" Type="datetime" />
+          <Property Name="PromotionStartDate" Type="datetime" />
+          <Property Name="PromotionEndDate" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Kidsland_CRM.dbo.V_M_TM_SYS_BaseData_store”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="V_M_TM_SYS_BaseData_store">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Name="BaseDataID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="BaseDataType" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="100" />
+          <Property Name="StoreAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="StoreCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="StoreFullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="StoreCode_IPOS" Type="nvarchar" MaxLength="100" />
+          <Property Name="AreaCodeStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="AreaNameStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProvinceCodeStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProvinceStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityCodeStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityStore" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddressStore" Type="nvarchar" MaxLength="20" />
+          <Property Name="ChannelCodeStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChannelNameStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChannelTypeCodeStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChannerTypeNameStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="StoreType" Type="nvarchar" MaxLength="100" />
+          <Property Name="StoreTel" Type="nvarchar" MaxLength="100" />
+          <Property Name="BrandStore" Type="nvarchar" MaxLength="100" />
+          <Property Name="OneLineFlag" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="sp_Rpt_ActIntance_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="store" Type="varchar(max)" Mode="In" />
+          <Parameter Name="channel" Type="varchar" Mode="In" />
+          <Parameter Name="dateActStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateActEnd" Type="datetime" Mode="In" />
+          <Parameter Name="dateConsumeStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateConsumeEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_CouponDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="store" Type="varchar(max)" Mode="In" />
+          <Parameter Name="grade" Type="varchar" Mode="In" />
+          <Parameter Name="channel" Type="varchar" Mode="In" />
+          <Parameter Name="datesendcouponStart" Type="datetime" Mode="In" />
+          <Parameter Name="datesendcouponEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_MarketActivityDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="store" Type="varchar(max)" Mode="In" />
+          <Parameter Name="channel" Type="varchar" Mode="In" />
+          <Parameter Name="marStarttime" Type="datetime" Mode="In" />
+          <Parameter Name="marEndtime" Type="datetime" Mode="In" />
+          <Parameter Name="comStarttime" Type="datetime" Mode="In" />
+          <Parameter Name="comEndtime" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_MarketActivityTracking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchdate" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_Activitycount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin2" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd2" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_ConsumerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="dateConsumptionStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateConsumptionEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_ConsumptionFrequency_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="brand" Type="nvarchar" Mode="In" />
+          <Parameter Name="category" Type="nvarchar" Mode="In" />
+          <Parameter Name="dateConsumptionStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateConsumptionEnd" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_ContributionRate_Statistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="datetime_year" Type="datetime" Mode="In" />
+          <Parameter Name="datetime_month" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Memlevel" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_IssuingConsumption_Result" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_MemToNonMemSalesDutyCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateConsumptionStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateConsumptionEnd" Type="datetime" Mode="In" />
+          <Parameter Name="customSource" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Rpt_Mem_Recruit_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateRegType" Type="nvarchar" Mode="In" />
+          <Parameter Name="dateRegDate" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_MemContributionRate_Result" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="yearDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_Rpt_MemMonthConsum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_MemRepeatedConsumption_Result" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_MemUpGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_Prd_WeChatSign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="nvarchar" Mode="In" />
+          <Parameter Name="dateEnd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_PriceSegmentDistributionOffline_Result" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Rpt_StoreConsumptionDuty_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="dateConsumptionStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateConsumptionEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_StoreConsumptionMonthly_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+          <Parameter Name="area" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="store" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="consumptiondateStart" Type="datetime" Mode="In" />
+          <Parameter Name="consumptiondateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_UseCoupon_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="store" Type="varchar(max)" Mode="In" />
+          <Parameter Name="couponname" Type="varchar" Mode="In" />
+          <Parameter Name="datesendcouponStart" Type="datetime" Mode="In" />
+          <Parameter Name="datesendcouponEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_UsedCoupon_Detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="store" Type="varchar(max)" Mode="In" />
+          <Parameter Name="channel" Type="varchar" Mode="In" />
+          <Parameter Name="memlevel" Type="varchar" Mode="In" />
+          <Parameter Name="dateStart" Type="datetime" Mode="In" />
+          <Parameter Name="dateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_WXSign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="EndDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Rpt_WXSign_Detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="EndDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRMReportModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CRMReportEntities" p1:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_Rpt_MarketActivityTracking" ReturnType="Collection(CRMReportModel.sp_Rpt_MarketActivityTracking_Result)">
+            <Parameter Name="searchdate" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_Activitycount" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_Activitycount_Result)">
+            <Parameter Name="dateBegin2" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd2" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_ConsumptionFrequency_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_ConsumptionFrequency_Count_Result)">
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="brand" Mode="In" Type="String" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="dateConsumptionStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateConsumptionEnd" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_ContributionRate_Statistics" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_ContributionRate_Statistics_Result)">
+            <Parameter Name="datetime_year" Mode="In" Type="DateTime" />
+            <Parameter Name="datetime_month" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="Memlevel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_Count_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_IssuingConsumption_Result" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_IssuingConsumption_Result_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_MemToNonMemSalesDutyCount" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_MemToNonMemSalesDutyCount_Result)">
+            <Parameter Name="dateConsumptionStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateConsumptionEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="customSource" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_MemContributionRate_Result" ReturnType="Collection(CRMReportModel.sp_Rpt_MemContributionRate_Result_Result)">
+            <Parameter Name="yearDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_MemMonthConsum" ReturnType="Collection(CRMReportModel.sp_Rpt_MemMonthConsum_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_MemUpGrade" ReturnType="Collection(CRMReportModel.sp_Rpt_MemUpGrade_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_StoreConsumptionDuty_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_StoreConsumptionDuty_Count_Result)">
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="dateConsumptionStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateConsumptionEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Prd_WeChatSign" ReturnType="Collection(CRMReportModel.sp_Rpt_Prd_WeChatSign_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="String" />
+            <Parameter Name="dateEnd" Mode="In" Type="String" />
+            <Parameter Name="ActionCode" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_WXSign" ReturnType="Collection(CRMReportModel.sp_Rpt_WXSign_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="String" />
+            <Parameter Name="EndDate" Mode="In" Type="String" />
+            <Parameter Name="ActionName" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="TM_Act_CommunicationTemplet" EntityType="CRMReportModel.TM_Act_CommunicationTemplet" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_area" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_area" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_brand" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_brand" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_channel" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_channel" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_colors" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_colors" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_customerlevel" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_customerlevel" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_product" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_product" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_productBrand" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productBrand" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_productCategory" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productCategory" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_productline1" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productline1" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_productline2" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productline2" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_promotion" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_promotion" />
+          <EntitySet Name="V_M_TM_SYS_BaseData_store" EntityType="CRMReportModel.V_M_TM_SYS_BaseData_store" />
+          <EntitySet Name="TL_WX_MemberSign" EntityType="CRMReportModel.TL_WX_MemberSign" />
+          <FunctionImport Name="sp_Rpt_Mem_Recruit_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_Recruit_Count_Result)">
+            <Parameter Name="dateRegType" Mode="In" Type="String" />
+            <Parameter Name="dateRegDate" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_StoreConsumptionMonthly_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_StoreConsumptionMonthly_Count_Result)">
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="consumptiondateStart" Mode="In" Type="DateTime" />
+            <Parameter Name="consumptiondateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_MemRepeatedConsumption_Result" ReturnType="Collection(CRMReportModel.sp_Rpt_MemRepeatedConsumption_Result_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_WXSign_Detail" ReturnType="Collection(CRMReportModel.sp_Rpt_WXSign_Detail_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="String" />
+            <Parameter Name="EndDate" Mode="In" Type="String" />
+            <Parameter Name="ActionCode" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_Mem_ConsumerDetails" ReturnType="Collection(CRMReportModel.sp_Rpt_Mem_ConsumerDetails_Result)">
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="dateConsumptionStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateConsumptionEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_UseCoupon_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_UseCoupon_Count_Result)">
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="couponname" Mode="In" Type="String" />
+            <Parameter Name="datesendcouponStart" Mode="In" Type="DateTime" />
+            <Parameter Name="datesendcouponEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_PriceSegmentDistributionOffline_Result" ReturnType="Collection(CRMReportModel.sp_Rpt_PriceSegmentDistributionOffline_Result_Result)">
+            <Parameter Name="dateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_CouponDetail" ReturnType="Collection(CRMReportModel.sp_Rpt_CouponDetail_Result)">
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="grade" Mode="In" Type="String" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="datesendcouponStart" Mode="In" Type="DateTime" />
+            <Parameter Name="datesendcouponEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_MarketActivityDetail" ReturnType="Collection(CRMReportModel.sp_Rpt_MarketActivityDetail_Result)">
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="marStarttime" Mode="In" Type="DateTime" />
+            <Parameter Name="marEndtime" Mode="In" Type="DateTime" />
+            <Parameter Name="comStarttime" Mode="In" Type="DateTime" />
+            <Parameter Name="comEndtime" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_ActIntance_Count" ReturnType="Collection(CRMReportModel.sp_Rpt_ActIntance_Count_Result)">
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="dateActStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateActEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="dateConsumeStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateConsumeEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Rpt_UsedCoupon_Detail" ReturnType="Collection(CRMReportModel.sp_Rpt_UsedCoupon_Detail_Result)">
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="store" Mode="In" Type="String" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+            <Parameter Name="memlevel" Mode="In" Type="String" />
+            <Parameter Name="dateStart" Mode="In" Type="DateTime" />
+            <Parameter Name="dateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_Rpt_MarketActivityTracking_Result">
+          <Property Type="String" Name="ActivityTime" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ActivityName" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="SubdivisionCustomersNumber" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="SmsPushNumber" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ReturnSalesCumulative" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="OccupyOverallSalesB" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="OccupyOverallPayB" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="OccupyOverallPayHB" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="Male_MemNum" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Female_MemNum" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="EighteenToTwentytwo_MemNum" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="TwentythreeToTwentynine_MemNum" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="ThirtyToThirtyfive_MemNum" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ThirtyfiveToThirtynine_MemNum" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="FortyThan_MemNum" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Unknown_MemNum" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_Activitycount_Result">
+          <Property Type="String" Name="ActDate" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ActName" Nullable="true" MaxLength="2000" />
+          <Property Type="Int32" Name="ConsumerNumber" Nullable="true" />
+          <Property Type="Int32" Name="SmsNumber" Nullable="true" />
+          <Property Type="Decimal" Name="TotActMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TotActRate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TradeRate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="ManNumber" Nullable="true" />
+          <Property Type="Int32" Name="WomenNumber" Nullable="true" />
+          <Property Type="Int32" Name="SecretNumber" Nullable="true" />
+          <Property Type="Int32" Name="Age1Number" Nullable="true" />
+          <Property Type="Int32" Name="Age2Number" Nullable="true" />
+          <Property Type="Int32" Name="Age3Number" Nullable="true" />
+          <Property Type="Int32" Name="Age4Number" Nullable="true" />
+          <Property Type="Int32" Name="Age5Number" Nullable="true" />
+          <Property Type="Int32" Name="UnknownNumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_ConsumptionFrequency_Count_Result">
+          <Property Type="String" Name="member" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="FrequencyEqZero" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyEqOne" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyEqTwo" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyEqThree" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyEqFour" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyEqFive" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyEqFiveGoTen" Nullable="true" />
+          <Property Type="Int32" Name="FrequencyThanTen" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_ContributionRate_Statistics_Result">
+          <Property Type="String" Name="MemberLevel" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Spending" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SpendingTB" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="SpendingHB" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="GuestUnitPrice" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="GuestUnitPriceTB" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="GuestUnitPriceHB" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="GuestUnitCount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="GuestUnitCountTB" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="GuestUnitCountHB" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="SpendingRiseRate" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="ContributionRateMember" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="ContributionRateTotal" Nullable="true" Precision="18" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_Count_Result">
+          <Property Type="String" Name="City" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Channel" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ChannelCodeBase" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CityCodeStore" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="AreaCodeStore" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="rn" Nullable="true" />
+          <Property Type="String" Name="StoreCode" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Will_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Com_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Copper_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Silver_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Gold_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Platinum_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Total_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Will_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Com_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Copper_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Silver_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Gold_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Platinum_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Total_Mem_New" Nullable="true" />
+          <Property Type="Int32" Name="Percent_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Active_Mem" Nullable="true" />
+          <Property Type="Int32" Name="WillLose_Mem" Nullable="true" />
+          <Property Type="Int32" Name="Lose_Mem" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_IssuingConsumption_Result_Result">
+          <Property Type="String" Name="Channel" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Com_Mem_Get" Nullable="true" />
+          <Property Type="Int32" Name="Copper_Mem_Get" Nullable="true" />
+          <Property Type="Int32" Name="Silver_Mem_Get" Nullable="true" />
+          <Property Type="Int32" Name="Gold_Mem_Get" Nullable="true" />
+          <Property Type="Int32" Name="Platinum_Mem_Get" Nullable="true" />
+          <Property Type="Int32" Name="Total_Mem_Get" Nullable="true" />
+          <Property Type="Int32" Name="Com_Mem_Cost" Nullable="true" />
+          <Property Type="Int32" Name="Copper_Mem_Cost" Nullable="true" />
+          <Property Type="Int32" Name="Silver_Mem_Cost" Nullable="true" />
+          <Property Type="Int32" Name="Gold_Mem_Cost" Nullable="true" />
+          <Property Type="Int32" Name="Platinum_Mem_Cost" Nullable="true" />
+          <Property Type="Int32" Name="Total_Mem_Cost" Nullable="true" />
+          <Property Type="Int32" Name="Com_Mem_Left" Nullable="true" />
+          <Property Type="Int32" Name="Copper_Mem_Left" Nullable="true" />
+          <Property Type="Int32" Name="Silver_Mem_Left" Nullable="true" />
+          <Property Type="Int32" Name="Gold_Mem_Left" Nullable="true" />
+          <Property Type="Int32" Name="Platinum_Mem_Left" Nullable="true" />
+          <Property Type="Int32" Name="Total_Mem_Left" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_MemToNonMemSalesDutyCount_Result">
+          <Property Type="String" Name="Type_Mem" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Expendture_Mem" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ExpendtureSum_Mem" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ConsumptionContribution_Mem" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ConsumptionContributionSum_Mem" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_MemContributionRate_Result_Result">
+          <Property Type="String" Name="MemberLevel" Nullable="false" MaxLength="7" />
+          <Property Type="Int32" Name="Spending" Nullable="false" />
+          <Property Type="Int32" Name="SpendingTB" Nullable="false" />
+          <Property Type="Int32" Name="SpendingHB" Nullable="false" />
+          <Property Type="Int32" Name="GuestUnitPrice" Nullable="false" />
+          <Property Type="Int32" Name="GuestUnitPriceTB" Nullable="false" />
+          <Property Type="Int32" Name="GuestUnitPriceHB" Nullable="false" />
+          <Property Type="Int32" Name="GuestUnitCount" Nullable="false" />
+          <Property Type="Int32" Name="GuestUnitCountTB" Nullable="false" />
+          <Property Type="Int32" Name="GuestUnitCountHB" Nullable="false" />
+          <Property Type="Int32" Name="SpendingRiseRate" Nullable="false" />
+          <Property Type="Int32" Name="ContributionRateMember" Nullable="false" />
+          <Property Type="Decimal" Name="ContributionRateTotal" Nullable="false" Precision="3" Scale="1" />
+          <Property Type="Int32" Name="SpendingTotal" Nullable="false" />
+          <Property Type="Int32" Name="SpendingTotalRiseRate" Nullable="false" />
+          <Property Type="Int32" Name="SpendingTotalConRate" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_MemMonthConsum_Result">
+          <Property Type="String" Name="MemType" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="StatTime" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Cnt1" Nullable="true" />
+          <Property Type="Int32" Name="Cnt2" Nullable="true" />
+          <Property Type="Int32" Name="Cnt3" Nullable="true" />
+          <Property Type="Int32" Name="Cnt4" Nullable="true" />
+          <Property Type="Int32" Name="Cnt5" Nullable="true" />
+          <Property Type="Int32" Name="Cnt6" Nullable="true" />
+          <Property Type="Int32" Name="Cnt7" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_MemUpGrade_Result">
+          <Property Type="Int32" Name="rowIndex" Nullable="true" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Channel" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="ComToCopper" Nullable="true" />
+          <Property Type="Int32" Name="CopperToSilver" Nullable="true" />
+          <Property Type="Int32" Name="SilverToGold" Nullable="true" />
+          <Property Type="Int32" Name="GoldToPlatinum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_StoreConsumptionDuty_Count_Result">
+          <Property Type="Int32" Name="rowId" Nullable="true" />
+          <Property Type="String" Name="storecode" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Expendture_Mem" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ConsumptionMoneySum_Mem" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="ConsumptionTotalMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DutyTotal" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DutyExpendture" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Prd_WeChatSign_Result">
+          <Property Type="String" Name="ActionName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SignDate" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="fscs" Nullable="true" />
+          <Property Type="Int32" Name="bpcqdcs" Nullable="true" />
+          <Property Type="Int32" Name="qdcs" Nullable="true" />
+          <Property Type="Int32" Name="hyqdcs" Nullable="true" />
+          <Property Type="Int32" Name="fhyqdcs" Nullable="true" />
+          <Property Type="Double" Name="qdl" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_WXSign_Result">
+          <Property Type="String" Name="ReferenceNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ActivityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SendCount" Nullable="true" />
+          <Property Type="Int32" Name="SignCountAll" Nullable="true" />
+          <Property Type="Int32" Name="SignCountSend" Nullable="true" />
+          <Property Type="Int32" Name="SignCountMem" Nullable="true" />
+          <Property Type="Int32" Name="SignCountNOTMem" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="TM_Act_CommunicationTemplet">
+          <Key>
+            <PropertyRef Name="TempletID" />
+          </Key>
+          <Property Type="Int32" Name="TempletID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="SchemaId" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BusinessType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BasicContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IDOSPackageMapping" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="InternalSetPrice" Precision="18" Scale="2" />
+          <Property Type="String" Name="Proportion" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MaxSetPrice" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SalePrice" Precision="18" Scale="2" />
+          <Property Type="String" Name="LimitType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ForeignTempletID" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="Enable" Nullable="false" />
+          <Property Type="String" Name="AddedUser" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="ModifiedUser" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsSysInit" />
+          <Property Type="String" Name="IsSync" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="RunTimes" />
+          <Property Type="String" Name="LimitTypeKey" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReferenceNo" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_area">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AreaNameBase" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AreaCodeBase" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_brand">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BrandName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BrandCode" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_channel">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannelNameBase" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannelCodeBase" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannelIsEnableBase" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_colors">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ColorCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ColorName" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_customerlevel">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CustomerLevelBase" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CustomerLevelNameBase" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="RateCustomerLevel" Precision="18" Scale="2" />
+          <Property Type="String" Name="BrandCodeCustomerLevel" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MaxIntergral" />
+          <Property Type="String" Name="BrandNameCustomerLevel" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LevelUpInt" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_product">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductCode_IPOS" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLineCode1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLineName1Base" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLineCode2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLineName2Base" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLineCode3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLineName3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubCategoryCode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubCategoryName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OrginalSellPrice" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StopUsageFlag" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductBrandCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductBrandNameBase" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductStatusCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductStatusNameBase" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductSyncFlag" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_productBrand">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductBrandNameBase2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductBrandCodeBase2" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_productCategory">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductCategoryNameBase2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductCategoryCodeBase2" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_productline1">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLine1Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLine1Code" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_productline2">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLine2Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductLine2Code" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_promotion">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionID" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionBillType" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionType" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionRemark" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromotionIsEnd" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDatePromotion" Precision="3" />
+          <Property Type="DateTime" Name="EndDatePromotion" Precision="3" />
+          <Property Type="DateTime" Name="PromotionStartDate" Precision="3" />
+          <Property Type="DateTime" Name="PromotionEndDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="V_M_TM_SYS_BaseData_store">
+          <Key>
+            <PropertyRef Name="BaseDataID" />
+            <PropertyRef Name="DataGroupID" />
+            <PropertyRef Name="BaseDataType" />
+          </Key>
+          <Property Type="Int64" Name="BaseDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="String" Name="BaseDataType" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreAddress" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreFullName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreCode_IPOS" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AreaCodeStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AreaNameStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProvinceCodeStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProvinceStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CityCodeStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CityStore" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressStore" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannelCodeStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannelNameStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannelTypeCodeStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChannerTypeNameStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreType" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoreTel" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BrandStore" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OneLineFlag" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TL_WX_MemberSign">
+          <Key>
+            <PropertyRef Name="ActionCode" />
+            <PropertyRef Name="SignDate2" />
+            <PropertyRef Name="OpenID" />
+          </Key>
+          <Property Type="String" Name="MemberID" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ActionName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ActionCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="SignDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="SignDate2" Nullable="false" />
+          <Property Type="String" Name="OpenID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_Rpt_Mem_Recruit_Count_Result">
+          <Property Type="Int32" Name="rowId" Nullable="true" />
+          <Property Type="String" Name="StoreCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Channel" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Actual_Recruitnum_Mem" Nullable="true" />
+          <Property Type="String" Name="Same_Increase_Mem" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Lastyear_Increase_Mem" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Area_ratio_Mem" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_StoreConsumptionMonthly_Count_Result">
+          <Property Type="Int32" Name="rowIndexs" Nullable="true" />
+          <Property Type="String" Name="StoreCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="TotalSales" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AmountOfSales_Mem" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SalesContribution_Mem" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="SalesAmplificationHB_Mem" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="GuestPrice_Mem" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="GuestOrders_Mem" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TurnoverRate_Mem" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="HBAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TBAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_MemRepeatedConsumption_Result_Result">
+          <Property Type="Int32" Name="rn" Nullable="true" />
+          <Property Type="String" Name="MonthDate" Nullable="true" MaxLength="128" />
+          <Property Type="Decimal" Name="FirstSpendMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="FirstSpendTradeNumber" Nullable="true" />
+          <Property Type="Decimal" Name="RepeatedSpendMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="RepeatedSpendTradeNumber" Nullable="true" />
+          <Property Type="Int32" Name="RepeatedSpendPeople" Nullable="true" />
+          <Property Type="Decimal" Name="TotalSpendMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="TotalTradePeople" Nullable="true" />
+          <Property Type="Int32" Name="TotalTradeNumber" Nullable="true" />
+          <Property Type="Decimal" Name="FristTradeGuestUnitPrice" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="RepeatedTradeGuestUnitPrice" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="RepeatedTradeProportion" Nullable="true" Precision="18" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_WXSign_Detail_Result">
+          <Property Type="Int32" Name="rowIndex" Nullable="true" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="OpenID" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="SignDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="IsMem" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="IsAttendActive" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_Mem_ConsumerDetails_Result">
+          <Property Type="String" Name="rowid" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="ConsumptionDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ConsumptionStore" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ConsumptionChannel" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="No" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="StandardAmountSales" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TradeAmoutSales" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PayMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiscountMoney" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SettleMoney" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_UseCoupon_Count_Result">
+          <Property Type="Int32" Name="UseNumber" Nullable="true" />
+          <Property Type="String" Name="CouponName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="SendNumber" Nullable="true" />
+          <Property Type="Decimal" Name="UseRate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="ReceiveNumber" Nullable="true" />
+          <Property Type="Decimal" Name="RelativeAmount" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_PriceSegmentDistributionOffline_Result_Result">
+          <Property Type="String" Name="AreaCodeStore" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AreaNameStore" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="UnderHundred" Nullable="true" />
+          <Property Type="Int32" Name="HundredOneToThree" Nullable="true" />
+          <Property Type="Int32" Name="HundredThreeToSix" Nullable="true" />
+          <Property Type="Int32" Name="HundredSixToTwelve" Nullable="true" />
+          <Property Type="Int32" Name="HundredTwelveToTwenty" Nullable="true" />
+          <Property Type="Int32" Name="HundredTwentyToForty" Nullable="true" />
+          <Property Type="Int32" Name="OverFortyHundred" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_CouponDetail_Result">
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Channel" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Store" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="phonenumber" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="CouponName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CouponCode" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="RealtiveAmount" Nullable="false" Precision="4" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_MarketActivityDetail_Result">
+          <Property Type="String" Name="AreaActivityName" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="ActivityDate" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="SegmentAmonut" Nullable="false" />
+          <Property Type="Int32" Name="MsgPushAmount" Nullable="false" />
+          <Property Type="Decimal" Name="RealtiveAmount" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Decimal" Name="ResponseRate" Nullable="false" Precision="4" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_ActIntance_Count_Result">
+          <Property Type="String" Name="ActivityName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Excutetime" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="MemCnt" Nullable="true" />
+          <Property Type="Int32" Name="SmsCnt" Nullable="true" />
+          <Property Type="Decimal" Name="SalesAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="RespondRate" Nullable="true" Precision="18" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="sp_Rpt_UsedCoupon_Detail_Result">
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Channel" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Store" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="CouponName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CouponCode" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="SalesAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CRMReportModelStoreContainer" CdmEntityContainer="CRMReportEntities" >
+          <FunctionImportMapping FunctionImportName="sp_Rpt_MarketActivityTracking" FunctionName="CRMReportModel.Store.sp_Rpt_MarketActivityTracking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_MarketActivityTracking_Result">
+                <ScalarProperty Name="ActivityTime" ColumnName="ActivityTime" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="SubdivisionCustomersNumber" ColumnName="SubdivisionCustomersNumber" />
+                <ScalarProperty Name="SmsPushNumber" ColumnName="SmsPushNumber" />
+                <ScalarProperty Name="ReturnSalesCumulative" ColumnName="ReturnSalesCumulative" />
+                <ScalarProperty Name="OccupyOverallSalesB" ColumnName="OccupyOverallSalesB" />
+                <ScalarProperty Name="OccupyOverallPayB" ColumnName="OccupyOverallPayB" />
+                <ScalarProperty Name="OccupyOverallPayHB" ColumnName="OccupyOverallPayHB" />
+                <ScalarProperty Name="Male_MemNum" ColumnName="Male_MemNum" />
+                <ScalarProperty Name="Female_MemNum" ColumnName="Female_MemNum" />
+                <ScalarProperty Name="EighteenToTwentytwo_MemNum" ColumnName="EighteenToTwentytwo_MemNum" />
+                <ScalarProperty Name="TwentythreeToTwentynine_MemNum" ColumnName="TwentythreeToTwentynine_MemNum" />
+                <ScalarProperty Name="ThirtyToThirtyfive_MemNum" ColumnName="ThirtyToThirtyfive_MemNum" />
+                <ScalarProperty Name="ThirtyfiveToThirtynine_MemNum" ColumnName="ThirtyfiveToThirtynine_MemNum" />
+                <ScalarProperty Name="FortyThan_MemNum" ColumnName="FortyThan_MemNum" />
+                <ScalarProperty Name="Unknown_MemNum" ColumnName="Unknown_MemNum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_Activitycount" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_Activitycount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_Activitycount_Result">
+                <ScalarProperty Name="ActDate" ColumnName="ActDate" />
+                <ScalarProperty Name="ActName" ColumnName="ActName" />
+                <ScalarProperty Name="ConsumerNumber" ColumnName="ConsumerNumber" />
+                <ScalarProperty Name="SmsNumber" ColumnName="SmsNumber" />
+                <ScalarProperty Name="TotActMoney" ColumnName="TotActMoney" />
+                <ScalarProperty Name="TotActRate" ColumnName="TotActRate" />
+                <ScalarProperty Name="TradeRate" ColumnName="TradeRate" />
+                <ScalarProperty Name="ManNumber" ColumnName="ManNumber" />
+                <ScalarProperty Name="WomenNumber" ColumnName="WomenNumber" />
+                <ScalarProperty Name="SecretNumber" ColumnName="SecretNumber" />
+                <ScalarProperty Name="Age1Number" ColumnName="Age1Number" />
+                <ScalarProperty Name="Age2Number" ColumnName="Age2Number" />
+                <ScalarProperty Name="Age3Number" ColumnName="Age3Number" />
+                <ScalarProperty Name="Age4Number" ColumnName="Age4Number" />
+                <ScalarProperty Name="Age5Number" ColumnName="Age5Number" />
+                <ScalarProperty Name="UnknownNumber" ColumnName="UnknownNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_ConsumptionFrequency_Count" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_ConsumptionFrequency_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_ConsumptionFrequency_Count_Result">
+                <ScalarProperty Name="member" ColumnName="member" />
+                <ScalarProperty Name="FrequencyEqZero" ColumnName="FrequencyEqZero" />
+                <ScalarProperty Name="FrequencyEqOne" ColumnName="FrequencyEqOne" />
+                <ScalarProperty Name="FrequencyEqTwo" ColumnName="FrequencyEqTwo" />
+                <ScalarProperty Name="FrequencyEqThree" ColumnName="FrequencyEqThree" />
+                <ScalarProperty Name="FrequencyEqFour" ColumnName="FrequencyEqFour" />
+                <ScalarProperty Name="FrequencyEqFive" ColumnName="FrequencyEqFive" />
+                <ScalarProperty Name="FrequencyEqFiveGoTen" ColumnName="FrequencyEqFiveGoTen" />
+                <ScalarProperty Name="FrequencyThanTen" ColumnName="FrequencyThanTen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_ContributionRate_Statistics" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_ContributionRate_Statistics">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_ContributionRate_Statistics_Result">
+                <ScalarProperty Name="MemberLevel" ColumnName="MemberLevel" />
+                <ScalarProperty Name="Spending" ColumnName="Spending" />
+                <ScalarProperty Name="SpendingTB" ColumnName="SpendingTB" />
+                <ScalarProperty Name="SpendingHB" ColumnName="SpendingHB" />
+                <ScalarProperty Name="GuestUnitPrice" ColumnName="GuestUnitPrice" />
+                <ScalarProperty Name="GuestUnitPriceTB" ColumnName="GuestUnitPriceTB" />
+                <ScalarProperty Name="GuestUnitPriceHB" ColumnName="GuestUnitPriceHB" />
+                <ScalarProperty Name="GuestUnitCount" ColumnName="GuestUnitCount" />
+                <ScalarProperty Name="GuestUnitCountTB" ColumnName="GuestUnitCountTB" />
+                <ScalarProperty Name="GuestUnitCountHB" ColumnName="GuestUnitCountHB" />
+                <ScalarProperty Name="SpendingRiseRate" ColumnName="SpendingRiseRate" />
+                <ScalarProperty Name="ContributionRateMember" ColumnName="ContributionRateMember" />
+                <ScalarProperty Name="ContributionRateTotal" ColumnName="ContributionRateTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_Count" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_Count_Result">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="ChannelCodeBase" ColumnName="ChannelCodeBase" />
+                <ScalarProperty Name="CityCodeStore" ColumnName="CityCodeStore" />
+                <ScalarProperty Name="AreaCodeStore" ColumnName="AreaCodeStore" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="rn" ColumnName="rn" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="Will_Mem" ColumnName="Will_Mem" />
+                <ScalarProperty Name="Com_Mem" ColumnName="Com_Mem" />
+                <ScalarProperty Name="Copper_Mem" ColumnName="Copper_Mem" />
+                <ScalarProperty Name="Silver_Mem" ColumnName="Silver_Mem" />
+                <ScalarProperty Name="Gold_Mem" ColumnName="Gold_Mem" />
+                <ScalarProperty Name="Platinum_Mem" ColumnName="Platinum_Mem" />
+                <ScalarProperty Name="Total_Mem" ColumnName="Total_Mem" />
+                <ScalarProperty Name="Will_Mem_New" ColumnName="Will_Mem_New" />
+                <ScalarProperty Name="Com_Mem_New" ColumnName="Com_Mem_New" />
+                <ScalarProperty Name="Copper_Mem_New" ColumnName="Copper_Mem_New" />
+                <ScalarProperty Name="Silver_Mem_New" ColumnName="Silver_Mem_New" />
+                <ScalarProperty Name="Gold_Mem_New" ColumnName="Gold_Mem_New" />
+                <ScalarProperty Name="Platinum_Mem_New" ColumnName="Platinum_Mem_New" />
+                <ScalarProperty Name="Total_Mem_New" ColumnName="Total_Mem_New" />
+                <ScalarProperty Name="Percent_Mem" ColumnName="Percent_Mem" />
+                <ScalarProperty Name="Active_Mem" ColumnName="Active_Mem" />
+                <ScalarProperty Name="WillLose_Mem" ColumnName="WillLose_Mem" />
+                <ScalarProperty Name="Lose_Mem" ColumnName="Lose_Mem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_IssuingConsumption_Result" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_IssuingConsumption_Result">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_IssuingConsumption_Result_Result">
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="Com_Mem_Get" ColumnName="Com_Mem_Get" />
+                <ScalarProperty Name="Copper_Mem_Get" ColumnName="Copper_Mem_Get" />
+                <ScalarProperty Name="Silver_Mem_Get" ColumnName="Silver_Mem_Get" />
+                <ScalarProperty Name="Gold_Mem_Get" ColumnName="Gold_Mem_Get" />
+                <ScalarProperty Name="Platinum_Mem_Get" ColumnName="Platinum_Mem_Get" />
+                <ScalarProperty Name="Total_Mem_Get" ColumnName="Total_Mem_Get" />
+                <ScalarProperty Name="Com_Mem_Cost" ColumnName="Com_Mem_Cost" />
+                <ScalarProperty Name="Copper_Mem_Cost" ColumnName="Copper_Mem_Cost" />
+                <ScalarProperty Name="Silver_Mem_Cost" ColumnName="Silver_Mem_Cost" />
+                <ScalarProperty Name="Gold_Mem_Cost" ColumnName="Gold_Mem_Cost" />
+                <ScalarProperty Name="Platinum_Mem_Cost" ColumnName="Platinum_Mem_Cost" />
+                <ScalarProperty Name="Total_Mem_Cost" ColumnName="Total_Mem_Cost" />
+                <ScalarProperty Name="Com_Mem_Left" ColumnName="Com_Mem_Left" />
+                <ScalarProperty Name="Copper_Mem_Left" ColumnName="Copper_Mem_Left" />
+                <ScalarProperty Name="Silver_Mem_Left" ColumnName="Silver_Mem_Left" />
+                <ScalarProperty Name="Gold_Mem_Left" ColumnName="Gold_Mem_Left" />
+                <ScalarProperty Name="Platinum_Mem_Left" ColumnName="Platinum_Mem_Left" />
+                <ScalarProperty Name="Total_Mem_Left" ColumnName="Total_Mem_Left" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_MemToNonMemSalesDutyCount" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_MemToNonMemSalesDutyCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_MemToNonMemSalesDutyCount_Result">
+                <ScalarProperty Name="Type_Mem" ColumnName="Type_Mem" />
+                <ScalarProperty Name="Expendture_Mem" ColumnName="Expendture_Mem" />
+                <ScalarProperty Name="ExpendtureSum_Mem" ColumnName="ExpendtureSum_Mem" />
+                <ScalarProperty Name="ConsumptionContribution_Mem" ColumnName="ConsumptionContribution_Mem" />
+                <ScalarProperty Name="ConsumptionContributionSum_Mem" ColumnName="ConsumptionContributionSum_Mem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_MemContributionRate_Result" FunctionName="CRMReportModel.Store.sp_Rpt_MemContributionRate_Result">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_MemContributionRate_Result_Result">
+                <ScalarProperty Name="MemberLevel" ColumnName="MemberLevel" />
+                <ScalarProperty Name="Spending" ColumnName="Spending" />
+                <ScalarProperty Name="SpendingTB" ColumnName="SpendingTB" />
+                <ScalarProperty Name="SpendingHB" ColumnName="SpendingHB" />
+                <ScalarProperty Name="GuestUnitPrice" ColumnName="GuestUnitPrice" />
+                <ScalarProperty Name="GuestUnitPriceTB" ColumnName="GuestUnitPriceTB" />
+                <ScalarProperty Name="GuestUnitPriceHB" ColumnName="GuestUnitPriceHB" />
+                <ScalarProperty Name="GuestUnitCount" ColumnName="GuestUnitCount" />
+                <ScalarProperty Name="GuestUnitCountTB" ColumnName="GuestUnitCountTB" />
+                <ScalarProperty Name="GuestUnitCountHB" ColumnName="GuestUnitCountHB" />
+                <ScalarProperty Name="SpendingRiseRate" ColumnName="SpendingRiseRate" />
+                <ScalarProperty Name="ContributionRateMember" ColumnName="ContributionRateMember" />
+                <ScalarProperty Name="ContributionRateTotal" ColumnName="ContributionRateTotal" />
+                <ScalarProperty Name="SpendingTotal" ColumnName="SpendingTotal" />
+                <ScalarProperty Name="SpendingTotalRiseRate" ColumnName="SpendingTotalRiseRate" />
+                <ScalarProperty Name="SpendingTotalConRate" ColumnName="SpendingTotalConRate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_MemMonthConsum" FunctionName="CRMReportModel.Store.sp_Rpt_MemMonthConsum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_MemMonthConsum_Result">
+                <ScalarProperty Name="MemType" ColumnName="MemType" />
+                <ScalarProperty Name="StatTime" ColumnName="StatTime" />
+                <ScalarProperty Name="Cnt1" ColumnName="Cnt1" />
+                <ScalarProperty Name="Cnt2" ColumnName="Cnt2" />
+                <ScalarProperty Name="Cnt3" ColumnName="Cnt3" />
+                <ScalarProperty Name="Cnt4" ColumnName="Cnt4" />
+                <ScalarProperty Name="Cnt5" ColumnName="Cnt5" />
+                <ScalarProperty Name="Cnt6" ColumnName="Cnt6" />
+                <ScalarProperty Name="Cnt7" ColumnName="Cnt7" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_MemUpGrade" FunctionName="CRMReportModel.Store.sp_Rpt_MemUpGrade">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_MemUpGrade_Result">
+                <ScalarProperty Name="rowIndex" ColumnName="rowIndex" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="ComToCopper" ColumnName="ComToCopper" />
+                <ScalarProperty Name="CopperToSilver" ColumnName="CopperToSilver" />
+                <ScalarProperty Name="SilverToGold" ColumnName="SilverToGold" />
+                <ScalarProperty Name="GoldToPlatinum" ColumnName="GoldToPlatinum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_StoreConsumptionDuty_Count" FunctionName="CRMReportModel.Store.sp_Rpt_StoreConsumptionDuty_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_StoreConsumptionDuty_Count_Result">
+                <ScalarProperty Name="rowId" ColumnName="rowId" />
+                <ScalarProperty Name="storecode" ColumnName="storecode" />
+                <ScalarProperty Name="Expendture_Mem" ColumnName="Expendture_Mem" />
+                <ScalarProperty Name="ConsumptionMoneySum_Mem" ColumnName="ConsumptionMoneySum_Mem" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="ConsumptionTotalMoney" ColumnName="ConsumptionTotalMoney" />
+                <ScalarProperty Name="DutyTotal" ColumnName="DutyTotal" />
+                <ScalarProperty Name="DutyExpendture" ColumnName="DutyExpendture" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Prd_WeChatSign" FunctionName="CRMReportModel.Store.sp_Rpt_Prd_WeChatSign">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Prd_WeChatSign_Result">
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="SignDate" ColumnName="SignDate" />
+                <ScalarProperty Name="fscs" ColumnName="fscs" />
+                <ScalarProperty Name="bpcqdcs" ColumnName="bpcqdcs" />
+                <ScalarProperty Name="qdcs" ColumnName="qdcs" />
+                <ScalarProperty Name="hyqdcs" ColumnName="hyqdcs" />
+                <ScalarProperty Name="fhyqdcs" ColumnName="fhyqdcs" />
+                <ScalarProperty Name="qdl" ColumnName="qdl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_WXSign" FunctionName="CRMReportModel.Store.sp_Rpt_WXSign">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_WXSign_Result">
+                <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="SendCount" ColumnName="SendCount" />
+                <ScalarProperty Name="SignCountAll" ColumnName="SignCountAll" />
+                <ScalarProperty Name="SignCountSend" ColumnName="SignCountSend" />
+                <ScalarProperty Name="SignCountMem" ColumnName="SignCountMem" />
+                <ScalarProperty Name="SignCountNOTMem" ColumnName="SignCountNOTMem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TM_Act_CommunicationTemplet">
+            <EntityTypeMapping TypeName="CRMReportModel.TM_Act_CommunicationTemplet">
+              <MappingFragment StoreEntitySet="TM_Act_CommunicationTemplet">
+                <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+                <ScalarProperty Name="LimitTypeKey" ColumnName="LimitTypeKey" />
+                <ScalarProperty Name="RunTimes" ColumnName="RunTimes" />
+                <ScalarProperty Name="IsSync" ColumnName="IsSync" />
+                <ScalarProperty Name="IsSysInit" ColumnName="IsSysInit" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="AddedUser" ColumnName="AddedUser" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ForeignTempletID" ColumnName="ForeignTempletID" />
+                <ScalarProperty Name="LimitType" ColumnName="LimitType" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="MaxSetPrice" ColumnName="MaxSetPrice" />
+                <ScalarProperty Name="Proportion" ColumnName="Proportion" />
+                <ScalarProperty Name="InternalSetPrice" ColumnName="InternalSetPrice" />
+                <ScalarProperty Name="IDOSPackageMapping" ColumnName="IDOSPackageMapping" />
+                <ScalarProperty Name="BasicContent" ColumnName="BasicContent" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SubType" ColumnName="SubType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+                <ScalarProperty Name="SchemaId" ColumnName="SchemaId" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="TempletID" ColumnName="TempletID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_area">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_area">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_area">
+                <ScalarProperty Name="AreaCodeBase" ColumnName="AreaCodeBase" />
+                <ScalarProperty Name="AreaNameBase" ColumnName="AreaNameBase" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_brand">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_brand">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_brand">
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_channel">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_channel">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_channel">
+                <ScalarProperty Name="ChannelIsEnableBase" ColumnName="ChannelIsEnableBase" />
+                <ScalarProperty Name="ChannelCodeBase" ColumnName="ChannelCodeBase" />
+                <ScalarProperty Name="ChannelNameBase" ColumnName="ChannelNameBase" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_colors">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_colors">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_colors">
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_customerlevel">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_customerlevel">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_customerlevel">
+                <ScalarProperty Name="LevelUpInt" ColumnName="LevelUpInt" />
+                <ScalarProperty Name="BrandNameCustomerLevel" ColumnName="BrandNameCustomerLevel" />
+                <ScalarProperty Name="MaxIntergral" ColumnName="MaxIntergral" />
+                <ScalarProperty Name="BrandCodeCustomerLevel" ColumnName="BrandCodeCustomerLevel" />
+                <ScalarProperty Name="RateCustomerLevel" ColumnName="RateCustomerLevel" />
+                <ScalarProperty Name="CustomerLevelNameBase" ColumnName="CustomerLevelNameBase" />
+                <ScalarProperty Name="CustomerLevelBase" ColumnName="CustomerLevelBase" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_product">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_product">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_product">
+                <ScalarProperty Name="ProductSyncFlag" ColumnName="ProductSyncFlag" />
+                <ScalarProperty Name="ProductStatusNameBase" ColumnName="ProductStatusNameBase" />
+                <ScalarProperty Name="ProductStatusCode" ColumnName="ProductStatusCode" />
+                <ScalarProperty Name="ProductBrandNameBase" ColumnName="ProductBrandNameBase" />
+                <ScalarProperty Name="ProductBrandCode" ColumnName="ProductBrandCode" />
+                <ScalarProperty Name="StopUsageFlag" ColumnName="StopUsageFlag" />
+                <ScalarProperty Name="OrginalSellPrice" ColumnName="OrginalSellPrice" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="SubCategoryCode" ColumnName="SubCategoryCode" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="ProductLineName3" ColumnName="ProductLineName3" />
+                <ScalarProperty Name="ProductLineCode3" ColumnName="ProductLineCode3" />
+                <ScalarProperty Name="ProductLineName2Base" ColumnName="ProductLineName2Base" />
+                <ScalarProperty Name="ProductLineCode2" ColumnName="ProductLineCode2" />
+                <ScalarProperty Name="ProductLineName1Base" ColumnName="ProductLineName1Base" />
+                <ScalarProperty Name="ProductLineCode1" ColumnName="ProductLineCode1" />
+                <ScalarProperty Name="ProductCode_IPOS" ColumnName="ProductCode_IPOS" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_productBrand">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_productBrand">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_productBrand">
+                <ScalarProperty Name="ProductBrandCodeBase2" ColumnName="ProductBrandCodeBase2" />
+                <ScalarProperty Name="ProductBrandNameBase2" ColumnName="ProductBrandNameBase2" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_productCategory">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_productCategory">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_productCategory">
+                <ScalarProperty Name="ProductCategoryCodeBase2" ColumnName="ProductCategoryCodeBase2" />
+                <ScalarProperty Name="ProductCategoryNameBase2" ColumnName="ProductCategoryNameBase2" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_productline1">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_productline1">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_productline1">
+                <ScalarProperty Name="ProductLine1Code" ColumnName="ProductLine1Code" />
+                <ScalarProperty Name="ProductLine1Name" ColumnName="ProductLine1Name" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_productline2">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_productline2">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_productline2">
+                <ScalarProperty Name="ProductLine2Code" ColumnName="ProductLine2Code" />
+                <ScalarProperty Name="ProductLine2Name" ColumnName="ProductLine2Name" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_promotion">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_promotion">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_promotion">
+                <ScalarProperty Name="PromotionEndDate" ColumnName="PromotionEndDate" />
+                <ScalarProperty Name="PromotionStartDate" ColumnName="PromotionStartDate" />
+                <ScalarProperty Name="EndDatePromotion" ColumnName="EndDatePromotion" />
+                <ScalarProperty Name="StartDatePromotion" ColumnName="StartDatePromotion" />
+                <ScalarProperty Name="PromotionIsEnd" ColumnName="PromotionIsEnd" />
+                <ScalarProperty Name="PromotionRemark" ColumnName="PromotionRemark" />
+                <ScalarProperty Name="PromotionType" ColumnName="PromotionType" />
+                <ScalarProperty Name="PromotionBillType" ColumnName="PromotionBillType" />
+                <ScalarProperty Name="PromotionName" ColumnName="PromotionName" />
+                <ScalarProperty Name="PromotionCode" ColumnName="PromotionCode" />
+                <ScalarProperty Name="PromotionID" ColumnName="PromotionID" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_M_TM_SYS_BaseData_store">
+            <EntityTypeMapping TypeName="CRMReportModel.V_M_TM_SYS_BaseData_store">
+              <MappingFragment StoreEntitySet="V_M_TM_SYS_BaseData_store">
+                <ScalarProperty Name="OneLineFlag" ColumnName="OneLineFlag" />
+                <ScalarProperty Name="BrandStore" ColumnName="BrandStore" />
+                <ScalarProperty Name="StoreTel" ColumnName="StoreTel" />
+                <ScalarProperty Name="StoreType" ColumnName="StoreType" />
+                <ScalarProperty Name="ChannerTypeNameStore" ColumnName="ChannerTypeNameStore" />
+                <ScalarProperty Name="ChannelTypeCodeStore" ColumnName="ChannelTypeCodeStore" />
+                <ScalarProperty Name="ChannelNameStore" ColumnName="ChannelNameStore" />
+                <ScalarProperty Name="ChannelCodeStore" ColumnName="ChannelCodeStore" />
+                <ScalarProperty Name="AddressStore" ColumnName="AddressStore" />
+                <ScalarProperty Name="CityStore" ColumnName="CityStore" />
+                <ScalarProperty Name="CityCodeStore" ColumnName="CityCodeStore" />
+                <ScalarProperty Name="ProvinceStore" ColumnName="ProvinceStore" />
+                <ScalarProperty Name="ProvinceCodeStore" ColumnName="ProvinceCodeStore" />
+                <ScalarProperty Name="AreaNameStore" ColumnName="AreaNameStore" />
+                <ScalarProperty Name="AreaCodeStore" ColumnName="AreaCodeStore" />
+                <ScalarProperty Name="StoreCode_IPOS" ColumnName="StoreCode_IPOS" />
+                <ScalarProperty Name="StoreFullName" ColumnName="StoreFullName" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="BaseDataType" ColumnName="BaseDataType" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="BaseDataID" ColumnName="BaseDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TL_WX_MemberSign">
+            <EntityTypeMapping TypeName="CRMReportModel.TL_WX_MemberSign">
+              <MappingFragment StoreEntitySet="TL_WX_MemberSign">
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+                <ScalarProperty Name="SignDate2" ColumnName="SignDate2" />
+                <ScalarProperty Name="SignDate" ColumnName="SignDate" />
+                <ScalarProperty Name="ActionCode" ColumnName="ActionCode" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_Recruit_Count" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_Recruit_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_Recruit_Count_Result">
+                <ScalarProperty Name="rowId" ColumnName="rowId" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="Actual_Recruitnum_Mem" ColumnName="Actual_Recruitnum_Mem" />
+                <ScalarProperty Name="Same_Increase_Mem" ColumnName="Same_Increase_Mem" />
+                <ScalarProperty Name="Lastyear_Increase_Mem" ColumnName="Lastyear_Increase_Mem" />
+                <ScalarProperty Name="Area_ratio_Mem" ColumnName="Area_ratio_Mem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_StoreConsumptionMonthly_Count" FunctionName="CRMReportModel.Store.sp_Rpt_StoreConsumptionMonthly_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_StoreConsumptionMonthly_Count_Result">
+                <ScalarProperty Name="rowIndexs" ColumnName="rowIndexs" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="TotalSales" ColumnName="TotalSales" />
+                <ScalarProperty Name="AmountOfSales_Mem" ColumnName="AmountOfSales_Mem" />
+                <ScalarProperty Name="SalesContribution_Mem" ColumnName="SalesContribution_Mem" />
+                <ScalarProperty Name="SalesAmplificationHB_Mem" ColumnName="SalesAmplificationHB_Mem" />
+                <ScalarProperty Name="GuestPrice_Mem" ColumnName="GuestPrice_Mem" />
+                <ScalarProperty Name="GuestOrders_Mem" ColumnName="GuestOrders_Mem" />
+                <ScalarProperty Name="TurnoverRate_Mem" ColumnName="TurnoverRate_Mem" />
+                <ScalarProperty Name="HBAmount" ColumnName="HBAmount" />
+                <ScalarProperty Name="TBAmount" ColumnName="TBAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_MemRepeatedConsumption_Result" FunctionName="CRMReportModel.Store.sp_Rpt_MemRepeatedConsumption_Result">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_MemRepeatedConsumption_Result_Result">
+                <ScalarProperty Name="rn" ColumnName="rn" />
+                <ScalarProperty Name="MonthDate" ColumnName="MonthDate" />
+                <ScalarProperty Name="FirstSpendMoney" ColumnName="FirstSpendMoney" />
+                <ScalarProperty Name="FirstSpendTradeNumber" ColumnName="FirstSpendTradeNumber" />
+                <ScalarProperty Name="RepeatedSpendMoney" ColumnName="RepeatedSpendMoney" />
+                <ScalarProperty Name="RepeatedSpendTradeNumber" ColumnName="RepeatedSpendTradeNumber" />
+                <ScalarProperty Name="RepeatedSpendPeople" ColumnName="RepeatedSpendPeople" />
+                <ScalarProperty Name="TotalSpendMoney" ColumnName="TotalSpendMoney" />
+                <ScalarProperty Name="TotalTradePeople" ColumnName="TotalTradePeople" />
+                <ScalarProperty Name="TotalTradeNumber" ColumnName="TotalTradeNumber" />
+                <ScalarProperty Name="FristTradeGuestUnitPrice" ColumnName="FristTradeGuestUnitPrice" />
+                <ScalarProperty Name="RepeatedTradeGuestUnitPrice" ColumnName="RepeatedTradeGuestUnitPrice" />
+                <ScalarProperty Name="RepeatedTradeProportion" ColumnName="RepeatedTradeProportion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_WXSign_Detail" FunctionName="CRMReportModel.Store.sp_Rpt_WXSign_Detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_WXSign_Detail_Result">
+                <ScalarProperty Name="rowIndex" ColumnName="rowIndex" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+                <ScalarProperty Name="SignDate" ColumnName="SignDate" />
+                <ScalarProperty Name="IsMem" ColumnName="IsMem" />
+                <ScalarProperty Name="IsAttendActive" ColumnName="IsAttendActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_Mem_ConsumerDetails" FunctionName="CRMReportModel.Store.sp_Rpt_Mem_ConsumerDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_Mem_ConsumerDetails_Result">
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+                <ScalarProperty Name="ConsumptionDate" ColumnName="ConsumptionDate" />
+                <ScalarProperty Name="ConsumptionStore" ColumnName="ConsumptionStore" />
+                <ScalarProperty Name="ConsumptionChannel" ColumnName="ConsumptionChannel" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="StandardAmountSales" ColumnName="StandardAmountSales" />
+                <ScalarProperty Name="TradeAmoutSales" ColumnName="TradeAmoutSales" />
+                <ScalarProperty Name="PayMoney" ColumnName="PayMoney" />
+                <ScalarProperty Name="DiscountMoney" ColumnName="DiscountMoney" />
+                <ScalarProperty Name="SettleMoney" ColumnName="SettleMoney" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_UseCoupon_Count" FunctionName="CRMReportModel.Store.sp_Rpt_UseCoupon_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_UseCoupon_Count_Result">
+                <ScalarProperty Name="UseNumber" ColumnName="UseNumber" />
+                <ScalarProperty Name="CouponName" ColumnName="CouponName" />
+                <ScalarProperty Name="SendNumber" ColumnName="SendNumber" />
+                <ScalarProperty Name="UseRate" ColumnName="UseRate" />
+                <ScalarProperty Name="ReceiveNumber" ColumnName="ReceiveNumber" />
+                <ScalarProperty Name="RelativeAmount" ColumnName="RelativeAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_PriceSegmentDistributionOffline_Result" FunctionName="CRMReportModel.Store.sp_Rpt_PriceSegmentDistributionOffline_Result">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_PriceSegmentDistributionOffline_Result_Result">
+                <ScalarProperty Name="AreaCodeStore" ColumnName="AreaCodeStore" />
+                <ScalarProperty Name="AreaNameStore" ColumnName="AreaNameStore" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="UnderHundred" ColumnName="UnderHundred" />
+                <ScalarProperty Name="HundredOneToThree" ColumnName="HundredOneToThree" />
+                <ScalarProperty Name="HundredThreeToSix" ColumnName="HundredThreeToSix" />
+                <ScalarProperty Name="HundredSixToTwelve" ColumnName="HundredSixToTwelve" />
+                <ScalarProperty Name="HundredTwelveToTwenty" ColumnName="HundredTwelveToTwenty" />
+                <ScalarProperty Name="HundredTwentyToForty" ColumnName="HundredTwentyToForty" />
+                <ScalarProperty Name="OverFortyHundred" ColumnName="OverFortyHundred" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_CouponDetail" FunctionName="CRMReportModel.Store.sp_Rpt_CouponDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_CouponDetail_Result">
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="CouponName" ColumnName="CouponName" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="RealtiveAmount" ColumnName="RealtiveAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_MarketActivityDetail" FunctionName="CRMReportModel.Store.sp_Rpt_MarketActivityDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_MarketActivityDetail_Result">
+                <ScalarProperty Name="AreaActivityName" ColumnName="AreaActivityName" />
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+                <ScalarProperty Name="SegmentAmonut" ColumnName="SegmentAmonut" />
+                <ScalarProperty Name="MsgPushAmount" ColumnName="MsgPushAmount" />
+                <ScalarProperty Name="RealtiveAmount" ColumnName="RealtiveAmount" />
+                <ScalarProperty Name="ResponseRate" ColumnName="ResponseRate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_ActIntance_Count" FunctionName="CRMReportModel.Store.sp_Rpt_ActIntance_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_ActIntance_Count_Result">
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="Excutetime" ColumnName="Excutetime" />
+                <ScalarProperty Name="MemCnt" ColumnName="MemCnt" />
+                <ScalarProperty Name="SmsCnt" ColumnName="SmsCnt" />
+                <ScalarProperty Name="SalesAmount" ColumnName="SalesAmount" />
+                <ScalarProperty Name="RespondRate" ColumnName="RespondRate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Rpt_UsedCoupon_Detail" FunctionName="CRMReportModel.Store.sp_Rpt_UsedCoupon_Detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRMReportModel.sp_Rpt_UsedCoupon_Detail_Result">
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Store" ColumnName="Store" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CouponName" ColumnName="CouponName" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="SalesAmount" ColumnName="SalesAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

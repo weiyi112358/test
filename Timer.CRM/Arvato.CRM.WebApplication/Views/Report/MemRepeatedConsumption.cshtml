@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "会员重复消费统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string startTime = DateTime.Now.Year.ToString() + "-01";
+    string endTime = DateTime.Now.ToString("yyyy-MM");
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员重复消费统计</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span3">
+            <label>渠道</label>
+            <select id="drpChannel" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannel">
+                <option value="">全部</option>
+                @foreach (var chan in ViewBag.Channels)
+                {
+                    <option value="@chan.OptionValue">@chan.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>大区</label>
+            <select id="drpArea" class="chzn_a span12" name="drpArea">
+                <option value="">全部</option>
+                @foreach (var area in ViewBag.Areas)
+                {
+                    <option value="@area.OptionValue">@area.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>城市</label>
+            <select id="drpCity" class="chzn_a span12" name="drpCity">
+                <option value="">全部</option>
+                @foreach (var city in ViewBag.City)
+                {
+                    <option value="@city.RegionID">@city.NameZH</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>店铺</label>
+            <select id="drpStores" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpStores">
+                <option value="">全部</option>
+                @foreach (var store in ViewBag.Stores)
+                {
+                    <option value="@store.StoreCode">@store.StoreName</option>
+                }
+            </select>
+        </div>
+
+    </div>
+
+    <div class="row-fluid">
+        <div class="span3">
+            <label>开始日期</label>
+            <input type="text" class="span12" readonly="readonly" style="cursor:pointer" value="@startTime" id="txtStartDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span3">
+            <label>截止日期</label>
+            <input type="text" class="span12" readonly="readonly" style="cursor:pointer" value="@endTime" id="txtEndDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span4">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dtRepeatedConsumption">
+        <thead>
+            <tr>
+                <th scope="col">月份</th>
+                <th scope="col">首次消费金额</th>
+                <th scope="col">首次消费交易数</th>
+                <th scope="col">重复消费金额</th>
+                <th scope="col">重复消费交易数</th>
+                <th scope="col">重复消费人数</th>
+                <th scope="col">总消费金额</th>
+                <th scope="col">总交易人数(去重)</th>
+                <th scope="col">总交易数</th>
+                <th scope="col">首次消费客单价</th>
+                <th scope="col">重复消费客单价</th>
+                <th scope="col">重复消费占比</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div style="margin-top: 15px">
+    ★ 首次消费金额：在选择的时间段内，第一次消费的金额<br />
+    ★ 重复消费占比=重复消费人数（去重）/总交易人数（去重）<br />
+</div>
+<form id="exportForm" method="post">
+    <input type="hidden" id="exprDtStart" name="exprDtStart" />
+    <input type="hidden" id="exprDtEnd" name="exprDtEnd" />
+    <input type="hidden" id="exprChannel" name="exprChannel" />
+    <input type="hidden" id="exprArea" name="exprArea" />
+    <input type="hidden" id="exprCity" name="exprCity" />
+    <input type="hidden" id="exprStore" name="exprStore" />
+</form>
+
+
+@section Scripts{
+    <script src="~/Scripts/Pages/Report/MemRepeatedConsumption.js"></script>
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+
+}

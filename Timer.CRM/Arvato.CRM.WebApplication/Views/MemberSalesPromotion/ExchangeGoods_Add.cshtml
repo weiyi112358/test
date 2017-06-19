@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "SendEdit";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3 id="hTitleName">新建规则</h3>
+    </div>
+</div>
+
+
+
+
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "ActionForm" }))
+{
+    <div class="formSep">
+        <input type="hidden" id="txtID" name="txtID" value="@ViewBag.ID"/>
+        <input type="hidden" id="txtInfo" name="txtInfo" value="@ViewBag.Info"/>
+        <div class="row-fluid ">
+            <div class="row-fluid">
+                <div class="span3">
+                    <label>单号 <span class="f_req">*</span></label>
+                    <input type="text" name="Code" class="span12 switch" id="Code" disabled ="disabled"/>
+                    <span class="error-block"></span>
+                </div>
+                
+                <div class="span3" id="div1">
+                    <label>兑奖类型 <span class="f_req">*</span></label>
+                    <select   class="span12 sepV_a input-medium" id="ExchangeType">
+                      <option value="">请选择</option>
+                      <option value="0">生日兑奖</option>
+                      <option value="1">普通兑奖</option>
+                  </select>
+                </div>
+                <div class="span3">
+                    <label>开始日期 <span class="f_req">*</span></label>
+                    <input type="text" name="txtStartDate" class="span12 switch" id="txtStartDate" />
+                    <span class="error-block"></span>
+                </div>
+                        
+            </div>
+
+            <div class="row-fluid">
+                <div class="span3" >
+                    <label>结束日期 <span class="f_req">*</span></label>
+                    <input type="text" name="txtEndDate" class="span12 switch" id="txtEndDate" />
+                    <span class="error-block"></span>
+                </div>
+                <div class="span3" >
+                    <label>说明</label>
+                    <input type="text" name="remark" class="span12 switch" id="remark" />
+                    <span class="error-block"></span>
+                </div>
+
+                @*<div class="span3">
+                    <label>卡类型使用限制</label>
+                    <select class="span12 switch" id="CardTypeLimit" multiple data-placeholder="无限制">
+                    </select>
+                </div>   *@ 
+                
+                <div class="span3">
+                    <label>会员等级使用限制</label>
+                    <select class="span12 switch" id="LevelLimit" multiple data-placeholder="无限制">
+                    </select>
+                </div>  
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    规则明细
+                </div>
+                <div class="span7">
+                    <div class="row-fluid">
+                        <button id="btnAdd" class="btn btn-info" type="button">添加</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    &nbsp;
+                </div>
+                <table class="table" data-provides="rowlink" id="dt_Table"></table>
+            </div>
+             
+            
+            
+        </div>
+    </div>    
+    <div class="row-fluid">
+        <div class="pull-right sepV_c">
+
+            <button class="btn btn-info" id="btnSave" type="button">保存</button>
+              @if (ViewBag.ID!=null&&ViewBag.ID!="")
+              {
+                   <button id="btnPass" class="btn btn-success" type="button">审核通过</button>@*
+                    <button id="btnCancelPass" class="btn btn-danger" type="button">撤销审核</button>*@
+              }
+                   
+            <button class="btn" id="btnReturn" onclick="javascript:history.go(-1); " type="button">返回</button>
+        </div>
+    </div>
+}
+
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addDetail_dialog" class="cbox_content">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>添加明细</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_c">
+                @*<div class="row-fluid sepH_c">
+                    <div class="form-inline">
+                        <label class="title-left ml10">商品ID</label>
+                        <input type="text" class="span2 sepV_a" id="GoodsID1" name="GoodsID" />
+                        
+                        <label class="title-left ml10">最大兑奖次数</label>
+                        <input type="text" class="span2 sepV_a" id="MaxCounts1" name="MaxCounts" />
+                        <label class="title-left ml10">抵扣价</label>
+                        <input type="text" class="span2 sepV_a" id="DiscountValue1" name="DiscountValue" />
+                        <label class="title-left ml10">最小兑换单元</label>
+                        <input type="text" class="span2 sepV_a" id="MinCounts1" name="MinCounts" />
+                        <label class="title-left ml10">输入码</label>
+                        <input type="text" class="span2 sepV_a" id="InputCode1" name="InputCode" />
+                        
+                    </div>
+                </div>*@
+
+                <div class="row-fluid sepH_b">
+                    <div class="row-fluid sepH_b">
+                        <div class="span2 title-left">
+                            商品名称<span style="color: red"> * </span>
+                        </div>
+                        
+                        <select id="AcceptingUnit1" class="chzn_a span5 sepV_a input-medium" name="AcceptingUnit1"></select>
+                        <span class="error-block"></span>
+                    </div>
+
+
+
+                    <div class="row-fluid sepH_b hide">
+                        <div class="span2 title-left">
+                            商品代码
+                        </div>
+
+                        <input type="text" id="GoodsCode" name="GoodsCode" class="span3 sepV_a input-medium" readonly="readonly" />
+                        <span class="error-block"></span>
+
+
+                    </div>
+
+                    <div class="row-fluid sepH_b">
+                        <div class="span2 title-left">
+                            最大兑奖次数<span style="color: red"> * </span>
+                        </div>
+                        <input type="text" id="MaxCounts" name="MaxCounts" class="span3" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="row-fluid sepH_b">
+                        <div class="span2 title-left">
+                            抵扣价<span style="color: red"> * </span>
+                        </div>
+                        <input type="text" id="DiscountValue" name="DiscountValue" class="span3"  />
+                        <span class="error-block"></span>
+                    </div>
+
+                    <div class="row-fluid sepH_b">
+                        <div class="span2 title-left">
+                            最小兑换单元<span style="color: red"> * </span>
+                        </div>
+                        <input type="text" id="MinCounts" name="MinCounts" class="span3"  />
+                        <span class="error-block"></span>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+                
+                <div class="pull-right oneLine textright">
+                    <button id="btnDetailSave" class="btn btn-primary">保存</button>
+                    <button id="btnCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="processingdiv" style="display: none;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="loading" style="text-align: center; vertical-align: middle">
+                <br />
+                <img src="~/new_img/loading.gif" /><br />
+                <span id="txtspan"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/MemberSalesPromotion/ExchangeGoodsAdd.js")
+}

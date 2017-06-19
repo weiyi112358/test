@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "RetrieveNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+
+    <div class="pull-left">
+        <h3>收卡</h3>
+    </div>
+    <div class="pull-right">  
+            @using (Html.BeginForm("RetrieveListToExcel", "PurchasesNew", FormMethod.Post, new { @class = "span4" }))
+            {
+                  @Html.Hidden("txtExcelRetrieveOddIdNo")
+                  @Html.Hidden("txtExcelAgent")
+                  @Html.Hidden("txtExcelStatus")
+                  @Html.Hidden("txtExcelCustomizeOddIdNo")
+                  @Html.Hidden("txtExcelReserveBox")
+                  @Html.Hidden("txtExcelCreateTime")
+                <input type="submit" class="btn btn-info" value="导出"/>
+            }
+         @using (Html.BeginForm("RetrieveAddNew", "PurchasesNew", FormMethod.Post, new { @class = "span4" }))
+        {
+           <input type="submit" class="btn"  value="新建"/>
+        }
+    </div>  
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="form-inline well">
+        <div class="row-fluid" id="queryCondition">
+            <div class="span3">
+                <label class="title-left sepV_a ml10">收货单单号</label>                   
+                <input type="text" class="span12" id="queryRetrieveOddId"/>
+            </div>
+            <div class="span3" style="display:none">
+                <label class="title-left sepV_a ml10">状态</label>  
+                  <select   class="span12" id="queryStatus">                
+                  </select>      
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">供应商</label>    
+                    <select class="chzn_a span12" id="queryAgent">                    
+                        </select>
+            </div>     
+            <div class="span3">
+                <label class="title-left sepV_a ml10">定卡单单号</label>   
+                <input type="text" class="span12" id="queryCustomizeOddId"/>           
+            </div>
+             <div class="span3">
+                <label class="title-left sepV_a ml10">收卡盒数</label>   
+                <input type="text" class="span12" id="queryReserveBox"/>           
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">最后修改时间</label>
+                <input type="text" class="span12" id="queryCreateTime" />
+            </div>
+        </div>
+        <div class="q_btn">
+            <button class="btn btn-info" id="search">查询</button>
+            <button class="btn" id="btnRemove">清除</button>
+        </div>
+    </div>
+
+    <table class="table" data-provides="rowlink" id="CardTable"></table>
+</div>
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addBrand_dialog" class="cbox_content" style="width: 800px; height: 480px">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>新增收卡</h3>
+            </div>
+        </div>
+
+        <div class="formSep">
+            <div class="row-fluid sepH_b" id="modalAdd">
+                
+                    <button id="btnStatusPass" class="btn btn-info sepV_a">审核通过</button>&nbsp;
+                    <button id="btnStatusReturn" class="btn btn-info sepV_a">审核驳回</button>&nbsp;                                      
+                    <table class="table" id="retrieveDetailTable"></table>          
+                  <button id="btnAddCancel" class="btn btn-success" onclick="$.colorbox.close();">返回</button>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js") 
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+@System.Web.Optimization.Scripts.Render("~/Scripts/Pages/PurchasesNew/RetrieveNew.js")
+}
+
+

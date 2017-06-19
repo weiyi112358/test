@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "SendEdit";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3 id="hTitleName">添加购物券派送规则</h3>
+    </div>
+</div>
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "ActionForm" }))
+{
+    <div class="formSep">
+
+        <input type="hidden" id="txtID" name="txtID" value="@ViewBag.ID"/>
+        <input type="hidden" id="txtInfo" name="txtInfo" value="@ViewBag.Info"/>
+        <div class="row-fluid sepH_b">
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    购物券编号<span style="color: red"> * </span>
+                </div>
+                <div id="divCouponNo">
+                    <input class="selProductInCondition" type="text" style="float: left;" id="CouponNo" name="CouponNo" readonly="readonly" />
+                    <a class="showExtend selProductInCondition" style="float: left;" id="aCouponNo"></a>
+                </div>
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    购物券名称
+                </div>
+                <input type="text" id="CouponName" name="CouponName" class="span3" readonly="readonly" />
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    面额
+                </div>
+                <input type="text" id="CouponValue" name="CouponValue" class="span3" readonly="readonly" />
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    购物券说明
+                </div>
+                <input type="text" id="CouponRemark" name="CouponRemark" class="span3" readonly="readonly" />
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    开始日期<span style="color: red"> * </span>
+                </div>
+                <input type="text" id="StartDate" name="StartDate" class="span3"  readonly="readonly"/>
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    结束日期<span style="color: red"> * </span>
+                </div>
+                <input type="text" id="EndDate" name="EndDate" class="span3" readonly="readonly" />
+                <span class="error-block"></span>
+            </div>
+
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    是否会员券
+                </div>
+                <input type="checkbox" id="IsMember" name="IsMember" disabled="disabled" />
+                <span class="error-block"></span>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    产品代码
+                </div>
+                <div class="span3">
+                    <div class="row-fluid">
+                        @*<button id="btnImport" class="btn" type="button">导入</button>
+                        <button id="btnDownLoad" class="btn" type="button">模板下载</button>*@
+                        <button id="btnAdd" class="btn btn-success" type="button">添加</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid sepH_b">
+                <div class="span2 title-left">
+                    &nbsp;
+                </div>
+                <table class="table" data-provides="rowlink" id="dt_Table"></table>
+            </div>
+        </div>
+    </div>    
+    <div class="row-fluid">
+        <div class="pull-right sepV_c">
+            <button class="btn btn-info" id="btnSave" type="submit">保存</button>
+            <button class="btn" id="btnReturn" onclick="javascript:history.go(-1); " type="button">返回</button>
+        </div>
+    </div>
+}
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addProduct_dialog" class="cbox_content">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>添加产品</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_c">
+                <div class="row-fluid sepH_c">
+                    <div class="form-inline">
+                        <label class="title-left ml10">商品编码</label>
+                        <input type="text" class="span2 sepV_a" id="txtProductCode" name="txtCouponNo" />
+                        <label class="title-left ml10">商品名称</label>
+                        <input type="text" class="span2 sepV_a" id="txtProductName" name="txtCouponName" />
+                        <div class="span5" style="float:right;">
+                            <button id="btnProductSearch" class="btn btn-success">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table" data-provides="rowlink" id="dtProduct"></table>
+                <div class="pull-right oneLine textright">
+                    <button id="btnProductSave" class="btn btn-primary">保存</button>
+                    <button id="btnCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <div id="import_data" class="cbox_content popConfig" style="width: 800px;">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>文件导入</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_b" id="modalImport">
+                <form class="form_validation_import">
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <label>文件路径 <span class="f_req">*</span></label>
+                            <div class="span1" id="container">
+                                <button type="button" class="btn btn-info" id="pickfiles">选择文件</button>
+                            </div>
+                            <input type="text" id="tbFilePath" readonly="true" name="tbFilePath" class="span7" />
+                        </div>
+                    </div>
+                    <div>
+                        <span id="importError" class="error"></span>
+                    </div>
+                </form>
+                <div class="pull-right oneLine textright">
+                    <button class="btn btn-gebo confirm_yes" id="btnSaveImport">保存</button>
+                    <button class="btn confirm_no" id="btnCancelImport" type="button" onclick="$.colorbox.close()">取消</button>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="processingdiv" style="display: none;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="loading" style="text-align: center; vertical-align: middle">
+                <br />
+                <img src="~/new_img/loading.gif" /><br />
+                <span id="txtspan"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--选择购物券弹窗页-->
+<div class="hide">
+    <div id="selectCoupon_dialog" class="cbox_content" style="height: 600px;">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>请选择购物券</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_b">
+                <div class="row-fluid sepH_b">
+                    <div class="form-inline">
+                        <label class="title-left ml10">购物券编号</label>
+                        <input type="text" class="span2 sepV_a" id="txtCouponNo" name="txtCouponNo" />
+                        <label class="title-left ml10">购物券名称</label>
+                        <input type="text" class="span2 sepV_a" id="txtCouponName" name="txtCouponName" />
+                        <button id="btnCouponSearchs" class="btn btn-success">查询</button>
+                    </div>
+                </div>
+                <table class="table" data-provides="rowlink" id="dtCoupon"></table>
+                <div class="pull-right oneLine textright">
+                    <button id="btnCouponSave" class="btn btn-primary">保存</button>
+                    <button id="btnCouponCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/CouponUseRule/SendEdit.js")
+
+}
+

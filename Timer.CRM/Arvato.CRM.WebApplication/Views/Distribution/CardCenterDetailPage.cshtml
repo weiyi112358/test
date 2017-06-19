@@ -1,0 +1,321 @@
+﻿@{
+    ViewBag.Title = "CardCenterDetailPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="key" data-pageKey="@ViewBag.PageKey" data-queryId="@ViewBag.queryId" />
+<div><button id="VerifyTrue" class="btn btn-success" style="display:none">批准</button><button id="VerifyFalse" class="btn btn-danger" style="display:none">不批准</button></div>
+<div id="title">
+<div id="ApplyCard">
+    <h2>卡申请详情</h2>
+    <p>单号:<span id="apply1"></span></p>  
+    <p>发货单位:<span id="apply2"></span></p>
+    <p>收货单位:<span id="apply3"></span></p>
+    <p>预计到货日期:<span id="apply4"></span></p>
+   @* <p>交货日期:<span id="apply5"></span></p>*@
+ @*   <p>执行状态:<span id="apply6"></span></p>*@
+    <p>跳号规则:<span id="apply7"></span></p>
+    <p>状态:<span id="apply8"></span></p>
+    <p>创建信息:<span id="apply9"></span></p>
+    <p>最后修改信息:<span id="apply10"></span></p>
+    <p>提交信息:<span id="apply11"></span></p>
+    <p>批准信息:<span id="apply12"></span></p>
+
+    <table class="table">
+        <thead><tr><td>卡类型</td><td>门店</td><td>用途</td><td>申请数量</td><td>批准数量</td></tr></thead>
+        <tbody id="ApplyDetail"></tbody>
+    </table>
+
+</div>
+    <div id="VerifyCard">
+    <h2>申请批准</h2>  
+    <p>单号:<span id="apply111"></span></p>  
+    <p>发货单位:<span id="apply112"></span></p>
+    <p>收货单位:<span id="apply113"></span></p>
+    <p>预计到货日期:<span id="apply114"></span></p>
+    <p>交货日期:<span id="apply115"></span></p>
+  @*  <p>执行状态:<span id="apply116"></span></p>*@
+    <p>跳号规则:<span id="apply117"></span></p>
+    <p>状态:<span id="apply118"></span></p>
+    <p>创建信息:<span id="apply119"></span></p>
+    <p>最后修改信息:<span id="apply120"></span></p>
+    <p>提交信息:<span id="apply121"></span></p>
+    <p>批准信息:<span id="apply122"></span></p>
+
+    <table>
+        <thead><tr><td>卡类型</td><td>用途</td><td>申请数量</td><td>批准数量</td></tr></thead>
+        <tbody id="VerifyDetail"></tbody>
+    </table>
+</div>
+    <div id="Customize">
+   <h2>定卡详情</h2>
+    <p>单号:<span id="customize1"></span></p>  
+    <p>供应商:<span id="customize2"></span></p>
+    <p>跳号规则:<span id="customize3"></span></p>
+    <p>收货单位:<span id="customize4"></span></p>
+    <p>订货数量:<span id="customize5"></span></p>
+    <p>收货数量:<span id="customize6"></span></p>
+    @*<p>退货数量:<span id="customize7"></span></p>*@
+    <p>状态:<span id="customize7"></span></p>
+    <p>创建信息:<span id="customize8"></span></p>
+    <p>最后修改信息:<span id="acustomize9"></span></p>
+    <p>审核信息:<span id="customize10"></span></p>
+   
+
+    <table>
+        <thead><tr><td>卡类型</td><td>起始卡号</td><td>截止卡号</td><td>收货数量</td></tr></thead>
+        <tbody id="CustomizeDetail"></tbody>
+    </table>
+</div>
+    <div id="Retrieve">
+    <h2>收卡详情</h2> 
+    <p>收货单单号:<span id="retrieve1"></span></p>  
+    <p>定卡单单号:<span id="retrieve2"></span></p>  
+    <p>供应商:<span id="retrieve3"></span></p>  
+    <p>收货数量:<span id="retrieve4"></span></p> 
+    <p>状态:<span id="retrieve5"></span></p>
+    <p>创建信息:<span id="retrieve6"></span></p>
+    <p>最后修改信息:<span id="retrieve7"></span></p>
+    <p>审核信息:<span id="retrieve8"></span></p>
+
+        <table>
+        <thead><tr><td>卡类型</td><td>收货数量</td><td>起始卡号</td><td>截止卡号</td></tr></thead>
+        <tbody id="RetrieveDetail"></tbody>
+    </table>
+</div>
+    <div id="BatchProduction">
+    <h2>批量制发卡详情</h2>
+        <p>--卡信息--</p>
+        <p>单号:<span id="batchId"></span></p>  
+        <p>状态:<span id="batchSa"></span></p>  
+    <p>卡类型:<span id="batch1"></span></p>  
+    <p>制发卡数量:<span id="batch2"></span></p>  
+    <p>起始卡号:<span id="batch3"></span></p>  
+    <p>截止卡号:<span id="batch4"></span></p> 
+    <p>到效期:<span id="batch5"></span></p> 
+          <p>--盒信息--</p>
+      <p>盒号:<span id="batch6"></span></p>  
+    <p>盒用途:<span id="batch7"></span></p> 
+         <p>--制发信息--</p>
+          <p>执行状态:<span id="batch8"></span></p>  
+    <p>最后制发卡号:<span id="batch9"></span></p> 
+    <p>最后装盒盒号:<span id="batch10"></span></p> 
+       @*  <p>制发卡信息:<span id="batch11"></span></p> *@
+         <p>创建信息:<span id="batch12"></span></p>
+    <p>最后修改信息:<span id="batch13"></span></p>
+    <p>审核信息:<span id="batch14"></span></p>
+
+          <table class="table">
+                    <thead class="table">
+                        <tr>                        
+                            <td>盒号</td>
+                            <td>起始卡号</td>                      
+                            <td>截止卡号</td>
+                        </tr>
+                    </thead>
+                    <tbody id="Batchshowinfo2"></tbody>
+                </table>
+
+</div>
+    <div id="CardOutTitle">
+    <h2>总部卡领出详情</h2>
+    <p>单号:<span id="cardOutTitle1"></span></p>  
+    <p>状态:<span id="cardOutTitle2"></span></p>  
+    <p>发货单位:<span id="cardOutTitle3"></span></p>  
+    <p>收货单位:<span id="cardOutTitle4"></span></p> 
+  @*  <p>收货门店:<span id="cardOutTitle5"></span></p>          *@
+    @*<p>备注:<span id="cardOutTitle6"></span></p>  *@
+    <p>创建信息:<span id="cardOutTitle7"></span></p> 
+    <p>最后修改信息:<span id="cardOutTitle8"></span></p> 
+    <p>审核信息:<span id="cardOutTitle9"></span></p>  
+    <p>是否关联申请单:<span id="cardOutTitle10"></span></p> 
+
+       @*  <table>
+        <thead><tr><td>卡类型</td><td>收货数量</td><td>起始卡号</td><td>截止卡号</td></tr></thead>
+        <tbody id="cardOutDetail"></tbody>
+    </table>*@
+        @*<ul class="nav nav-tabs">
+     	<li><a href="#showBox" data-toggle="tab">盒信息</a></li>
+        <li><a href="#showCard" data-toggle="tab">按卡类型汇总</a></li>
+        </ul>*@
+     @*   <div class="tab-pane fade in active" id="showBox">
+            <div class="form-control">*@
+                <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <td>卡类型</td>
+                            <td>用途</td>
+                            <td>盒数量</td>
+                            <td>卡数量</td>                                         
+                        </tr>
+                    </thead>
+                    <tbody id="titleshowinfo"></tbody>
+                </table>
+          
+        <label id="BoxDetail" class="btn btn-success">折叠明细</label>
+       @*    <div class="table" id="showCardDetail">
+               <div class="form-control">*@
+                <table class="table">
+                    <thead class="table">
+                        <tr>                        
+                            <td>盒号</td>
+                            <td>起始卡号</td>                      
+                            <td>截止卡号</td>
+                        </tr>
+                    </thead>
+                    <tbody id="titleshowinfo2"></tbody>
+                </table>
+          @*  </div>
+        </div>*@
+
+
+</div>
+
+    <div id="CardIn">
+        <h2>卡领入</h2>
+    <p>单号:<span id="cardIn1"></span></p>  
+    <p>状态:<span id="cardIn2"></span></p>  
+    <p>发货单位:<span id="cardIn3"></span></p>  
+    <p>收货单位:<span id="cardIn4"></span></p> 
+ @*   <p>收货门店:<span id="cardIn5"></span></p>          
+    <p>备注:<span id="cardIn6"></span></p>  *@
+    <p>创建信息:<span id="cardIn7"></span></p> 
+    <p>最后修改信息:<span id="cardIn8"></span></p> 
+    <p>审核信息:<span id="cardIn9"></span></p>  
+    <p>是否关联申请单:<span id="cardIn10"></span></p> 
+
+     
+                <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <td>卡类型</td>
+                            <td>用途</td>
+                            <td>盒数量</td>
+                            <td>卡数量</td>                      
+                    
+                        </tr>
+                    </thead>
+                    <tbody id="cardinshowinfo"></tbody>
+                </table>
+   
+        <label id="cardinBoxDetail" class="btn btn-success">折叠明细</label>
+ 
+                <table class="table">
+                    <thead class="table">
+                        <tr>                        
+                            <td>盒号</td>
+                            <td>起始卡号</td>                      
+                            <td>截止卡号</td>
+                        </tr>
+                    </thead>
+                    <tbody id="cardinshowinfo2"></tbody>
+                </table>
+          @*  </div>
+        </div>*@
+</div>
+    <div id="CardOutBranch">
+    <h2>分公司卡领出详情</h2>
+    <p>单号:<span id="cardOutbranch1"></span></p>  
+    <p>状态:<span id="cardOutbranch2"></span></p>  
+    <p>发货单位:<span id="cardOutbranch3"></span></p>  
+   @* <p>收货单位:<span id="cardOutbranch4"></span></p> *@
+ @*   <p>收货门店:<span id="cardOutbranch5"></span></p>          *@
+    <p>备注:<span id="cardOutbranch6"></span></p>  
+    <p>创建信息:<span id="cardOutbranch7"></span></p> 
+    <p>最后修改信息:<span id="cardOutbranch8"></span></p> 
+    <p>审核信息:<span id="cardOutbranch9"></span></p>  
+    <p>是否关联申请单:<span id="cardOutbranch10"></span></p> 
+
+ 
+                <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <td>卡类型</td>
+                            <td>用途</td>
+                             <td>盒数量</td>
+                            <td>卡数量</td>                                           
+                        </tr>
+                    </thead>
+                    <tbody id="branchshowinfo"></tbody>
+                </table>
+      
+             
+        <label id="branchBoxDetail" class="btn btn-success">折叠明细</label>
+       @*    <div class="table" id="showCardDetail">
+               <div class="form-control">*@
+                <table class="table">
+                    <thead class="table">
+                        <tr>                        
+                            <td>盒号</td>
+                            <td>起始卡号</td>                      
+                            <td>截止卡号</td>
+                            <td>门店</td>
+                        </tr>
+                    </thead>
+                    <tbody id="branchshowinfo2"></tbody>
+                </table>
+          @*  </div>
+        </div>*@
+</div>
+
+    <div id="CardRepeal">
+    <h2 id="CardRepealTitle">门店卡退领详情</h2>
+    <p>单号:<span id="CardRepeal1"></span></p>  
+    <p>状态:<span id="CardRepeal2"></span></p>  
+    <p>发货单位:<span id="CardRepeal3"></span></p>  
+    <p>收货单位:<span id="CardRepeal4"></span></p>      
+    <p>备注:<span id="CardRepeal6"></span></p>  
+    <p>创建信息:<span id="CardRepeal7"></span></p> 
+    <p>最后修改信息:<span id="CardRepeal8"></span></p> 
+    <p>审核信息:<span id="CardRepeal9"></span></p>  
+
+                <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <td>卡类型</td>
+                            <td>用途</td>
+                             <td>盒数量</td>
+                            <td>卡数量</td>                                          
+                        </tr>
+                    </thead>
+                    <tbody id="repealshowinfo"></tbody>
+                </table>
+       
+   @*             <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <td>卡类型</td>
+                            <td>盒数量</td>
+                            <td>卡数量</td>                                            
+                        </tr>
+                    </thead>
+                    <tbody id="repealshowinfo1"></tbody>
+                </table>*@
+         @*   </div>
+        </div>*@
+        <label id="repealBoxDetail" class="btn btn-success">折叠明细</label>
+       @*    <div class="table" id="showCardDetail">
+               <div class="form-control">*@
+                <table class="table">
+                    <thead class="table">
+                        <tr>                        
+                            <td>盒号</td>
+                            <td>起始卡号</td>                      
+                            <td>截止卡号</td>
+                        </tr>
+                    </thead>
+                    <tbody id="repealshowinfo2"></tbody>
+                </table>
+          @*  </div>
+        </div>*@
+
+
+</div>
+    </div>
+
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Distribution/CardCenterDetailPage.js")
+}

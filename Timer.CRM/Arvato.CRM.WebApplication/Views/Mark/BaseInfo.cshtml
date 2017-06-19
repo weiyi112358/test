@@ -1,0 +1,106 @@
+﻿@model Arvato.CRM.Model.ActivityBaseInfoModel
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmBaseInfo" }))
+{
+    <div class="row-fluid">
+        <div class="span3">
+            <label>活动编号<span class="f_req">*</span></label>
+            @Html.TextBoxFor(p => p.ActivityID, new
+               {
+                   @class = "span12",
+                   disabled = "disabled",
+                   @Value = (Model == null) ? null : (Model.ActivityID > 0 ? Model.ActivityID.ToString() : "")
+               })
+            @Html.HiddenFor(p => p.BusinessPlanID, new { @id = "hidBusinessPlanID", @class = "span12", @disabled = "disabled" })
+            @Html.HiddenFor(p => p.PlanStartTime, new { @id = "hidPlanStartTime", @class = "span12", @disabled = "disabled" })
+            @Html.HiddenFor(p => p.PlanEndTime, new { @id = "hidPlanEndTime", @class = "span12", @disabled = "disabled" })
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>活动名称<span class="f_req">*</span></label>
+            @Html.TextBoxFor(p => p.ActivityName, new { @class = "span12", maxlength = "50" })
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>所属商业计划</label>
+            <select class="controls-text-select span12" id="drpBusinessPlan">
+            </select>
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>引用编号</label>
+            @Html.TextBoxFor(p => p.ReferenceNo, new { @class = "span12", maxlength = "100" })
+            <span class="help-block"></span>
+        </div>
+        <div class="hide">
+            <label>群组<span class="f_req">*</span></label>
+            <select id="selGroup" class="span12"></select>
+            @*@Html.DropDownListFor(p => p.DataGroupID,null)*@
+            <span class="help-block"></span>
+        </div>
+        @*<div class="hide">
+            <label>门店</label>
+            <select id="selStore" class="span12"></select>
+            @Html.DropDownListFor(p => p.StoreCode,null)
+            <span class="help-block"></span>
+        </div>*@
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+            <label>计划开始时间<span class="f_req">*</span></label>
+            @Html.TextBoxFor(p => p.PlanStartDate, new { @class = "span12", @readonly = "readonly" })
+            <div class="btn-date-clear"></div>
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>&nbsp;</label>
+            @Html.TextBoxFor(p => p.PlanStartTime, new { @class = "span12", @readonly = "readonly" })
+            <div class="btn-date-clear"></div>
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>计划结束时间<span class="f_req">*</span></label>
+            @Html.TextBoxFor(p => p.PlanEndDate, new { @class = "span12", @readonly = "readonly" })
+            <div class="btn-date-clear"></div>
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>&nbsp;</label>
+            @Html.TextBoxFor(p => p.PlanEndTime, new { @class = "span12", @readonly = "readonly" })
+            <div class="btn-date-clear"></div>
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+            <label>项目开始时间(用于活动效果报表统计)<span class="f_req">*</span></label>
+            @Html.TextBoxFor(p => p.ProStartDate, new { @class = "span12", @readonly = "readonly" })
+            <div class="btn-date-clear"></div>
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>项目结束时间<span class="f_req">*</span></label>
+            @Html.TextBoxFor(p => p.ProEndDate, new { @class = "span12", @readonly = "readonly" })
+            <div class="btn-date-clear"></div>
+            <span class="help-block"></span>
+        </div>
+        <div class="span6 hide" id="posbind">
+            <label>关联POS促销活动</label>
+            <span style="line-height:30px"></span>
+        </div>
+    </div> 
+     <div class="row-fluid formSep">
+         <span style="color:red">注意：项目开始、结束时间用于限定报表、KPI计算的时间跨度</span>
+     </div>
+    <div class="row-fluid formSep">
+        <div class="span12">
+            <label>备注</label>
+            @Html.TextAreaFor(p => p.Remark, new { @class = "span12", rows = 8, maxlength = 100 })
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="pull-right">
+            <input type="submit" class="btn btn-info sepV_a btnSave" value="保存" />
+            @*<input type="button" class="btn sepV_c btnBack" value="返回" />*@
+        </div>
+    </div>
+}

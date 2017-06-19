@@ -1,0 +1,4 @@
+﻿.table thead th {
+    width:calc(100%/6);
+    min-width:157px;
+}

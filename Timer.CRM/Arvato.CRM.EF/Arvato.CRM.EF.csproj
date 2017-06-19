@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59428B4B-424D-4A98-A8A3-21629933D448}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arvato.CRM.EF</RootNamespace>
+    <AssemblyName>Arvato.CRM.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.5.0.0.73\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CRM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CRM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CRM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CRMEntities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_Act_GetSubdivision_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Act_MarketActivityRecordStep_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Act_MarketActivitySubdivision_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Act_WX_GetActivityList_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_CRM_Mem_SearchForAccountChange_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_CRM_Mem_Search_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_ActIntance_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_CouponDetail_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_CustomerLostRate_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_DiscountRate_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_FirstConsumptionProportion_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MachineOilCarryRate_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MarketActivityDetail_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MarketActivityTracking_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemContributionRate_Result_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemMonthConsum_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemRepeatedConsumption_Result_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemUpGrade_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_Activitycount_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_ConsumerDetails_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_ConsumptionFrequency_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_ContributionRate_Statistics_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_GoldCoinShareDetail_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_IssuingConsumption_Result_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_MemToNonMemSalesDutyCount_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_Recruit_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Prd_WeChatSign_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_PriceSegmentDistributionOffline_Result_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_RenewalInsuranceRate_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_ServiceIncomeCount_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_StoreConsumptionDuty_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_StoreConsumptionMonthly_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_UseCoupon_Count_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_UsedCoupon_Detail_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_WXSign_Result.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_BizOption.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_BusinessDepartment.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_DegreeModel.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_Employee.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_FieldAlias.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_FieldAliasDegree.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_FieldAliasParameter.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_FilterMapping.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_Menu.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_Package.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_PackageDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_PackageLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_Page.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_PageElement.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_Sys_Product.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_Region.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_TableMapping.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_Sys_VehicleBasicInfo.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_VehicleBrand.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_VehicleLevel.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_VehicleSeries.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_SYS_WeChatConsultant.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TE_JPOS_CouponSend.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TE_JPOS_CouponUsed.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TE_Mem_DynamicDimension.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TE_MEM_ScoreSave.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TE_SYS_SMSAccountChangeStatus.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Act_Communication.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_CRM_AliasAfterRule.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Mem_AccountChange.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Mem_CardChange.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Mem_CousumptionAmountAdjust.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Mem_LevelChange.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Mem_StatusChange.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Sys_Log.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_Sys_SMSReceivedList.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_SYS_TradeSaleChange.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_WX_MemberSign.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_CommunicationTemplet.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_Instance.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_InstanceStep.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_InstanceSubdivision.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_Master.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_Subdivision.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_AUTH_DataLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_AUTH_Role.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_AUTH_RolePageElementSettings.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_AUTH_User.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_Apply.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_ApplyDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_BatchOperation.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_Box_Mapping.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tm_Card_CardBox.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tm_Card_CardBoxNew.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardNo.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardNoNew.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardOutBranch.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardOutBranchDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardOutTitle.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardOutTitleDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardRepeal.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_CardRepealDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_Made.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_OperationCard.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_OperationCondition.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_Produce.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_ProduceDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_ProduceNew.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_ProduceType.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_Retrieve.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_RetrieveDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_RetrieveDetailNew.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_RetrieveNew.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Card_Type.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_CRM_BusinessPlan.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_CRM_CouponLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_CRM_KPI.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_CRM_KPIResult.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_CRM_KPITarget.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CardCost.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CardPrepare.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CardReissue.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CardSalesPrepare.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CouponList.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CouponPool.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CouponSendRule.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_CouponUseRule.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_ExchangeGoods.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_ExchangeGoodsDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_ExchangeGoodsDetailTemp.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_ExchangeGoodsLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_IntergralRule.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_PasswordPrepare.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_PromotionBill.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_PromotionBillPlan.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_JPOS_PromotionItem.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Loy_MemExt.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Loy_Rule.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_AbnormalTrade.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Account.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_AccountDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_AccountLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Card.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_CouponCreate.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_CouponCreateHistory.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_CouponCreateQueue.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_CouponPool.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Ext.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Master.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Package.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_PackageDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_PackageLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Subdivision.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_SubdivisionExport.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_SubdivisionInstance.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_SubExt.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_Trade.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Mem_TradeDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_POS_MemberPromotion.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_POS_TradeDetailPromotion.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_SYS_BaseData.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_SYS_BlockSetting.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_SYS_BlockType.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_SYS_BlockTypeDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_SYS_Class.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_SYS_DataGroup.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Sys_EmailSendingQueue.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Sys_SMSCheckLog.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Sys_SMSSendingQueue.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Sys_WechatSendingQueue.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_AUTH_RolePage.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_AUTH_UserBusinessDepartment.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_AUTH_UserRole.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_Mem_MarketActivity.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_Mem_MemberLimit.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_SYS_Common.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TR_SYS_InterfaceRule.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_SubExt_contact.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_SubExt_openid.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_SubExt_vehicle.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_TradeDetail_exchange_exchangeDetail.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_TradeDetail_sales_discount.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_TradeDetail_sales_payment.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_TradeDetail_sales_product.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_Trade_change.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_Trade_exchange.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_Trade_invoice.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_Mem_Trade_sales.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_area.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_brand.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_campaign.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_cardType.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_channel.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_company.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_customerlevel.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_gdinput.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_goods.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_model.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_sortname.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_store.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_supplier.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_Sys_DataGroupRelation.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_S_TM_Loy_MemExt.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_S_TM_Mem_Ext.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_S_TM_Mem_Master.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_U_TM_Mem_Info.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="CRM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CRM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CRM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CRM.edmx</DependentUpon>
+      <LastGenOutput>CRM.Context.cs</LastGenOutput>
+    </None>
+    <None Include="CRM.edmx.diagram">
+      <DependentUpon>CRM.edmx</DependentUpon>
+    </None>
+    <None Include="CRM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CRM.edmx</DependentUpon>
+      <LastGenOutput>CRM.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Scripts\CreateDatabase.bat" />
+    <None Include="Scripts\CreateDatabaseSimple.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\CreateBaseData.sql" />
+    <Content Include="Scripts\CreateDatabase.sql" />
+    <Content Include="Scripts\CreateDatabaseSimple.sql" />
+    <Content Include="Scripts\CreateFieldAlias.sql" />
+    <Content Include="Scripts\CreateOptionAndUser.sql" />
+    <Content Include="Scripts\CreateRegionData.sql" />
+    <Content Include="Scripts\CreateSequence.sql" />
+    <Content Include="Scripts\CreateSP.sql" />
+    <Content Include="Scripts\CreateTable.sql" />
+    <Content Include="Scripts\CreateView.sql" />
+    <Content Include="Scripts\Remark.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

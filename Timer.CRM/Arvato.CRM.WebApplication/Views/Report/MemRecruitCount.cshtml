@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "会员招募统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string RegdayTime = DateTime.Now.ToString("yyyy-MM-dd");
+    string RegmonTime = DateTime.Now.ToString("yyyy-MM");
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+@*<th scope="col">会员招募目标</th>*@
+@*<th scope="col">完成率</th>*@
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员招募统计</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span3">
+            <label>渠道</label>
+            <select id="drpChannel" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannel">
+                <option value="">全部</option>
+                @foreach (var chan in ViewBag.Channels)
+                {
+                    <option value="@chan.OptionValue">@chan.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>大区</label>
+            <select id="drpArea" class="chzn_a span12" name="drpArea">
+                <option value="">全部</option>
+                @foreach (var area in ViewBag.Areas)
+                { 
+                    <option value="@area.OptionValue">@area.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>城市</label>
+            <select id="drpCity" class="chzn_a span12" name="drpCity">
+                <option value="">全部</option>
+                @foreach (var city in ViewBag.City)
+                { 
+                    <option value="@city.RegionID">@city.NameZH</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>店铺</label>
+            <select id="drpStores" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpStores">
+                <option value="">全部</option>
+                @foreach (var store in ViewBag.Stores)
+                {
+                    <option value="@store.StoreCode">@store.StoreName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+             <label></label>
+            <select id="drpSearchDateTimeType" class="chzn_a span12" name="drpStores">
+                <option value="1">注册月</option>
+                <option value="0">注册日</option>
+            </select>
+             <span class="help-block"></span>
+        </div>
+
+        <div class="span3">
+            <label></label>
+            <input type="text" class="span12" placeholder="日期选择" readonly="readonly" style="cursor:pointer" value="@RegmonTime" id="txtRegMon" />
+            <input type="text" class="span12" placeholder="日期选择" readonly="readonly" style="cursor:pointer;display:none" value="@RegdayTime" id="txtRegDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span4">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search">
+        <thead>
+            <tr>
+                <th scope="col">渠道明细</th>
+                <th scope="col">城市</th>
+                <th scope="col">店铺</th>
+                <th scope="col">实际招募人数</th>
+                <th scope="col">环比增幅</th>
+                <th scope="col">同比增幅</th>
+                <th scope="col">店铺区域占比</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+
+<div style="margin-top: 15px">
+    ★ 环比增幅（根据您选择的日期类型【注册日：例：（当前所选日的门店会员数-上一个月同一天的门店会员数）/上一个月同一天的门店会员数】
+                                     【注册月：（当前所选月的门店会员数-上一个月的门店会员数）/上一个月的门店会员数】）<br />
+    ★ 同比增幅（根据您选择的日期类型【注册日：例：（当前所选日的门店会员数-去年同一天的门店会员数）/去年同一天的门店会员数】
+                                     【注册月：（当前所选月的门店会员数-去年同一个月的门店会员数）/去年同一个月的门店会员数】）<br/>
+    ★ 店铺区域占比=实际招募人数/全国实际招募人数<br />    
+</div>
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="exprDtReg" name="exprDtReg" />
+    <input type="hidden" id="exprDtRegMon" name="exprDtRegMon" />
+    <input type="hidden" id="exprChannel" name="exprChannel" />
+    <input type="hidden" id="exprArea" name="exprArea" />
+    <input type="hidden" id="exprCity" name="exprCity" />
+    <input type="hidden" id="exprStore" name="exprStore" />
+    <input type="hidden" id="exprDtRegType" name="exprDtRegType" />
+</form>
+
+
+@section Scripts{
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptMemRecruitCount.js")
+ @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+}

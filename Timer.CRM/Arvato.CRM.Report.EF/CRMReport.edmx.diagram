@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="483f7536c3b34217b51cab15a3dd2bdb" Name="关系图1" ZoomLevel="90" >
+        <EntityTypeShape EntityType="CRMReportModel.TM_Act_CommunicationTemplet" Width="1.5" PointX="1.5367262929383321" PointY="30.393631442633286" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_area" Width="1.5" PointX="9.39676595171763" PointY="28.923797576187084" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_brand" Width="1.5" PointX="3.7008122390605562" PointY="17.85831994649876" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_channel" Width="1.5" PointX="0.17690405071568865" PointY="3.1999118939041682" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_colors" Width="1.5" PointX="5.3496776285346961" PointY="26.470309329438166" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_customerlevel" Width="1.5" PointX="2.6704682496704479" PointY="1.0546929692172877" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_product" Width="1.5" PointX="0.87506689730801934" PointY="5.0596670084910782" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productBrand" Width="1.5" PointX="7.0103802657734509" PointY="13.827720126988236" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productCategory" Width="1.5" PointX="3.3255143348712073" PointY="8.7035307179687216" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productline1" Width="1.5" PointX="9.9374513728252847" PointY="30.429664059742198" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_productline2" Width="1.5" PointX="2.0790770864482395" PointY="17.590251573170651" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_promotion" Width="1.5" PointX="4.3405963705576012" PointY="3.2462740555621097" />
+        <EntityTypeShape EntityType="CRMReportModel.V_M_TM_SYS_BaseData_store" Width="1.5" PointX="4.9968897164784787" PointY="18.313491099660048" />
+        <EntityTypeShape EntityType="CRMReportModel.TL_WX_MemberSign" Width="1.5" PointX="9.5866936862406753" PointY="4.7123376153001271" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

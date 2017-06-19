@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "换卡";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Arvato.CRM.Model.Member360SearchModel
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>换卡</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" onclick="window.location = '/Member360/CardChange'">返回</button>
+    </div>
+</div>
+<div class="row-fluid sepH_c">
+    <div class="well form-inline">
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "search" }))
+        {
+            <div class="">
+                <div class="form-inline">
+                    <div class="span3">
+                        <label class="title-left sepV_a ml10">会员卡号</label>
+                        @Html.TextBoxFor(p => p.MemberNo, new { @class = "span12" })
+                    </div>
+                    <div class="span3">
+                        <label class="title-left sepV_a ml10">姓名</label>
+                        @Html.TextBoxFor(p => p.CustomerName, new { @class = "span12" })
+                    </div>
+                    <div class="span3">
+                        <label class="title-left sepV_a ml10">手机</label>
+                        @Html.TextBoxFor(p => p.CustomerMobile, new { @class = "span12" })
+                    </div>
+                    <div class="span3">
+                        <label class="title-left sepV_a ml10">车牌号</label>
+                        @Html.TextBoxFor(p => p.CarNo, new { @class = "span12" })
+                    </div>
+                </div>
+                <div class="q_btn">
+                    <button class="btn" type="submit">查询</button>
+                </div>
+            </div>
+        }
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_Cardlist">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div class="hide">
+    <div id="table_dialog" class="cbox_content popComMedium">
+        <div class="modal-header">
+            <h3>换卡操作</h3>
+        </div>
+        <div class="modal-body">
+            <div class="sepH_c">
+                <div class="row-fluid title-left" >
+                    <div class="span4">
+                        <label>旧卡号</label>
+                        
+                        <input type="hidden" id="hdMemId" />
+                        <input type="text" class="span11" id="txtOldCardNo" disabled="disabled" />
+                    </div>
+                    <div class="span4">
+                        <label>姓名</label>
+                        <input type="text" class="span11" id="txtName" disabled="disabled" />
+                    </div>
+                    <div class="span4">
+                        <label>新卡号<span class="f_req">*</span></label>
+                        <input type="text" class="span11" id="txtNewCardNo" />
+
+                    </div>
+                </div>
+                <div class="row-fluid" >
+                    <div class="span11" >
+                        <label>调整原因<span class="f_req">*</span></label>
+                        <textarea name="" id="txtReason" style="width:700px" cols="12" rows="3" class="span11" placeholder="请输入调整原因"></textarea>
+                    </div>
+                    <div class="span11">
+                        <button class="btn btn-info pull-right sepV_c" id="btnEnter">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Member360/OldToNew.js")
+}

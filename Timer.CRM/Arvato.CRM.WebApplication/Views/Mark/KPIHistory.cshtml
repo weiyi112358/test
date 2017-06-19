@@ -1,0 +1,90 @@
+﻿<div class="top clearfix">
+    <h3>KPI目标</h3>
+</div>
+<div class="taglist">
+    <ul>
+        @if (Model.KPIResultList != null && Model.KPIResultList.Count > 0)
+        {
+            foreach (var obj in Model.KPIResultList)
+            {
+                <li>
+                    <p>@obj.KPIName</p>
+                    <div class="pec">
+                        <b>@obj.TargetValue</b>
+                        <em>目标值</em>
+                        <br />
+                        <span>@obj.Unit</span>
+                    </div>
+                    <div class="pec cur">
+                        <b>
+                            @if (@obj.Unit.ToString() == "%")
+                            {
+                                @(decimal.Parse(@obj.CurrentValue) * 100);
+                            }
+                            else
+                            {
+                                @obj.CurrentValue
+                            }
+                        </b>
+                        <em>实际值</em>
+                        <br />
+                        <span>@obj.Unit</span>
+                    </div>
+                </li>
+            }
+        }
+        else
+        {
+            if (Model.KPITargetList != null && Model.KPITargetList.Count > 0)
+            {
+                foreach (var objTarget in Model.KPITargetList)
+                {
+                    <li>
+                        <p>@objTarget.KPIName</p>
+                        <div class="pec">
+                            @if (objTarget.TargetValueType.Trim().Equals("2"))
+                            {
+                                <b>@objTarget.StrValue1</b>
+                            }
+                            else if (objTarget.TargetValueType.Trim().Equals("3"))
+                            {
+                                <b>@objTarget.IntValue1</b>
+                            }
+                            else if (objTarget.TargetValueType.Trim().Equals("7"))
+                            {
+                                <b>@objTarget.DecValue1 -- @objTarget.DecValue2</b>
+                            }
+                            else
+                            {
+                                <b>@objTarget.IntValue1</b>
+                            }
+                            <em>目标值</em>
+                            <br />
+                            <span>@objTarget.Unit</span>
+                        </div>
+                        <div class="pec cur">
+                            <b>0</b>
+                            <em>实际值</em>
+                            <br />
+                            <span>@objTarget.Unit</span>
+                        </div>
+                    </li>
+                }
+            }
+        }
+    </ul>
+</div>
+<div class="top clearfix">
+    <h3>KPI跟踪历史</h3>
+</div>
+<div class="dataTables_wrapper" style="min-width: 890px;">
+    <table class="table" id="dt_ActivityKPIHistory" style="width: 890px;">
+        <thead>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<input type="hidden" value="@Model.ActivityID" id="hidActivityIDForKpiHistory" />
+@section scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/datatables/jquery.dataTables.sorting.js", "~/Scripts/Pages/Mark/kpiHistory.js")
+}

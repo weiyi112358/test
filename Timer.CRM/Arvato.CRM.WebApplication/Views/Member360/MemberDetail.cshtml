@@ -1,0 +1,422 @@
+﻿@{
+    ViewBag.Title = "会员明细信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+    @System.Web.Optimization.Styles.Render("~/IXCSS/memberdetail.css")
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+
+<div class="mt10">
+    <div class="row-fluid heading">
+        <div class="pull-left">
+            <h3>会员明细</h3>
+        </div>
+        <div class="pull-right">
+            @*<button class="btn" id="btnGoback">返回</button>&nbsp;*@
+        </div>
+    </div>
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            @*<li class="active"><a href="#tab1" data-toggle="tab">会员</a></li>
+            <li><a href="#tab2" id="tab_order" data-toggle="tab">订单</a></li>
+            <li><a href="#tab3" id="tab_commu" data-toggle="tab">沟通</a></li>
+            <li><a href="#tab4" id="tab_act" data-toggle="tab">活动</a></li>
+            <li><a href="#tab5" id="tab_point" data-toggle="tab">积分</a></li>
+            <li><a href="#tab6" id="tab_coupon" data-toggle="tab">优惠券</a></li>
+            <li><a href="#tab7" id="tab_exchange" data-toggle="tab">兑换记录</a></li>*@
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active mbox" id="tab1">
+                <div style="width: 100%; margin: -20px 0 0;">
+                    <div class="member_d">
+                        <div class="left-info">
+                            <div class="top">
+                                <table class="client-table" id="basic-info">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="6" class="head">
+                                                <h4 class="base-title">基本信息</h4>
+                                                <div id="divUpdateBtn" class="hide querry">
+                                                    <input type="button" id="btnsave" onclick="checkInputData()" class="btn btn-warning ixbtn" value="保存">
+                                                    <input type="button" onclick="cancelEditMem()" class="btn btn-warning ixbtn" value="取消">
+                                                </div>
+                                                <input type="hidden" id="hdnMemberId" value="@ViewBag.MemberId" />
+                                            </th>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="left-info">
+                            @*<div class="shop-habits">*@
+                                @*<h3 class="shop-habits-head">购物习惯</h3>*@
+
+                                @*<div class="horizon first">
+                                    <div style="width: 100%; text-align: center;">
+                                        <h3>经常购物时间</h3>
+                                    </div>
+                                    <div class="shop-habit-chart">
+                                        <div id="chart_shoptime" style="height: 100%; width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <div class="horizon">
+                                    <div style="width: 100%; text-align: center;">
+                                        <h3>喜欢去的门店</h3>
+                                    </div>
+                                    <div class="shop-habit-chart">
+                                        <div id="likestore" style="height: 100%; width: 100%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="horizon first">
+                                    <div style="width: 100%; text-align: center;">
+                                        <h3>购物喜好品牌</h3>
+                                    </div>
+                                    <div class="shop-habit-chart">
+                                        <div id="chart_shopband" style="height: 100%; width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <div class="horizon">
+                                    <div style="width: 100%; text-align: center;">
+                                        <h3>喜欢商品类型</h3>
+                                    </div>
+                                    <div class="shop-habit-chart">
+                                        <div id="chart_shoptype" style="height: 100%; width: 100%;"></div>
+                                    </div>
+                                </div>*@
+
+                            @*</div>*@
+                        </div>
+                        @*<div class="left-info">
+                            <div class="shop-habits hide">
+                                <h3 class="shop-habits-head">促销偏好</h3>
+                                <div class="promotion-like-content">
+                                    <div style="margin-top: 15px;" class="clearfix">
+                                        <label class="promotion-like-content-lable">折扣</label>
+                                        <div class="pg-bar-box">
+                                            <p style="width: 0%"><span id="spn_p1">0%</span></p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px;" class="clearfix">
+                                        <label class="promotion-like-content-lable">赠品</label>
+                                        <div class="pg-bar-box">
+                                            <p style="background-color: #9285A6; width: 0%"><span id="spn_p2">0%</span></p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px;" class="clearfix">
+                                        <label class="promotion-like-content-lable">组合套装</label>
+                                        <div class="pg-bar-box">
+                                            <p style="background-color: #9285A6; width: 0%"><span id="spn_p3">0%</span></p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px;" class="clearfix">
+                                        <label class="promotion-like-content-lable">优惠券</label>
+                                        <div class="pg-bar-box">
+                                            <p style="background-color: #9285A6; width: 0%"><span id="spn_p4">0%</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>*@
+                        <div class="left-info">
+                            <div class="shop-habits">
+                                <h3 class="shop-habits-head">购物习惯</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <dl class="right-info width_r one_r">
+                    <dt>
+                        <img src="../IXImage/profile_male.jpg">
+                        <div class="img-right">
+                            <h3>
+                                <span tooltip="21" class="name" title="@ViewBag.BriefInfo.CustomerName">@ViewBag.BriefInfo.CustomerName</span>
+                                @if (@ViewBag.BriefInfo.Gender == "男")
+                                {
+                                    <i id="sex" class="sex male"></i>
+                                }
+                                else
+                                {
+                                    <i id="sex" class="sex female"></i>
+                                }
+
+                            </h3>
+                            <p class="member">
+                                <span>@ViewBag.BriefInfo.CustomerLevelText</span>
+                                <i id="btnSMS"></i>
+                            </p>
+                            <p class="integral">
+                                <span>@ViewBag.BriefInfo.GoldTotal</span>
+                                <i></i>
+                            </p>
+                        </div>
+                    </dt>
+                    @*<dd class="dd-before">
+                        <p class="add-tag">
+                            <i></i>
+                        </p>
+                        <ul class="keywords"></ul>
+                    </dd>
+                    <dd class="user-worth hide">
+                        <span>价值度</span>
+                        <div class="mp">
+
+                            <p>&nbsp;</p>
+                            <em class="icon"></em>
+                        </div>
+                        <span></span>
+                    </dd>
+                    <dd class="user-worth hide">
+                        <span>忠诚度</span>
+                        <div class="mp">
+                            <p class="loyalty">&nbsp;</p>
+                            <em class="icon"></em>
+                        </div>
+                        <span></span>
+                    </dd>
+                    <dd class="user-worth hide">
+                        <span>活跃度</span>
+                        <div class="mp">
+                            <p class="loveness">&nbsp;</p>
+                            <em class="icon"></em>
+                        </div>
+                        <span></span>
+                    </dd>
+                    <dd class="dd_last hide">
+                        <p class="title">异常购物行为</p>
+                        <ul class="abnormal">
+                            <li>
+                                <p class="date">2014-03-28 15:10</p>
+                                <p class="text">客单价500元，却消费了一万元</p>
+                            </li>
+                            <li>
+                                <p class="date">2014-03-28 15:10</p>
+                                <p class="text">单日兑换一万积分的礼品</p>
+                            </li>
+                            <li class="border_none">
+                                <p class="date">2014-03-27 11:29</p>
+                                <p class="text">一秒内发生了10笔相同的订单</p>
+                            </li>
+                        </ul>
+                    </dd>*@
+                </dl>
+                
+                <div class="right-info width_r">
+                    <div class="zs_k">
+                        <span class="tit">价值度</span>
+                        <div class="mp">                                    
+                        <div class="value" style="height: 56%;"></div>                                    
+                            <p>&nbsp;</p>                                    
+                            <em class="icon"></em>
+                        </div>
+                    </div>
+                    <div class="zs_k">
+                        <span class="tit">忠诚度</span>
+                        <div class="mp mpt">                                    
+                            <div class="value" style="height: 36%;"></div>                                    
+                            <p>&nbsp;</p>                                    
+                            <em class="icon"></em>
+                        </div>
+                    </div>
+                    <div class="zs_k">
+                        <span class="tit">活跃度</span>
+                        <div class="mp mps">                                    
+                        <div class="value" style="height: 86%;"></div>                                    
+                            <p>&nbsp;</p>                                    
+                            <em class="icon"></em>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+                 @*<div class="full hide">
+                    <ul class="brand-data">
+                        <li>
+                            <div class="layout-template-profile-chart">
+                                <div class="layout-report-center">
+                                    <div class="layout-report-center-title">
+                                        <h3>经常购买的品牌</h3>
+                                    </div>
+                                    <div id="buyfrequent" style="width: 197px; height: 170px;"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="layout-template-profile-chart">
+                                <div class="layout-report-rings">
+                                    <div class="layout-report-rings-title">
+                                        <h3>品牌偏好度</h3>
+                                    </div>
+                                    <div class="layout-report-rings-charts">
+                                        <div class="layout-report-rings-first " id="brandfirst">
+                                            <div class="layout-report-rings-overlay">
+                                                <h4>雅诗兰黛</h4>
+                                            </div>
+                                        </div>
+                                        <div class="layout-report-rings-second" id="brandsecond">
+                                            <div class="layout-report-rings-overlay">
+                                                <h4>羽西</h4>
+                                            </div>
+                                        </div>
+                                        <div class="layout-report-rings-third" id="brandthird">
+                                            <div class="layout-report-rings-overlay">
+                                                <h4>fancel</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3>品牌钱包</h3>
+                            <dl class="dl1 red">
+                                <dt>雅诗兰黛</dt>
+                                <dd>
+                                    <i>￥</i>
+                                    <span class="text-ellipsisg">34430</span>
+                                    <i></i>
+                                    <em>&nbsp;</em>
+                                </dd>
+                            </dl>
+                            <dl class="dl1">
+                                <dt>羽西</dt>
+                                <dd>
+                                    <i>￥</i>
+                                    <span class="text-ellipsisg">3143</span>
+                                    <i></i>
+                                    <em>&nbsp;</em>
+                                </dd>
+                            </dl>
+                            <dl class="dl1">
+                                <dt>Fancel</dt>
+                                <dd>
+                                    <i>￥</i>
+                                    <span class="text-ellipsisg">2143</span>
+                                    <i></i>
+                                    <em>&nbsp;</em>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <div class="layout-template-profile-chart">
+                                <div class="layout-report-center">
+                                    <div class="layout-report-center-title">
+                                        <h3>喜欢商品品类</h3>
+                                    </div>
+                                    <div id="brandliketype" style="width: 197px; height: 170px;"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>*@
+                <div class="full">
+                    <div class="detail-list">
+                        <div class="detail-list-head">
+                            <span></span>
+                        </div>
+                        <div>
+                            <ul class="dlc-label clearfix">
+                                <li title="会员行为标签库(9)" class="on">
+                                    <span>会员行为标签库</span><i>(9)</i>
+                                </li>
+                            </ul>
+                            <div class="dlc-item-box">
+                                <ul class="taglib">
+                                </ul>
+                                <ul class="taglib">
+                                    <li>
+                                        <span class="text-ellipsis">产品颜色偏好</span>
+                                        <span class="r text-ellipsis">
+                                            @if (@ViewBag.BriefInfo.ProductColorLike.ToString() != "")
+                                            {
+                                                @ViewBag.BriefInfo.ProductColorLike.ToString().Split('|')[0]
+                                            }
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">产品种类偏好</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.BestProductType</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">最近购买日期</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.RecentPurchaseDate</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">年消费次数</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.ConsumptionCounts</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">年消费额</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.ConsumptionYearly</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">最近半年累积积分</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.CumulativeIntegral_6</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">最近半年消耗积分</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.ConsumeIntegral_6</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">最近两年的消费次数</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.ConsumptionCounts_24</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">最近两年的消费金额</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.ActConsumption_24</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-ellipsis">平均客单价（两年）</span>
+                                        <span class="r text-ellipsis">@ViewBag.BriefInfo.AvgMemPrice</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="SMS_dialog" class="cbox_content" >
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>短信模板</h3>
+            </div>
+        </div>
+        <div class="formSep">
+            <div class="row-fluid sepH_b">
+                <div class="row-fluid sepH_b">
+                    <div class="span2 title-left">
+                        短信内容<span style="color: red"> * </span>
+                    </div>
+                    <textarea id="txtAddSMS" name="txtAddSMS" class="span12"  rows="4"></textarea>
+                    <span class="error-block"></span>
+                </div>
+                <div class="pull-right oneLine textright">
+                    <button id="btnSMSSave" class="btn btn-primary">发送</button>
+                    <button id="btnCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/IXJS/libs/globalize.min.js", "~/IXJS/libs/linq/linq.js", "~/IXJS/libs/dx.chartjs.min.js", "~/Gebo/lib/datatables/jquery.dataTables.sorting.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/IXJS/libs/jquery.ba-resize.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Common.js", "~/Scripts/Utility.js", "~/Scripts/Pages/Member360/MemberDetail.js")
+}

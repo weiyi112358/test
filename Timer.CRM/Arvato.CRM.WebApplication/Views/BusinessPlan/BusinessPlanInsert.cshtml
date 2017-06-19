@@ -1,0 +1,134 @@
+﻿@model Arvato.CRM.Model.BusinessPlanModel
+@{
+    ViewBag.Title = "编辑商业计划";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css", "~/IXCSS/BusinessPlan.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+
+<div class="mt10">
+    <div class="searchbox">
+        <div class="pull-right">
+            <button id="btnsave" class="btn btn-info sepV_a">保存</button>
+            @*<button class="btn" id="btnReturn">返回列表</button>*@
+        </div>
+    </div>
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">概况</a></li>
+            <li><a href="#tab2" data-toggle="tab">目标</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane active mbox" id="tab1" style="min-width: 890px;">
+                <div class="row-fluid formSep">
+                    <div class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2"><span style="color: red;">*</span>计划名称：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.BusinessPlanName, new { @id = "txtBusinessPlanName", @class = "span12", @required = "required", @maxlength="50"})
+                                @Html.HiddenFor(p => p.BusinessPlanID, new { @id = "hidBusinessPlanID", @class = "span12", @disabled = "disabled" })
+                                @Html.HiddenFor(p => p.PlanType, new { @id = "hidBusinessPlanType", @class = "span12", @disabled = "disabled" })
+                                @Html.HiddenFor(p => p.Status, new { @id = "hidBusinessStatus", @class = "span12", @disabled = "disabled" })
+                                @Html.HiddenFor(p => p.ModifiedDate, new
+                                   {
+                                       @id = "hidBusinessPlanUpdateDate",
+                                       @class = "span12",
+                                       @disabled = "disabled",
+                                       @Value = (Model == null) ? null : (Model.ModifiedDate.HasValue ? Model.ModifiedDate.Value.ToString("yyyy-MM-dd HH:mm:ss") : null)
+                                   })
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-lable-biglong span2"><span style="color: red;">*</span>计划类型：</label>
+                            <div class="controls-text span3">
+                                <select class="controls-text-select span12" id="drpPlanType" required="required">
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2"><span style="color: red;">*</span>计划开始时间：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.PlanStartTime, new
+                                {
+                                    @id = "txtPlanStartTime",
+                                    @class = "span12",
+                                    @readonly = "readonly",
+                                    @required = "required",
+                                    @Value = (Model == null) ? null : Model.PlanStartTime.ToString("yyyy-MM-dd")
+                                })
+                                <div class="btn-date-clear"></div>
+                                <span class="help-block"></span>
+                            </div>
+                            <label class="control-lable-biglong span2"><span style="color: red;">*</span>计划结束时间：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.PlanEndTime, new
+                                {
+                                    @id = "txtPlanEndTime",
+                                    @class = "span12",
+                                    @readonly = "readonly",
+                                    @required = "required",
+                                    @Value = (Model == null) ? null : (Model.PlanEndTime.HasValue ? Model.PlanEndTime.Value.ToString("yyyy-MM-dd") : null)
+                                })
+                                <div class="btn-date-clear"></div>
+                                <span class="help-block"></span>
+                            </div>
+                            
+                        </div>
+                        <div class="control-group hide" id="posbind" style="margin-top:-10px;">
+                            <label class="control-lable-biglong span2">关联POS促销活动：</label>
+                            <span style="line-height:30px;padding-left:40px"></span>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2"><span style="color: red;">*</span>备注：</label>
+                            <div class="controls-text span8">
+                                @Html.TextAreaFor(p => p.Remark, new { @id = "txtRemark", @class = "span12", @rows = "5", @required = "required",@maxlength="200" })
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <h3>包含的活动列表</h3>
+                    <div class="dataTables_wrapper">
+                        <table class="table" id="dt_BusinessPlanActivity" style="width: 100%;">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <div class="row-fluid formSep">
+                    <button class="btn btn-info pull-right" id="btnShowKpiDialog" onclick="showKPIdialog()">新建KPI</button>
+                </div>
+                <div class="row-fluid" id="divKPIList">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--新建KPI弹窗页-->
+<div class="hide">
+    <div id="addKPI_dialog" class="cbox_content form-inline" style="width: 600px; height: 450px;">
+        <table class="table" id="dt_KPIList"></table>
+        <div class="pull-right">
+            <button class="btn" onclick="showKPI()">确定</button>&nbsp;
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/datatables/jquery.dataTables.sorting.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BusinessPlan/BusinessPlanInsert.js")
+}

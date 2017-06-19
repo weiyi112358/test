@@ -1,0 +1,61 @@
+﻿@model Arvato.CRM.Model.UserProfileModel
+@{
+    ViewBag.Title = "我的信息";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>我的信息</h3>
+    </div>
+</div>
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmUserProfile" }))
+{
+    <div class="mt10">
+        <div class="row-fluid">
+            <div class="span6 form-inline">
+                <div class="row-fluid">
+                        <div class="span3 title-left">
+                            用户编号
+                        </div>
+                        @Html.TextBoxFor(p => p.UserID, new { @class = "span5", @disabled = "disabled" })
+                        <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        用户名
+                    </div>
+                    @Html.TextBoxFor(p => p.UserName, new { @class = "span5", @disabled = "disabled" })
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        登录名
+                    </div>
+                    @Html.TextBoxFor(p => p.LoginName, new { @class = "span5", @disabled = "disabled" })
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        手机号
+                    </div>
+                    @Html.TextBoxFor(p => p.Mobile, new { @class = "span5" })
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid formSep sepH_b">
+                    <div class="span3 title-left">
+                        邮箱
+                    </div>
+                    @Html.TextBoxFor(p => p.Email, new { @class = "span5" })
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid">
+                    <button id="btnSave" class="btn btn-info pull-right sepV_c">保存</button>
+                    <button id="btnBack" type="button" class="btn pull-right sepV_c" onclick="javascript:history.back()">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+@System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Auth/MyProfile.js")

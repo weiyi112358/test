@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "POS促销活动与商业计划绑定";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/common.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+<div class="mt10">
+    <div style="float:left;width:50%;margin:0 0 10px;">
+        <div class="row-fluid">
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-lable-long span3">促销名称：</label>
+                    <div class="controls-text span6">
+                        <input type="text" class="span12" id="promotionname" />
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn" onclick="promotionsearch()">搜索</button>&nbsp;
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div>
+            <table class="table" id="dt_promotion"></table>
+        </div>
+    </div>
+    <div style="float:right;width:49%;margin:0 0 10px;">
+        <div class="row-fluid">
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="span2" style="width:100px">商业计划名称：</label>
+                    <div class="span6">
+                        <input type="text" class="span12" id="busplan_name" />
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn" onclick="busplansearch()">搜索</button>&nbsp;&nbsp;
+                        <button class="btn" id="btnSave" onclick="savesyscommon()">保存</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="width:100%;height:450px;overflow-y:auto;">
+            <table class="table" id="dt_businessplan"></table>
+        </div>
+    </div>
+</div>
+<div class="datetime-dialog">
+    <div style="height:50px;padding:10px;">
+        <input type="text" style="width:100px;" />
+        <input type="text" style="width:100px;" />
+        <input type="button" class="btn" onclick="savetime(this)" value="确定" />
+        <input type="button" onclick="removetimedialog()" class="btn" value="取消" />
+    </div>
+</div>
+<div class="hide">
+    <div id="table_editdimension" class="cbox_content popComMedium" style="width:500px;height:480px;">
+        <div class="modal-header">
+            <h3>已审核通过商业计划</h3>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmshowdetail" }))
+        {
+            <div class="modal-body">
+                <table class="table" id="dt_bp_approved" style="width:100%;height:500px;overflow-y:auto;"></table>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="hide">
+    <div id="table_posdetail" class="cbox_content popComMedium" style="width:500px;height:500px;">
+        <div class="modal-header">
+            <h3>POS促销活动详情</h3>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmshowposdetail" }))
+        {
+            <div class="modal-body">
+                <div class="vcard">
+                    <ul>
+                        <li>
+                            <span class="item-key">方案ID</span>
+                            <div class="vcard-item" id="PromotionID"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">方案代码</span>
+                            <div class="vcard-item" id="PromotionCode"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">方案名称</span>
+                            <div class="vcard-item" id="PromotionName"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">单据类型</span>
+                            <div class="vcard-item" id="PromotionBillType"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">促销类型</span>
+                            <div class="vcard-item" id="PromotionType"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">备注</span>
+                            <div class="vcard-item" id="PromotionRemark"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">起始日期</span>
+                            <div class="vcard-item" id="PromotionStartDate"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">结束日期</span>
+                            <div class="vcard-item" id="PromotionEndDate"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">终止</span>
+                            <div class="vcard-item" id="PromotionIsEnd"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">终止日期</span>
+                            <div class="vcard-item" id="StartDatePromotion"></div>
+                        </li>
+                        <li>
+                            <span class="item-key">创建日期</span>
+                            <div class="vcard-item" id="EndDatePromotion"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<input type="hidden" value="" id="hd_promotionid" />
+@*<div class="approved-dialog">
+        <div style="height:50px;padding:10px;">
+            <table class="table" style="height:180px;overflow-y:auto;"></table>
+        </div>
+    </div>*@
+<div class="modal hide fade" id="myModal2">…</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/flot/jquery.flot.min.js", "~/Gebo/lib/flot/jquery.flot.curvedLines.min.js")
+
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/datatables/jquery.dataTables.sorting.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Promotion/PromotionBusinessPlan.js")
+
+}

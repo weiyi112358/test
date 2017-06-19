@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "HtmlTest8";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>新建：促销单</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" type="button" onclick="">后退</button>
+    </div>
+</div>
+
+<div class="form-inline well bg_white">
+    <div class="title_big">促销单</div>
+    <div class="title_x"><span>基本信息</span></div>
+    <div class="q_con">
+        <label class="ml10">指向<span class="f_req">*</span></label>
+        <input type="text" class="input-medium" id="">
+    </div>
+    <div class="title_x"><span>模板</span></div>
+    <div class="q_con">
+        模板名称  空白条目-交易开卡
+    </div>
+    <div class="title_x"><span>促销日期</span></div>
+    <div class="q_con">
+        <label class="ml10">日期范围<span class="f_req">*</span></label>
+        <input type="text" class="input-medium length_b" id="">
+        <em class="to">-</em>
+        <input type="text" class="input-medium length_b" id="">
+    </div>
+    <div class="q_con">
+        <label class="ml10">开始时间<span class="f_req">*</span></label>
+        <input type="text" class="input-medium" id="">
+    </div>
+    <div class="q_con">
+        <label class="ml10">结束时间<span class="f_req">*</span></label>
+        <input type="text" class="input-medium" id="">
+    </div>
+    <div class="q_con">
+        <label class="ml10">持续时间</label>
+        <input type="text" class="input-medium" id="">
+    </div>
+    <div class="tab_xx">
+        <ul class="tab">
+            <li class="cur"><input type="radio" /> 按天</li>
+            <li><input type="radio" /> 按周</li>
+            <li><input type="radio" /> 按月</li>
+        </ul>
+        <div class="on tabCon">
+            <div class="q_con">
+                 <label class="radio_input">每 <input type="text" class="input-medium" id=""> 天</label>
+            </div>
+        </div>
+        <div class="tabCon">
+             <div class="q_con oneLine">
+                 <label class="radio_input">每 <input type="text" class="input-medium" id=""> 周</label>
+            </div>
+            <div class="q_con oneLine">
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期日</label> 
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期一</label>
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期二</label>
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期三</label>
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期四</label>
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期五</label>
+                <label class="radio_input"><input class="input_c" type="checkbox" value="" />星期六</label>
+            </div>
+        </div>
+        <div class="tabCon">
+             <div class="q_con">
+                <div class="q_con oneLine">
+                     <label class="radio_input">每 <input type="text" class="input-medium" id=""> 月</label>
+                </div>
+                <div class="q_con oneLine">
+                    <label class="radio_input">
+                        <input class="input_c" type="checkbox" value="" />
+                        <select class="span2 sepV_b" id=""></select>
+                        第 <select class="span2 sepV_b" id=""></select> 天
+                    </label> 
+                </div>
+                 <div class="q_con oneLine">
+                    <label class="radio_input">
+                        <input class="input_c" type="checkbox" value="" />
+                        <select class="span2 sepV_b" id=""></select>
+                        第 <select class="span2 sepV_b" id=""></select> 天
+                    </label> 
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="title_x"><span>限量</span></div>
+    <div class="q_con">
+        <label class="ml10">限量类型</label>
+        <select class="span2 sepV_b" id=""></select>
+    </div>
+    <div class="q_con">
+        <label class="ml10">交易次数限量</label>
+        <input type="text" class="input-medium" id="">
+    </div>
+
+    <div class="title_x"><span>执行</span></div>
+    <div class="q_con">
+        <label class="ml10">执行顺序<span class="f_req">*</span></label>
+        <input type="text" class="input-medium" id="">
+    </div>
+
+</div>
+
+<div class="form-inline well bg_white">
+    <div class="title_big">促销方案</div>
+    <div class="title_x"><span>购物篮条件</span></div>
+    <div class="q_con">
+        <label class="ml10">购物篮条件</label>
+        <select class="span2 sepV_b" id="">
+            <option>删除</option>
+            <option>以下全部删除</option>
+            <option>插入前置条件</option>
+        </select>
+    </div>
+    <div class="tab_ss">
+        <ul class="tab">
+            <li class="cur">商品范围</li>
+            <li>必选商品</li>
+        </ul>
+        <div class="on tabCon">
+            <div class="oneLine">
+                <label class="ml10">商品范围</label>
+                <input type="text" class="input-medium" id="">
+                <a class=""><img src="~/img/add_img/browser_small.gif" /></a>
+                <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+                <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+            </div>
+        </div>
+        <div class="tabCon">
+            <div class="row-fluid">
+                <div class="mt10 mbox">
+                    <div id="" class="dataTables_wrapper form-inline no-footer">
+                        <div class="dt-top-row"></div>
+                        <div id="" class="dataTables_processing" style="display: none;">数据加载中……</div>
+                        <div class="dt-wrapper">
+                            <table class="table dataTable no-footer" id="" role="grid" aria-describedby="dt_dataGroup_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 5%;"><input class="input_c" type="checkbox" value="" /></th>
+                                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 40%;" aria-label="商品输入码">商品输入码</th>
+                                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 55%;" aria-label="商品代码">商品代码</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr role="row" class="odd">
+                                        <td><input class="input_c" type="checkbox" value="" /></td>
+                                        <td>奖品1</td>
+                                        <td>2000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dt-row dt-bottom-row mt10">
+                            <div class="pull-left">
+                                <div class="dataTables_info" id="dt_dataGroup_info" role="status" aria-live="polite">从 1 到 2 条，共 2 条记录</div>
+                            </div>
+                            <div class="pull-right">
+                                <div class="dataTables_paginate paging_bootstrap_alt pagination" id="dt_dataGroup_paginate">
+                                    <ul>
+                                        <li class="first disabled"><a href="#">&lt;&lt; 首页</a></li>
+                                        <li class="prev disabled"><a href="#">&lt;  上一页 </a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="next disabled"><a href="#">下一页  &gt;</a></li>
+                                        <li class="last disabled"><a href="#">末页  &gt;&gt;</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*促销方案[[*@
+    <div class="title_big">促销方案</div>
+    <div class="title_x"><span>金额级别(区间)</span></div>
+    <div class="q_con">
+        <label class="ml10">金额级别(区间)</label>
+        <select class="span2 sepV_b" id="">
+            <option>删除</option>
+            <option>以下全部删除</option>
+            <option>插入前置条件</option>
+        </select>
+    </div>
+    <div class="fenZ">
+        <div class="q_con oneLine">
+            <label class="radio_input">
+                <label class="ml10">分支1</label>
+                <label class="ml10">购买金额(≥)*<span class="f_req">*</span></label>
+                <input type="text" class="input-medium" id="">
+                <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+                <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+                <a class="maglef30">添加功能</a>
+            </label> 
+        </div>
+    </div>
+    <div class="fenZ">
+        <div class="q_con oneLine">
+            <label class="ml10">会员类型<span class="f_req">*</span></label>
+            <input type="text" class="" id="">
+            <a class=""><img src="~/img/add_img/browser_small.gif" /></a>
+        </div>
+        <div class="q_con">
+            <label class="ml10">选择类型</label>
+            <select class="span2 sepV_b" id="">
+                <option>生日</option>
+                <option>会员等级</option>
+                <option>会员等级升级日</option>
+                <option>会员开卡日</option>
+            </select>
+            <label class="radio_input"><input class="input_c" type="radio" name="birthday" value="" />生日</label> 
+            <label class="radio_input"><input class="input_c" type="radio" name="birthday"  value="" />生日月（含当天）</label>
+            <label class="radio_input"><input class="input_c" type="radio" name="birthday"  value="" />生日月（不含当天）</label> 
+            <label class="radio_input"><input class="input_c" type="radio" name="birthday"  value="" />生日周（含当天）</label> 
+            <label class="radio_input"><input class="input_c" type="radio" name="birthday"  value="" />生日周（不含当天）</label> 
+            <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+            <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+        </div>
+        <div class="q_con oneLine">
+            <label class="ml10">选择aa</label>
+            <input type="text" class="" id="">
+            <a class=""><img src="~/img/add_img/browser_small.gif" /></a>
+            <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+            <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+        </div>
+        <div class="q_con oneLine">
+            <label class="ml10">从<span class="f_req">*</span></label>
+            <input type="text" class="" id="">
+            <label class="ml10">到<span class="f_req">*</span></label>
+            <input type="text" class="" id="">
+            <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+            <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+        </div>
+        <div class="q_con oneLine">
+            <label class="ml10">从<span class="f_req">*</span></label>
+            <input type="text" class="" id="">
+            <label class="ml10">到<span class="f_req">*</span></label>
+            <input type="text" class="" id="">
+            <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+            <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+        </div>
+    </div>
+    <div class="fenZ">
+        <div class="q_con oneLine">
+            <label class="radio_input">
+                <label class="ml10">分支2</label>
+                <label class="ml10">购买金额(≥)*<span class="f_req">*</span></label>
+                <input type="text" class="input-medium" id="">
+                <a class=""><img src="~/img/add_img/addCondition.gif" /></a>
+                <a class=""><img src="~/img/add_img/removeCondition.gif" /></a>
+                <a class="maglef30">添加功能</a>
+            </label> 
+        </div>
+
+        <div class="q_con">
+            <label class="ml10">交易开卡执行</label>
+            <select class="span2 sepV_b" id="">
+                <option>删除</option>
+                <option>插入功能...</option>
+            </select>
+        </div>
+
+        <div class="q_con oneLine">
+            <label class="ml10">卡类型<span class="f_req">*</span></label>
+            <input type="text" class="input-medium" id="">
+            <a class=""><img src="~/img/add_img/browser_small.gif" /></a>
+            <input type="text" class="input-medium" id="">
+        </div>
+        <div class="q_con oneLine">
+            <label class="ml10">积分类别</label>
+            <input type="text" class="input-medium" id="">
+            <label class="ml10">积分数</label>
+            <input type="text" class="input-medium" id="">
+            <a class="maglef30">添加</a>
+            <a class="maglef30">添加删除</a>
+        </div>
+        <div class="q_con oneLine">
+            <label class="ml10">交易享受会员价</label>
+            <label class="radio_input"><input class="input_c" value="" type="checkbox"></label>
+        </div>
+        <div class="q_con oneLine">
+            <label class="ml10">交易计算积分</label>
+            <label class="radio_input"><input class="input_c" value="" type="checkbox"></label>
+        </div>
+    </div>
+    <div class="q_con">
+        <a>添加分支</a>
+    </div>
+</div>
+
+<div class="form-inline well bg_white">
+    <div class="title_big">说明</div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".tab_xx .tab li").click(function () {
+            $(".tab_xx .tab li").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+            $(".tab_xx .tabCon").hide().eq($(this).index()).show();
+        });
+
+        $(".tab_ss .tab li").click(function () {
+            $(".tab_ss .tab li").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+            $(".tab_ss .tabCon").hide().eq($(this).index()).show();
+        });
+    });
+</script>

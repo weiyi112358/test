@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>门店授权会员</h3>
+    </div>
+
+</div>
+<div class="form-inline  well">
+
+    <form data-ajax="true" id="frmSearch" method="post" novalidate="novalidate">
+        <label>门店名称</label>
+        <input type="text" class="input-medium" id="txtStoreName" name="txtStoreName" />
+        <label>会员名称</label>
+        <input type="text" class="input-medium" id="txtMemberName" name="txtMemberName"/>
+         <label>开始时间</label>
+        <input type="text" class="input-medium" id="txtStartTime" />
+         <label>结束时间</label>
+        <input type="text" class="input-medium" id="txtEndTime" />
+        <input class="btn" type="button" id="btnQuery" value="查询">
+        <input class="btn" value="清空" type="reset">
+    </form>
+</div>
+<table id="tbMemberInfo" data-provides="rowlink" class="table">
+</table>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    <script src="~/Scripts/Pages/MemberStoreCode/MemberStoreCode.js"></script>
+}

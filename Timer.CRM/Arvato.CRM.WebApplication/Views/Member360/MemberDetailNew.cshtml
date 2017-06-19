@@ -1,0 +1,278 @@
+﻿@{
+    ViewBag.Title = "会员明细信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+}
+
+<style type ="text/css">
+    .oldtxt {
+        color:red;
+        line-height:30px;
+        font-size:15px;
+    }
+    .vipCard {
+    background: url(../../img/v3.jpg) no-repeat center,#000000;
+    background-size: 100%;
+    
+    margin: 10px auto;
+    height: 250px;
+    width: 500px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    -ms-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    -o-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    position: relative;
+}
+    .vipCard-number {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    letter-spacing: 4px;
+    font-size: 1.4rem;
+    color: #eb1c74;
+    width:500px;
+    text-align:right;
+    padding-right:10px;
+}
+</style>
+
+<div class="mt10">
+    <div class="row-fluid heading">
+        <div class="pull-left">
+            <h3>会员入会</h3>
+        </div>
+        <div class="pull-right">
+            @*<button class="btn" id="btnGoback">返回</button>&nbsp;*@
+        </div>
+    </div>
+    @*<input type="hidden" id="txthidbrand" value="@ViewBag.BrandCode" />
+    <input type="hidden" id="txthidarea" value="@ViewBag.AreaCode" />*@
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">会员信息</a></li>
+        </ul>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmAddStore" }))
+        {
+            <div class="tab-content sepH_c row-fluid">
+                <div class="tab-pane active" id="tab1">
+                    <div class="form_validation_reg">
+                        <input type="hidden" id="hdnMemberId" value="" />
+
+                        <div class="formSep">
+                            <div class="row-fluid">
+                                 <div class="span3">
+                                    <label>经销商<span class="f_req">*</span></label>
+                                    <select id="drpCompany" name="drpCompany" class="chzn_a span12"></select>
+                                     <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>门店<span class="f_req">*</span></label>
+                                    <select id="drpStore" name="drpStore" class="chzn_a span12">
+                                        <option>请选择</option>
+                                    </select>
+                                     <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>姓名 <span class="f_req">*</span></label>
+                                    <input type="text" id="txtMemName" name="txtMemName" class="span12" value="" />
+                                    <span class="error-block"></span>
+                                </div>
+                                 <div class="span3">
+                                    <label>性别<span class="f_req">*</span></label>
+                                    <select id="drpGender" name="drpGender" class="span12">
+                                        <option value="男">男</option>
+                                        <option value="女">女</option>
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                            </div>                           
+
+                            <div class="row-fluid">
+                                  <div class="span3">
+                                    <label>生日</label>
+                                    <input id="txtBirthday" name="txtBirthday" type="text" class="span12" readonly="true" value="" />
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>手机<span class="f_req">*</span></label>
+                                    <input id="txtMobile" name="txtMobile" type="text" class="span12" value="" />
+                                    <span class="error-block"></span>
+                                </div>
+                                @*<div class="span3">
+                                    <label>证件类型</label>
+                                    <select id="drpCertType" name="drpCertType" class="span12">
+                                        <option value="1">身份证</option>
+                                        <option value="2">护照</option>
+                                        <option value="3">军官证</option>
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>证件号码</label>
+                                    <input id="txtCertNo" name="txtCertNo" type="text" class="span12" value="" />
+                                    <span class="error-block"></span>
+                                </div>*@
+                              </div>
+                             <div class="row-fluid">
+                               
+                                <div class="span3">
+                                    <label>省</label>
+                                    <select id="drpProvince" name="drpProvince" class="span12"></select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>市</label>
+                                    <select id="drpCity" name="drpCity" class="span12">
+                                        <option value="">请选择</option>
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>区</label>
+                                    <select id="drpDistrict" name="drpDistrict" class="span12">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                               @*<div class="span3">
+                                    <label>地址</label>
+                                    <input id="txtAddress" name="txtAddress" type="text" maxlength="50" class="span12" value="" />
+                                    <span class="error-block"></span>
+                                </div>*@
+                                 <div class="span3">
+                                    <label>皮肤特性</label>
+                                    <select id="skinType" name="skinType" class="span12 chzn_b" multiple data-placeholder="请选择">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                               
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label>护肤需求</label>
+                                    <select id="skinCareType" name="skinCareType" class="span12 chzn_b" multiple data-placeholder="请选择">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>化妆频率</label>
+                                    <select id="makeupFrequency" name="makeupFrequency" class="span12">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>婚姻状态</label>
+                                    <select id="marriageStatus" name="marriageStatus" class="span12">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>是否有孩子</label>
+                                    <select id="hasChild" name="hasChild" class="span12">
+                                        <option value="">请选择</option>
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label>职业</label>
+                                    <select id="job" name="job" class="span12">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>月收入</label>
+                                    <select id="monthlyIncome" name="monthlyIncome" class="span12">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>了解小屋渠道</label>
+                                    <select id="knowingFrom" name="knowingFrom" class="span12">
+                                        <option value="">请选择</option>
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>希望获取的咨询</label>
+                                    <select id="neededMessage" name="neededMessage" class="span12">
+                                        <option value="">请选择</option>
+                                        
+
+
+                                    </select>
+                                    <span class="error-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+
+                    </div>
+                </div>
+                <div class="pull-right">
+                    @*<label>&nbsp; </label>*@
+                    <button class="btn" id="btnClear" type="button">清空</button>
+                    <button class="btn btn-info" id="btnSave" type="submit">入会</button>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="card_dialog" class="cbox_content" style="width: 400px; height: 400px">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>入会成功</h3>
+            </div>
+        </div>
+        <div class="vipCard">
+            <div class="vipCard-number">
+                <p id="card_no">8876 3560 2101</p>
+            </div>
+            <div class="vipCard-number">
+                <p id="barcodeTarget"></p>
+            </div>
+        </div>
+        <div class ="pull-right">
+            <button id="btnCancel" type="button" class="btn" onclick="$.colorbox.close();">关闭</button>&nbsp;
+
+        </div>
+
+    </div>
+
+</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/IXJS/libs/globalize.min.js", "~/IXJS/libs/linq/linq.js", "~/IXJS/libs/dx.chartjs.min.js", "~/Gebo/lib/datatables/jquery.dataTables.sorting.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/IXJS/libs/jquery.ba-resize.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/jquery-barcode.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Common.js", "~/Scripts/Utility.js", "~/Scripts/Pages/Member360/MemberDetailNew.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js") 
+}

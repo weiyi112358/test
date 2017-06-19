@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "POS促销活动详情";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/common.css")
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+<div class="vcard">
+    <ul>
+        <li>
+            <span class="item-key">方案ID</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionID</div>
+        </li>
+        <li>
+            <span class="item-key">方案代码</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionCode</div>
+        </li>
+        <li>
+            <span class="item-key">方案名称</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionName</div>
+        </li>
+        <li>
+            <span class="item-key">单据类型</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionBillType</div>
+        </li>
+        <li>
+            <span class="item-key">促销类型</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionType</div>
+        </li>
+        <li>
+            <span class="item-key">备注</span>
+            <div class="vcard-item">
+                @ViewBag.Promotion.PromotionRemark
+            </div>
+        </li>
+        <li>
+            <span class="item-key">起始日期</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionStartDate</div>
+        </li>
+        <li>
+            <span class="item-key">结束日期</span>
+            <div class="vcard-item">@ViewBag.Promotion.PromotionEndDate</div>
+        </li>
+        <li>
+            <span class="item-key">终止</span>
+            <div class="vcard-item">
+                @if (ViewBag.Promotion.PromotionIsEnd=="1")
+                {
+                    <span>是</span>
+                }
+                else
+                {
+                     <span>否</span>
+                }
+
+            </div>
+        </li>
+        <li>
+                <span class="item-key">终止日期</span>
+                <div class="vcard-item">@ViewBag.Promotion.StartDatePromotion</div>
+            </li>
+            <li>
+                <span class="item-key">创建日期</span>
+                <div class="vcard-item">@ViewBag.Promotion.EndDatePromotion</div>
+            </li>
+    </ul>
+</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Promotion/PromotionDetail.js")
+}

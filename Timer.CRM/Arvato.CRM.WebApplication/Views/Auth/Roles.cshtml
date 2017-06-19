@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "角色管理";
+}
+@System.Web.Optimization.Styles.Render("~/VGebo/multi-select.css")
+@System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>角色管理</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" type="button" onclick="addPageRole()">新建页面角色</button>&nbsp;
+        <button class="btn" type="button" onclick="addDataRole()">新建数据角色</button>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="form-inline well">
+        <div class="span3">
+            <label class="title-left sepV_a">角色名称</label>
+            <input type="text" id="txtRoleNameSearch" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="ml10 title-left sepV_a">角色类型</label>
+            <select id="drpTypeSearch" class="span12">
+                <option value="">--全部--</option>
+                <option value="page">页面角色</option>
+                <option value="data">数据角色</option>
+            </select>
+        </div>
+        <div class="span3">
+            <label class="ml10 title-left sepV_a">启用状态</label>
+            <select id="drpRoleState" class="span12">
+                <option value="0">--全部--</option>
+                <option value="1">启用</option>
+                <option value="2">未启用</option>
+            </select>
+        </div>
+        <div class="span3">
+            <label class="ml10  title-left sepV_a">群组</label>
+            <select class="span12" id="drDataGroups">
+                <option value="0">--全部--</option>
+                @foreach (var dataGroup in ViewBag.DataGroups)
+                {
+                    <option value="@dataGroup.SubDataGroupID">@dataGroup.SubDataGroupName</option>
+                }
+            </select>
+        </div>
+        <div class="q_btn">
+            <button id="btnSearch" class="btn">查询</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="mt10 mbox">
+        <table class="table" id="dt_roles"></table>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <p class="mt10 text-left"><b class="error-inline">注：</b>有关联用户的角色不能删除</p>
+</div>
+
+<!--页面角色弹窗页-->
+<div class="hide">
+    <div id="pageRole_dialog" class="cbox_content" style="width: 1060px;">
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmPageRole" }))
+        {
+            <div class="modal-header">
+                <h3 id="titlePageRole"></h3>
+            </div>
+            <div class="modal-body mbox">
+                <div class="row-fluid sepH_c" style="margin: 0px !important;">
+                    <div class="span3">
+                        <label>角色编号</label>
+                        <input type="text" class="span12" id="txtRoleID" disabled="disabled" />
+                    </div>
+                    <div class="span3">
+                        <label>角色名<span style="color: red"> * </span></label>
+                        <input type="text" class="span12" id="txtRoleName" name="txtRoleName" />
+                        <span class="error-block"></span>
+                    </div>
+
+                    <div class="span3">
+                        <label>数据群组<span style="color: red"> * </span></label>
+                        <select id="drpDataGroupPage" name="drpDataGroupPage" class="span12">
+                            @foreach (var group in ViewBag.DataGroups)
+                            {
+                                <option value="@group.SubDataGroupID">@group.SubDataGroupName</option>
+                            }
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+
+                <div class="row-fluid sepH_c" style="margin: 0px !important;">
+                    <div class="span3">
+                        <label class="ml10">&nbsp;</label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" name="chbDashBoradEnable" id="chbDashBoradEnable" />
+                            仪表盘可见
+                        </label>
+                    </div>
+                    <div class="span3">
+                        <label>默认首页<span style="color: red"> * </span></label>
+                        <select id="drpDefaultPage" name="drpDefaultPage" class="span12">
+                            <option value="">请选择</option>
+
+                            @*@foreach (var page in ViewBag.AllPages)
+                {
+                    <option value="@page.PageID">@page.PageDesc</option>
+                }*@
+                        </select>
+                    </div>
+
+                    <div class="span3">
+                        <label class="ml10">&nbsp;</label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" name="chbEnable" id="chbEnable" />
+                            启用
+                        </label>
+                    </div>
+                </div>
+                <div class="row-fluid formSep">
+                    <div class="span6">
+                        <label>系统页面清单</label>
+                        <div class="clearfix row-fluid-content">
+                            <select id="drpRolePages" name="drpRolePages" multiple="multiple">
+                                @foreach (var page in ViewBag.AllPages)
+                                { 
+                                    <option value="@page.PageID">@page.PageDesc</option>
+                                }
+                            </select>
+                            <a id="UpdateRolePageSelectAll" href="javascript:void(0)">全选</a> / <a id="UpdateRolePageDeSelectAll"
+                                href="javascript:void(0)">取消全选</a>
+                            <span class="error-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="span6 fR">
+                        <label>页面元素设置</label>
+                        <div style="height: 265px; overflow: auto">
+                            <table class="table" id="dt_elements" style="height: 180px;"></table>
+                        </div>
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCancelPageRole" type="button" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                <button id="btnSavePageRole" type="submit" class="btn btn-info sepV_c">保存</button>
+            </div>
+        }
+    </div>
+</div>
+<input type="hidden" value="@ViewBag.AllPages.ToString()" id="hdAllPages"/>
+<!--数据角色弹窗页-->
+<div class="hide">
+    <div id="dataRole_dialog" class="cbox_content" style="width: 960px;">
+        <form action="/Auth/Roles" data-ajax="true" id="frmDataRole" method="post">
+            <div class="modal-header">
+                <h3 id="titleDataRole"></h3>
+            </div>
+            <div class="modal-body mbox">
+                <div class="row-fluid sepH_c">
+                    <div class="span3">
+                        <label>角色编号</label>
+                        <input type="text" class="span12" id="txtDataRoleId" disabled="disabled" />
+                    </div>
+                    <div class="span3">
+                        <label>角色名<span style="color: red"> * </span></label>
+                        <input type="text" class="span12" id="txtDataRoleName" name="txtDataRoleName" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label>数据群组<span style="color: red"> * </span></label>
+                        <select id="drpDataGroupData" name="drpDataGroupData" class="span12">
+                            @foreach (var group in ViewBag.DataGroups)
+                            { 
+                                <option value="@group.SubDataGroupID">@group.SubDataGroupName</option>
+                            }
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label class="ml10">&nbsp;</label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" name="chbEnableData" id="chbEnableData" />
+                            启用
+                        </label>
+                    </div>
+                </div>
+                <div class="row-fluid formSep">
+                    <div class="span3">
+                        <label>维度<span style="color: red"> * </span></label>
+                        <select id="drpDataLimitType" name="drpDataLimitType" class="span12">
+                            @foreach (var type in ViewBag.DataLimitTypes)
+                            { 
+                                <option value="@type.OptionValue">@type.OptionText</option>
+                            }
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label>值<span style="color: red"> * </span></label>
+                        <select name="drpDataLimitValue" id="drpDataLimitValue" multiple data-placeholder="请选择..." class="chzn_select span12">
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span6">
+                        <label>特定页面</label>
+                        <select id="drpSpecifyPage" name="drpSpecifyPage" multiple data-placeholder="请选择..." class="span12">
+                            @foreach (var page in ViewBag.AllPages)
+                            { 
+                                <option value="@page.PageID">@page.PageDesc</option>
+                            }
+                        </select>
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnCancelDataRole" type="button" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                <button id="btnSaveDataRole" type="submit" class="btn btn-info sepV_c">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+@System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Auth/Roles.js")

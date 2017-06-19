@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "BusinessDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>业务部门管理</h3>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span3">
+        <div class="edit-tree">
+            <p class="formSep clearfix iconNav_right">
+                <button class="btn" id="btnClear">新建</button>
+                @*<button class="btn">刷新</button>*@
+                <button class="btn btn-danger" id="btnDelete">删除</button>
+            </p>
+
+            @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "tmpMessageSearch", @class = "input-append" }))
+            {
+                <input autocomplete="off" name="query" id="key" class="search_query input-medium" size="16" type="text" placeholder="搜索..." />
+                <button type="submit" class="btn"><i class="icon-search"></i></button>
+            }
+
+            <div class="sidebar_tree">
+                <div class="dynatree" id="tree_a">
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="span9">
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmSaveMessage" }))
+        {
+        
+            <div class="sepH_c">
+                <div class="formSep">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <label>业务部门名称</label>
+                            
+                            <input type="hidden" id="txtHdnId"/>
+                            <input type="text" name="txtBisName" class="span12" id="txtBisName" />
+                            <span class="error-block"></span>
+                        </div>
+                        @*<div class="span4">
+                            <label>所属层级</label>
+                            <select class="span12" id="drpBisGrade" name="drpBisGrade">
+                            </select>
+                            <span class="error-block"></span>
+                        </div>*@
+                        <div class="span4">
+                            <label>所属部门</label>
+                            <select class="span12 chzn_a"  id="drpParentDpt">
+                                <option value=''>-无-</option>
+                            </select>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        
+                    </div>
+                </div>
+                <div class="clearfix sepV_c">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-info" id="btnSave">保存</button>
+                    </div>
+                </div>
+            </div>
+        
+        }
+    </div>
+</div>
+
+
+@section Scripts{@**@
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/BusinessDepartment.js")
+}

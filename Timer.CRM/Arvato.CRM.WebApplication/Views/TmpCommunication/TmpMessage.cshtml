@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "短信模板管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>短信模板管理</h3>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span3">
+        <div class="edit-tree">
+            <p class="formSep clearfix iconNav_right">
+                <button class="btn" id="btnClear">新建</button>
+                @*<button class="btn">刷新</button>*@
+                <button class="btn btn-danger" id="btnDelete">删除</button>
+            </p>
+
+            @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "tmpMessageSearch", @class = "input-append" }))
+            {
+                <input autocomplete="off" name="query" id="key" class="search_query input-medium" size="16" type="text" placeholder="搜索..." />
+                <button type="submit" class="btn"><i class="icon-search"></i></button>
+            }
+
+            <div class="sidebar_tree">
+                <div class="dynatree" id="tree_a">
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="span9">
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmSaveMessage" }))
+        {
+        
+            <div class="sepH_c">
+                <div class="formSep">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <label>模板编号</label>
+                            <input type="text" name="" class="span12" id="txtTmpCode" disabled="disabled" />
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span6">
+                            <label>模板名称 <span class="f_req">*</span></label>
+                            <input type="text" name="txtTmpName" id="txtTmpName" class="span12" />
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <label>模板类型</label>
+                            <select id="drpTmpCatg">
+                            </select>
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span4">
+                            <label>短信类型</label>
+                            <select id="drpTmpCXBusinessType">
+                            </select>
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span4">
+                            <label>状态</label>
+                            <label class="checkbox inline span3">
+                                <input type="checkbox" name="enable" id="enable" checked="checked">
+                                启用
+                            </label>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                    @*<div class="row-fluid">
+                        
+                        <div class="span6">
+                            <label>短信平台模板标识 </label>
+                            <input type="text" name="txtTmpSchemaId" id="txtTmpSchemaId" class="span6" />
+                            <span class="error-block"></span>
+                        </div>
+                    </div>*@
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <label>模板内容 <span class="f_req">*</span></label>
+                            <textarea name="txtTmpContent" class="span12" id="txtTmpContent" rows="4"></textarea>
+                            <span class="error-block"></span>
+                        </div>
+                        <div class="span6">
+                            <label>个性化元素列表</label>
+                            <select multiple="multiple" class="singleselect span12" id="slWildcardList">
+                                @*<option value="[姓名]">[姓名]</option>
+                            <option value="[会员卡号]">[会员卡号]</option>
+                            <option value="[会员等级]">[会员等级]</option>
+                            <option value="[会员状态]">[会员状态]</option>
+                            <option value="[积分]">[积分]</option>*@
+                            </select>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <label>备注说明</label>
+                            <textarea name="txtRemark" class="span12" rows="4" id="txtRemark"></textarea>
+                            <span class="error-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix sepV_c">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-info" id="btnSave">保存</button>
+                    </div>
+                </div>
+            </div>
+        
+        }
+    </div>
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/TmpCommunication/TmpMessage.js")
+}
+

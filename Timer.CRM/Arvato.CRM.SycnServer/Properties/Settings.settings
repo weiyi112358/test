@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Arvato.CRM.SycnServer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DIVISION_PLAN_COMPUTE_TIME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">23:00:00</Value>
+    </Setting>
+    <Setting Name="DIVISION_LAST_COMPUTE_TIME" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">1990-01-01</Value>
+    </Setting>
+    <Setting Name="COMMAND_TIMEOUT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "优惠券明细";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var starttime = DateTime.Now.ToString("yyyy") + "-01-01";
+    var endtime = DateTime.Now.ToString("yyyy-MM-dd");
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>优惠券明细</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span4">
+            <label>大区</label>
+            <select id="drpArea" class="chzn_a span12" name="drpArea">
+                <option value="">全部</option>
+                @foreach (var area in ViewBag.Areas)
+                { 
+                    <option value="@area.OptionValue">@area.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span4">
+            <label>城市</label>
+            <select id="drpCity" class="chzn_a span12" name="drpCity">
+                <option value="">全部</option>
+                @foreach (var city in ViewBag.City)
+                { 
+                    <option value="@city.RegionID">@city.NameZH</option>
+                }
+            </select>
+        </div>
+
+        <div class="span4">
+            <label>店铺</label>
+            <select id="drpStores" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpStores">
+                <option value="">全部</option>
+                @foreach (var store in ViewBag.Stores)
+                {
+                    <option value="@store.StoreCode">@store.StoreName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span4">
+            <label>渠道</label>
+            <select id="drpChannels" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannels">
+                <option value="">全部</option>
+                @foreach (var channel in ViewBag.Channels)
+                {
+                    <option value="@channel.OptionValue">@channel.OptionText</option>
+                }
+            </select>
+        </div>
+        <div class="span4">
+            <label for="txtStartDate">日期起期</label>
+            <input type="text" class="span12" placeholder="日期起期" readonly="readonly" style="cursor:pointer" value="@starttime" id="txtSendCouponStartDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span4">
+            <label for="txtEndDate">日期止期</label>
+            <input type="text" class="span12" placeholder="日期止期" readonly="readonly" style="cursor:pointer" value="@endtime" id="txtSendCouponEndDate" />
+            <span class="help-block"></span>
+        </div>  
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4">
+            <label>会员等级</label>
+            <select id="drpGrade"  data-placeholder='请选择...' class="chzn_a span12" name="drpGrade">
+                <option value="">全部</option>
+                @foreach (var grade in ViewBag.Grade)
+                {
+                    <option value="@grade.CustomerLevelBase">@grade.CustomerLevelNameBase</option>
+                }
+            </select>
+        </div>
+        <div class="span4">
+            </div>
+
+        <div class="span4">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    
+    </div>
+
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search">
+        <thead>
+            <tr>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd; width: 111px">大区</th>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd; width: 111px">渠道</th>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd; width: 111px">城市</th>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd; width: 111px">会员手机号</th>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd;">优惠券名称</th>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd;">优惠券号</th>
+                <th scope="col" style="vertical-align: middle; text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd;">带动消费额</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="exprDtStart" name="exprDtStart" />
+    <input type="hidden" id="exprDtEnd" name="exprDtEnd" />
+    <input type="hidden" id="exprArea" name="exprArea" />
+    <input type="hidden" id="exprCity" name="exprCity" />
+    <input type="hidden" id="exprStore" name="exprStore" />
+    <input type="hidden" id="exprChannel" name="exprChannel" />
+
+</form>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptCouponDetail.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+}

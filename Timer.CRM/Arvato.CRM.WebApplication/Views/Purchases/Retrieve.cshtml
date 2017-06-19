@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Retrieve";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+
+    <div class="pull-left">
+        <h3>收卡</h3>
+    </div>
+    <div class="pull-right">
+        <button class="btn" id="btnAdd" onclick="goEdit()">新建</button>
+    </div>
+
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid" id="queryCondition">
+            <div class="span3">
+                <label class="title-left sepV_a ml10">收货单单号</label>
+                <input type="text" class="span12 sepV_a input-medium" id="RetrieveId" />
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">状态</label>
+                @*  <input type="text" class="span12 sepV_a input-medium" id="Status" />*@
+                <select class="span12 sepV_a input-medium" id="Status">
+                    <option value="">请选择</option>
+                    <option value="0">未通过</option>
+                    <option value="1">已通过</option>
+                    <option value="2">已撤销</option>
+                </select>
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">供应商</label>
+                @*<input type="text" class="span12 sepV_a input-medium" id="Agent1" />*@
+                <select class="span12 sepV_a input-medium" id="Agent1">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">收货数量</label>
+                <input type="text" class="span12 sepV_a input-medium" id="DestineNumber" />
+            </div>
+
+            <div class="span3">
+                <label class="title-left sepV_a ml10">定卡单单号</label>
+                <input type="text" class="span12 sepV_a input-medium" id="OddId" />
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">最后修改时间</label>
+                <input type="text" class="span12 sepV_a input-medium" id="ModifyTime" />
+            </div>
+        </div>
+        <div class="q_btn">
+            <button class="btn btn-info" id="search">查询</button>
+            <button class="btn" id="btnRemove">清除</button>
+        </div>
+    </div>
+
+    <table class="table" data-provides="rowlink" id="CardTable"></table>
+</div>
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addBrand_dialog" class="cbox_content" style="width: 800px;">
+        <div class="modal-header">
+            <h3>收卡列表</h3>
+        </div>
+        <div class="modal-body">
+            <div class="formSep">
+                <div class="row-fluid sepH_b" id="modalAdd">
+
+                    <div class="span3">
+                        <label>定卡单单号<span style="color: red"> * </span></label>
+                        <select id="Oddid" name="Oddid" class="span12"></select>
+                        @*      <input type="text" id="OddId1" class="span12"/>*@
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label>供应商<span style="color: red"> * </span></label>
+                        <label id="Agent" style="display: block" class="span12"></label>
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label>收货数量<span style="color: red"> * </span></label>
+                        <input type="text" id="RetrieveNum" name="RetrieveNum" class="span12" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3">
+                        <label>起始卡号<span style="color: red"> * </span></label>
+                        <input type="text" id="BeginCardNo" name="BeginCardNo" class="span12" />@*<label class="btn btn-primary" id="autoCard">自动生成卡号</label>*@
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="span3 maglef0">
+                        <label>截止卡号<span style="color: red"> * </span></label>
+                        <input type="text" id="EndCardNo" name="EndCardNo" class="span12" />
+                        <span class="error-block"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="form-control">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>卡类型</td>
+                                <td>收货数量</td>
+                                <td>起始卡号</td>
+                                <td>截止卡号</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody id="showinfo"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="btnAddSave" class="btn btn-info">添加</button>
+            <button id="btnAddInsert" class="btn btn-info sepV_a">保存</button>
+            <button id="btnAddInsertStatus" class="btn btn-info sepV_a">保存并审核</button>
+            <button class="btn btn-info" id="btndelete">清除</button>
+            <button id="btnAddCancel" class="btn" onclick="$.colorbox.close();">取消</button>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <div id="showtable" class="cbox_content" style="width: 480px">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>收卡列表</h3>
+            </div>
+        </div>
+        <div class="row-fluid">
+        </div>
+    </div>
+</div>
+
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addOddId_dialog" class="cbox_content" style="width: 400px; height: 480px">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>卡号</td>
+                </tr>
+            </thead>
+            <tbody id="tbodyOddId"></tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Purchases/Retrieve.js")
+}

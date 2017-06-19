@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "CardOutTitleNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+
+    <div class="pull-left">
+        <h3>总部卡领出</h3>
+    </div>
+ <div class="pull-right">
+      @using (Html.BeginForm("CardOutTitleListToExcel", "Distribution", FormMethod.Post, new { @class = "span4" }))
+            {
+                  @Html.Hidden("txtExcelOddIdNo")
+                  @Html.Hidden("txtExcelBoxNum")
+                  @Html.Hidden("txtExcelStatus")
+                  @Html.Hidden("txtExcelAcceptingUnit")
+                  @Html.Hidden("txtExcelCreateTime")        
+                  @Html.Hidden("txtExcelBoxNo")               
+                  @Html.Hidden("txtExcelStore")     
+                <input type="submit" class="btn btn-info" value="导出"/>
+            }
+        @using (Html.BeginForm("CardOutTitleAddNew", "Distribution", FormMethod.Post, new { @class = "span4" }))
+        {
+           <input type="submit" class="btn"  value="新建"/>
+        }
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow">
+        <div class="row-fluid" id="queryCondition">
+            <div class="span3">
+                <label class="title-left sepV_a ml10">单号</label>
+                <input type="text" class="span12" id="queryOddIdNo" />
+            </div>
+            <div class="span3" style="display:none">
+                <label class="title-left sepV_a ml10">状态</label>
+              @*  <input type="text" class="span12 sepV_a input-medium" id="Status" />*@
+                <select class="chzn_a span12" id="queryStatus">                  
+                  </select>      
+            </div>
+             <div class="span3">
+                <label class="title-left sepV_a ml10">代理商</label>    
+                <select class="chzn_a span12" id="queryAcceptingUnit">
+
+                </select>             
+            </div>
+              <div class="span3">
+                <label class="title-left sepV_a ml10">门店</label>    
+                <select class="chzn_a span12" id="queryStore">
+
+                </select>             
+            </div>
+            <div class="span3">
+                <label class="title-left sepV_a ml10">盒号</label>
+                <input type="text" class="span12 sepV_a input-medium" id="queryBoxNo" />
+            </div>
+       @*            <div class="form-inline q_con">
+                <label class="title-left sepV_a ml10">卡类型</label>
+                <input type="text" class="span12 sepV_a input-medium" id="Code" />
+            </div>
+                   <div class="form-inline q_con">
+                <label class="title-left sepV_a ml10">卡号</label>
+                <input type="text" class="span12 sepV_a input-medium" id="CardNo" />
+            </div>*@
+            <div class="span3">
+                <label class="title-left sepV_a ml10">总数量(盒)</label>
+                <input type="text" class="span12" id="queryBoxNum" />
+            </div>
+        @*     <div class="span3">
+                <label class="title-left sepV_a ml10">总数量(张)</label>
+                <input type="text" class="span12 sepV_a input-medium" id="queryCardNum" />
+            </div>*@
+            @*   <div class="form-inline q_con">
+                <label class="title-left sepV_a ml10">总金额</label>
+                <input type="text" class="span12 sepV_a input-medium" id="Money" />
+            </div>*@
+       
+            <div class="span3">
+                <label class="title-left sepV_a ml10">最后修改时间</label>
+                <input type="text" class="span12" id="queryCreateTime" />
+            </div>
+        </div>
+
+        <div class="q_btn">
+            <button class="btn" id="search">查询</button>
+            <button class="btn" id="btnRemove">清除</button>
+        </div>
+    </div>
+
+    <table class="table" data-provides="rowlink" id="CardTable">
+    </table>
+</div>
+
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addBrand_dialog" class="cbox_content" style="width: 800px; height: 480px">
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>总部卡领出详情</h3>
+            </div>
+        </div>
+
+        <div class="formSep">
+            <div class="row-fluid sepH_b" id="modalAdd">
+                
+                    <button id="btnStatusPass" class="btn btn-info sepV_a">审核通过</button>&nbsp;
+                    <button id="btnStatusReturn" class="btn btn-info sepV_a">审核驳回</button>&nbsp;                                      
+                    <table class="table" id="cardOutTitleDetailTable"></table>
+                  <button id="btnAddCancel" class="btn btn-success" onclick="$.colorbox.close();">返回</button>               
+      
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 遮罩层-->
+<div id="processingdiv" style="display: none;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="loading" style="text-align: center; vertical-align: middle">
+                <br />
+                <img src="~/new_img/loading.gif" /><br />
+                <span id="txtspan"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js") 
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+@System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Distribution/CardOutTitleNew.js")
+}

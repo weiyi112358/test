@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Index";
+    
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/Scripts/Framework/webuploader-0.1.5/webuploader.css")
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>卡信息查询</h3>
+    </div>
+</div>
+<div class="sepH_c row-fluid">
+    <div class="form-inline well">
+        <div class="span3">
+            <label class="title-left sepV_a ml10">会员卡号</label>
+            <input type="text" id="txtCardNo" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">卡状态</label>
+            
+            <select id="txtCardStatus" name="txtCardStatus" class="input-medium span12">
+                <option value="">全部</option>
+                <option value="2">使用中</option>
+                <option value="1-1">已补发</option>
+                <option value="1-0">未激活</option>
+                <option value="0">已发卡</option>
+                <option value="-1">已挂失</option>
+                <option value="-2">已冻结</option>
+                <option value="-3">已作废</option>
+
+            </select>
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">所属门店</label>           
+            <select id="txtStoreCode" name="txtStoreCode" class="chzn_a input-medium span12">                
+            </select>
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">所属盒号</label>           
+            <input type="text" id="txtBoxNo" class="input-medium span12">                
+            
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">代理商</label>               
+            <select class="chzn_a input-medium span12" id="selAgent"></select>
+        </div>
+
+        <div class="q_btn">
+            <button class="btn btn-success" id="btnSerach">查询</button>
+            
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_Table"></table>
+</div>
+
+
+
+@section Scripts{   
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js") 
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Framework/webuploader-0.1.5/webuploader.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/CardInfoSearch/Index.js")
+}
+

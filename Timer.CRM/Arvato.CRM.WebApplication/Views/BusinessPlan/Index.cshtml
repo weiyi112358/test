@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "商业计划列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css", "~/IXCSS/BusinessPlan.css")
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+
+<div class="mt10">
+    <div class="searchbox">
+        <div class="input-append">
+            <input autocomplete="off" id="txtName" name="txtName" class="search_query input-medium" size="16" type="text" placeholder="输入名称查询">
+            <button type="submit" class="btn" id="btnSearch"><i class="icon-search"></i></button>
+        </div>
+        <label class="seniorsearch" onclick="showSeniorSearch()">高级查询</label>
+        <div class="pull-right">
+            <button class="btn" id="btnNewBusinessPlan"><i class="splashy-add_small"></i>新建计划</button>&nbsp;
+            @*    <button class="btn btn-danger">删除</button>&nbsp;*@
+        </div>
+    </div>
+
+    <div class="dataTables_wrapper">
+        <table class="table" id="dt_BusinessPlan"></table>
+    </div>
+</div>
+
+<!--高级查询弹窗页-->
+<div class="hide">
+    <div id="SeniorSearch_dialog" class="cbox_content form-inline" style="width: 600px; height: 200px;">
+        <div class="row-fluid">
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-lable-biglong">计划名称：</label>
+                    <div class="controls-text">
+                        <input type="text" style="width: 424px;" id="txtPlanName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-lable-biglong">计划代码：</label>
+                    <div class="controls-text">
+                        <input type="text" class="span12" id="txtPlanCode">
+                    </div>
+                    <label class="control-lable-biglong">计划类型：</label>
+                    <div class="controls-text">
+                        <select class="controls-text-select" id="drpPlanType"></select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-lable-biglong">计划开始时间：</label>
+                    <div class="controls-text">
+                        <input type="text" class="span12" id="txtPlanStartTime" readonly="readonly">
+                    </div>
+                    <label class="control-lable-biglong">计划结束时间：</label>
+                    <div class="controls-text">
+                        <input type="text" class="span12" id="txtPlanEndTime" readonly="readonly">
+                    </div>
+                </div>
+                <div class="control-group" style="text-align: center">
+                    <input type="button" class="btn" value="查询" id="btnAdvanceSearch" />
+                    <input type="button" class="btn" value="重置条件" id="btnResetAdvanceSearch" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divPromotionList" class="cbox_content popComLg" style="height: 550px; min-height: 400px;">
+        <div class="modal-header">
+            <h3>当前可用促销列表</h3>
+            <div style="text-align: center">
+                <span class="f_req" id="spanError"></span>
+            </div>
+        </div>
+        <div class="modal-body">
+            <table class="table" id="dtAvailablePromotionList" style="height: 450px; min-height: 300px; overflow-y: auto;">
+            </table>
+           
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes" id="btnBusinessPlanPromotion">保存</a>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hd_busid" />
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/datatables/jquery.dataTables.sorting.js")
+    @System.Web.Optimization.Scripts.Render("~/IXJS/libs/jquery.ba-resize.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Businessplan/Index.js")
+}

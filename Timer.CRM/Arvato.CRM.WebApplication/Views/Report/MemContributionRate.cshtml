@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "MemContributionRate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string MonTime = DateTime.Now.ToString("yyyy-MM");
+    string YearTime = DateTime.Now.ToString("yyyy");
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员贡献率统计</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+
+
+        <div class="span3">
+            <label>渠道</label>
+            <select id="drpChannel" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannel">
+                <option value="">全部</option>
+                @foreach (var chan in ViewBag.Channels)
+                {
+                    <option value="@chan.OptionValue">@chan.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>大区</label>
+            <select id="drpArea" class="chzn_a span12" name="drpArea">
+                <option value="">全部</option>
+                @foreach (var area in ViewBag.Areas)
+                {
+                    <option value="@area.OptionValue">@area.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>城市</label>
+            <select id="drpCity" class="chzn_a span12" name="drpCity">
+                <option value="">全部</option>
+                @foreach (var city in ViewBag.City)
+                {
+                    <option value="@city.RegionID">@city.NameZH</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>店铺</label>
+            <select id="drpStores" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpStores">
+                <option value="">全部</option>
+                @foreach (var store in ViewBag.Stores)
+                {
+                    <option value="@store.StoreCode">@store.StoreName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row-fluid">
+         <div class="span3">
+            <label>会员等级</label>
+            <select class="span12" id="drpCustomerLevel">
+                <option value="">全部</option>
+                @foreach (var level in ViewBag.CustomerLevels)
+                {
+                    <option value="@level.OptionValue">@level.GroupName</option>
+                }
+            </select>
+        </div>
+        <div class="span3">
+            <label>开始日期</label>
+           <input type="text" class="span12" readonly="readonly" style="cursor:pointer" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="开始时间" id="txtStartDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span3">
+            <label>截止日期</label>
+             <input type="text" class="span12" readonly="readonly" style="cursor:pointer" value="@ViewBag.time" placeholder="截止日期" id="txtEndDate" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label>&nbsp;</label>
+            <button class="btn" id="btnSearch" type="button">查询</button>
+            <button class="btn" id="btnExport" type="button">导出</button>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dtContributionRate">
+        <thead>
+            <tr>
+                <th scope="col">会员等级</th>
+                <th scope="col">消费额</th>
+                <th scope="col">消费额同比</th>
+                <th scope="col">消费额环比</th>
+                <th scope="col">客单价</th>
+                <th scope="col">客单价同比</th>
+                <th scope="col">客单价环比</th>
+                <th scope="col">客单量</th>
+                <th scope="col">客单量同比</th>
+                <th scope="col">客单量环比</th>
+                <th scope="col">消费额环比增长率</th>
+                <th scope="col">线下消费贡献率(占会员)</th>
+                <th scope="col">线下消费贡献率(占总体)</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div style="margin-top: 15px">
+    ★ 消费额同比 = (当月或当年消费额)/(去年同一个月或去年消费额)<br />
+    ★ 消费额环比 = (当月或当年消费额)/(上个月或去年消费额)<br />
+    ★ 客单价同比 = (当月或当年客单价)/(去年同一个月或去年客单价)<br />
+    ★ 客单价环比 = (当月或当年客单价)/(上个月或去年客单价)<br />
+    ★ 客单量同比 = (当月或当年客单量)/(去年同一个月或去年客单量)<br />
+    ★ 客单量环比 = (当月或当年客单量)/(上个月或去年客单量)<br />
+    ★ 消费额环比增长率 = (当月或当年消费金额 - 上月或上年消费额金额) /上月或上年消费额金额<br />
+    ★ 线下消费贡献率（占总体） = 当月或当年该等级会员消费总金额（只取线下订单）/（当月或当年会员消费总金额（只取线下订单）+ 当月或当年非会员消费总金额（只取线下订单））<br />
+    ★ 线下消费贡献率（占会员） = 当月或当年该等级会员消费总金额（只取线下订单）/（当月或当年会员消费总金额（只取线下订单）<br />
+</div>
+<form id="exportForm" method="post">
+    <input type="hidden" id="exprMonthDate" name="exprMonthDate" />
+    <input type="hidden" id="exprYearDate" name="exprYearDate" />
+</form>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/MemContributionRate.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+}

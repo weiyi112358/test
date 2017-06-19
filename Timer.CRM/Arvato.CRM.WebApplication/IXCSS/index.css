@@ -1,0 +1,207 @@
+﻿
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a, button, input {
+    outline: none !important;
+    font-family: Helvetica,Arial,"Microsoft YaHei", "微软雅黑",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div {
+    display: block;
+}
+
+h5 {
+    height: 38px;
+    line-height: 18px;
+    display: block;
+    font-size: 18px;
+    font-weight: 100;
+    padding: 10px 0 0 30px;
+}
+
+
+
+.box-info {
+    height: 40px;
+    line-height: 40px;
+    background-color: #aca6a6;
+    color: #fff;
+    padding: 0 24px;
+    margin-top: 10px;
+    clear: both;
+    overflow: hidden;
+}
+
+    .box-info i {
+        width: 36px;
+        height: 36px;
+        float: left;
+        text-align: center;
+        background: url(../IXImage/index_menu.png) no-repeat;
+        margin-right: 4px;
+    }
+
+    .box-info b {
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+.box-info-left {
+    float: left;
+}
+
+.box-info-right {
+    float: right;
+}
+
+.mt37 {
+    margin-top: 37px;
+}
+
+.mt40 {
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+
+.btmline {
+    border-bottom: 1px solid #ccc;
+}
+
+.report-tab-board {
+    display: block;
+    text-align: center;
+}
+
+    .report-tab-board b {
+        font-size: 18px;
+        font-weight: 100;
+        text-align: center;
+        line-height: 68px;
+        display: block;
+    }
+
+    .report-tab-board i {
+        height: 110px;
+        width: 110px;
+        display: block;
+        margin: auto;
+        border-radius: 110px;
+    }
+
+    .report-tab-board p {
+        text-align: center;
+        line-height: 60px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .report-tab-board strong {
+        color: #ffa217;
+        font-size: 24px;
+        font-weight: 100;
+        padding: 0 4px;
+    }
+
+
+.crm-nav {
+    margin: 0 auto 0 20px;
+    border: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.navtabs {
+}
+
+    .navtabs > li {
+        float: left;
+        margin-bottom: -1px;
+        position: relative;
+        display: block;
+        width: 145px;
+        height: 40px;
+        text-align: center;
+        margin-right: 2px;
+        cursor: pointer;
+    }
+
+        .navtabs > li > a {
+            display: block;
+            margin-right: 2px;
+            line-height: 1.428571429;
+            border: 0;
+            border-radius: 0;
+            background-color: #d8d4cd;
+            color: #707070;
+            padding: 10px 0;
+            text-decoration: none;
+            width: 145px;
+        }
+
+        .navtabs > li.active a {
+            color: #fff;
+            background-color: #ffa217;
+            width: 145px;
+        }
+
+.freq {
+    float: left;
+    width: 49.5%;
+    margin-top: 30px;
+}
+
+    .freq b {
+        font-size: 18px;
+        font-weight: 100;
+        text-align: center;
+        line-height: 68px;
+        display: block;
+    }
+
+    .freq i {
+        height: 110px;
+        width: 110px;
+        display: block;
+        margin: auto;
+    }
+
+    .freq p {
+        text-align: center;
+        line-height: 60px;
+        margin: 0;
+        padding: 0;
+    }
+
+        .freq p strong {
+            color: #ffa217;
+            font-size: 24px;
+            font-weight: 100;
+            padding: 0 4px;
+        }
+
+.verline {
+    border-right: 1px solid #ccc;
+    height: 260px;
+    float: left;
+    width: 0;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.main_content {
+    padding: 64px 30px 0;
+}
+
+ul, ol {
+    padding: 0px;
+    margin: 0px 0px 0 25px;
+}

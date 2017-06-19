@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "FirstConsumptionProportion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员首次消费占比</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid">
+            <div class="form-inline">
+                <label>手机号</label>
+                <input type="text" id="txtMobile" class="span2"/>
+                <label>门店名称</label>
+                <input type="text" id="txtStore" class="span2" />
+                <label>开始日期</label>
+                <input type="text" id="txtStartDate" class="span2" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+                <label>结束日期</label>
+                <input type="text" id="txtEndDate" class="span2" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <button id="btnSerach" class="btn sepV_a">查询</button>
+                <button id="export" class="btn sepV_a">导出</button>
+            </div>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_FirstConsumptionProportionTable">
+    </table>
+</div>
+
+<form id="exportForm" method="post">    
+    <input type="hidden" id="exportStartDate" name="exportStartDate" />
+    <input type="hidden" id="exportEndDate" name="exportEndDate" />
+    <input type="hidden" id="exportStore" name="exportStore" />
+    <input type="hidden" id="exportMobile" name="exportMobile" />
+</form>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/FirstConsumptionProportion.js")
+}
+

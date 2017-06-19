@@ -1,0 +1,133 @@
+﻿/*单据*/
+.receiptDiv { font-size: 14px; width: 400px; margin:0 auto;}
+.receiptTable {width: 300px;}
+.receiptTable tr {height: 25px;}
+.receiptTable hr {height: 25px;}
+.receiptF30BC {font-size: 24px;font-weight: bold;text-align: center;}
+.receiptF30B {font-size: 30px;font-weight: bold;}
+.receiptF19BC {font-size: 19px;font-weight: bold;text-align: center;}
+
+/*工单*/
+.taskDiv {font-size: 12px;width: 740px;margin:0 auto;}
+.taskTable {width: 740px;border-collapse: collapse;}
+.taskTable tr {height: 18px;}
+.taskTable td {border-collapse: collapse;border: #000 solid 1px;}
+
+.taskF26BC {font-size: 26px;font-weight: bold;text-align: center;}
+.taskF16C {font-size: 16px;text-align: center;vertical-align: middle;}
+.taskF16BC {font-size: 16px;font-weight: bold;text-align: center;vertical-align: middle;}
+.taskF20C {font-size: 20px;text-align: center;vertical-align: middle;}
+.taskF14BC {font-size: 16px;font-weight: bold;vertical-align: middle;}
+
+.taskCheckbox {margin-top: 0;height: 8px;}
+.printBold {font-weight: bold;}
+
+.printTitle {text-align: center;vertical-align: middle;height: 40px;line-height: 40px;font-weight: bold;font-size:18px;}
+
+.tableTitle {text-align: center;vertical-align: middle;height: 40px;line-height: 40px;font-weight: bold;font-size:15px;}
+
+.printW235 {width: 235px;}
+.printW200 {width: 200px;}
+.printW100 {width: 100px;}
+.printW270 {width: 270px;}
+.printW130 {width: 130px;}
+.printW140 {width: 140px;}
+.printW160 {width: 160px;}
+.printW180 {width: 180px;}
+.printW80 {width: 80px;}
+.printW65 {width: 65px;}
+.printW55 {width: 55px;}
+.printW30 {width: 55px;}
+.printH20 {height: 20px;}
+.printH40 {height: 40px;}
+.printH100 {height: 100px;}
+
+.printAlignC {text-align: center;}
+.printAlignR {text-align: right;}
+.printAlignL {text-align: left;}
+.printFontBR {vertical-align: bottom;text-align: right;}
+.printFontBC {vertical-align: bottom;text-align: center;}
+.printFontTL {vertical-align: top;text-align: left;}
+.printFontTC {vertical-align: top;text-align: center;}
+
+
+
+
+.printW30Muti { width: 630px; }
+.printW25Muti { width: 525px; }
+.printW24Muti { width: 504px; }
+.printW18Muti { width: 378px; }
+.printW17Muti { width: 357px; }
+.printW16Muti { width: 336px; }
+.printW15Muti { width: 315px; }
+.printW14Muti { width: 294px; }
+.printW13Muti { width: 273px; }
+.printW12Muti { width: 252px; }
+.printW11Muti { width: 231px; }
+.printW10Muti { width: 210px; }
+.printW9Muti { width: 189px; }
+.printW8Muti { width: 168px; }
+.printW7Muti { width: 147px; }
+.printW6Muti { width: 126px; }
+.printW5Muti { width: 105px; }
+.printW4Muti { width: 84px; }
+.printW3Muti { width: 63px; }
+.printW2Muti { width: 42px; }
+.printW1Muti { width: 21px; }
+
+.printW1 { width: 15px; }
+
+
+
+
+/*客户订货证明单*/
+.orderDiv { font-size: 12px; width: 760px; margin:0 auto; }
+.orderTable { width: 760px; border-collapse: collapse; }
+.orderTable tr { height: 18px; }
+.orderTable td { border-collapse: collapse; border: #000 solid 1px; }
+ 
+
+.printCustW1Muti { width: 18px; }
+.printCustW2Muti { width: 36px; }
+.printCustW3Muti { width: 54px; }
+.printCustW4Muti { width: 72px; }
+.printCustW5Muti { width: 90px; }
+.printCustW6Muti { width: 108px; }
+.printCustW7Muti { width: 126px; }
+.printCustW8Muti { width: 144px; }
+.printCustW9Muti { width: 162px; }
+.printCustW10Muti { width: 180px; }
+.printCustW11Muti { width: 198px; }
+.printCustW12Muti { width: 216px; }
+.printCustW13Muti { width: 234px; }
+.printCustW14Muti { width: 252px; }
+.printCustW15Muti { width: 270px; }
+.printCustW16Muti { width: 288px; }
+.printCustW17Muti { width: 306px; }
+.printCustW18Muti { width: 324px; }
+.printCustW19Muti { width: 342px; }
+.printCustW20Muti { width: 360px; }
+.printCustW21Muti { width: 378px; }
+.printCustW22Muti { width: 396px; }
+.printCustW23Muti { width: 414px; }
+.printCustW24Muti { width: 432px; }
+.printCustW25Muti { width: 450px; }
+.printCustW26Muti { width: 468px; }
+.printCustW27Muti { width: 486px; }
+.printCustW28Muti { width: 504px; }
+.printCustW29Muti { width: 522px; }
+.printCustW30Muti { width: 540px; }
+.printCustW31Muti { width: 558px; }
+.printCustW32Muti { width: 576px; }
+.printCustW33Muti { width: 594px; }
+.printCustW34Muti { width: 612px; }
+.printCustW35Muti { width: 630px; }
+.printCustW36Muti { width: 648px; }
+.printCustW37Muti { width: 666px; }
+.printCustW38Muti { width: 684px; }
+
+
+.repairDiv {font-size: 12px;width: 740px;margin:0 auto;}
+.repairTable {width: 740px;border-collapse: collapse;}
+.repairTable tr {height: 21px;}
+.repairTable td {border-collapse: collapse;border: #000 solid 1px;}

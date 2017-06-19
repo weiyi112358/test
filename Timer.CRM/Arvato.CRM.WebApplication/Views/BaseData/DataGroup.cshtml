@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "数据群组管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>数据群组管理</h3>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="form-inline well">
+        <div class="row-fluid">
+            <div class="span3">
+                <label class="title-left sepV_a">群组层级</label>
+                <select class="span12 sepV_b" id="drpGroupGrade"></select>
+            </div>
+            <div class="span3">
+                <label class="ml10 title-left sepV_a">群组名称</label>
+                <input type="text" class="input-medium span12" id="txtGroupName">
+            </div>
+            <div class="span3">
+                <label class="ml10 title-left sepV_a">添加日期</label>
+                <input type="text" class="input-medium span12" placeholder='选择日期' id="txtAddDate">
+            </div>
+            <div class="q_btn">
+                <button class="btn" id="btnSearch">查询</button>
+                <button class="btn" id="btn_clear">清空</button>
+                <button class="btn" onclick="goEdit()">新建</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="mt10 mbox">
+        <table class="table" id="dt_dataGroup"></table>
+    </div>
+</div>
+
+<div class="hide">
+    <div id="table_editData" class="cbox_content" style="width: 620px;">@*style="width: 600px; height: 400px"*@
+        <!--  popComLg-->
+        <div class="modal-header">
+            <h3>群组编辑</h3>
+        </div>
+        <div class="modal-body mbox">
+            <div class="row-fluid">
+                <div class="span4" style="width: 250px;">
+                    <!--style="width:250px;"-->
+                    <div class="edit-tree">
+                        <p class="formSep clearfix iconNav_right">
+                            <button class="btn" id="btnClear">新建</button>
+                            <button class="btn btn-danger" id="btnDelete">删除</button>
+                        </p>
+                        @*<form action="search_page.html" class="input-append" method="post">
+                        <input autocomplete="off" name="query" class="search_query input-medium" size="16" type="text" placeholder="Search..." />
+                        <button type="submit" class="btn"><i class="icon-search"></i></button>
+                    </form>*@
+
+                        <div class="dataGroup_tree">
+                            <div class="dynatree" id="tree_a">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmDataGroup" }))
+                    {
+                
+                        <div class="sepH_c">
+                            <div class="formSep">
+                                <div class="row-fluid">
+                                    <div class="span4" style="width: 250px;">
+                                        <label>群组名称 <span class="f_req">*</span></label>
+                                        <input type="text" name="txtDGName" class="span12" id="txtDGName" />
+                                        <span class="error-block"></span>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span4" style="width: 250px;">
+                                        <label>群组等级<span class="f_req">*</span></label>
+                                        <select class="span12" id="drpDGGrade" name="drpDGGrade">
+                                        </select>
+                                        <span class="error-block"></span>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span4" style="width: 250px;">
+                                        <label>所属群组<span class="f_req">*</span></label>
+                                        <select class="span12" id="drpParentDG" name="drpParentDG">
+                                            <option value=''>请选择</option>
+                                        </select>
+                                        <span class="error-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <button type="submit" class="btn btn-info" id="btnSave">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/DataGroup.js")
+}

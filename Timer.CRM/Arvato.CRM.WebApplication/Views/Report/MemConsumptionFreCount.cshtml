@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "会员消费频次统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var time = DateTime.Now.ToString("yyyy") + "-01-01";
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员消费频次统计</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span4">
+            <label>渠道</label>
+            <select id="drpChannel" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannel">
+                <option value="">全部</option>
+                @foreach (var chan in ViewBag.Channels)
+                {
+                    <option value="@chan.OptionValue">@chan.OptionText</option>
+                }
+            </select>
+        </div>
+
+
+        <div class="span4">
+            <label>品牌</label>
+            <select id="drpBrand" class="chzn_a span12" name="drpBrand">
+                <option value="">全部</option>
+                @foreach (var brand in ViewBag.Brand)
+                {
+                    <option value="@brand.ProductBrandCode">@brand.ProductBrandNameBase</option>
+                }
+            </select>
+        </div>
+
+        <div class="span4">
+            <label>品类</label>
+            <select id="drpCategory" class="chzn_a span12" name="drpCategory">
+                <option value="">全部</option>
+                @foreach (var category in  ViewBag.category)
+                {
+                    <option value="@category.CategoryCode">@category.CategoryName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span4">
+            <label>消费日期起期</label>
+            <input type="text" class="span12" readonly="readonly" value="@time" style="cursor:pointer"    placeholder="消费日期起期" id="txtConsumptionStartDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span4">
+            <label>消费日期止期</label>
+            <input type="text" class="span12" readonly="readonly" value="@ViewBag.time" style="cursor:pointer"  placeholder="消费日期止期" id="txtConsumptionEndDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span4">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search">
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2" style="text-align: center; width: 57px">会员等级</th>
+                <th scope="col" colspan="8" style="text-align: center;">消费频次</th>
+            </tr>
+            <tr>
+                <th scope="col">频次=0</th>
+                <th scope="col">频次=1</th>
+                <th scope="col">频次=2</th>
+                <th scope="col">频次=3</th>
+                <th scope="col">频次=4</th>
+                <th scope="col">频次=5</th>
+                <th scope="col">频次=6-10</th>
+                <th scope="col">频次>10</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+<form id="exportForm" method="post">
+    <input type="hidden" id="expDtConsumptionStart" name="expDtConsumptionStart" />
+    <input type="hidden" id="expDtConsumptionEnd" name="expDtConsumptionEnd" />
+    <input type="hidden" id="exprChannel" name="exprChannel" />
+    <input type="hidden" id="exprBrand" name="exprBrand" />
+    <input type="hidden" id="exprCategory" name="exprCategory" />
+</form>
+
+
+@section Scripts{
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptMemConsumptionFreCount.js")
+ @System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+
+}
+

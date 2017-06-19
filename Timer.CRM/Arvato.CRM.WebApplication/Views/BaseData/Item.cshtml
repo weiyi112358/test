@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "条目管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>条目管理</h3>
+    </div>
+    @*<div class="pull-right">
+        <button class="btn" onclick="add()">新建条目</button>&nbsp;
+    </div>*@
+</div>
+
+<div class="form-inline  well">
+    <label>条目编号</label>
+    <input type="text" id="txtItemCode" class="input-medium">
+
+    <label class="ml10">条目名称</label>
+    <input type="text" id="txtItemName" class="input-medium">
+
+    <label class="ml10">分类</label>
+    <select id="drpItemClass" class="span2">
+    </select>
+    <label class="ml10">是否启用</label>
+    <input type="checkbox" id="chbEnable" checked="checked">
+    &nbsp;&nbsp;
+    <button id="btnSearch" class="btn">查询</button>
+    <button class="btn" onclick="add()">新建条目</button>&nbsp;
+</div>
+
+<div class="row-fluid">
+    <table class="table" data-provides="rowlink" id="dt_ItemData">
+    </table>
+</div>
+<!--修改条目信息弹窗页-->
+<div class="hide">
+    <div id="editItem_dialog" class="cbox_content" style="width: 480px;">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>修改条目信息</h3>
+            </div>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmEditItem" }))
+        {
+            <div class="formSep">
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        条目编号
+                    </div>
+                    <input type="text" id="editItemCode" name="editItemCode" class="span5" disabled="disabled" />
+                    <input type="hidden" id="txtDataType" />
+                        <input type="hidden" id="txtDataGroupId" />
+                    <input type="hidden" id="txtAddDate" />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        条目名称
+                    </div>
+                    <input type="text" id="editItemName" name="editItemName" class="span5" disabled="disabled" />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        分类
+                    </div>
+                    <select id="editItemClass" name="editItemClass" disabled="disabled" class="span5">
+                    </select>
+                    @*<input type="text" id="editItemClass" name="editItemClass" class="span5" disabled="disabled" value="套餐" />*@
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        是否启用
+                    </div>
+                    <input type="checkbox" id="editChbEnable" >
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        说明
+                    </div>
+                    <textarea name="editRemark" class="span5" rows="3" id="editRemark"></textarea>
+                    <span class="error-block"></span>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <button type="button" id="btnEditCancel" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                            <button type="submit" id="btnEditSave" class="btn btn-info sepV_a">保存</button>&nbsp;
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!--新建条目弹窗页-->
+<div class="hide">
+    <div id="addItem_dialog" class="cbox_content" style="width: 480px">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>新建条目</h3>
+            </div>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmAddItem" }))
+        {
+            <div class="formSep">
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        条目编号<span style="color: red"> * </span>
+                    </div>
+                    <input type="text" id="addItemCode" name="addItemCode" disabled="disabled" class="span5" />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        条目名称<span style="color: red"> * </span>
+                    </div>
+                    <input type="text" id="addItemName" name="addItemName" class="span5" />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid">
+                    <div class="span3 title-left">
+                        分类<span style="color: red"> * </span>
+                    </div>
+                    <select id="addItemClass" name="addItemClass" class="span5">
+                    </select>
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        是否启用
+                    </div>
+                    <input type="checkbox" id="addChbEnable" >
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        说明<span style="color: red"> * </span>
+                    </div>
+                    <textarea name="addRemark" class="span5" rows="3" id="addRemark"></textarea>
+                    <span class="error-block"></span>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <button type="button" id="btnAddCancel" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                            <button type="submit" id="btnAddSave" class="btn btn-info sepV_a">保存</button>&nbsp;
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/Item.js")
+}

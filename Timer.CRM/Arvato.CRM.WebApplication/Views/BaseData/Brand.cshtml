@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "品牌管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>品牌管理</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid">
+            <div class="form-inline">
+                <label class="title-left sepV_a">品牌</label>
+                <input type="text" class="span2 sepV_a" id="txt_BrandName" />
+                @*<label class="ml10">群组</label>
+                <select id="drpStoreClass" class="span2">
+                </select>*@
+                <button id="btnSerach" class="btn sepV_a">查询</button>
+                <button class="btn" id="btnAdd" onclick="goEdit()">新建</button>
+            </div>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_BrandTable">
+    </table>
+</div>
+
+<!--新建弹窗页-->
+<div class="hide">
+    <div id="addBrand_dialog" class="cbox_content" style="width: 480px">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>新建/编辑</h3>
+            </div>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmAddBrand" }))
+        {
+            <div class="formSep">
+                <div class="row-fluid sepH_b">
+                    <div class="row-fluid sepH_b">
+                        <div class="span3 title-left">
+                            品牌编号
+                        </div>
+                        <input type="text" id="txtBrandId" name="txtBrandId" class="span5" disabled="disabled" />
+                        <input type="hidden" id="txtEnableBrand" />
+                        <input type="hidden" id="txtDataType" />
+                        <input type="hidden" id="txtDataGroupId" />
+                        <span class="error-block"></span>
+                    </div>
+                    @*<div class="row-fluid sepH_b">
+                        <div class="span3 title-left">
+                            群组<span style="color: red"> * </span>
+                        </div>
+                        <select id="editStoreClass" name="editStoreClass" class="span5">
+                        </select>
+                        <span class="error-block"></span>
+                    </div>*@
+                    <div class="row-fluid sepH_b">
+                        <div class="span3 title-left">
+                            品牌名称<span style="color: red"> * </span>
+                        </div>
+                        <input type="text" id="txtBrandName" name="txtBrandName" class="span5" />
+                        <span class="error-block"></span>
+                    </div>
+                    <div class="row-fluid sepH_b">
+                        <div class="span3 title-left">
+                            品牌代码<span style="color: red"> * </span>
+                        </div>
+                        <input type="text" id="txtBrandCode" name="txtBrandCode" class="span5" />
+                        <span class="error-block"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <button type="button" id="btnAddCancel" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                            <button type="submit" id="btnAddSave" class="btn btn-info sepV_a">保存</button>&nbsp;
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/Brand.js")
+}

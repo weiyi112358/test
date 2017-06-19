@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "MemPointDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string startTime = DateTime.Now.Year.ToString() + "-01-01";
+    string endTime = DateTime.Now.ToString("yyyy-MM-dd");
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>积分发放和消费统计</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span3">
+            <label>渠道</label>
+            <select id="drpChannel" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpChannel">
+                <option value="">全部</option>
+                @foreach (var chan in ViewBag.Channels)
+                {
+                    <option value="@chan.OptionValue">@chan.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>大区</label>
+            <select id="drpArea" class="chzn_a span12" name="drpArea">
+                <option value="">全部</option>
+                @foreach (var area in ViewBag.Areas)
+                {
+                    <option value="@area.OptionValue">@area.OptionText</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>城市</label>
+            <select id="drpCity" class="chzn_a span12" name="drpCity">
+                <option value="">全部</option>
+                @foreach (var city in ViewBag.City)
+                {
+                    <option value="@city.RegionID">@city.NameZH</option>
+                }
+            </select>
+        </div>
+
+        <div class="span3">
+            <label>店铺</label>
+            <select id="drpStores" multiple='multiple' data-placeholder='请选择...' class="chzn_a span12" name="drpStores">
+                <option value="">全部</option>
+                @foreach (var store in ViewBag.Stores)
+                {
+                    <option value="@store.StoreCode">@store.StoreName</option>
+                }
+            </select>
+        </div>
+    </div>
+        <div class="row-fluid">
+            <div class="span3">
+                <label>开始日期</label>
+                <input type="text" class="span12" placeholder="开始时间" readonly="readonly" style="cursor:pointer" value="@startTime" id="txtStartDate" />
+                <span class="help-block"></span>
+            </div>
+
+            <div class="span3">
+                <label>截止日期</label>
+                <input type="text" class="span12" placeholder="截止日期" readonly="readonly" style="cursor: pointer" value="@endTime" id="txtEndDate"/>
+                <span class="help-block"></span>
+            </div>
+            <div class="span4 pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dtMemIntegralGrant" style="width:140%;overflow-x:scroll">
+        <thead>
+            <tr>
+                <th scope="col" colspan="1" rowspan="2" style="vertical-align:middle; text-align:center; border-right: solid; border-right-width: 1px; border-color: #ddd; width:57px">渠道</th>
+                <th scope="col" colspan="1" rowspan="2" style="vertical-align:middle; text-align:center; border-right: solid; border-right-width: 1px; border-color: #ddd; width:57px">城市</th>
+                <th scope="col" colspan="1" rowspan="2" style="vertical-align:middle; text-align:center; border-right: solid; border-right-width: 1px; border-color: #ddd;width:111px">店铺</th>
+                <th style="text-align: center; border-left: solid; border-left-width: 1px; border-right: solid; border-right-width: 1px; border-color: #ddd;" scope="col" colspan="6">会员积分发放总量</th>
+                <th style="text-align: center; border-left: solid; border-left-width: 1px; border-right: solid; border-right-width: 1px; border-color: #ddd;" scope="col" colspan="6">会员积分消费总量</th>
+                <th style="text-align: center; border-left: solid; border-left-width: 1px; border-right: solid; border-right-width: 1px; border-color: #ddd;" scope="col" colspan="6">会员积分剩余总量</th>
+            </tr>
+            <tr>
+                <th scope="col">普通会员</th>
+                <th scope="col">铜卡</th>
+                <th scope="col">银卡会员</th>
+                <th scope="col">金卡会员</th>
+                <th scope="col">白金卡会员</th>
+                <th scope="col" style="text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd;">合计</th>
+                <th scope="col">普通会员</th>
+                <th scope="col">铜卡</th>
+                <th scope="col">银卡会员</th>
+                <th scope="col">金卡会员</th>
+                <th scope="col">白金卡会员</th>
+                <th scope="col" style="text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd;">合计</th>
+                <th scope="col">普通会员</th>
+                <th scope="col">铜卡</th>
+                <th scope="col">银卡会员</th>
+                <th scope="col">金卡会员</th>
+                <th scope="col">白金卡会员</th>
+                <th scope="col" style="text-align: center; border-right: solid; border-right-width: 1px; border-color: #ddd;">合计</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="exprDtStart" name="exprDtStart" />
+    <input type="hidden" id="exprDtEnd" name="exprDtEnd" />
+    <input type="hidden" id="exprChannel" name="exprChannel" />
+    <input type="hidden" id="exprArea" name="exprArea" />
+    <input type="hidden" id="exprCity" name="exprCity" />
+    <input type="hidden" id="exprStore" name="exprStore" />
+</form>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/MemPointIssuingConsumption.js")
+@System.Web.Optimization.Scripts.Render("~/IXJS/libs/jquery.ba-resize.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js")
+}

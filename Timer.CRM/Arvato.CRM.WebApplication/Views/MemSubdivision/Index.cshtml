@@ -1,0 +1,509 @@
+﻿@{
+    ViewBag.Title = "会员细分规则";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@System.Web.Optimization.Styles.Render("~/IXCSS/common.css")
+@System.Web.Optimization.Styles.Render("~/VGebo/multi-select.css", "~/VGebo/chosen.css")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/plupload/js/plupload.js", "~/Gebo/lib/plupload/js/plupload.gears.js", "~/Gebo/lib/plupload/js/plupload.silverlight.js", "~/Gebo/lib/plupload/js/plupload.flash.js", "~/Gebo/lib/plupload/js/plupload.browserplus.js", "~/Gebo/lib/plupload/js/plupload.html4.js", "~/Gebo/lib/plupload/js/plupload.html5.js")
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/flot/jquery.flot.min.js", "~/Gebo/lib/flot/jquery.flot.curvedLines.min.js")
+@System.Web.Optimization.Scripts.Render("~/IXJS/libs/jquery.ba-resize.js", "~/Gebo/lib/flot/jquery.flot.curvedLines.min.js")
+<style>
+    li {
+        list-style-type: none;
+    }
+</style>
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员细分规则</h3>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span3">
+        <div class="edit-tree">
+            <p class="formSep clearfix iconNav_right">
+                <button class="btn" id="btnAdd"><i class="splashy-add_small"></i>新建</button>
+                <button class="btn btn-danger" id="btnDelete">删除</button>
+                <button class="btn" id="btnSaveAll">保存</button>
+            </p>
+            <div class="input-append">
+                <input autocomplete="off" id="txtSearch" name="txtSearch" class="search_query input-medium" size="16" type="text" placeholder="搜索..." />
+                <button type="submit" class="btn" id="btnSearch"><i class="icon-search"></i></button>
+            </div>
+            <div id="ms_tree">
+            </div>
+        </div>
+    </div>
+    <div class="span9">
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" id="aTab1" data-toggle="tab">会员细分</a></li>
+                <li><a href="#tab2" data-toggle="tab" id="tab_rule">会员细分规则</a></li>
+                <li id="litab3"><a href="#tab3" data-toggle="tab" id="tab_result">会员细分结果</a></li>
+                <li id="liChart"><a href="#tabChart" data-toggle="tab" id="tab_any">会员细分统计分析</a></li>
+                @*<li><a href="#tab4" data-toggle="tab">关联活动</a></li>*@
+                <div class="pull-right">
+                    <button class="btn" id="btnAddType"><i class="splashy-add_small"></i>新增细分类型</button>
+                </div>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active mbox" id="tab1">
+                    <div class="form_validation_reg">
+                        @*<form id="form_editsubd" method="post">*@
+                        <div class="formSep" style="padding-bottom: 0; border-bottom: 0;">
+                            <div class="row-fluid">
+                                @*<div class="span3">
+                                        <label>门店</label>
+                                        <select id="selStore" class="span13"></select>
+                                    </div>*@
+                                <div class="span3">
+                                    <label>名称 <span class="f_req">*</span></label>
+                                    <input type="text" class="span12" id="txtName" maxlength="50" />
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label>细分类型</label>
+                                    <select id="selSubType" class="span13"></select>
+                                </div>
+                                <div class="span3">
+                                    <label>数据类型</label>
+                                    <select id="selDataSubType" class="span13"></select>
+                                </div>
+                                <div class="span3" style="margin-top: 25px; float: left">
+                                    <button class="btn" id="btnResultImport" style="display: none;">导入</button>
+                                    <button class="btn" id="btnDownTemplate" style="display: none;">模板下载</button>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <label>细分描述</label>
+                                    <textarea id="txtDesc" name="txtDesc" class="span12" rows="2" maxlength="100"></textarea>
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="span3">
+                                    <label id="labstore">群组</label>
+                                    <select id="selGroup" class="span13"></select>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+
+                                <div class="span3">
+                                    <label>激活状态</label>
+                                    <input type="text" class="span12" id="txtActive" disabled="disabled" />
+                                </div>
+                                <div class="span3">
+                                    <label>计算时长</label>
+                                    <input type="text" class="span12" id="txtComputeTime" disabled="disabled">
+                                </div>
+                                <div class="span3">
+                                    <label>最后计算时间</label>
+                                    <input type="text" class="span12" id="txtLastCompute" disabled="disabled">
+                                </div>
+                                <div class="span3" style="margin-top: 25px; float: left">
+                                    <button class="btn" id="btnRefreshCurrentInfo" disabled="disabled">刷新细分计算信息</button>
+                                </div>
+                            </div>
+                            <input type="hidden" id="hidSID" />
+                            <input type="hidden" id="hidCurSubdInstID" />
+                            <input type="hidden" id="hdFilter" />
+                            <div class="row-fluid">
+                            </div>
+
+
+                        </div>
+                        <div class="formSep" style="padding-bottom: 0; border-bottom: 0;">
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label class="form-inline">
+                                        <span id="chooseExeTime">立即计算</span> <span class="help-block"></span>
+                                    </label>
+                                    <label class="radio inline">
+                                        <input type="radio" id="radScheduleNow" name="radSchedule" value="immediately" checked="checked" />
+                                        立即计算（仅一次）
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="formSep" style="padding-bottom: 0; border-bottom: 0;">
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label>指定时间计算</label>
+                                    <label class="radio inline">
+                                        <input type="radio" id="radScheduleFixed" name="radSchedule" value="appointed" />
+                                        按指定时间计算
+                                    </label>
+                                </div>
+                                <div class="span9">
+                                    <label>指定时间计算</label>
+                                    <div class="row-fluid">
+                                        <div class="span3">
+                                            <input type="text" class="span12" id="txtDate" readonly="readonly" />
+                                        </div>
+                                        <div class="span3">
+                                            <input type="text" class="span12" id="txtTime" readonly="readonly" />
+                                        </div>
+                                        <div class="span6">
+                                            <span id="spnFixdayErr"></span>
+                                            <span class="help-block title-left"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <label>周期计算</label>
+                                <label class="radio inline">
+                                    <input type="radio" id="radScheduleCycle" name="radSchedule" value="cycle" />
+                                    按周期计算
+                                </label>
+                            </div>
+                            <div class="span2">
+                                <label>周期</label>
+                                <select id="drpCycle" class="span12">
+                                    <option selected value="daily">每天</option>
+                                    <option value="weekly">每周</option>
+                                    <option value="monthly">每月</option>
+                                    @*<option value="year">每年</option>*@
+                                </select>
+                            </div>
+                            <div class="span2 hide" id="cycleWeek">
+                                <label>每周</label>
+                                <select id="drpWeek" class="span12">
+                                    <option selected value="1">星期一</option>
+                                    <option value="2">星期二</option>
+                                    <option value="3">星期三</option>
+                                    <option value="4">星期四</option>
+                                    <option value="5">星期五</option>
+                                    <option value="6">星期六</option>
+                                    <option value="7">星期日</option>
+                                </select>
+                            </div>
+                            <div class="span2 form-inline hide" id="cycleDays">
+                                <label class="span6">
+                                    第一天<br />
+                                    <span class="title-left">
+                                        <input type="radio" id="Checkbox1" name="cycle_days" value="1st" checked="checked" />
+                                    </span>
+                                </label>
+                                <label class="span6">
+                                    最后一天<br />
+                                    <span class="title-left">
+                                        <input type="radio" id="Radio3" name="cycle_days" value="last" />
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="span2 hide" id="cycleMonth">
+                                <label>每月</label>
+                                <div class="pull-left">
+                                    <input type="radio" id="rdSeleDay" name="cycle_days" value="fixed" />&nbsp;
+                                </div>
+                                <div class="pull-left">
+                                    <select id="drpFixday" class="span12 pull-left" disabled="disabled">
+                                        <option selected value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <label>设置每天时间</label>
+                                <input id="txtCycleTime" type="text" value="指定时间" class="span12" data-label="3" readonly="readonly" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        @*<div class="formSep">
+                                <div class="row-fluid">
+                                </div>
+                            </div>*@
+                        @*</form>*@
+                        <div class="row-fluid">
+                            <div class="pull-right">
+                                @* <button class="btn-info btn" id="btnSave">新增</button>*@
+                                <button class="btn" id="btnActive" disabled="disabled">激活</button>
+                                <button class="btn" id="btnInactive" disabled="disabled">取消激活</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab2" onload="showmask()">
+                    <span id="span_tipMsg"></span>
+                    <div class="form_validation_reg" id="divForLoadTemplate">
+                        <div class="formSep clearfix">
+                            <div class="pull-left">
+                                <button id="btnLoadTemplet" class="btn btn-info">加载模板</button>
+                            </div>
+                        </div>
+                        <div class="formSep" id="divForTab2">
+                            <div id="mask" style="position: absolute; z-index: 1000; display: none; background-color: #ccc; opacity: 0.4;"></div>
+                            <div class="row-fluid">
+                                <div class="pull-left">
+                                    <div id="dvFilter" class="tab-content">
+                                        <ul id="ulRootReletion">
+                                            <li class="root-reletion lastNode" r="and">
+                                                <span class="dynatree-connector"></span>
+                                                <i class="splashy-diamonds_2"></i>&nbsp;
+                                                <a id="hyRoot" href="#">并且</a>&nbsp;
+                                                <a id="hyAddSubRoot" href="#"><i class="splashy-add_small"></i></a>
+                                                <ul id="ulSubRootReletion"></ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix sepV_c">
+                        <div class="pull-right">
+                            @*<button class="btn btn-info" id="btnSaveFilter">保存</button>*@
+                            @*<button class="btn">返回</button>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab3">
+                    <div class="form_validation_reg">
+                        <div class="well firstShow ">
+                            <div class="form-inline">
+                                <div class="span3">
+                                    <label>会员卡号 </label>
+                                    <input type="text" class="span11" id="txtMemCard" />
+                                </div>
+                                <div class="span3">
+                                    <label>会员姓名</label>
+                                    <input type="text" class="span11" id="txtMemName" />
+                                </div>
+                                <div class="span3">
+                                    <label>手机号</label>
+                                    <input type="text" class="span11" id="txtMemMobile">
+                                </div>
+                                <div class="span3">
+                                    <label>执行时间</label>
+                                    <select data-placeholder="全部" class="chzn_a span11" id="drpBuildTime"></select>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label>入会门店</label>
+                                    <select data-placeholder="全部" class="chzn_a span11" id="drpRegStore"></select>
+                                </div>
+                                <div class="span6 mt10" style="margin-top: 25px;">
+                                    <button class="btn" id="btnSearchResult">查询</button>
+                                    @*<button class="btn">刷新</button>*@
+                                    <button class="btn" id="btnResultExport">导出</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table" id="dt_filter">
+                            <thead>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <form id="resultExportForm" method="post">
+                            <input type="hidden" id="currSubdId" name="currSubdId" />
+                            <input type="hidden" id="memCard" name="memCard" />
+                            <input type="hidden" id="memName" name="memName" />
+                            <input type="hidden" id="memMobile" name="memMobile" />
+                            <input type="hidden" id="registerStoreCode" name="registerStoreCode" />
+                            <input type="hidden" id="dynamicTable" name="dynamicTable" />
+                            <input type="hidden" id="subDevDataType" name="subDevDataType" />
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <div class="tab-pane" id="tab4" style="display: none">
+                    <div class="form_validation_reg">
+                        <div class="well firstShow ">
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <label>活动名称</label>
+                                    <input type="text" class="span11" id="txtActName">
+                                </div>
+                                <div class="span3">
+                                    <label>活动开始时间</label>
+                                    <input type="text" class="span11" id="txtActStartDate" />
+                                </div>
+                                <div class="span3">
+                                    <label>活动结束时间</label>
+                                    <input type="text" class="span11" id="txtActEndDate">
+                                </div>
+                                <div class="span3">
+                                    <label>&nbsp;</label>
+                                    <button class="btn" id="btnSearchActivity">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table" id="dt_activity">
+                            <thead>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+                <div class="tab-pane" id="tabChart">
+                    <div class="form_validation_reg">
+                        <div id="chart_tile" class="well firstShow ">
+                        </div>
+                        <div id="bar_chart" style="height: 340px; width: 750px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="hide">
+    <div id="select_dialog" class="cbox_content popConfig w350" style="width: 430px; height: 500px; overflow-y: auto">
+        <div class="heading" id="subhead">
+            @*modal-header*@
+            <h3><span id="selectDialogTitle"></span></h3>
+        </div>
+        <div class="formSep" style="height: 380px; overflow-y: auto;">
+            @*modal-body*@
+            <div class="row-fluid">
+                <div id="dvOption" class="span12" style="overflow-y: auto; overflow-x: hidden;"></div>
+                @*<span id="selDialogError" class="error"></span>*@
+            </div>
+        </div>
+        @*        <div class="modal-footer">
+                <a href="#" class="btn btn-gebo confirm_yes" id="btnSelectOK">确定</a>
+                <a href="#" class="btn confirm_no" id="btnCancelSelect">取消</a>
+            </div>*@
+
+        <div class="row-fluid">
+            <div class="pull-right">
+                <a href="javascript:;" class="btn btn-gebo confirm_yes" id="btnSelectOK">确定</a>
+                <a href="javascript:;" class="btn confirm_no" id="btnCancelSelect">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="import_data" class="cbox_content popConfig">
+        <div class="modal-header">
+            <h3>文件导入</h3>
+        </div>
+
+        <div class="modal-body">
+            <div>
+                <form class="form_validation_import">
+                    @*                        <div class="row-fluid">
+                            <div class="span9">
+                                <label>名称 <span class="f_req">*</span></label>
+                                <input type="text" id="tbImportName" name="tbImportName" class="span12" />
+                            </div>
+                        </div>*@
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <label>文件路径 <span class="f_req">*</span></label>
+                            <input type="text" id="tbFilePath" readonly="true" name="tbFilePath" class="span12" />
+                        </div>
+                        <div class="span2" id="container">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-info" id="pickfiles">选择文件</button>
+                        </div>
+                    </div>
+                    <div>
+                        <span id="importError" class="error"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-gebo confirm_yes" id="btnSaveImport">保存</button>
+            <button class="btn confirm_no" id="btnCancelImport" type="button" onclick="$.colorbox.close()">取消</button>
+        </div>
+    </div>
+
+    <div id="subdivisionTypeDialog" class="cbox_content w350">
+        <div class="modal-header">
+            <h3>新增会员细分类型</h3>
+        </div>
+        <div class="modal-body mbox">
+            <div class="row-fluid">
+                <div class="span4">
+                    <label>细分类型名称</label>
+                    <input type="text" placeholder="细分类型名称" id="txtAddSubdivisionType" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes" id="btnSaveSubdivisionType">保存</a>
+            <button type="button" class="btn" onclick="$.colorbox.close();">取消</button>
+        </div>
+    </div>
+    <!-- 页面弹窗 box -->
+</div>
+
+<div id="paradetail" style="width: 300px; position: absolute; z-index: 10000; background: #fff; border: 3px #ccc solid; border-radius: 3px; height: 400px; overflow-y: auto; display: none">
+    <div class="vcard">
+        <ul></ul>
+    </div>
+</div>
+<div id="btnclose" style="height: 20px; width: 20px; background-color: #ccc; position: absolute; opacity: 0.4; background-image: url('../img/imgColorBox/controls.png'); background-position-x: -50px; background-position-y: -1px; border-radius: 3px; cursor: pointer; z-index: 10001; display: none"></div>
+<input type="hidden" value="0" id="flag" />
+
+<!--会员细分结果导出弹窗*-->
+<div class="hide">
+    <div id="addSubExport_dialog" class="cbox_content" style="width: 650px;">
+        <div class="modal-header">
+            <h3>细分结果导出</h3>
+        </div>
+        <div class="modal-body">
+            <div class="formSep">
+                <div class="row-fluid sepH_b">
+                    <div class="pull-left span5">
+                        <select class="input" id="addSubExportCol" name="addSubExportCol"></select>
+                    </div>
+                    <div class="span3">
+                        <button type="button" class="btn" id="btnAddColumn">添加</button>
+                    </div>
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <table class="table" data-provides="rowlink" id="dtSubExport"></table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" onclick="$.colorbox.close();">取消</button>
+            <button type="button" id="btnSubExportSave" class="btn btn-info sepV_a">保存</button>
+        </div>
+    </div>
+</div>
+
+@System.Web.Optimization.Scripts.Render("~/Gebo/lib/multi-select/js/jquery.multi-select.js", "~/Gebo/lib/multi-select/js/jquery.quicksearch.js", "~/Gebo/lib/chosen/chosen.jquery.min.js", "~/Scripts/Pages/MemSubdivision/Index.js")

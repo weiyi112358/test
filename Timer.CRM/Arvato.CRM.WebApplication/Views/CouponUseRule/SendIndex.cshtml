@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "SendIndex";    
+    var listApproveStatus = new SelectListItem[]{
+        new SelectListItem{Text="全部",Value=""},
+        new SelectListItem{Text="未审核",Value="0"},
+        new SelectListItem{Text="已审核",Value="1"},
+        new SelectListItem{Text="已作废",Value="2"},
+    };
+    var listExecuteStatus = new SelectListItem[]{
+        new SelectListItem{Text="全部",Value=""},
+        new SelectListItem{Text="未开始",Value="0"},
+        new SelectListItem{Text="休眠中",Value="1"},
+        new SelectListItem{Text="执行中",Value="2"},
+        new SelectListItem{Text="已结束",Value="3"},
+    };
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>购物券派送规则</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="form-inline well">
+        <div class="span3">
+            <label class="title-left sepV_a ml10">购物券编号</label>
+            <input type="text" id="txtCouponId" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">购物券名称</label>
+            <input type="text" id="txtCouponName" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">购物券面额</label>
+            <input type="text" id="txtCouponValue" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">购物券说明</label>
+            <input type="text" id="txtCouponRemark" class="input-medium span12">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">开始日期</label>
+            <input type="text" id="txtStartDate" class="input-medium span12" readonly="readonly">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">结束日期</label>
+            <input type="text" id="txtEndDate" class="input-medium span12" readonly="readonly">
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">审核状态</label>
+            @Html.DropDownList("txtApproveStatus", listApproveStatus, new { id = "txtApproveStatus", @class = "span12 sepV_b" })
+        </div>
+        <div class="span3">
+            <label class="title-left sepV_a ml10">执行状态</label>
+            @Html.DropDownList("txtExecuteStatus", listExecuteStatus, new { id = "txtExecuteStatus", @class = "span12 sepV_b" })
+        </div>
+        <div class="q_btn">
+            <button class="btn btn-success" id="btnSerach">查询</button>
+            <button class="btn btn-warning" id="btnClear">重置</button>
+            <button class="btn" id="btnAdd">新建</button>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_Table"></table>
+</div>
+
+
+
+@using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "form1", @class = "hide", @Action = "/CouponUseRule/SendEdit" }))
+{
+    <input id="hideID" name="hideID" type="text" /> 
+    <input id="hideInfo" name="hideInfo" type="text" />
+}
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/CouponUseRule/SendIndex.js")
+}
+

@@ -1,0 +1,125 @@
+﻿.searchbox {
+    margin: 15px 0;
+}
+
+.main_content {
+    padding: 50px 30px 0;
+}
+
+.top {
+    height: 80px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+    .top h4 {
+        float: left;
+        margin: 30px 0 0 20px;
+        padding: 0;
+        color: #ffa217;
+        font-size: 18px;
+    }
+
+.taglist ul {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.taglist li {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+}
+
+    .taglist li p {
+        float: left;
+        width: 160px;
+        margin: 0 20px 0 0;
+    }
+
+.pec {
+    float: left;
+    margin-right: 30px;
+    height: 35px;
+    color: #7d7d7d;
+}
+
+.seniorsearch {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+}
+
+.controls-text-select {
+    width: 154px;
+}
+
+.taglist li .pec b {
+    font-size: 30px;
+    float: left;
+    line-height: 38px;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.taglist li .pec em {
+    font-style: normal;
+    float: left;
+    color: #dad4d4;
+}
+
+.taglist li .pec > span {
+    float: left;
+    display: inline-block;
+    height: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    color: #dad4d4;
+}
+
+.taglist li .pec .target-unit {
+    height: 15px;
+    line-height: 15px;
+}
+
+.taglist li .pec.cur b, .taglist li .pec.cur em span {
+    color: #ffa217;
+}
+
+.taglist li .pec .target-unit.current {
+    color: #ffa217;
+}
+
+.kpilist {
+    width: 100%;
+    float: left;
+    padding: 20px 0;
+}
+
+    .kpilist ul {
+        width: 100%;
+    }
+
+        .kpilist ul li {
+            width: 50%;
+            float: left;
+            margin: 0 0 20px;
+        }
+
+            .kpilist ul li .kpiitem {
+                height: 30px;
+                line-height: 30px;
+                width: 150px;
+                display: inline-block;
+            }
+
+                .kpilist ul li .kpiitem:first-child {
+                    margin-top: 1px;
+                }
+
+            .kpilist ul li input {
+                width: 154px;
+                display: inline-block;
+            }

@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "CreditTransfer";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>积点转让</h3>
+    </div>
+</div>
+<br />
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>步骤 1: 选择转出账户</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span2">
+            <label>会员手机号码</label>
+            <input type="text" class="span12" id="txtMobileFrom" value="" />
+            <span class="error-block"></span>
+        </div>
+        <div class="span2">
+            <label>会员证件号码</label>
+            <input type="text" class="span12" id="txtCertificateFrom" value="" />
+        </div>
+        <div class="span2">
+            <label>会员车牌号码</label>
+            <input type="text" class="span12" id="txtVehicleFrom" value="" />
+            <span class="error-block"></span>
+        </div>
+        <div class="span2">
+            <label>会员车架号码</label>
+            <input type="text" class="span12" id="txtVINFrom" value="" />
+        </div>
+        <div class="span2">
+            <label>&nbsp;</label>
+            <button type="button" id="btnSearchFrom" class="btn">查询</button>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="mt10 mbox">
+        <table class="table" id="dt_From"></table>
+    </div>
+</div>
+
+<br />
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>步骤 2: 本次转让积点</h3>
+    </div>
+</div>
+<div class="row-fluid memInfoBlock">
+    <div class="row-fluid memInfoList">
+        <div class="clearfix">
+            <p class="sepH_a"><span class="muted sepV_b">姓名</span><strong id="stgName"></strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">总积点</span><strong id="stgTotalCredit"></strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">可用积点</span><strong id="stgValidCredit"></strong></p>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span8 row-fluid">
+        <input type="checkbox" id="cbkSelectAll" style="width: 25px;" /><label for="cbkSelectAll" style="display: inline;">列表全选</label>
+    </div>
+    <div class="span4">
+        <label>合计： <span id="spnTotal">0</span></label>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="mt10 mbox">
+        <table class="table" id="dt_Credit">
+            <thead>
+                <tr role="row">
+                    <th>积点数量</th>
+                    <th>有效日期</th>
+                    <th>限制类型</th>
+                    <th>是否转让</th>
+                    <th>本次转让数量</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>步骤 3: 选择接收账户</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span2">
+            <label>会员手机号码</label>
+            <input type="text" class="span12" id="txtMobileTo" value="" />
+            <span class="error-block"></span>
+        </div>
+        <div class="span2">
+            <label>会员证件号码</label>
+            <input type="text" class="span12" id="txtCertificateTo" value="" />
+        </div>
+        <div class="span2">
+            <label>会员车牌号码</label>
+            <input type="text" class="span12" id="txtVehicleTo" value="" />
+            <span class="error-block"></span>
+        </div>
+        <div class="span2">
+            <label>会员车架号码</label>
+            <input type="text" class="span12" id="txtVINTo" value="" />
+        </div>
+        <div class="span2">
+            <label>&nbsp;</label>
+            <button type="button" id="btnSearchTo" class="btn">查询</button>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="mt10 mbox">
+        <table class="table" id="dt_To"></table>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="pull-right">
+        <button type="button" id="btnCancel" class="btn">取消</button>&nbsp;
+        <button type="submit" id="btnTransfer" class="btn btn-info sepV_a">确认转让</button>&nbsp;
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/CreditTransfer/Add.js")
+}

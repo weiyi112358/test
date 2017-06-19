@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CRMDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CRMDBModelStoreContainer">
+          <EntitySet Name="TD_SYS_BizOption" EntityType="CRMDBModel.Store.TD_SYS_BizOption" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TD_SYS_FieldAlias" EntityType="CRMDBModel.Store.TD_SYS_FieldAlias" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TM_CRM_KPI" EntityType="CRMDBModel.Store.TM_CRM_KPI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TM_CRM_KPITarget" EntityType="CRMDBModel.Store.TM_CRM_KPITarget" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="TD_SYS_BizOption">
+          <Key>
+            <PropertyRef Name="OptionID" />
+          </Key>
+          <Property Name="OptionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionType" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ReferenceOptionType" Type="nvarchar" MaxLength="20" />
+          <Property Name="OptionValue" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="OptionText" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="DataGroupID" Type="int" />
+          <Property Name="Sort" Type="smallint" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_SYS_FieldAlias">
+          <Key>
+            <PropertyRef Name="AliasID" />
+          </Key>
+          <Property Name="AliasID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FieldName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FieldType" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="FieldAlias" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AliasType" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="AliasKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="AliasSubKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="FieldDesc" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DictTableName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DictTableType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFilterBySubdivision" Type="bit" Nullable="false" />
+          <Property Name="IsFilterByLoyRule" Type="bit" Nullable="false" />
+          <Property Name="IsFilterByLoyActionLeft" Type="bit" Nullable="false" />
+          <Property Name="IsFilterByLoyActionRight" Type="bit" Nullable="false" />
+          <Property Name="IsCommunicationTemplet" Type="bit" Nullable="false" />
+          <Property Name="ControlType" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Reg" Type="nvarchar" MaxLength="500" />
+          <Property Name="ComputeScript" Type="nvarchar(max)" />
+          <Property Name="LogScript" Type="nvarchar" MaxLength="1000" />
+          <Property Name="RunType" Type="smallint" />
+          <Property Name="DataLimitType" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ComputeSort" Type="int" />
+        </EntityType>
+        <EntityType Name="TM_CRM_KPI">
+          <Key>
+            <PropertyRef Name="KPIID" />
+          </Key>
+          <Property Name="KPIID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="KPIName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="KPIType" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ComputeScript" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="AddedDate" Type="datetime" Nullable="false" />
+          <Property Name="AddedUser" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="20" />
+          <Property Name="TargetValueType" Type="nvarchar" MaxLength="20" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_CRM_KPITarget">
+          <Key>
+            <PropertyRef Name="KPIID" />
+            <PropertyRef Name="KPIType" />
+            <PropertyRef Name="KPITypeValue" />
+          </Key>
+          <Property Name="KPIID" Type="bigint" Nullable="false" />
+          <Property Name="KPIType" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="KPITypeValue" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IntValue1" Type="int" />
+          <Property Name="DecValue1" Type="decimal" Scale="2" />
+          <Property Name="DecValue2" Type="decimal" Scale="2" />
+          <Property Name="StrValue1" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRMDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="TD_SYS_BizOption" EntityType="CRMDBModel.TD_SYS_BizOption" />
+          <EntitySet Name="TM_CRM_KPI" EntityType="CRMDBModel.TM_CRM_KPI" />
+          <EntitySet Name="TM_CRM_KPITarget" EntityType="CRMDBModel.TM_CRM_KPITarget" />
+          <EntitySet Name="TD_SYS_FieldAlias" EntityType="CRMDBModel.TD_SYS_FieldAlias" />
+        </EntityContainer>
+        <EntityType Name="TD_SYS_BizOption">
+          <Key>
+            <PropertyRef Name="OptionID" />
+          </Key>
+          <Property Name="OptionID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionType" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ReferenceOptionType" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="OptionValue" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="OptionText" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DataGroupID" Type="Int32" />
+          <Property Name="Sort" Type="Int16" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_CRM_KPI">
+          <Key>
+            <PropertyRef Name="KPIID" />
+          </Key>
+          <Property Type="Int64" Name="KPIID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="KPIName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KPIType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ComputeScript" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Unit" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="AddedUser" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="String" Name="ModifiedUser" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TargetValueType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DataGroupID" Nullable="false" />
+          <Property Type="Boolean" Name="Enable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_CRM_KPITarget">
+          <Key>
+            <PropertyRef Name="KPIID" />
+            <PropertyRef Name="KPIType" />
+            <PropertyRef Name="KPITypeValue" />
+          </Key>
+          <Property Type="Int64" Name="KPIID" Nullable="false" />
+          <Property Type="String" Name="KPIType" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KPITypeValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IntValue1" />
+          <Property Type="Decimal" Name="DecValue1" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DecValue2" Precision="18" Scale="2" />
+          <Property Type="String" Name="StrValue1" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TD_SYS_FieldAlias">
+          <Key>
+            <PropertyRef Name="AliasID" />
+          </Key>
+          <Property Type="Int32" Name="AliasID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TableName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FieldName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FieldType" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FieldAlias" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AliasType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AliasKey" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AliasSubKey" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FieldDesc" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DictTableName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DictTableType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsFilterBySubdivision" Nullable="false" />
+          <Property Type="Boolean" Name="IsFilterByLoyRule" Nullable="false" />
+          <Property Type="Boolean" Name="IsFilterByLoyActionLeft" Nullable="false" />
+          <Property Type="Boolean" Name="IsFilterByLoyActionRight" Nullable="false" />
+          <Property Type="Boolean" Name="IsCommunicationTemplet" Nullable="false" />
+          <Property Type="String" Name="ControlType" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reg" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ComputeScript" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LogScript" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="RunType" />
+          <Property Type="String" Name="DataLimitType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddedDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="Int32" Name="ComputeSort" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CRMDBModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="TD_SYS_BizOption">
+            <EntityTypeMapping TypeName="CRMDBModel.TD_SYS_BizOption">
+              <MappingFragment StoreEntitySet="TD_SYS_BizOption">
+                <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="ReferenceOptionType" ColumnName="ReferenceOptionType" />
+                <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+                <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_CRM_KPI">
+            <EntityTypeMapping TypeName="CRMDBModel.TM_CRM_KPI">
+              <MappingFragment StoreEntitySet="TM_CRM_KPI">
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="TargetValueType" ColumnName="TargetValueType" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AddedUser" ColumnName="AddedUser" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ComputeScript" ColumnName="ComputeScript" />
+                <ScalarProperty Name="KPIType" ColumnName="KPIType" />
+                <ScalarProperty Name="KPIName" ColumnName="KPIName" />
+                <ScalarProperty Name="KPIID" ColumnName="KPIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_CRM_KPITarget">
+            <EntityTypeMapping TypeName="CRMDBModel.TM_CRM_KPITarget">
+              <MappingFragment StoreEntitySet="TM_CRM_KPITarget">
+                <ScalarProperty Name="StrValue1" ColumnName="StrValue1" />
+                <ScalarProperty Name="DecValue2" ColumnName="DecValue2" />
+                <ScalarProperty Name="DecValue1" ColumnName="DecValue1" />
+                <ScalarProperty Name="IntValue1" ColumnName="IntValue1" />
+                <ScalarProperty Name="KPITypeValue" ColumnName="KPITypeValue" />
+                <ScalarProperty Name="KPIType" ColumnName="KPIType" />
+                <ScalarProperty Name="KPIID" ColumnName="KPIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_SYS_FieldAlias">
+            <EntityTypeMapping TypeName="CRMDBModel.TD_SYS_FieldAlias">
+              <MappingFragment StoreEntitySet="TD_SYS_FieldAlias">
+                <ScalarProperty Name="ComputeSort" ColumnName="ComputeSort" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="DataLimitType" ColumnName="DataLimitType" />
+                <ScalarProperty Name="RunType" ColumnName="RunType" />
+                <ScalarProperty Name="LogScript" ColumnName="LogScript" />
+                <ScalarProperty Name="ComputeScript" ColumnName="ComputeScript" />
+                <ScalarProperty Name="Reg" ColumnName="Reg" />
+                <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+                <ScalarProperty Name="IsCommunicationTemplet" ColumnName="IsCommunicationTemplet" />
+                <ScalarProperty Name="IsFilterByLoyActionRight" ColumnName="IsFilterByLoyActionRight" />
+                <ScalarProperty Name="IsFilterByLoyActionLeft" ColumnName="IsFilterByLoyActionLeft" />
+                <ScalarProperty Name="IsFilterByLoyRule" ColumnName="IsFilterByLoyRule" />
+                <ScalarProperty Name="IsFilterBySubdivision" ColumnName="IsFilterBySubdivision" />
+                <ScalarProperty Name="DictTableType" ColumnName="DictTableType" />
+                <ScalarProperty Name="DictTableName" ColumnName="DictTableName" />
+                <ScalarProperty Name="FieldDesc" ColumnName="FieldDesc" />
+                <ScalarProperty Name="AliasSubKey" ColumnName="AliasSubKey" />
+                <ScalarProperty Name="AliasKey" ColumnName="AliasKey" />
+                <ScalarProperty Name="AliasType" ColumnName="AliasType" />
+                <ScalarProperty Name="FieldAlias" ColumnName="FieldAlias" />
+                <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="AliasID" ColumnName="AliasID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

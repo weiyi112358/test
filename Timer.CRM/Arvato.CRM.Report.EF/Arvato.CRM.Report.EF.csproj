@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35362311-433A-4248-ABAB-D0B8084569F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arvato.CRM.Report.EF</RootNamespace>
+    <AssemblyName>Arvato.CRM.Report.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.5.0.0.73\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CRMReport.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRMReport.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CRMReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CRMReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRMReport.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_Rpt_ActIntance_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_CouponDetail_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MarketActivityDetail_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MarketActivityTracking_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemContributionRate_Result_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemMonthConsum_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemRepeatedConsumption_Result_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_MemUpGrade_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_Activitycount_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_ConsumerDetails_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_ConsumptionFrequency_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_ContributionRate_Statistics_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_IssuingConsumption_Result_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_MemToNonMemSalesDutyCount_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Mem_Recruit_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_Prd_WeChatSign_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_PriceSegmentDistributionOffline_Result_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_StoreConsumptionDuty_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_StoreConsumptionMonthly_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_UseCoupon_Count_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_UsedCoupon_Detail_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_WXSign_Detail_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Rpt_WXSign_Result.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_WX_MemberSign.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TM_Act_CommunicationTemplet.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_area.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_brand.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_channel.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_colors.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_customerlevel.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_product.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_productBrand.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_productCategory.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_productline1.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_productline2.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_promotion.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_M_TM_SYS_BaseData_store.cs">
+      <DependentUpon>CRMReport.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="CRMReport.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CRMReport.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CRMReport.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CRMReport.edmx</DependentUpon>
+      <LastGenOutput>CRMReport.Context.cs</LastGenOutput>
+    </None>
+    <None Include="CRMReport.edmx.diagram">
+      <DependentUpon>CRMReport.edmx</DependentUpon>
+    </None>
+    <None Include="CRMReport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CRMReport.edmx</DependentUpon>
+      <LastGenOutput>CRMReport.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

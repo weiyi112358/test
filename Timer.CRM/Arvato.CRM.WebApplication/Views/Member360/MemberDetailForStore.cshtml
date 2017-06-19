@@ -1,0 +1,281 @@
+﻿@{
+    ViewBag.Title = "会员明细信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+    @System.Web.Optimization.Styles.Render("~/IXCSS/memberdetail.css")
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+
+<div class="mt10">
+    <div class="tab-content">
+        <div class="row-fluid memInfoBlock">
+            <h2 class="pull-left memName" style="line-height: 40px;">
+                @ViewBag.BriefInfo.CustomerName
+            </h2>
+            <div class="pull-left memBasic">
+                <span>@ViewBag.BriefInfo.Gender</span>&nbsp;&nbsp;&nbsp;<b>@ViewBag.BriefInfo.CustomerLevel</b>
+            </div>
+            <div class="span8 memInfoList">
+                <div class="clearfix">
+                    <p class="sepH_a">
+                        <span class="muted sepV_b">会员编号</span>
+                        <strong>@ViewBag.BriefInfo.MemberCode</strong>
+                    </p>
+                    <p class="sepH_a">
+                        <span class="muted sepV_b">会员卡号</span>
+                        <strong>@ViewBag.BriefInfo.MemberCardNo</strong>
+                    </p>
+                    <p class="sepH_a">
+                        <span class="muted sepV_b">手机号码</span>
+                        <strong>@ViewBag.BriefInfo.CustomerMobile</strong>
+                    </p>
+
+                </div>
+                <div class="clearfix">
+                    <p class="sepH_a">
+                        <span class="muted sepV_b">注册日期</span>
+                        <strong>@((ViewBag.BriefInfo.RegisterDate + "") == "" ? "" : ((DateTime)ViewBag.BriefInfo.RegisterDate).ToString("yyyy-MM-dd"))</strong>
+                    </p>
+                    <p class="sepH_a">
+                        <span class="muted sepV_b">累计获取积分</span>
+                        <strong>
+                            @string.Format("{0:####}", (@ViewBag.BriefInfo.AccCumulativeIntegral == null || @ViewBag.BriefInfo.AccCumulativeIntegral == 0.00) ?
+                                    "0" : @ViewBag.BriefInfo.AccCumulativeIntegral)
+                        </strong>
+                    </p>
+                    <p class="sepH_a">
+                        <span class="muted sepV_b">可用积分</span>
+                        <strong>
+                            @string.Format("{0:####}", (@ViewBag.BriefInfo.AvailPoint == null || @ViewBag.BriefInfo.AvailPoint == 0.00) ?
+                                    "0" : @ViewBag.BriefInfo.AvailPoint)
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <table class="client-table" style="width: 100%">
+            <tbody>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">出生日期</span>
+                    </td>
+                    <td>
+                        <strong>@((ViewBag.BriefInfo.Birthday + "") == "" ? "" : ((DateTime)ViewBag.BriefInfo.Birthday).ToString("yyyy-MM-dd"))</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">电子邮箱</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.CustomerEmail</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">身份证号</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.CertificateNo</strong>
+                    </td>
+
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">固定电话</span>
+                    </td>
+                    <td>
+                        <strong>@(ViewBag.BriefInfo.Tel)</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">openID</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.MemberOpenID</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">邮编</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.Zip</strong>
+                    </td>
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">省</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.Province</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">城市</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.City</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">区(县)</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.District</strong>
+                    </td>
+
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">具体地址 </span>
+                    </td>
+                    <td colspan="5">
+                        <strong>@ViewBag.BriefInfo.Address1</strong>
+                    </td>
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">会员来源</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.CustomerSource</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">注册渠道</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.RegChannelName</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">门户注册时间</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.RegisterDateProtal</strong>
+                    </td>
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">店铺代码</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.RegisterStoreCode</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">注册店铺</span>
+                    </td>
+                    <td>
+                        <span>@ViewBag.BriefInfo.StoreName</span>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">创建日期</span>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">@(ViewBag.BriefInfo.AddedDate + "" != "" ? ((DateTime)ViewBag.BriefInfo.AddedDate).ToString("yyyy-MM-dd") : "")</span>
+                    </td>
+
+
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">推荐人电话</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.MemberIntroducer</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">推荐人姓名</span>
+                    </td>
+                    <td>
+                        <strong>@ViewBag.BriefInfo.RecommenderName</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">是否享受过生日优惠</span>
+                    </td>
+                    <td>
+                        <strong>@(ViewBag.BriefInfo.IsBirthday == true ? '是' : '否')</strong>
+                    </td>
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">是否愿意接受促销短信</span>
+                    </td>
+                    <td>
+                        <strong>@(ViewBag.BriefInfo.IsMessage == true ? '是' : '否')</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">是否愿意接受促销邮件</span>
+                    </td>
+                    <td>
+                        <strong>@(ViewBag.BriefInfo.IsEmail == true ? '是' : '否')</strong>
+                    </td>
+                    <td>
+                        <span class="muted sepV_b">资料是否填写完整</span>
+                    </td>
+                    <td>
+                        <strong>@(ViewBag.BriefInfo.InfoCompletedFlag == true ? '是' : '否')</strong>
+                    </td>
+                </tr>
+                <tr class="basic-row">
+                    <td>
+                        <span class="muted sepV_b">是否有孩子</span>
+                    </td>
+                    <td>
+                        <strong>@(ViewBag.BriefInfo.HasChild == true ? '是' : '否')</strong>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @if (ViewBag.BriefInfo.HasChild == true)
+                {
+                    foreach (var child in @ViewBag.BriefInfo.Kids)
+                    {
+                    <tr class="basic-row">
+                        <td colspan="6">
+                            <h3>Baby(<span>@child.BabyName</span>)的基本信息</h3>
+                        </td>
+                    </tr>
+                    <tr class="basic-row">
+                        <td>
+                            <span class="muted sepV_b">Baby姓名</span>
+                        </td>
+                        <td>
+                            <strong>@child.BabyName</strong>
+                        </td>
+                        <td>
+                            <span class="muted sepV_b">性别</span>
+                        </td>
+                        <td>
+                            <strong id="spn_bb1gender">@child.BabyGender</strong>
+                        </td>
+                        <td>
+                            <span class="muted sepV_b">生日</span>
+                        </td>
+                        <td>
+                            <strong>@((child.BabyBrithday) != "" && (child.BabyBrithday) != null ? ((DateTime)child.BabyBrithday).ToString("yyyy-MM-dd") : "")</strong>
+                        </td>
+                    </tr>
+                    <tr class="basic-row">
+
+                        <td>
+                            <span class="muted sepV_b">身高(cm)</span>
+                        </td>
+                        <td>
+                            <strong>@child.BabyHeight</strong>
+                        </td>
+                        <td>
+                            <span class="muted sepV_b">体重(kg)</span>
+                        </td>
+                        <td>
+                            <strong>@child.BabyWeight</strong>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Member360/MemberDetailForStore.js")
+}

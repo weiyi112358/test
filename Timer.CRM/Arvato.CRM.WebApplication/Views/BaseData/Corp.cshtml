@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "企业信息管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>企业信息管理</h3>
+    </div>
+</div>
+
+<div class="sepH_c row-fluid">
+    <div class="well firstShow ">
+        <div class="row-fluid">
+            <div class="form-inline">
+                <label class="title-left sepV_a">名称</label>
+                <input type="text" class="span2 sepV_a" id="txt_CorpName"/>
+                <button id="btnSerach" class="btn sepV_a">查询</button>
+                <button class="btn" onclick="goEdit()">新建</button>
+            </div>
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_CorpTable">
+    </table>
+</div>
+
+
+<div class="hide">
+    <div id="table_Corp" class="cbox_content" style="width: 480px">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>企业新增/编辑</h3>
+            </div>
+        </div>
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "frmSaveCorp" }))
+        {
+            <div class="formSep">
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        企业编号
+                    </div>
+                    <input type="text" id="txtCorpId" name="txtCorpId" class="span5" disabled="disabled" />
+                    <input type="hidden" id="txtDataType" />
+                        <input type="hidden" id="txtDataGroupId" />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        企业名称<span style="color: red"> * </span>
+                    </div>
+                    <input type="text" id="txtCorpName" name="txtCorpName" class="span5"  />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        企业联系人<span style="color: red"> * </span>
+                    </div>
+                    <input type="text" id="txtContract" name="txtContract" class="span5"  />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        联系电话<span style="color: red"> * </span>
+                    </div>
+                    <input type="text" id="txtPhone" name="txtPhone" class="span5"  />
+                    <span class="error-block"></span>
+                </div>
+                <div class="row-fluid sepH_b">
+                    <div class="span3 title-left">
+                        详细地址<span style="color: red"> * </span>
+                    </div>
+                    <textarea name="txtAddress" class="span5" rows="3" id="txtAddress"></textarea>
+                    <span class="error-block"></span>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <button type="button" id="btnEditCancel" class="btn" onclick="$.colorbox.close();">取消</button>&nbsp;
+                            <button type="submit" id="btnEditSave" class="btn btn-info sepV_a">保存</button>&nbsp;
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/BaseData/Corp.js")
+}

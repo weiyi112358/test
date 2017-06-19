@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "会员非会员销售占比统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string startTime = "2015-09-01";
+    string endTime = DateTime.Now.ToString("yyyy-MM-dd");
+}
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css")
+}
+
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员与非会员消费占比统计</h3>
+    </div>
+</div>
+<div class="well">
+    <div class="row-fluid">
+        <div class="span3">
+            <label for="txtConsumptionStartDate">消费日期起期</label>
+            <input type="text" class="span12" placeholder="消费日期起期" readonly="readonly" style="cursor:pointer" value="@startTime" id="txtConsumptionStartDate" />
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span3">
+            <label for="txtConsumptionEndDate">消费日期止期</label>
+            <input type="text" class="span12" placeholder="消费日期止期" id="txtConsumptionEndDate" readonly="readonly" style="cursor:pointer" value="@endTime" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span3">
+            <label for="drCustomeSource">消费来源</label>
+            <select id="drCustomeSource">
+                <option value="">全部</option>
+                <option value="线上">线上</option>
+                <option value="线下">线下</option>
+            </select>
+            <span class="help-block"></span>
+        </div>
+
+        <div class="span3">
+            <div class="pull-right">
+                <label>&nbsp;</label>
+                <button class="btn" id="btnSearch" type="button">查询</button>
+                <button class="btn" id="btnExport" type="button">导出</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row-fluid sepV_b">
+    <table class="table" data-provides="rowlink" id="dt_search">
+        <thead>
+            <tr>
+                <th scope="col">种类</th>
+                <th scope="col">消费额</th>
+                <th scope="col">消费贡献率（占总体）</th>
+                <th scope="col">总计消费额</th>
+                <th scope="col">总计消费贡献率（占总体）</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+
+@*<div style="margin-top: 15px">
+    ★ 会员转化率 , 注册会员/泛会员数量<br />
+    ★ 活跃会员量 , 三个月内有效购买行为(首次购买除外)<br />
+    ★ 潜在流失会员量 , 一年内没有购买行为<br />
+    ★ 流失会员量 , 一年以上没有购买行为
+</div>*@
+
+<form id="exportForm" method="post">
+    <input type="hidden" id="expDtConsumptionStart" name="expDtConsumptionStart" />
+    <input type="hidden" id="expDtConsumptionEnd" name="expDtConsumptionEnd"/>
+    <input type="hidden" id="expdrCustomeSource" name="expdrCustomeSource">
+</form>
+
+
+@section Scripts{
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Report/RptMemToNonMemSalesDutyCount.js")
+
+}

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>库存查询</h3>
+    </div>
+</div>
+<div class="sepH_c row-fluid">
+    <div class="form-inline well">
+        <form id="frmQuery">
+        <div class="span3">
+            <label class="title-left sepV_a ml10">盒号</label>
+            <input type="text" id="txtBoxNo" class="input-medium span12">
+        </div>
+            <div class="span3">       
+              <label class="title-left sepV_a ml10">门店</label>  
+            <select class="chzn_a input-medium span12" id="selStore" ></select>
+        </div>
+        </form>
+        <div class="q_btn">
+            <button class="btn btn-success" id="btnSerach">查询</button>
+            
+        </div>
+    </div>
+    <table class="table" data-provides="rowlink" id="dt_Table"></table>
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/chosen/chosen.jquery.min.js") 
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/InventorySearch/Index.js")
+}
+

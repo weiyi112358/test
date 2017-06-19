@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "会员权益减扣";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>会员权益减扣</h3>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row-fluid">
+        <div class="span2">
+            <label>会员卡号</label>
+            <input type="text" class="span12" id="txtCardNo" value="" />
+            <span class="help-block"></span>
+        </div>
+        <div class="span2">
+            <label>姓名</label>
+            <input type="text" class="span12" id="txtName" value="" />
+            <span class="error-block"></span>
+        </div>
+        <div class="span2">
+            <label>手机号</label>
+            <input type="text" class="span12" id="txtMobile" value="" />
+        </div>
+        <div class="span2">
+            <label>车牌号</label>
+            <input type="text" class="span12" id="txtVehicle" value="" />
+            <span class="error-block"></span>
+        </div>
+        @*<div class="span2">
+            <label>VIN码</label>
+            <input type="text" class="span12" id="txtVIN" value="" />
+        </div>*@
+        <div class="span2">
+            <label>&nbsp;</label>
+            <button type="button" id="btnSearch" class="btn">查询会员</button>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <div id="table_Member" class="cbox_content" style="width: 480px; height: 330px">
+
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>会员信息</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <table class="table" data-provides="rowlink" id="tableMemberInfo">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnMemberId" />
+<div class="row-fluid memInfoBlock">
+    <h2 class="pull-left memName" id="spnName">
+        @*<input type="hidden" id="hdnMemberId" />*@
+    </h2>
+
+    <div class="pull-left memBasic">
+        <span id="spnGender">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="spnLevel"></b>
+    </div>
+    <div class="span8 memInfoList">
+        <div class="clearfix">
+            <p class="sepH_a"><span class="muted sepV_b">会员卡号</span><strong id="spnCardNo"></strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">会员卡状态</span><strong id="spnCardStat"></strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">手机号码</span><strong id="spnMobile"></strong></p>
+        </div>
+        <div class="clearfix">
+            <p class="sepH_a"><span class="muted sepV_b">待定</span><strong id="stgValidValue1"></strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">待定</span><strong id="stgValidValue2"></strong></p>
+            <p class="sepH_a"><span class="muted sepV_b">待定</span><strong id="stgValidValue3"></strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="form-inline  well">
+    <label>会员编号</label>
+    <input type="text" class="input-medium" id="txtMemId" disabled="disabled">
+    <label class="ml10">委托书号</label>
+    <input type="text" class="input-medium" id="txtTradeCode">
+    
+    <label class="ml10">所属门店</label>
+    <select class="span2 sepV_b" id="drpStore"></select>
+    <button class="btn" id="btnSearch1">查询权益</button>
+    <button class="btn btn-info pull-right" id="btnEnter">确认扣减</button>
+    <label>&nbsp;</label>
+    <button class="btn btn-info pull-right" id="btnPrint">打印</button>
+</div>
+
+<div class="sepH_c row-fluid">
+    <p class="f_legend">账户信息</p>
+    <table class="table" data-provides="rowlink" id="dtAccountInfo">
+        <thead>
+            <tr>
+                <th>账户名称</th>
+                <th>可用值</th>
+                <th>使用</th>
+                <th>本次使用数量</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<br />
+<div class="sepH_c row-fluid">
+    <p class="f_legend">优惠券信息</p>
+    <div class="form-inline  well">
+    <label>公共优惠券号</label>
+    <input type="text" class="input-medium" id="txtPuplicCoupon">
+    <button class="btn" id="btnAddPuplic">添加</button>
+</div>
+    <table class="table" data-provides="rowlink" id="dtCouponInfo">
+        <thead>
+            <tr>
+                <th>优惠券编号</th>
+                <th>优惠券名称</th>
+                <th>可用数量</th>
+                <th>有效截止日期</th>
+                <th>使用</th>
+                <th>本次使用数量</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<br />
+<div class="sepH_c row-fluid">
+    <p class="f_legend">套餐信息</p>
+    <table class="table" data-provides="rowlink" id="dtPackageInfo">
+        <thead>
+            <tr>
+                <th>套餐名称</th>
+                <th>条目编号</th>
+                <th>套餐条目</th>
+                <th>可用数量</th>
+                <th>有效截止日期</th>
+                <th>使用</th>
+                <th>本次使用数量</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Member360/MemInterestDeduction.js")
+}

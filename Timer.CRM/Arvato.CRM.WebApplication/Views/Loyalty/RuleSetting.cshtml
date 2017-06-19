@@ -1,0 +1,463 @@
+﻿@model Arvato.CRM.Model.RuleModel
+@section css{
+    @System.Web.Optimization.Styles.Render("~/VGebo/chosen.css")
+}
+@{
+    ViewBag.Title = "等级积分计算规则设置";
+    var listRuleType = (List<SelectListItem>)ViewData["listRuleType"];
+    var listActionLeft = (List<SelectListItem>)ViewData["listActionLeft"];
+    var listDataGroupID = (List<SelectListItem>)ViewData["listDataGroupID"];
+    var listCycle = new SelectListItem[]{
+        new SelectListItem{Text="每天",Value="day"},
+        new SelectListItem{Text="每周",Value="week"},
+        new SelectListItem{Text="每月",Value="month"},
+        new SelectListItem{Text="每年",Value="year"}
+    };
+    var listWeekCycle = new SelectListItem[]{
+        new SelectListItem{Text="星期一",Value="1"},
+        new SelectListItem{Text="星期二",Value="2"},
+        new SelectListItem{Text="星期三",Value="3"},
+        new SelectListItem{Text="星期四",Value="4"},
+        new SelectListItem{Text="星期五",Value="5"},
+        new SelectListItem{Text="星期六",Value="6"},
+        new SelectListItem{Text="星期日",Value="7"}
+    };
+    var listMonthCycle = new SelectListItem[]{
+        new SelectListItem{Text="1日",Value="1"},
+        new SelectListItem{Text="2日",Value="2"},
+        new SelectListItem{Text="3日",Value="3"},
+        new SelectListItem{Text="4日",Value="4"},
+        new SelectListItem{Text="5日",Value="5"},
+        new SelectListItem{Text="6日",Value="6"},
+        new SelectListItem{Text="7日",Value="7"},
+        new SelectListItem{Text="8日",Value="8"},
+        new SelectListItem{Text="9日",Value="9"},
+        new SelectListItem{Text="10日",Value="10"},
+        new SelectListItem{Text="11日",Value="11"},
+        new SelectListItem{Text="12日",Value="12"},
+        new SelectListItem{Text="13日",Value="13"},
+        new SelectListItem{Text="14日",Value="14"},
+        new SelectListItem{Text="15日",Value="15"},
+        new SelectListItem{Text="16日",Value="16"},
+        new SelectListItem{Text="17日",Value="17"},
+        new SelectListItem{Text="18日",Value="18"},
+        new SelectListItem{Text="19日",Value="19"},
+        new SelectListItem{Text="20日",Value="20"},
+        new SelectListItem{Text="21日",Value="21"},
+        new SelectListItem{Text="22日",Value="22"},
+        new SelectListItem{Text="23日",Value="23"},
+        new SelectListItem{Text="24日",Value="24"},
+        new SelectListItem{Text="25日",Value="25"},
+        new SelectListItem{Text="26日",Value="26"},
+        new SelectListItem{Text="27日",Value="27"},
+        new SelectListItem{Text="28日",Value="28"},
+    };
+}
+<style>
+    li {
+        list-style-type: none;
+    }
+</style>
+
+<div class="mt10">
+    @using (Ajax.BeginForm(null, null, new AjaxOptions { }, new { id = "ActionForm" }))
+    {
+        <div class="row-fluid heading">
+            <div class="pull-left">
+                <h3>会员等级积分计算规则设置</h3>
+            </div>
+        </div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li id="li1" class="active"><a href="#tab1" data-toggle="tab">基本信息</a></li>
+                <li id="li2"><a href="#tab2" data-toggle="tab">命中条件</a></li>
+                <li id="li4"><a href="#tab4" data-toggle="tab">交易明细汇总设定</a></li>
+                <li id="li3"><a href="#tab3" data-toggle="tab">动作</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active mbox" id="tab1">
+                    <div class="form_validation_reg">
+                        <div class="formSep">
+                            <div class="row-fluid">
+                                <div class="span2">
+                                    <label>规则名称 <span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.RuleName, new { id = "txtRuleName", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span2">
+                                    <label>规则编号</label>
+                                    @Html.TextBoxFor(p => p.RuleID, new { id = "txtRuleID", @class = "span12", placeholder = "自动生成", disabled = "disabled" })
+                                    @*<input type="text" class="span12" id="txtRuleID" placeholder="自动生成" disabled="disabled" />*@
+                                </div>
+                                <div class="span2">
+                                    <label>规则类型<span class="f_req">*</span></label>
+                                    @Html.DropDownListFor(p => p.RuleType, listRuleType, new { id = "selRuleType", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span2">
+                                    <label>优先级<span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.RunIndex, new { id = "txtRunIndex", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span2">
+                                    <label>开始时间 <span class="f_req">*</span></label>
+                                    @Html.TextBoxFor(p => p.StartDate, "{0:yyyy-MM-dd}", new { id = "txtStartDate", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span2">
+                                    <label>结束时间</label>
+                                    @Html.TextBoxFor(p => p.EndDate, "{0:yyyy-MM-dd}", new { id = "txtEndDate", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span2">
+                                    <label>上次执行时间</label>
+                                    @Html.TextBoxFor(p => p.LastExecTime, "{0:yyyy-MM-dd HH:mm}", new { id = "txtLastExecTime", disabled = "disabled", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span2">
+                                    <label>是否激活</label>
+                                    @*@Html.CheckBoxFor(p => p.Enable, new { id = "cbEnable", disabled = "disabled" })*@
+                                    @Html.TextBoxFor(p => p.Enable, new { id = "cbEnable", disabled = "disabled", @class = "span12" })
+                                </div>
+                                <div class="span2">
+                                    <label>数据群组</label>
+                                    @Html.DropDownListFor(p => p.DataGroupID, listDataGroupID, new { id = "selDataGroup", @class = "span12" })
+                                    <span class="error-block"></span>
+                                </div>
+                                <div class="span2">
+                                    <label>备注</label>
+                                    @Html.TextBoxFor(p => p.Remark, new { id = "txtRemark", @class = "span12" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sepH_b">
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label></label>
+                                    <label class="radio inline">
+                                        @Html.RadioButton("rdCycle", "cycle", (Model == null || Model.RuleType == "cycle"))
+                                        启用生效周期
+                                    </label>
+                                    <label class="radio inline">
+                                        @Html.RadioButton("rdRealTime", "realtime", !(Model == null || Model.RuleType == "cycle"))
+                                        实时
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="formSep">
+                            <div id="divCycle" class="row-fluid">
+                                <div class="span2">
+                                    <label>周期</label>
+                                    @Html.DropDownListFor(p => p.ScheduleSubType, listCycle, new { id = "selScheduleSubType", @class = "span12" })
+                                    @*@Html.DropDownList("selScheduleSubType", listCycle, new { id = "selScheduleSubType", @class = "span12" })*@
+                                </div>
+                                <div class="span2 hide" id="divWeek">
+                                    <label>每周</label>
+                                    @Html.DropDownList("selWeekCycle", listWeekCycle, new { id = "selWeekCycle", @class = "span12" })
+                                </div>
+                                <div class="span2 form-inline hide" id="divDay">
+                                    <label class="span5 sepV_c">
+                                        第一天<br />
+                                        <span class="title-left">
+                                            @Html.RadioButton("rd1st", "1st", (Model == null || Model.ScheduleDay == "1st"))
+                                        </span>
+                                    </label>
+                                    <label class="span5">
+                                        最后一天<br />
+                                        <span class="title-left">
+                                            @Html.RadioButton("rdlst", "lst", (Model != null && Model.ScheduleDay == "lst"))
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="span2 hide" id="divMonth">
+                                    <label>每月</label>
+                                    <div class="pull-left sepV_a">
+                                        @Html.RadioButton("rdday", "lst", (Model != null && Model.ScheduleDay != "1st" && Model.ScheduleDay != "lst"))
+                                    </div>
+                                    @Html.DropDownList("selMonthCycle", listMonthCycle, new { id = "selMonthCycle", @class = "span10" })
+
+                                </div>
+                                <div class="span2">
+                                    <label>设置每天时间</label>
+                                    @Html.TextBoxFor(p => p.ScheduleTime, new { id = "txtTime", @class = "span12" })
+                                    @*<input id="txtTime" type="text" value="11:00 PM" class="span12" data-label="3">*@
+                                </div>
+                            </div>
+                            <p class="mt10 text-left">
+                                <b class="error-inline">注：</b>开始时间，规则生效的时间；结束时间代表规则失效的时间，如果不设置结束日期，规则将不会自动停止。<br />
+                                勾选启动生效周期，可以以每天、每周几或每月几号、每年的时间方式来周期的激活规则。
+                            </p>
+                            @Html.TextBoxFor(p => p.Condition, new { id = "hideCondition", @style = "display:none" })
+                            @Html.TextBoxFor(p => p.ConditionResult, new { id = "hideConditionResult", @style = "display:none" })
+                            @Html.TextBoxFor(p => p.Actions, new { id = "hideActions", @style = "display:none" })
+                            @Html.TextBoxFor(p => p.Schedule, new { id = "hideSchedule", @style = "display:none" })
+
+                            <input id="hideIsReturn" name="hideIsReturn" type="text" style="display: none" />
+                            <input id="hideRuleName" name="hideRuleName" value="@ViewData["hideRuleName"]" type="text" style="display:none" />
+                            <input id="hideRuleType" name="hideRuleType" value="@ViewData["hideRuleType"]" type="text" style="display:none" />
+                            <input id="hideEnable" name="hideEnable" value="@ViewData["hideEnable"]" type="text" style="display:none" />
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <div class="form_validation_reg">
+                        <div class="formSep">
+                            <div class="row-fluid">
+                                <div class="pull-left">
+                                    <div id="dvFilter" class="tab-content">
+                                        <ul id="ulRootReletion">
+                                            <li class="root-reletion lastNode" r="and">
+                                                <span class="dynatree-connector"></span>
+                                                <i class="splashy-diamonds_2"></i>&nbsp;
+                                                <a id="hyRoot" href="#">并且</a>&nbsp;
+                                                <a id="hyAddSubRoot" href="#"><i class="splashy-add_small"></i></a>
+                                                <ul id="ulSubRootReletion"></ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab3">
+
+                    <div class="form_validation_reg">
+                        <div class="row-fluid">
+                            <div class="pull-right sepV_c sepH_a">
+                                <button class="btn" type="button" id="btnAddAct">新建</button>
+                            </div>
+                        </div>
+                        <div class="formSep row-fluid">
+                            <table class="table" data-provides="rowlink" id="dt_act">
+                                <thead>
+                                    <tr>
+                                        <th>左值</th>
+                                        <th>操作符</th>
+                                        <th>右值</th>
+                                        <!--新增-->
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tab-pane" id="tab4">
+                    <div class="form_validation_reg">
+                        <div class="row-fluid">
+                            <div class="pull-right  sepH_a">
+                                <button class="btn" type="button" id="btnAddComputer">新建</button>
+                            </div>
+                        </div>
+                        <div class="formSep row-fluid">
+                            <table class="table" data-provides="rowlink" id="dt_computer">
+                                <thead>
+                                    <tr>
+                                        <th>设定名称</th>
+                                        <th>字段别名</th>
+                                        <th>表达式</th>
+                                        <th>偏移表达式</th>
+                                        <th>偏移量</th>
+                                        <!--新增-->
+                                        <th>上限</th>
+                                        <th>下限</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>   
+        <div class="row-fluid">
+            <div class="pull-right sepV_c">
+                <button class="btn btn-info" id="btnSave" type="submit">保存</button>
+                <button class="btn" id="btnReturn" onclick="javascript:history.go(-1); " type="button">返回</button>
+                <button class="btn btn-info" type="button" id="btnActive">激活</button>
+                <button class="btn btn-info" type="button" id="btnActive1">激活取消</button>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="hide">
+    <div id="tbAction" class="cbox_content popComMedium">
+        <div class="modal-header">
+            <h3>新增动作</h3>
+        </div>
+        <div class="modal-body" style="height: 320px">
+            <div class="row-fluid">
+                <div class="span3">
+                    <label>左值</label>
+                    @Html.DropDownList("selActionLeft", listActionLeft, new { @class = "span12" })
+                </div>
+                <div id="divOp" class="span3">
+                </div>
+                <div id="divRightValue1" class="span3">
+                </div>
+                <div id="divRightValue2" class="span3">
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div id="divRightValue3" class="span3">
+                    @*<input id='txtRightValue' type='text' class='span12' onkeyup="value=value.replace(/[^\d.]/g,'')" />*@
+                </div>
+                <div id="divRightValue4" class="span3">
+                </div>
+                <div id="divRightValue5" class="span3">
+                </div>
+                <div id="divRightValue6" class="span3">
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div id="divRightValue7" class="span3">
+                </div>
+                <div id="divRightValue8" class="span3">
+                </div>
+                <div id="divRightValue9" class="span3">
+                </div>
+                <div id="divRightValue10" class="span3">
+                </div>
+            </div>
+            <div class="row-fluid">
+                
+                <div id="divRightValue13" class="span3">
+                </div>
+                <div id="divRightValue14" class="span3">
+                </div>
+                <div id="divRightValue15" class="span3">
+                </div>
+                <div id="divRightValue16" class="span3">
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div id="divRightValue11" class="span3">
+                </div>
+                <div id="divRightValue12" class="span3">
+                </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <a href="#" id="btnAddAction" class="btn btn-info">添加</a>
+                    <a href="#" id="btnCancelAction" class="btn btn-info">取消</a>
+                </div>
+            </div>
+        </div>
+        @*<div class="row-fluid">
+            <a href="#" id="btnAddAction" class="btn btn-info">添加</a>
+            <a href="#" id="btnCancelAction" class="btn btn-info">取消</a>
+        </div>*@
+    </div>
+</div>
+
+<div class="hide">
+    <div id="select_dialog" class="cbox_content popConfig w250" style="width: 430px">
+        <div class="modal-header">
+            <h3><span id="selectDialogTitle"></span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div id="dvOption" class="span14" style="max-height: 300px; min-height: 50px; overflow-y: auto; overflow-x: hidden;"></div>
+                <span id="selDialogError" class="error"></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-gebo confirm_yes" id="btnSelectOK">确定</a>
+            <a href="#" class="btn btn-danger" id="btnDelTemplet">删除</a>
+            <a href="#" class="btn confirm_no" id="btnCancelSelect">取消</a>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+    <div id="table_addcomputer" class="cbox_content popComMedium">
+        <div class="modal-header">
+            <h3>设定规则新增/编辑</h3>
+        </div>
+        <div class="modal-body" style="height: 320px">
+            <div class="row-fluid">
+                <div class="span3">
+                    <label>关键字</label>
+                    @*<input type="text" id="txtKey" class="span11" />*@
+                    <select class="span11 chzn_a" data-placeholder="请选择" id="txtKey" style="width:152px">
+                    </select>
+                </div>
+                <div class="span3">
+                    <label>计算公式</label>@*sum,avg,first,max等SQL汇总计算函数*@
+                    <select class="span11" id="drpGroupFunc">
+                        <option value="">请选择</option>
+                        <option value="sum">求和</option>
+                        <option value="avg">平均值</option>
+                        <option value="max">最大值</option>
+                        <option value="min">最小值</option>
+                    </select>
+                </div>
+                <div class="span3">
+                    <label>偏移表达式</label>
+                    <select class="span11" id="drpOffsetExpression">
+                        <option value="">请选择</option>
+                        <option value="+">加(减)</option>
+                        <option value="*">乘以</option>
+                    </select>
+                </div>
+                <div class="span3">
+                    <label>偏移量</label>
+                    <input type="text" id="txtShift" class="span11" onkeyup="value=value.replace(/[^\-?\d.]/g,'')" />
+                </div>
+
+            </div>
+            <div class="row-fluid">
+                <div class="span3">
+                    <label>上限</label>
+                    <input type="text" id="txtCeiling" class="span11" onkeyup="value=value.replace(/[^\d.]/g,'')" />
+                </div>
+                <div class="span3">
+                    <label>下限</label>
+                    <input type="text" id="txtFloor" class="span11" onkeyup="value=value.replace(/[^\d.]/g,'')" />
+                </div>
+                <div class="span3">
+                    <label>是否取绝对值</label>
+                    <input type="checkbox" id="chbIsABS" checked="checked" />
+                </div>
+                <div class="span3">
+                    <label>设定名称</label>
+                    <input type="text" id="txtNameCode" class="span11" disabled="disabled" />
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="pull-right">
+                    <a href="#" id="btnAddComRule" class="btn btn-info">添加</a>
+                    <a href="#" id="btnCancelComRule" class="btn btn-info">取消</a>
+                </div>
+            </div>
+        </div>
+        @*<div class="row-fluid">
+            <a href="#" id="btnAddComRule" class="btn btn-info">添加</a>
+            <a href="#" id="btnCancelComRule" class="btn btn-info">取消</a>
+        </div>*@
+    </div>
+</div>
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/validation/jquery.validate.js", "~/Gebo/lib/chosen/chosen.jquery.js", "~/Scripts/Framework/jquery.validate.extend.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Loyalty/RuleSetting.js", "~/Scripts/Framework/linq.min.js")
+}

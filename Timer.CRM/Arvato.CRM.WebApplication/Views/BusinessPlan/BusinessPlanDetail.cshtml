@@ -1,0 +1,185 @@
+﻿@model Arvato.CRM.Model.BusinessPlanModel
+@{
+    ViewBag.Title = "商业计划详细";
+    var resultList = Arvato.CRM.Utility.JsonHelper.Serialize(Model.KPIResultList);
+}
+
+@section css{
+    @System.Web.Optimization.Styles.Render("~/IXCSS/Common.css", "~/IXCSS/BusinessPlan.css")
+}
+<div class="row-fluid heading">
+    <div class="pull-left">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+<div class="mt10">
+    @*<div class="searchbox">
+            <div class="pull-right">
+                <button class="btn" id="btnReturn">返回列表</button>
+            </div>
+        </div>*@
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">概况</a></li>
+            <li><a href="#tab2" data-toggle="tab">目标</a></li>
+            <li><a href="#tab3" data-toggle="tab">跟踪</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active mbox" id="tab1" style="min-width: 890px;">
+                <div class="row-fluid formSep">
+                    <div class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2">计划代码：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.BusinessPlanID, new { @class = "span12", @disabled = "disabled" })
+                                @Html.HiddenFor(p => p.BusinessPlanID, new { @id = "hidBusinessPlanID", @class = "span12", @disabled = "disabled" })
+                                <input type="hidden" id="hidBusinessPlanResult" value="@resultList" />
+                            </div>
+                            <label class="control-lable-biglong span2">计划名称：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.BusinessPlanName, new { @class = "span12", @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2">计划类型：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.PlanTypeName, new { @class = "span12", @disabled = "disabled" })
+                            </div>
+                            <label class="control-lable-biglong span2">状态：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.StatusName, new { @class = "span12", @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2">计划开始时间：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.PlanStartTime, new { @class = "span12", @disabled = "disabled", @Value = (Model == null) ? null : Model.PlanStartTime.ToString("yyyy-MM-dd") })
+                            </div>
+                            <label class="control-lable-biglong span2">计划结束时间：</label>
+                            <div class="controls-text span3">
+                                @Html.TextBoxFor(p => p.PlanEndTime, new { @class = "span12", @disabled = "disabled", @Value = (Model == null) ? null : (Model.PlanEndTime.HasValue ? Model.PlanEndTime.Value.ToString("yyyy-MM-dd") : null) })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2">关联POS促销活动：</label>
+                            <div class="controls-text" style="line-height:30px">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-lable-biglong span2">备注：</label>
+                            <div class="controls-text span8">
+                                @Html.TextAreaFor(p => p.Remark, new { @class = "span12", @disabled = "disabled", @rows = "5" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <h3>包含的活动列表</h3>
+                    <div class="dataTables_wrapper">
+                        <table class="table" id="dt_BusinessPlanActivity" style="width: 100%;">
+                            <thead>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2" style="min-width: 890px;">
+                <div class="top clearfix">
+                    <h4>目标管理</h4>
+                </div>
+                <div class="taglist">
+                    <ul>
+                        @if (Model.KPIResultList != null && Model.KPIResultList.Count > 0)
+                        {
+                            foreach (var obj in Model.KPIResultList)
+                            {
+                                <li>
+                                    <p>@obj.KPIName</p>
+                                    <div class="pec">
+                                        <b>@obj.TargetValue</b>
+                                        <em>目标值</em>
+                                        <br />
+                                        <span>@obj.Unit</span>
+                                    </div>
+                                    <div class="pec cur">
+                                        <b>
+                                            @if (@obj.Unit.ToString() == "%")
+                                            {
+                                                @(decimal.Parse(@obj.CurrentValue) * 100);
+                                            }
+                                            else
+                                            {
+                                                @obj.CurrentValue
+                                            }
+                                        </b>
+                                        <em>实际值</em>
+                                        <br />
+                                        <span>@obj.Unit</span>
+                                    </div>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            if (Model.KPITargetList != null && Model.KPITargetList.Count > 0)
+                            {
+                                foreach (var objTarget in Model.KPITargetList)
+                                {
+                                    <li>
+                                        <p>@objTarget.KPIName</p>
+                                        <div class="pec">
+                                            @if (objTarget.TargetValueType.Trim().Equals("2"))
+                                            {
+                                                <b>@objTarget.StrValue1</b>
+                                            }
+                                            else if (objTarget.TargetValueType.Trim().Equals("3"))
+                                            {
+                                                <b>@objTarget.IntValue1</b>
+                                            }
+                                            else if (objTarget.TargetValueType.Trim().Equals("7"))
+                                            {
+                                                <b>@objTarget.DecValue1 -- @objTarget.DecValue2</b>
+                                            }
+                                            else
+                                            {
+                                                <b>@objTarget.IntValue1</b>
+                                            }
+                                            <em>目标值</em>
+                                            <br />
+                                            <span>@objTarget.Unit</span>
+                                        </div>
+                                        <div class="pec cur">
+                                            <b>0</b>
+                                            <em>实际值</em>
+                                            <br />
+                                            <span>@objTarget.Unit</span>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+
+                </div>
+            </div>
+            <div class="tab-pane" id="tab3" style="min-width: 890px;">
+                <div class="dataTables_wrapper">
+                    <table class="table" id="dt_BusinessplanDetail" style="width: 100%;">
+                        <thead>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/Gebo/lib/datatables/jquery.dataTables.sorting.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/Pages/Businessplan/BusinessplanDetail.js")
+}
